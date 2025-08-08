@@ -7,26 +7,10 @@ import { urlFor } from "@/sanity/lib/image";
 import { GitCompareArrows, Headset, ShieldCheck, Truck } from "lucide-react";
 
 const extraData = [
-  {
-    title: "Free Delivery",
-    description: "Free shipping over $100",
-    icon: <Truck size={45} />,
-  },
-  {
-    title: "Free Return",
-    description: "Free shipping over $100",
-    icon: <GitCompareArrows size={45} />,
-  },
-  {
-    title: "Customer Support",
-    description: "Friendly 27/7 customer support",
-    icon: <Headset size={45} />,
-  },
-  {
-    title: "Money Back guarantee",
-    description: "Quality checked by our team",
-    icon: <ShieldCheck size={45} />,
-  },
+  { title: "Darmowa dostawa", description: "Dla zamówień powyżej 500 zł", icon: <Truck size={45} /> },
+  { title: "Darmowy zwrot", description: "Do 14 dni na zwrot", icon: <GitCompareArrows size={45} /> },
+  { title: "Wsparcie", description: "Przyjazne wsparcie 7 dni w tyg.", icon: <Headset size={45} /> },
+  { title: "Gwarancja", description: "Jakość sprawdzona przez zespół", icon: <ShieldCheck size={45} /> },
 ];
 
 const ShopByBrands = async () => {
