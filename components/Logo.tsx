@@ -10,21 +10,14 @@ const Logo = ({
   spanDesign?: string;
 }) => {
   return (
-    <Link href={"/"} className="inline-flex">
-      <h2
-        className={cn(
-          "text-2xl text-shop_dark_green font-black tracking-wider uppercase hover:text-shop_light_green hoverEffect group font-sans",
-          className
-        )}
-      >
-        Shopcar
-        <span
-          className={cn(
-            "text-shop_light_green group-hover:text-shop_dark_green hoverEffect",
-            spanDesign
-          )}
-        >
-          t
+    <Link href={"/"} className="inline-flex items-center gap-2">
+      <div className="w-8 h-8 bg-gradient-to-br from-[var(--color-brand-orange)] to-[var(--color-brand-red)] rounded-lg flex items-center justify-center">
+        <span className="text-white text-base font-bold">MT</span>
+      </div>
+      <h2 className={cn("text-2xl font-extrabold tracking-tight", className)}>
+        MiniTeam
+        <span className={cn("text-[var(--color-brand-orange)]", spanDesign)}>
+          Project
         </span>
       </h2>
     </Link>
