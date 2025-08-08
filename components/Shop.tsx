@@ -39,10 +39,40 @@ const Shop = ({ categories, brands }: Props) => {
         minPrice = min;
         maxPrice = max;
       }
+      // Fallback mapping for category slugs (when Sanity categories/brands are missing)
+      const fallbackTiersMap: Record<string, string[]> = {
+        "1-2t": ["1-1.5t", "1.5-2.3t"],
+        "2-3t": ["1.5-2.3t", "2.3-3t"],
+        "3-4.5t": ["3-5t"],
+      };
+      const keywordMap: Record<string, string[]> = {
+        grabie: ["*grab*"],
+        zrywarki: ["*zrywak*", "*ripper*"],
+      };
+      const brandKeywordMap: Record<string, string> = {
+        jcb: "*JCB*",
+        cat: "*CAT*",
+        kubota: "*Kubota*",
+        volvo: "*Volvo*",
+        yanmar: "*Yanmar*",
+        wacker: "*Wacker*",
+      };
+
+      const tiers = selectedCategory ? fallbackTiersMap[selectedCategory] : undefined;
+      const keywords = selectedCategory ? keywordMap[selectedCategory] : undefined;
+      const brandKeyword = selectedBrand ? brandKeywordMap[selectedBrand] : undefined;
+
       const query = `
       *[_type == 'product' 
-        && (!defined($selectedCategory) || references(*[_type == "category" && slug.current == $selectedCategory]._id))
-        && (!defined($selectedBrand) || references(*[_type == "brand" && slug.current == $selectedBrand]._id))
+        && (!defined($selectedCategory) 
+            || references(*[_type == "category" && slug.current == $selectedCategory]._id)
+            || (defined($tiers) && priceTier in $tiers)
+            || (defined($keywords) && ((name match $kw0) || (defined($kw1) && name match $kw1) || (description match $kw0) || (defined($kw1) && description match $kw1)))
+        )
+        && (!defined($selectedBrand) 
+            || references(*[_type == "brand" && slug.current == $selectedBrand]._id)
+            || (defined($brandKeyword) && (name match $brandKeyword || description match $brandKeyword))
+        )
         && price >= $minPrice && price <= $maxPrice
       ] 
       | order(name asc) {
@@ -51,7 +81,17 @@ const Shop = ({ categories, brands }: Props) => {
     `;
       const data = await client.fetch(
         query,
-        { selectedCategory, selectedBrand, minPrice, maxPrice },
+        { 
+          selectedCategory, 
+          selectedBrand, 
+          minPrice, 
+          maxPrice,
+          tiers,
+          keywords,
+          kw0: keywords ? keywords[0] : undefined,
+          kw1: keywords && keywords[1] ? keywords[1] : undefined,
+          brandKeyword,
+        },
         { next: { revalidate: 0 } }
       );
       setProducts(data);

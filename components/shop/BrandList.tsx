@@ -15,6 +15,30 @@ const BrandList = ({ brands, selectedBrand, setSelectedBrand }: Props) => {
     <div className="w-full bg-white p-5">
       <Title className="text-base font-black">Marka</Title>
       <RadioGroup value={selectedBrand || ""} className="mt-2 space-y-1">
+        {/* Presets when no brands in Sanity */}
+        {!brands?.length && (
+          <>
+            {[
+              { title: "JCB", slug: "jcb" },
+              { title: "Caterpillar", slug: "cat" },
+              { title: "Kubota", slug: "kubota" },
+              { title: "Volvo", slug: "volvo" },
+              { title: "Yanmar", slug: "yanmar" },
+              { title: "Wacker Neuson", slug: "wacker" },
+            ].map((b) => (
+              <div
+                key={b.slug}
+                onClick={() => setSelectedBrand(b.slug)}
+                className="flex items-center space-x-2 hover:cursor-pointer"
+              >
+                <RadioGroupItem value={b.slug} id={b.slug} className="rounded-sm" />
+                <Label htmlFor={b.slug} className={`${selectedBrand === b.slug ? "font-semibold text-shop_dark_green" : "font-normal"}`}>
+                  {b.title}
+                </Label>
+              </div>
+            ))}
+          </>
+        )}
         {brands?.map((brand) => (
           <div
             key={brand?._id}
