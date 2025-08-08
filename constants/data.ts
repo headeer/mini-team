@@ -1,9 +1,9 @@
 export const headerData = [
-  { title: "Home", href: "/" },
-  { title: "Shop", href: "/shop" },
-  { title: "Blog", href: "/blog" },
-  { title: "Hot Deal", href: "/deal" },
-  //   { title: "Contact", href: "/contact" },
+  { title: "Start", href: "/" },
+  { title: "Oferta", href: "/shop" },
+  { title: "Realizacje", href: "/realizacje" },
+  { title: "Cennik", href: "/cennik" },
+  { title: "Kontakt", href: "/kontakt" },
 ];
 export const quickLinksData = [
   { title: "About us", href: "/about" },
@@ -14,13 +14,11 @@ export const quickLinksData = [
   { title: "Help", href: "/help" },
 ];
 export const categoriesData = [
-  { title: "Mobiles", href: "mobiles" },
-  { title: "Appliances", href: "appliances" },
-  { title: "Smartphones", href: "smartphones" },
-  { title: "Air Conditioners", href: "air-conditioners" },
-  { title: "Washing Machine", href: "washing-machine" },
-  { title: "Kitchen Appliances", href: "kitchen-appliances" },
-  { title: "gadget accessories", href: "gadget-accessories" },
+  { title: "Łyżki 1-2t", href: "1-2t" },
+  { title: "Łyżki 2-3t", href: "2-3t" },
+  { title: "Łyżki 3-4.5t", href: "3-4.5t" },
+  { title: "Grabie", href: "grabie" },
+  { title: "Zrywarki korzeni", href: "zrywarki" },
 ];
 export const productType = [
   { title: "Gadget", value: "gadget" },

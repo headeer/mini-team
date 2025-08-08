@@ -17,8 +17,10 @@ function parsePrice(text) {
 function toSlug(name) {
   return String(name || '')
     .toLowerCase()
-    .replace(/\s+/g, '-')</n+    .replace(/[^a-z0-9\-]/g, '')
-    .replace(/-+/g, '-')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '') // remove diacritics
+    .replace(/[^a-z0-9]+/g, '-') // non-alnum to dash
+    .replace(/^-+|-+$/g, '') // trim dashes
     .slice(0, 96);
 }
 
