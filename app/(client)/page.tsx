@@ -1,5 +1,7 @@
 import Container from "@/components/Container";
-import HomeBanner from "@/components/HomeBanner";
+import TopBenefitsBar from "@/components/TopBenefitsBar";
+import HomeHero from "@/components/home/HomeHero";
+import WhyHardox from "@/components/home/WhyHardox";
 import HomeCategories from "@/components/HomeCategories";
 import LatestBlog from "@/components/LatestBlog";
 import ProductGrid from "@/components/ProductGrid";
@@ -12,13 +14,17 @@ const Home = async () => {
   const categories = await getCategories(6);
 
   return (
-    <Container className="bg-shop-light-pink">
-      <HomeBanner />
-      <ProductGrid />
-      <HomeCategories categories={categories} />
-      <ShopByBrands />
-      <LatestBlog />
-    </Container>
+    <div className="bg-white">
+      <TopBenefitsBar />
+      <Container>
+        <HomeHero />
+        <ProductGrid />
+        <HomeCategories categories={categories} />
+        <WhyHardox />
+        <ShopByBrands />
+        <LatestBlog />
+      </Container>
+    </div>
   );
 };
 
