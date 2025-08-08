@@ -1,11 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+To jest projekt [Next.js](https://nextjs.org) zintegrowany z Sanity, Clerk i Stripe. Polska konfiguracja sklepu MiniTeam.
 
-## Getting Started
+## Szybki start
 
-First, run the development server:
+1) Utwórz plik `.env.local` (patrz `DOCS.md`) i ustaw klucze: Sanity, Clerk, Stripe.
+2) Zainstaluj zależności i uruchom serwer developerski:
 
 ```bash
-npm run dev
+npm install && npm run dev
 # or
 yarn dev
 # or
@@ -14,18 +15,17 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Otwórz [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Sanity Studio dostępne pod `/studio` (po dodaniu projektu Sanity). Import produktów: `DOCS.md` sekcja Import.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Więcej
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs)
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 

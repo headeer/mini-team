@@ -46,12 +46,12 @@ export async function createCheckoutSession(
         enabled: true,
       },
       success_url: `${
-        process.env.NEXT_PUBLIC_BASE_URL
-      }/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cart`,
+        process.env.NEXT_PUBLIC_SUCCESS_URL || `${process.env.NEXT_PUBLIC_BASE_URL}/success`
+      }?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_CANCEL_URL || `${process.env.NEXT_PUBLIC_BASE_URL}/cart`}`,
       line_items: items?.map((item) => ({
         price_data: {
-          currency: "USD",
+          currency: "PLN",
           unit_amount: Math.round(item?.product?.price! * 100),
           product_data: {
             name: item?.product?.name || "Unknown Product",

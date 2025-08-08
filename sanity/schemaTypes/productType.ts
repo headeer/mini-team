@@ -3,13 +3,13 @@ import { defineField, defineType } from "sanity";
 
 export const productType = defineType({
   name: "product",
-  title: "Products",
+  title: "Produkt",
   type: "document",
   icon: TrolleyIcon,
   fields: [
     defineField({
       name: "name",
-      title: "Product Name",
+      title: "Tytuł",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
@@ -31,70 +31,90 @@ export const productType = defineType({
     }),
     defineField({
       name: "description",
-      title: "Description",
-      type: "string",
+      title: "Opis",
+      type: "text",
     }),
     defineField({
       name: "price",
-      title: "Price",
+      title: "Cena (zł)",
       type: "number",
       validation: (Rule) => Rule.required().min(0),
     }),
+    // Dodatkowe pola cenowe dla MiniTeam
+    defineField({ name: "basePrice", title: "Cena bazowa (zł)", type: "number" }),
+    defineField({ name: "toothCost", title: "Koszt zębów (zł)", type: "number" }),
+    defineField({ name: "toothQty", title: "Ilość zębów (szt)", type: "number" }),
+    defineField({
+      name: "priceTier",
+      title: "Zakres maszyn",
+      type: "string",
+      options: {
+        list: [
+          { title: "1–1.5T", value: "1-1.5t" },
+          { title: "1.5–2.3T", value: "1.5-2.3t" },
+          { title: "2.3–3T", value: "2.3-3t" },
+          { title: "3–5T", value: "3-5t" },
+        ],
+      },
+    }),
     defineField({
       name: "discount",
-      title: "Discount",
+      title: "Rabat (%)",
       type: "number",
       validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
       name: "categories",
-      title: "Categories",
+      title: "Kategorie",
       type: "array",
       of: [{ type: "reference", to: { type: "category" } }],
     }),
     defineField({
       name: "stock",
-      title: "Stock",
+      title: "Stan magazynowy",
       type: "number",
       validation: (Rule) => Rule.min(0),
     }),
     defineField({
       name: "brand",
-      title: "Brand",
+      title: "Marka",
       type: "reference",
       to: { type: "brand" },
     }),
 
     defineField({
       name: "status",
-      title: "Product Status",
+      title: "Status",
       type: "string",
       options: {
         list: [
-          { title: "New", value: "new" },
-          { title: "Hot", value: "hot" },
-          { title: "Sale", value: "sale" },
+          { title: "Nowy", value: "new" },
+          { title: "Popularny", value: "hot" },
+          { title: "Promocja", value: "sale" },
         ],
       },
     }),
+    // Specyfikacje
     defineField({
-      name: "variant",
-      title: "Product Type",
-      type: "string",
-      options: {
-        list: [
-          { title: "Gadget", value: "gadget" },
-          { title: "Appliances", value: "appliances" },
-          { title: "Refrigerators", value: "refrigerators" },
-          { title: "Others", value: "others" },
-        ],
-      },
+      name: "specifications",
+      title: "Specyfikacje",
+      type: "object",
+      fields: [
+        defineField({ name: "widthCm", title: "Szerokość (cm)", type: "number" }),
+        defineField({ name: "pinDiameterMm", title: "Średnica sworznia (mm)", type: "number" }),
+        defineField({ name: "volumeM3", title: "Pojemność (m³)", type: "number" }),
+        defineField({ name: "features", title: "Cechy", type: "array", of: [{ type: "string" }] }),
+        defineField({ name: "machineCompatibility", title: "Kompatybilność maszyn", type: "array", of: [{ type: "string" }] }),
+        defineField({ name: "quickCoupler", title: "Szybkozłącze", type: "string" }),
+      ],
     }),
+    defineField({ name: "dateUpdated", title: "Data aktualizacji", type: "datetime" }),
+    defineField({ name: "externalId", title: "Zewnętrzne ID", type: "string" }),
     defineField({
       name: "isFeatured",
-      title: "Featured Product",
+      title: "Produkt wyróżniony",
       type: "boolean",
-      description: "Toggle to Featured on or off",
+      description: "Włącz/wyłącz wyróżnienie",
       initialValue: false,
     }),
   ],
@@ -109,7 +129,7 @@ export const productType = defineType({
       const image = media && media[0];
       return {
         title: title,
-        subtitle: `$${subtitle}`,
+        subtitle: `${subtitle} PLN`,
         media: image,
       };
     },
