@@ -8,7 +8,7 @@ import { useSearchParams } from "next/navigation";
 import BrandList from "./shop/BrandList";
 import PriceList from "./shop/PriceList";
 import { client } from "@/sanity/lib/client";
-import { Loader2 } from "lucide-react";
+import { Loader2, Filter } from "lucide-react";
 import NoProductAvailable from "./NoProductAvailable";
 import ProductCard from "./ProductCard";
 
@@ -68,29 +68,41 @@ const Shop = ({ categories, brands }: Props) => {
   return (
     <div className="border-t">
       <Container className="mt-5">
-        <div className="sticky top-0 z-10 mb-5">
-          <div className="flex items-center justify-between">
-            <Title className="text-lg uppercase tracking-wide">
-              Znajdź osprzęt dla swojej koparki
-            </Title>
-            {(selectedCategory !== null ||
-              selectedBrand !== null ||
-              selectedPrice !== null) && (
-              <button
-                onClick={() => {
-                  setSelectedCategory(null);
-                  setSelectedBrand(null);
-                  setSelectedPrice(null);
-                }}
-                className="text-shop_dark_green underline text-sm mt-2 font-medium hover:text-darkRed hoverEffect"
-              >
-                Wyczyść filtry
-              </button>
-            )}
-          </div>
+        {/* Page Header */}
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Łyżki do Koparek - Kompletna Oferta</h1>
+          <p className="text-gray-600">Wysokiej jakości łyżki ze stali Hardox HB500 dopasowane do Twojej koparki</p>
         </div>
         <div className="flex flex-col md:flex-row gap-5 border-t border-t-shop_dark_green/50">
-          <div className="md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-y-auto md:min-w-64 pb-5 md:border-r border-r-shop_btn_dark_green/50 scrollbar-hide">
+          <div className="md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-y-auto md:min-w-72 pb-5 md:border-r border-r-shop_btn_dark_green/50 scrollbar-hide space-y-4">
+            {/* Filters Header */}
+            <div className="bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border rounded-md p-4">
+              <div className="flex items-center gap-2">
+                <Filter className="h-5 w-5 text-[var(--color-brand-orange)]" />
+                <h3 className="font-semibold text-gray-900">Filtry produktów</h3>
+              </div>
+              <p className="text-sm text-gray-600 mt-1">Znajdź idealny osprzęt dla swojej koparki</p>
+              <div className="flex gap-2 mt-3">
+                <button
+                  onClick={() => fetchProducts()}
+                  className="px-3 py-1.5 rounded-md bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-medium"
+                >
+                  Zastosuj filtry
+                </button>
+                {(selectedCategory !== null || selectedBrand !== null || selectedPrice !== null) && (
+                  <button
+                    onClick={() => {
+                      setSelectedCategory(null);
+                      setSelectedBrand(null);
+                      setSelectedPrice(null);
+                    }}
+                    className="px-3 py-1.5 rounded-md border text-sm font-medium hover:bg-gray-50"
+                  >
+                    Wyczyść
+                  </button>
+                )}
+              </div>
+            </div>
             <CategoryList
               categories={categories}
               selectedCategory={selectedCategory}
