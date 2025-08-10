@@ -5,10 +5,8 @@ import { motion } from "motion/react";
 import { Loader2 } from "lucide-react";
 
 const NoProductAvailable = ({
-  selectedTab,
   className,
 }: {
-  selectedTab?: string;
   className?: string;
 }) => {
   return (
@@ -32,11 +30,7 @@ const NoProductAvailable = ({
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-gray-600"
       >
-        Przepraszamy, nie znaleziono produktów w kategorii{" "}
-        <span className="text-base font-semibold text-darkColor">
-          {selectedTab}
-        </span>{" "}
-        w tej chwili.
+        Przepraszamy, obecnie brak towaru w wybranej kategorii.
       </motion.p>
 
       <motion.div
@@ -54,7 +48,7 @@ const NoProductAvailable = ({
         transition={{ delay: 0.4, duration: 0.5 }}
         className="text-sm text-gray-500"
       >
-        Wróć później lub sprawdź inne kategorie.
+        Sprawdź inną kategorię lub wróć później.
       </motion.p>
     </div>
   );

@@ -25,6 +25,7 @@ export async function createCheckoutSession(
 ) {
   try {
     // Retrieve existing customer or create a new one
+    if (!stripe) throw new Error("Stripe not configured");
     const customers = await stripe.customers.list({
       email: metadata.customerEmail,
       limit: 1,
@@ -52,15 +53,32 @@ export async function createCheckoutSession(
       line_items: items?.map((item) => ({
         price_data: {
           currency: "PLN",
-          unit_amount: Math.round(item?.product?.price! * 100),
+          unit_amount: Math.round((
+            typeof (item?.product as any)?.basePrice === "number"
+              ? (item?.product as any).basePrice
+              : typeof item?.product?.price === "number"
+              ? (item?.product?.price as number)
+              : 0
+          ) * 100),
           product_data: {
             name: item?.product?.name || "Unknown Product",
             description: item?.product?.description,
             metadata: { id: item?.product?._id },
-            images:
-              item?.product?.images && item?.product?.images?.length > 0
-                ? [urlFor(item?.product?.images[0]).url()]
-                : undefined,
+            images: (() => {
+              const toSrc = (img: any): string | null => {
+                if (!img) return null;
+                if (typeof img === "string") return img || null;
+                if (typeof img === "object" && img.url) return img.url || null;
+                if (typeof img === "object" && img.asset?._ref) {
+                  try { return urlFor(img).url(); } catch { return null; }
+                }
+                return null;
+              };
+              const direct = (item?.product as any)?.cover || (item?.product as any)?.imageUrls?.[0]?.url;
+              const fallback = item?.product?.images && item?.product?.images?.length > 0 ? toSrc(item?.product?.images[0]) : null;
+              const resolved = direct || fallback;
+              return resolved ? [resolved] : undefined;
+            })(),
           },
         },
         quantity: item?.quantity,

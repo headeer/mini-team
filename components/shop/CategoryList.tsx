@@ -19,29 +19,6 @@ const CategoryList = ({
     <div className="w-full bg-white p-5">
       <Title className="text-base font-black">Kategorie</Title>
       <RadioGroup value={selectedCategory || ""} className="mt-2 space-y-1">
-        {/* Presets when no categories in Sanity */}
-        {!categories?.length && (
-          <>
-            {[
-              { title: "Łyżki 1–2t", slug: "1-2t" },
-              { title: "Łyżki 2–3t", slug: "2-3t" },
-              { title: "Łyżki 3–4.5t", slug: "3-4.5t" },
-              { title: "Grabie", slug: "grabie" },
-              { title: "Zrywarki korzeni", slug: "zrywarki" },
-            ].map((p) => (
-              <div
-                key={p.slug}
-                onClick={() => setSelectedCategory(p.slug)}
-                className="flex items-center space-x-2 hover:cursor-pointer"
-              >
-                <RadioGroupItem value={p.slug} id={p.slug} className="rounded-sm" />
-                <Label htmlFor={p.slug} className={`${selectedCategory === p.slug ? "font-semibold text-shop_dark_green" : "font-normal"}`}>
-                  {p.title}
-                </Label>
-              </div>
-            ))}
-          </>
-        )}
         {categories?.map((category) => (
           <div
             onClick={() => {

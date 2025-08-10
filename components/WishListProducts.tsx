@@ -22,11 +22,11 @@ const WishListProducts = () => {
 
   const handleResetWishlist = () => {
     const confirmReset = window.confirm(
-      "Are you sure you want to reset your wishlist?"
+      "Czy na pewno chcesz wyczyścić listę życzeń?"
     );
     if (confirmReset) {
       resetFavorite();
-      toast.success("Wishlist reset successfully");
+      toast.success("Lista życzeń została wyczyszczona");
     }
   };
 
@@ -38,14 +38,14 @@ const WishListProducts = () => {
             <table className="w-full border-collapse">
               <thead className="border-b">
                 <tr className="bg-black/5">
-                  <th className="p-2 text-left">Image</th>
+                  <th className="p-2 text-left">Zdjęcie</th>
                   <th className="p-2 text-left hidden md:table-cell">
-                    Category
+                    Kategoria
                   </th>
-                  <th className="p-2 text-left hidden md:table-cell">Type</th>
+                  <th className="p-2 text-left hidden md:table-cell">Typ</th>
                   <th className="p-2 text-left hidden md:table-cell">Status</th>
-                  <th className="p-2 text-left">Price</th>
-                  <th className="p-2 text-center md:text-left">Action</th>
+                  <th className="p-2 text-left">Cena</th>
+                  <th className="p-2 text-center md:text-left">Akcja</th>
                 </tr>
               </thead>
               <tbody>
@@ -57,7 +57,7 @@ const WishListProducts = () => {
                         <X
                           onClick={() => {
                             removeFromFavorite(product?._id);
-                            toast.success("Product removed from wishlist");
+                            toast.success("Produkt usunięty z listy życzeń");
                           }}
                           size={18}
                           className="hover:text-red-600 hover:cursor-pointer hoverEffect"
@@ -67,13 +67,29 @@ const WishListProducts = () => {
                             href={`/product/${product?.slug?.current}`}
                             className="border rounded-md group hidden md:inline-flex"
                           >
-                            <Image
-                              src={urlFor(product?.images[0]).url()}
-                              alt={"product image"}
-                              width={80}
-                              height={80}
-                              className="rounded-md group-hover:scale-105 hoverEffect h-20 w-20 object-contain"
-                            />
+                            {(() => { 
+                              const toSrc = (img: any): string | null => {
+                                if (!img) return null;
+                                if (typeof img === "string") return img || null;
+                                if (typeof img === "object" && img.url) return img.url || null;
+                                if (typeof img === "object" && img.asset?._ref) {
+                                  try { return urlFor(img).url(); } catch { return null; }
+                                }
+                                return null;
+                              };
+                              const src = toSrc(product?.images?.[0]);
+                              return src ? (
+                                <Image
+                                  src={src}
+                                  alt={"product image"}
+                                  width={80}
+                                  height={80}
+                                  className="rounded-md group-hover:scale-105 hoverEffect h-20 w-20 object-contain"
+                                />
+                              ) : (
+                                <div className="h-20 w-20 bg-gray-100 rounded-md" />
+                              );
+                            })()}
                           </Link>
                         )}
                         <p className="line-clamp-1">{product?.name}</p>
@@ -96,8 +112,8 @@ const WishListProducts = () => {
                         } font-medium text-sm hidden md:table-cell`}
                       >
                         {(product?.stock as number) > 0
-                          ? "In Stock"
-                          : "Out of Stock"}
+                          ? "W magazynie"
+                          : "Brak w magazynie"}
                       </td>
                       <td className="p-2">
                         <PriceFormatter amount={product?.price} />
@@ -114,7 +130,7 @@ const WishListProducts = () => {
             {visibleProducts < favoriteProduct?.length && (
               <div className="my-5">
                 <Button variant="outline" onClick={loadMore}>
-                  Load More
+                  Pokaż więcej
                 </Button>
               </div>
             )}
@@ -124,7 +140,7 @@ const WishListProducts = () => {
                   onClick={() => setVisibleProducts(10)}
                   variant="outline"
                 >
-                  Load Less
+                  Pokaż mniej
                 </Button>
               </div>
             )}
@@ -136,7 +152,7 @@ const WishListProducts = () => {
               variant="destructive"
               size="lg"
             >
-              Reset Wishlist
+              Wyczyść listę życzeń
             </Button>
           )}
         </>
@@ -151,14 +167,14 @@ const WishListProducts = () => {
           </div>
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold tracking-tight">
-              Your wishlist is empty
+              Twoja lista życzeń jest pusta
             </h2>
             <p className="text-sm text-muted-foreground">
-              Items added to your wishlist will appear here
+              Produkty dodane do listy życzeń pojawią się tutaj
             </p>
           </div>
           <Button asChild>
-            <Link href="/shop">Continue Shopping</Link>
+            <Link href="/shop">Kontynuuj zakupy</Link>
           </Button>
         </div>
       )}

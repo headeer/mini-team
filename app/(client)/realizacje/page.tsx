@@ -1,7 +1,6 @@
 import Container from "@/components/Container";
-import Title from "@/components/Title";
+import AppHeading from "@/components/ui/AppHeading";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { MapPin, Phone, Clock } from "lucide-react";
 import Link from "next/link";
 
@@ -14,16 +13,11 @@ export default function RealizacjePage() {
   return (
     <div className="bg-white">
       <Container className="py-10 space-y-10">
-        {/* Header */}
-        <div className="text-center space-y-3">
-          <Title className="text-3xl lg:text-4xl font-bold text-gray-900">Nasze Realizacje w Polsce</Title>
-          <p className="text-lg text-gray-600">Zaufanie i jakość potwierdzone tysiącami godzin pracy</p>
-          <div className="flex items-center justify-center gap-3 flex-wrap pt-2">
-            <Badge variant="secondary" className="bg-blue-100 text-blue-800">Firmy budowlane</Badge>
-            <Badge variant="secondary" className="bg-green-100 text-green-800">Firmy komunalne</Badge>
-            <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">Rolnictwo</Badge>
-          </div>
-        </div>
+        <AppHeading
+          eyebrow="Case studies"
+          title="Nasze realizacje"
+          subtitle="Każdy projekt to dla nas wyzwanie i okazja, by pokazać, jak niezawodny i wszechstronny jest nasz osprzęt."
+        />
 
         {/* Case studies grid */}
         <div className="grid lg:grid-cols-3 gap-8">
@@ -92,6 +86,23 @@ export default function RealizacjePage() {
           </div>
         </div>
 
+        {/* Opis Techniczny */}
+        <div className="rounded-xl border bg-white p-6">
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">Opis Techniczny</h3>
+          <p className="text-gray-700">
+            Wszystkie realizacje wykonane zostały na stali Hardox HB500, zapewniającej wyjątkową wytrzymałość i odporność na zużycie. Montaż i demontaż osprzętu trwa zaledwie kilkadziesiąt sekund dzięki standardowym szybkozłączom (MS03, S40, Q-Fit), co znacząco przyspiesza zmianę narzędzi w terenie.
+          </p>
+        </div>
+
+        {/* Opinia Klienta */}
+        <div className="rounded-xl border bg-white p-6">
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">Opinia Klienta</h3>
+          <blockquote className="italic text-gray-800">
+            „Dzięki łyżce skarpowej od MiniTeamProject czas pracy nad skarpami skrócił się o połowę. Wreszcie nie musimy tracić godzin na poprawki.”
+          </blockquote>
+          <p className="text-sm text-gray-600 mt-2">— Marek, Budownictwo Drogowe</p>
+        </div>
+
         {/* Contact block (based on company info) */}
         <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6 rounded-xl border">
           <div className="flex items-start gap-3">
@@ -119,13 +130,16 @@ export default function RealizacjePage() {
 
         {/* CTA */}
         <div className="text-center space-y-3">
-          <p className="text-lg text-gray-800 font-semibold">Masz podobny projekt? Przygotujemy wycenę w 5 minut.</p>
-          <Link
-            href="/kontakt"
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold"
-          >
-            Skontaktuj się z nami
-          </Link>
+          <p className="text-lg text-gray-800 font-semibold">Masz pytania dotyczące konkretnego zastosowania?</p>
+          <p className="text-gray-700">Skontaktuj się z nami lub wypróbuj naszego asystenta AI — pomoże dobrać idealne rozwiązanie pod Twoje potrzeby!</p>
+          <div className="flex items-center justify-center gap-3">
+            <Link href="/kontakt" className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold">
+              Skontaktuj się z nami
+            </Link>
+            <Link href="#chat" className="inline-flex items-center px-6 py-3 rounded-lg border font-semibold hover:bg-gray-50">
+              Rozpocznij rozmowę (AI)
+            </Link>
+          </div>
         </div>
       </Container>
     </div>

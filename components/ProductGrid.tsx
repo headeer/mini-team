@@ -7,24 +7,23 @@ import { client } from "@/sanity/lib/client";
 import NoProductAvailable from "./NoProductAvailable";
 import { Loader2 } from "lucide-react";
 import Container from "./Container";
-import HomeTabbar from "./HomeTabbar";
-import { productType } from "@/constants/data";
 import { Product } from "@/sanity.types";
 
-const ProductGrid = () => {
+interface ProductGridProps { limit?: number }
+
+const ProductGrid = ({ limit = 8 }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
-  const [selectedTab, setSelectedTab] = useState(productType[0]?.title || "");
-  const query = `*[_type == "product" && variant == $variant] | order(name asc){
-  ...,"categories": categories[]->title
-}`;
-  const params = { variant: selectedTab.toLowerCase() };
+  const query = `*[_type == "product"] | order(dateUpdated desc)[0...$limit]{
+    ...,
+    "categories": categories[]->title
+  }`;
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await client.fetch(query, params);
+        const response = await client.fetch(query, { limit });
         setProducts(await response);
       } catch (error) {
         console.log("Product fetching Error", error);
@@ -33,11 +32,10 @@ const ProductGrid = () => {
       }
     };
     fetchData();
-  }, [selectedTab]);
+  }, [limit]);
 
   return (
     <Container className="flex flex-col lg:px-0 my-10">
-      <HomeTabbar selectedTab={selectedTab} onTabSelect={setSelectedTab} />
       {loading ? (
         <div className="flex flex-col items-center justify-center py-10 min-h-80 space-y-4 text-center bg-gray-100 rounded-lg w-full mt-10">
           <motion.div className="flex items-center space-x-2 text-blue-600">
@@ -63,7 +61,7 @@ const ProductGrid = () => {
           </>
         </div>
       ) : (
-        <NoProductAvailable selectedTab={selectedTab} />
+        <NoProductAvailable />
       )}
     </Container>
   );

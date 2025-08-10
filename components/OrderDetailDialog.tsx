@@ -31,17 +31,17 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="!max-w-4xl max-h-[90vh] overflow-y-scroll">
         <DialogHeader>
-          <DialogTitle>Order Details - {order?.orderNumber}</DialogTitle>
+          <DialogTitle>Szczegóły zamówienia - {order?.orderNumber}</DialogTitle>
         </DialogHeader>
         <div className="mt-4">
           <p>
-            <strong>Customer:</strong> {order.customerName}
+            <strong>Klient:</strong> {order.customerName}
           </p>
           <p>
             <strong>Email:</strong> {order.email}
           </p>
           <p>
-            <strong>Date:</strong>{" "}
+            <strong>Data:</strong>{" "}
             {order.orderDate && new Date(order.orderDate).toLocaleDateString()}
           </p>
           <p>
@@ -57,7 +57,7 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
             <Button className="bg-transparent border text-darkColor/80 mt-2 hover:text-darkColor hover:border-darkColor hover:bg-darkColor/10 hoverEffect ">
               {order?.invoice?.hosted_invoice_url && (
                 <Link href={order?.invoice?.hosted_invoice_url} target="_blank">
-                  Download Invoice
+                  Pobierz fakturę
                 </Link>
               )}
             </Button>
@@ -66,24 +66,38 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Product</TableHead>
-              <TableHead>Quantity</TableHead>
-              <TableHead>Price</TableHead>
+              <TableHead>Produkt</TableHead>
+              <TableHead>Ilość</TableHead>
+              <TableHead>Cena</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {order.products?.map((product, index) => (
               <TableRow key={index}>
                 <TableCell className="flex items-center gap-2">
-                  {product?.product?.images && (
-                    <Image
-                      src={urlFor(product?.product?.images[0]).url()}
-                      alt="productImage"
-                      width={50}
-                      height={50}
-                      className="border rounded-sm"
-                    />
-                  )}
+                  {product?.product?.images && (() => {
+                    const toSrc = (img: any): string | null => {
+                      if (!img) return null;
+                      if (typeof img === "string") return img || null;
+                      if (typeof img === "object" && img.url) return img.url || null;
+                      if (typeof img === "object" && img.asset?._ref) {
+                        try { return urlFor(img).url(); } catch { return null; }
+                      }
+                      return null;
+                    };
+                    const src = toSrc(product?.product?.images?.[0]);
+                    return src ? (
+                      <Image
+                        src={src}
+                        alt="productImage"
+                        width={50}
+                        height={50}
+                        className="border rounded-sm"
+                      />
+                    ) : (
+                      <div className="h-[50px] w-[50px] bg-gray-100 rounded-sm" />
+                    );
+                  })()}
 
                   {product?.product && product?.product?.name}
                 </TableCell>

@@ -5,15 +5,23 @@ import { defineLive } from "next-sanity";
 import { client } from "./client";
 
 const token = process.env.SANITY_API_READ_TOKEN;
-if (!token) {
-  throw new Error("SANITY_API_READ_TOKEN is not set");
+
+// Safe fallback: if token is missing (dev/local), provide non-live fetch to avoid runtime errors
+let sanityFetch: typeof client.fetch;
+let SanityLive: (props: { children?: React.ReactNode }) => JSX.Element | null;
+
+if (token) {
+  const live = defineLive({
+    client,
+    serverToken: token,
+    browserToken: token,
+    fetchOptions: { revalidate: 0 },
+  });
+  sanityFetch = live.sanityFetch;
+  SanityLive = live.SanityLive as any;
+} else {
+  sanityFetch = client.fetch.bind(client);
+  SanityLive = () => null;
 }
 
-export const { sanityFetch, SanityLive } = defineLive({
-  client,
-  serverToken: token,
-  browserToken: token,
-  fetchOptions: {
-    revalidate: 0,
-  },
-});
+export { sanityFetch, SanityLive };

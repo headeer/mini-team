@@ -31,6 +31,7 @@ import { ShoppingBag, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { backendClient } from "@/sanity/lib/backendClient";
 import toast from "react-hot-toast";
 
 const CartPage = () => {
@@ -47,6 +48,8 @@ const CartPage = () => {
   const { user } = useUser();
   const [addresses, setAddresses] = useState<Address[] | null>(null);
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
+  const [addingAddress, setAddingAddress] = useState(false);
+  const [newAddress, setNewAddress] = useState<Partial<Address>>({});
 
   const fetchAddresses = async () => {
     setLoading(true);
@@ -69,13 +72,37 @@ const CartPage = () => {
   useEffect(() => {
     fetchAddresses();
   }, []);
+
+  const handleCreateAddress = async () => {
+    if (!user) return toast.error("Zaloguj się, aby dodać adres");
+    try {
+      setAddingAddress(true);
+      const doc = {
+        _type: "address",
+        name: newAddress.name || user.fullName || "",
+        email: user.emailAddresses[0]?.emailAddress || "",
+        address: newAddress.address || "",
+        city: newAddress.city || "",
+        state: newAddress.state || "",
+        zip: newAddress.zip || "",
+        default: !addresses || addresses.length === 0,
+      } as any;
+      const created = await backendClient.create(doc);
+      toast.success("Adres dodany");
+      setAddingAddress(false);
+      setNewAddress({});
+      await fetchAddresses();
+      setSelectedAddress(created as Address);
+    } catch (e) {
+      setAddingAddress(false);
+      toast.error("Nie udało się dodać adresu");
+    }
+  };
   const handleResetCart = () => {
-    const confirmed = window.confirm(
-      "Are you sure you want to reset your cart?"
-    );
+    const confirmed = window.confirm("Na pewno chcesz wyczyścić koszyk?");
     if (confirmed) {
       resetCart();
-      toast.success("Cart reset successfully!");
+      toast.success("Koszyk został wyczyszczony");
     }
   };
 
@@ -105,9 +132,16 @@ const CartPage = () => {
         <Container>
           {groupedItems?.length ? (
             <>
-              <div className="flex items-center gap-2 py-5">
-                <ShoppingBag className="text-darkColor" />
-                <Title>Shopping Cart</Title>
+              <div className="flex items-center justify-between py-5">
+                <div className="flex items-center gap-2">
+                  <ShoppingBag className="text-darkColor" />
+                  <Title>Twój koszyk</Title>
+                </div>
+                {groupedItems?.length > 0 && (
+                  <Button onClick={handleResetCart} variant="destructive" size="sm" className="inline-flex items-center gap-2">
+                    <Trash className="w-4 h-4" /> Usuń wszystkie
+                  </Button>
+                )}
               </div>
               <div className="grid lg:grid-cols-3 md:gap-8">
                 <div className="lg:col-span-2 rounded-lg">
@@ -126,32 +160,41 @@ const CartPage = () => {
                                 className="border p-0.5 md:p-1 mr-2 rounded-md
                                  overflow-hidden group"
                               >
-                                <Image
-                                  src={urlFor(product?.images[0]).url()}
-                                  alt="productImage"
-                                  width={500}
-                                  height={500}
-                                  loading="lazy"
-                                  className="w-32 md:w-40 h-32 md:h-40 object-cover group-hover:scale-105 hoverEffect"
-                                />
+                                {(() => { 
+                                  const toSrc = (img: any): string | null => {
+                                    if (!img) return null;
+                                    if (typeof img === "string") return img || null;
+                                    if (typeof img === "object" && img.url) return img.url || null;
+                                    if (typeof img === "object" && img.asset?._ref) {
+                                      try { return urlFor(img).url(); } catch { return null; }
+                                    }
+                                    return null;
+                                  };
+                                  const src = toSrc(product?.images?.[0]);
+                                  return src ? (
+                                    <Image
+                                      src={src}
+                                      alt="productImage"
+                                      width={500}
+                                      height={500}
+                                      loading="lazy"
+                                      className="w-32 md:w-40 h-32 md:h-40 object-cover group-hover:scale-105 hoverEffect"
+                                    />
+                                  ) : (
+                                    <div className="w-32 md:w-40 h-32 md:h-40 bg-gray-100" />
+                                  );
+                                })()}
                               </Link>
                             )}
                             <div className="h-full flex flex-1 flex-col justify-between py-1">
                               <div className="flex flex-col gap-0.5 md:gap-1.5">
                                 <h2 className="text-base font-semibold line-clamp-1">
-                                  {product?.name}
+                                  {product?.title || product?.name}
                                 </h2>
-                                <p className="text-sm capitalize">
-                                  Variant:{" "}
-                                  <span className="font-semibold">
-                                    {product?.variant}
-                                  </span>
-                                </p>
-                                <p className="text-sm capitalize">
-                                  Status:{" "}
-                                  <span className="font-semibold">
-                                    {product?.status}
-                                  </span>
+                                <p className="text-sm text-gray-600">
+                                  Parametry: {product?.priceTier || "—"}
+                                  {product?.specifications?.widthCm ? `, ${product.specifications.widthCm} cm` : ""}
+                                  {product?.specifications?.quickCoupler ? `, ${product.specifications.quickCoupler}` : ""}
                                 </p>
                               </div>
                               <div className="flex items-center gap-2">
@@ -164,7 +207,7 @@ const CartPage = () => {
                                       />
                                     </TooltipTrigger>
                                     <TooltipContent className="font-bold">
-                                      Add to Favorite
+                                      Dodaj do ulubionych
                                     </TooltipContent>
                                   </Tooltip>
                                   <Tooltip>
@@ -180,7 +223,7 @@ const CartPage = () => {
                                       />
                                     </TooltipTrigger>
                                     <TooltipContent className="font-bold bg-red-600">
-                                      Delete product
+                                      Usuń produkt
                                     </TooltipContent>
                                   </Tooltip>
                                 </TooltipProvider>
@@ -197,35 +240,35 @@ const CartPage = () => {
                         </div>
                       );
                     })}
-                    <Button
-                      onClick={handleResetCart}
-                      className="m-5 font-semibold"
-                      variant="destructive"
-                    >
-                      Reset Cart
-                    </Button>
+                    <div className="px-5 pb-4">
+                      <Button
+                        onClick={handleResetCart}
+                        className="font-semibold w-full"
+                        variant="destructive"
+                      >
+                        Usuń wszystkie produkty z koszyka
+                      </Button>
+                    </div>
                   </div>
                 </div>
                 <div>
                   <div className="lg:col-span-1">
                     <div className="hidden md:inline-block w-full bg-white p-6 rounded-lg border">
                       <h2 className="text-xl font-semibold mb-4">
-                        Order Summary
+                        Podsumowanie zamówienia
                       </h2>
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                          <span>SubTotal</span>
+                          <span>Suma częściowa</span>
                           <PriceFormatter amount={getSubTotalPrice()} />
                         </div>
                         <div className="flex items-center justify-between">
-                          <span>Discount</span>
-                          <PriceFormatter
-                            amount={getSubTotalPrice() - getTotalPrice()}
-                          />
+                          <span>Koszt wysyłki</span>
+                          <span className="text-sm text-gray-600">Obliczany przy kasie</span>
                         </div>
                         <Separator />
                         <div className="flex items-center justify-between font-semibold text-lg">
-                          <span>Total</span>
+                          <span>RAZEM</span>
                           <PriceFormatter
                             amount={getTotalPrice()}
                             className="text-lg font-bold text-black"
@@ -237,7 +280,7 @@ const CartPage = () => {
                           disabled={loading}
                           onClick={handleCheckout}
                         >
-                          {loading ? "Please wait..." : "Proceed to Checkout"}
+                          {loading ? "Proszę czekać..." : "Przejdź do płatności"}
                         </Button>
                       </div>
                     </div>
@@ -245,7 +288,7 @@ const CartPage = () => {
                       <div className="bg-white rounded-md mt-5">
                         <Card>
                           <CardHeader>
-                            <CardTitle>Delivery Address</CardTitle>
+                            <CardTitle>Adres dostawy</CardTitle>
                           </CardHeader>
                           <CardContent>
                             <RadioGroup
@@ -277,9 +320,18 @@ const CartPage = () => {
                                 </div>
                               ))}
                             </RadioGroup>
-                            <Button variant="outline" className="w-full mt-4">
-                              Add New Address
-                            </Button>
+                            <div className="grid grid-cols-1 gap-2 mt-2">
+                              <input className="border rounded-md px-3 py-2" placeholder="Imię i nazwisko" value={newAddress.name || ""} onChange={(e)=>setNewAddress(v=>({...v,name:e.target.value}))} />
+                              <input className="border rounded-md px-3 py-2" placeholder="Ulica i numer" value={newAddress.address || ""} onChange={(e)=>setNewAddress(v=>({...v,address:e.target.value}))} />
+                              <div className="grid grid-cols-2 gap-2">
+                                <input className="border rounded-md px-3 py-2" placeholder="Miasto" value={newAddress.city || ""} onChange={(e)=>setNewAddress(v=>({...v,city:e.target.value}))} />
+                                <input className="border rounded-md px-3 py-2" placeholder="Województwo" value={newAddress.state || ""} onChange={(e)=>setNewAddress(v=>({...v,state:e.target.value}))} />
+                              </div>
+                              <input className="border rounded-md px-3 py-2" placeholder="Kod pocztowy" value={newAddress.zip || ""} onChange={(e)=>setNewAddress(v=>({...v,zip:e.target.value}))} />
+                              <Button onClick={handleCreateAddress} disabled={addingAddress} className="w-full mt-1">
+                                {addingAddress ? "Dodaję..." : "Dodaj nowy adres"}
+                              </Button>
+                            </div>
                           </CardContent>
                         </Card>
                       </div>
@@ -289,21 +341,19 @@ const CartPage = () => {
                 {/* Order summary for mobile view */}
                 <div className="md:hidden fixed bottom-0 left-0 w-full bg-white pt-2">
                   <div className="bg-white p-4 rounded-lg border mx-4">
-                    <h2>Order Summary</h2>
+                    <h2>Podsumowanie</h2>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <span>SubTotal</span>
+                        <span>Suma częściowa</span>
                         <PriceFormatter amount={getSubTotalPrice()} />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span>Discount</span>
-                        <PriceFormatter
-                          amount={getSubTotalPrice() - getTotalPrice()}
-                        />
+                        <span>Koszt wysyłki</span>
+                        <span className="text-sm text-gray-600">Obliczany przy kasie</span>
                       </div>
                       <Separator />
                       <div className="flex items-center justify-between font-semibold text-lg">
-                        <span>Total</span>
+                        <span>RAZEM</span>
                         <PriceFormatter
                           amount={getTotalPrice()}
                           className="text-lg font-bold text-black"
@@ -315,7 +365,7 @@ const CartPage = () => {
                         disabled={loading}
                         onClick={handleCheckout}
                       >
-                        {loading ? "Please wait..." : "Proceed to Checkout"}
+                        {loading ? "Proszę czekać..." : "Przejdź do płatności"}
                       </Button>
                     </div>
                   </div>

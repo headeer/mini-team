@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { Product } from "@/sanity.types";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -17,6 +18,10 @@ const AddToCartButton = ({ product, className }: Props) => {
   const { addItem, getItemCount } = useStore();
   const itemCount = getItemCount(product?._id);
   const isOutOfStock = product?.stock === 0;
+  const priceAsUnknown = typeof (product as unknown as { price?: unknown }).price === "string";
+  const hasPriceText = typeof (product as unknown as { priceText?: unknown }).priceText === "string";
+  const baseIsZero = (product as unknown as { basePrice?: number })?.basePrice === 0;
+  const isPhoneOnly = priceAsUnknown || hasPriceText || baseIsZero;
 
   const handleAddToCart = () => {
     if ((product?.stock as number) > itemCount) {
@@ -30,7 +35,7 @@ const AddToCartButton = ({ product, className }: Props) => {
   };
   return (
     <div className="w-full h-12 flex items-center">
-      {itemCount ? (
+      {itemCount && !isPhoneOnly ? (
         <div className="text-sm w-full">
           <div className="flex items-center justify-between">
             <span className="text-xs text-darkColor/80">Quantity</span>
@@ -45,14 +50,22 @@ const AddToCartButton = ({ product, className }: Props) => {
         </div>
       ) : (
         <Button
-          onClick={handleAddToCart}
-          disabled={isOutOfStock}
+          onClick={isPhoneOnly ? undefined : handleAddToCart}
+          disabled={isOutOfStock || isPhoneOnly}
           className={cn(
             "w-full bg-shop_dark_green/80 text-lightBg shadow-none border border-shop_dark_green/80 font-semibold tracking-wide text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect",
             className
           )}
         >
-          <ShoppingBag /> {isOutOfStock ? "Out of Stock" : "Add to Cart"}
+          {isPhoneOnly ? (
+            <a href="tel:+48570037128" className="w-full flex items-center justify-center gap-2">
+              <ShoppingBag /> Zamów telefonicznie
+            </a>
+          ) : (
+            <>
+              <ShoppingBag /> {isOutOfStock ? "Out of Stock" : "Add to Cart"}
+            </>
+          )}
         </Button>
       )}
     </div>

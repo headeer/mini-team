@@ -26,6 +26,9 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
+  if (!stripe) {
+    return NextResponse.json({ error: "Stripe not configured" }, { status: 500 });
+  }
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);

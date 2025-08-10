@@ -27,7 +27,17 @@ export const productType = defineType({
       name: "images",
       title: "Product Images",
       type: "array",
-      of: [{ type: "image", options: { hotspot: true } }],
+      of: [
+        { type: "image", options: { hotspot: true } },
+        {
+          type: "object",
+          name: "externalImage",
+          title: "External Image URL",
+          fields: [
+            { name: "url", title: "URL", type: "url", validation: (Rule) => Rule.required() },
+          ],
+        },
+      ],
     }),
     defineField({
       name: "description",
@@ -42,6 +52,8 @@ export const productType = defineType({
     }),
     // Dodatkowe pola cenowe dla MiniTeam
     defineField({ name: "basePrice", title: "Cena bazowa (zł)", type: "number" }),
+    defineField({ name: "priceOlx", title: "Cena OLX", type: "string" }),
+    defineField({ name: "priceText", title: "Cena (tekst)", type: "string" }),
     defineField({ name: "toothCost", title: "Koszt zębów (zł)", type: "number" }),
     defineField({ name: "toothQty", title: "Ilość zębów (szt)", type: "number" }),
     defineField({
@@ -103,13 +115,21 @@ export const productType = defineType({
         defineField({ name: "widthCm", title: "Szerokość (cm)", type: "number" }),
         defineField({ name: "pinDiameterMm", title: "Średnica sworznia (mm)", type: "number" }),
         defineField({ name: "volumeM3", title: "Pojemność (m³)", type: "number" }),
+        defineField({ name: "cuttingEdge", title: "Lemiesz (opis)", type: "string" }),
+        defineField({ name: "toothThickness", title: "Grubość zęba (mm)", type: "number" }),
+        defineField({ name: "toothCount", title: "Liczba zębów (szt)", type: "number" }),
         defineField({ name: "features", title: "Cechy", type: "array", of: [{ type: "string" }] }),
         defineField({ name: "machineCompatibility", title: "Kompatybilność maszyn", type: "array", of: [{ type: "string" }] }),
         defineField({ name: "quickCoupler", title: "Szybkozłącze", type: "string" }),
+        defineField({ name: "kinetyka", title: "Kinetyka (°)", type: "number" }),
+        defineField({ name: "ramie", title: "Ramię (mm)", type: "number" }),
       ],
     }),
     defineField({ name: "dateUpdated", title: "Data aktualizacji", type: "datetime" }),
     defineField({ name: "externalId", title: "Zewnętrzne ID", type: "string" }),
+    defineField({ name: "location", title: "Lokalizacja", type: "string" }),
+    defineField({ name: "viewsCount", title: "Liczba wyświetleń", type: "number", initialValue: 0 }),
+    defineField({ name: "featuredRank", title: "Ranking polecanych", type: "number" }),
     defineField({
       name: "isFeatured",
       title: "Produkt wyróżniony",

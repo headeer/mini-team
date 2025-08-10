@@ -2,99 +2,74 @@
 import { BRANDS_QUERYResult, Category, Product } from "@/sanity.types";
 import React, { useEffect, useState } from "react";
 import Container from "./Container";
-import Title from "./Title";
 import CategoryList from "./shop/CategoryList";
 import { useSearchParams } from "next/navigation";
-import BrandList from "./shop/BrandList";
+// import BrandList from "./shop/BrandList";
 import PriceList from "./shop/PriceList";
-import { client } from "@/sanity/lib/client";
-import { Loader2, Filter } from "lucide-react";
+// import { client } from "@/sanity/lib/client";
+import { Filter } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import NoProductAvailable from "./NoProductAvailable";
 import ProductCard from "./ProductCard";
 
 interface Props {
   categories: Category[];
-  brands: BRANDS_QUERYResult;
+  brands?: BRANDS_QUERYResult;
 }
-const Shop = ({ categories, brands }: Props) => {
+const Shop = ({ categories }: Props) => {
   const searchParams = useSearchParams();
-  const brandParams = searchParams?.get("brand");
+  // const brandParams = searchParams?.get("brand");
   const categoryParams = searchParams?.get("category");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(
     categoryParams || null
   );
-  const [selectedBrand, setSelectedBrand] = useState<string | null>(
-    brandParams || null
-  );
+  // Removed brand filter from UI and logic
   const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
+  const [q, setQ] = useState("");
+  const [sort, setSort] = useState<
+    "new" | "price-asc" | "price-desc" | "popular" | "featured"
+  >("new");
+  const [viewing, setViewing] = useState<number>(Math.floor(8 + Math.random() * 12));
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setViewing((v) => {
+        const delta = Math.random() > 0.5 ? 1 : -1;
+        const next = Math.min(40, Math.max(5, v + delta));
+        return next;
+      });
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      let minPrice = 0;
-      let maxPrice = 10000;
-      if (selectedPrice) {
-        const [min, max] = selectedPrice.split("-").map(Number);
-        minPrice = min;
-        maxPrice = max;
+      // Use server API then filter client-side to avoid client token/CORS issues
+      const res = await fetch('/api/products', { cache: 'no-store' });
+      const body = await res.json();
+      type ApiProduct = { _id: string; name?: string; description?: string; price?: number | string; basePrice?: number; priceTier?: string; categories?: { slug?: string }[]; brand?: { slug?: string; _ref?: string } };
+      let list: ApiProduct[] = Array.isArray(body?.data) ? body.data : [];
+      // filter
+      const [min, max] = selectedPrice ? selectedPrice.split('-').map(Number) : [undefined, undefined];
+      if (selectedCategory) list = list.filter((p) => p?.categories?.some((c) => c?.slug === selectedCategory));
+      // brand filter removed
+      const numeric = (v: unknown) => (typeof v === 'number' ? v : 0);
+      if (typeof min === 'number') list = list.filter((p) => (p.basePrice ?? numeric(p.price)) >= min);
+      if (typeof max === 'number') list = list.filter((p) => (p.basePrice ?? numeric(p.price)) <= max);
+      if (q) {
+        const needle = q.toLowerCase();
+        list = list.filter((p) => String(p.name ?? '').toLowerCase().includes(needle) || String(p.description ?? '').toLowerCase().includes(needle) || String(p.priceTier ?? '').toLowerCase().includes(needle));
       }
-      // Fallback mapping for category slugs (when Sanity categories/brands are missing)
-      const fallbackTiersMap: Record<string, string[]> = {
-        "1-2t": ["1-1.5t", "1.5-2.3t"],
-        "2-3t": ["1.5-2.3t", "2.3-3t"],
-        "3-4.5t": ["3-5t"],
-      };
-      const keywordMap: Record<string, string[]> = {
-        grabie: ["*grab*"],
-        zrywarki: ["*zrywak*", "*ripper*"],
-      };
-      const brandKeywordMap: Record<string, string> = {
-        jcb: "*JCB*",
-        cat: "*CAT*",
-        kubota: "*Kubota*",
-        volvo: "*Volvo*",
-        yanmar: "*Yanmar*",
-        wacker: "*Wacker*",
-      };
-
-      const tiers = selectedCategory ? fallbackTiersMap[selectedCategory] : undefined;
-      const keywords = selectedCategory ? keywordMap[selectedCategory] : undefined;
-      const brandKeyword = selectedBrand ? brandKeywordMap[selectedBrand] : undefined;
-
-      const query = `
-      *[_type == 'product' 
-        && (!defined($selectedCategory) 
-            || references(*[_type == "category" && slug.current == $selectedCategory]._id)
-            || (defined($tiers) && priceTier in $tiers)
-            || (defined($keywords) && ((name match $kw0) || (defined($kw1) && name match $kw1) || (description match $kw0) || (defined($kw1) && description match $kw1)))
-        )
-        && (!defined($selectedBrand) 
-            || references(*[_type == "brand" && slug.current == $selectedBrand]._id)
-            || (defined($brandKeyword) && (name match $brandKeyword || description match $brandKeyword))
-        )
-        && price >= $minPrice && price <= $maxPrice
-      ] 
-      | order(name asc) {
-        ...,"categories": categories[]->title
-      }
-    `;
-      const data = await client.fetch(
-        query,
-        { 
-          selectedCategory, 
-          selectedBrand, 
-          minPrice, 
-          maxPrice,
-          tiers,
-          keywords,
-          kw0: keywords ? keywords[0] : undefined,
-          kw1: keywords && keywords[1] ? keywords[1] : undefined,
-          brandKeyword,
-        },
-        { next: { revalidate: 0 } }
-      );
-      setProducts(data);
+      // sort
+      const toNum = (v: unknown): number => (typeof v === 'number' ? v : 0);
+      if (sort === 'price-asc') list.sort((a, b) => toNum(a.basePrice ?? a.price) - toNum(b.basePrice ?? b.price));
+      if (sort === 'price-desc') list.sort((a, b) => toNum(b.basePrice ?? b.price) - toNum(a.basePrice ?? a.price));
+      if (sort === 'featured') list.sort((a, b) => (a.featuredRank ?? 9999) - (b.featuredRank ?? 9999));
+      setProducts(list as Product[]);
     } catch (error) {
       console.log("Shop product fetching Error", error);
     } finally {
@@ -104,16 +79,71 @@ const Shop = ({ categories, brands }: Props) => {
 
   useEffect(() => {
     fetchProducts();
-  }, [selectedCategory, selectedBrand, selectedPrice]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategory, selectedPrice, sort]);
   return (
     <div className="border-t">
       <Container className="mt-5">
         {/* Page Header */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Łyżki do Koparek - Kompletna Oferta</h1>
-          <p className="text-gray-600">Wysokiej jakości łyżki ze stali Hardox HB500 dopasowane do Twojej koparki</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-1">Łyżki do Koparek – Kompletna Oferta</h1>
+          <p className="text-sm text-gray-700">Hardox HB500 - Gwarancja 2 lata - Dostawa 48 h</p>
+          <p className="text-xs text-gray-500 mt-1">{viewing} osób przegląda teraz</p>
+          <div className="mt-4">
+            <h2 className="text-lg font-semibold text-gray-900">Wysokiej jakości łyżki do koparek</h2>
+            <p className="text-gray-600">Precyzyjnie wykonane ze stali Hardox HB500, dopasowane do Twoich maszyn.</p>
+          </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-5 border-t border-t-shop_dark_green/50">
+
+        {/* Search + sort + quick tiers */}
+        <div className="mb-4 flex flex-col md:flex-row gap-3 items-start md:items-center justify-between">
+          <div className="flex items-center gap-2 w-full md:max-w-md">
+            <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Szukaj: np. łyżka 60 cm ms03" />
+            <button onClick={() => fetchProducts()} className="px-3 py-2 rounded-md bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-medium">Szukaj</button>
+          </div>
+           <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-600">Sortuj:</span>
+            <div className="inline-flex rounded-md border overflow-hidden">
+              {([
+                { label: "Nowości", value: "new" },
+                { label: "Cena ↑", value: "price-asc" },
+                { label: "Cena ↓", value: "price-desc" },
+                { label: "Polecane", value: "featured" },
+              ] as const).map((opt) => (
+                <button
+                  key={opt.value}
+                  onClick={() => setSort(opt.value)}
+                  className={`px-3 py-1.5 text-sm ${sort === opt.value ? "bg-[var(--color-brand-orange)] text-white" : "bg-white hover:bg-gray-50"}`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+          <div className="mb-4 flex flex-wrap gap-2">
+          {[
+            { label: "1–1.5 t", value: "1-1.5t" },
+            { label: "1.5–2.3 t", value: "1.5-2.3t" },
+            { label: "2.3–3 t", value: "2.3-3t" },
+            { label: "3–5 t", value: "3-5t" },
+          ].map((t) => (
+            <Badge
+              key={t.value}
+              onClick={() => {
+                // reuse category filter via search by priceTier in query text
+                setQ(t.value);
+                fetchProducts();
+              }}
+              className="hover:cursor-pointer bg-gray-100 text-gray-800 border hover:bg-gray-200"
+            >
+              {t.label}
+            </Badge>
+          ))}
+        </div>
+        <Separator className="mb-4" />
+          <div className="flex flex-col md:flex-row gap-5 border-t border-t-shop_dark_green/50">
           <div className="md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-y-auto md:min-w-72 pb-5 md:border-r border-r-shop_btn_dark_green/50 scrollbar-hide space-y-4">
             {/* Filters Header */}
             <div className="bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border rounded-md p-4">
@@ -129,11 +159,10 @@ const Shop = ({ categories, brands }: Props) => {
                 >
                   Zastosuj filtry
                 </button>
-                {(selectedCategory !== null || selectedBrand !== null || selectedPrice !== null) && (
+                {(selectedCategory !== null || selectedPrice !== null) && (
                   <button
                     onClick={() => {
                       setSelectedCategory(null);
-                      setSelectedBrand(null);
                       setSelectedPrice(null);
                     }}
                     className="px-3 py-1.5 rounded-md border text-sm font-medium hover:bg-gray-50"
@@ -143,34 +172,41 @@ const Shop = ({ categories, brands }: Props) => {
                 )}
               </div>
             </div>
-            <CategoryList
-              categories={categories}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-            />
-            <BrandList
-              brands={brands}
-              setSelectedBrand={setSelectedBrand}
-              selectedBrand={selectedBrand}
-            />
-            <PriceList
-              setSelectedPrice={setSelectedPrice}
-              selectedPrice={selectedPrice}
-            />
+            <div className="rounded-lg border bg-white shadow-sm overflow-hidden">
+              <div className="px-5 py-3 border-b bg-gray-50 font-semibold text-gray-900">Kategorie</div>
+              <div className="p-4">
+                <CategoryList
+                  categories={categories}
+                  selectedCategory={selectedCategory}
+                  setSelectedCategory={setSelectedCategory}
+                />
+              </div>
+            </div>
+            <div className="rounded-lg border bg-white shadow-sm overflow-hidden">
+              <div className="px-5 py-3 border-b bg-gray-50 font-semibold text-gray-900">Cena</div>
+              <div className="p-4">
+                <PriceList
+                  setSelectedPrice={setSelectedPrice}
+                  selectedPrice={selectedPrice}
+                />
+              </div>
+            </div>
           </div>
-          <div className="flex-1 pt-5">
+           <div className="flex-1 pt-5">
+            <div className="mb-3 text-sm text-gray-600">Znaleziono: <span className="font-semibold">{products?.length || 0}</span> produktów</div>
             <div className="h-[calc(100vh-160px)] overflow-y-auto pr-2 scrollbar-hide">
               {loading ? (
-                <div className="p-20 flex flex-col gap-2 items-center justify-center bg-white">
-                  <Loader2 className="w-10 h-10 text-shop_dark_green animate-spin" />
-                  <p className="font-semibold tracking-wide text-base">
-                    Ładowanie produktów . . .
-                  </p>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div key={i} className="rounded-xl border bg-white p-3 animate-pulse h-64" />
+                  ))}
                 </div>
               ) : products?.length > 0 ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {products?.map((product) => (
-                    <ProductCard key={product?._id} product={product} />
+                    <div key={product?._id} className="h-full">
+                      <ProductCard product={product} />
+                    </div>
                   ))}
                 </div>
               ) : (

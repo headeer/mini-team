@@ -9,14 +9,21 @@ export async function GET() {
         name,
         "slug": slug.current,
         images,
+        "imageUrls": images[]{ "url": coalesce(asset->url, url) },
+        "cover": coalesce(images[0].asset->url, images[0].url),
         description,
         price,
+        priceOlx,
         discount,
         basePrice,
         toothCost,
         toothQty,
         priceTier,
         specifications,
+        // flatten URL-only images if present
+        "imageUrls": images[]{
+          "url": coalesce(asset->url, url)
+        },
         stock,
         status,
         dateUpdated,

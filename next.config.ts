@@ -8,6 +8,18 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
+      {
+        protocol: "http",
+        hostname: "miniteamproject.pl",
+      },
+      {
+        protocol: "http",
+        hostname: "www.miniteamproject.pl",
+      },
+      {
+        protocol: "https",
+        hostname: "www.miniteamproject.pl",
+      },
     ],
   },
   typescript: {
