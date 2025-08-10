@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { sanityFetch } from "@/sanity/lib/live";
 import { MY_ORDERS_QUERY } from "@/sanity/queries/query";
-import { auth } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 
 export async function GET() {
-  const { userId } = auth();
+  const user = await currentUser();
+  const userId = user?.id;
   if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
     const { data } = await sanityFetch({ query: MY_ORDERS_QUERY, params: { userId } });
