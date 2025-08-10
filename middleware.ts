@@ -1,8 +1,8 @@
 // Minimal passthrough middleware to avoid Edge bundling issues on Vercel
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 export function middleware(_req: NextRequest) {
-  return Response.next();
+  return NextResponse.next();
 }
 
 export const config = {
