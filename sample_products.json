@@ -1,0 +1,1553 @@
+{
+    "products": [
+      {
+        "id": "1017188805",
+        "title": "Wycinanie laserowe stali czarnej nierdzewnej arkusze blach",
+        "price": "5 zł",
+        "location": "Opacz Kolonia",
+        "date_updated": "2025-08-07 07:57",
+        "category": "Usługi",
+        "description": "Wycinanie Laserem FIBER nie co2, wraz z gięciem blach na prasie krawędziowej. Fiber 6kW, gabaryty 3000x1500mm"
+      },
+      {
+        "id": "977861403",
+        "title": "Łyżka wzoru skandynawskiego skandynawska do koparki z mocowaniem MS10",
+        "price": "8 380 zł",
+        "location": "Jeże",
+        "date_updated": "2025-08-07 07:35",
+        "category": "Motoryzacja",
+        "description": "Łyżka skandynawska, szerokość robocza 150cm, przeznaczenie do maszyn o wadze 12-18 Ton"
+      },
+      {
+        "id": "TBD_001",
+        "title": "Łyżka kopiąca 30cm z zębami, pod szybkozłącze ms03 simlock",
+        "price": "1 550 zł",
+        "location": "Toruń",
+        "date_updated": "2025-08-07 07:35",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca 30cm z zębami, kompatybilna z szybkozłączem ms03"
+      },
+      {
+        "id": "TBD_002",
+        "title": "Szybkozłącze półautomatyczne do koparki koparko-ładowarki JCB 3cx 4cx",
+        "price": "2 820 zł",
+        "location": "Toruń",
+        "date_updated": "2025-08-07 07:35",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze półautomatyczne kompatybilne z JCB 3cx 4cx"
+      },
+      {
+        "id": "TBD_003",
+        "title": "Głowica wiercąca do otworów w ziemi pod słupki, krzewy, drzewka",
+        "price": "2 440 zł",
+        "location": "Jeże",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Głowica wiercąca do otworów pod słupki, krzewy, drzewka"
+      },
+      {
+        "id": "TBD_004",
+        "title": "Łyżka kopiąca 18cm idealna do wykopów pod kable światłowody rury hs02",
+        "price": "1 670 zł",
+        "location": "Nowa Wieś",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca 18cm idealna do wykopów pod kable, światłowody, rury"
+      },
+      {
+        "id": "TBD_005",
+        "title": "Łyżka kablowa 20cm/80cm do kopania pod kable, rury, światłowody HS02",
+        "price": "1 680 zł",
+        "location": "Poznań, Chartowo",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Łyżka kablowa 20cm/80cm do kopania pod kable, rury, światłowody"
+      },
+      {
+        "id": "TBD_006",
+        "title": "Łyżka kablówka do kabli szerokość 18cm pod szybkozłącze ms01",
+        "price": "1 590 zł",
+        "location": "Kalisz",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Łyżka kablówka 18cm pod szybkozłącze ms01"
+      },
+      {
+        "id": "TBD_007",
+        "title": "Mocowanie do łyżki płyty uszy pasujące do szybkozłącza ms01",
+        "price": "260 zł",
+        "location": "Rzeszów",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Mocowanie do łyżki - płyty uszy pasujące do szybkozłącza ms01"
+      },
+      {
+        "id": "TBD_008",
+        "title": "Mocowanie do łyżki płyty uszy pasujące do szybkozłącza ms03",
+        "price": "350 zł",
+        "location": "Gdańsk, Aniołki",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Mocowanie do łyżki - płyty uszy pasujące do szybkozłącza ms03"
+      },
+      {
+        "id": "TBD_009",
+        "title": "Grabie 150 do koparki koparko-ładowarki JCB CAT Kubota Volvo MST Case",
+        "price": "4 182 zł",
+        "location": "Warszawa, Bemowo",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Grabie 150cm do koparki i koparko-ładowarki, kompatybilne z JCB, CAT, Kubota, Volvo, MST, Case"
+      },
+      {
+        "id": "TBD_010",
+        "title": "Wiertnica hydrauliczna do koparki minikoparki",
+        "price": "5 600 zł",
+        "location": "Pogorzel",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Wiertnica hydrauliczna do koparki i minikoparki"
+      },
+      {
+        "id": "TBD_011",
+        "title": "Kciuk palec do koparki minikoparki cały zestaw",
+        "price": "1 620 zł",
+        "location": "Nowa Wieś",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Kciuk palec do koparki i minikoparki - kompletny zestaw"
+      },
+      {
+        "id": "TBD_012",
+        "title": "Zrywak jednozębny korzeni ripper simlock pod szybkozłącze ms01",
+        "price": "1 822 zł",
+        "location": "Ełk",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Zrywak jednozębny korzeni (ripper) pod szybkozłącze ms01"
+      },
+      {
+        "id": "TBD_013",
+        "title": "Łyżka kopiąca podsiębierna na ms03 do koparek minikoparek maszyn 2-3T",
+        "price": "1 402 zł",
+        "location": "Zajączkowo-Dworzec",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca podsiębierna na ms03 do maszyn 2-3T"
+      },
+      {
+        "id": "TBD_014",
+        "title": "Łyżka do kopania pod kabel światłowód rurę 18cmx80cm MS01",
+        "price": "1 600 zł",
+        "location": "Gdańsk, Aniołki",
+        "date_updated": "2025-08-06",
+        "category": "Motoryzacja",
+        "description": "Łyżka do kopania pod kabel światłowód i rurę 18cmx80cm MS01"
+      },
+      {
+        "id": "TBD_015",
+        "title": "Szybkozłącze półautomatyczne pasujące do koparki Bobcat mini",
+        "price": "1 810 zł",
+        "location": "Bystrzyca Kłodzka",
+        "date_updated": "2025-08-05",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze półautomatyczne pasujące do koparki Bobcat mini"
+      },
+      {
+        "id": "TBD_016",
+        "title": "Grabie 100cm do minikoparki pasuje pod szybkozłącze ms01",
+        "price": "1 300 zł",
+        "location": "Gockowice",
+        "date_updated": "2025-08-05",
+        "category": "Motoryzacja",
+        "description": "Grabie 100cm do minikoparki pod szybkozłącze ms01"
+      },
+      {
+        "id": "TBD_017",
+        "title": "Cięcie laserowe blach stal czarna nierdzewna",
+        "price": "5 zł",
+        "location": "Polskie Stwolno",
+        "date_updated": "2025-08-05",
+        "category": "Usługi",
+        "description": "Usługa cięcia laserowego blach - stal czarna i nierdzewna"
+      },
+      {
+        "id": "TBD_018",
+        "title": "Zrywak korzeni dwuzębny z lemieszem tnącym do koparki koparko ładowarki",
+        "price": "3 140 zł",
+        "location": "Marcelin",
+        "date_updated": "2025-08-05",
+        "category": "Motoryzacja",
+        "description": "Zrywak korzeni dwuzębny z lemieszem tnącym do koparki i koparko-ładowarki"
+      },
+      {
+        "id": "TBD_019",
+        "title": "Łyżka skarpowa 100cm Hydrauliczna ukosowana pod szybkozłącze s30",
+        "price": "3 815 zł",
+        "location": "Pobłocie Małe",
+        "date_updated": "2025-08-05",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa hydrauliczna 100cm ukosowana pod szybkozłącze s30"
+      },
+      {
+        "id": "TBD_020",
+        "title": "Łyżka kablowa 18cm przeznaczenie do wąskich głębokich wykopów pod MS03",
+        "price": "1 660 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Łyżka kablowa 18cm do wąskich głębokich wykopów pod MS03"
+      },
+      {
+        "id": "TBD_021",
+        "title": "Łyżka 60cm do koparki JCB CAT Kubota Wacker Neuson Bobcat",
+        "price": "1 427 zł",
+        "location": "Ełk",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Łyżka 60cm kompatybilna z JCB, CAT, Kubota, Wacker Neuson, Bobcat"
+      },
+      {
+        "id": "TBD_022",
+        "title": "Zrywak jednozębny korzeni ripper simlock pod szybkozłącze ms03",
+        "price": "1 940 zł",
+        "location": "Ełk",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Zrywak jednozębny korzeni (ripper) pod szybkozłącze ms03"
+      },
+      {
+        "id": "TBD_023",
+        "title": "Łyżka typ skandynawska do minikoparki koparki pod szybkozłącze hs02",
+        "price": "2 596 zł",
+        "location": "Dobrojewo",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Łyżka typu skandynawskiego do minikoparki pod szybkozłącze hs02"
+      },
+      {
+        "id": "TBD_024",
+        "title": "Niwelator terenu z walcem dogniatającym do koparki",
+        "price": "4 460 zł",
+        "location": "Ełk",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Niwelator terenu z walcem dogniatającym do koparki"
+      },
+      {
+        "id": "TBD_025",
+        "title": "Łyżka kopiąca 50cm do koparki ładowarki JCB 3cx 4cx",
+        "price": "1 900 zł",
+        "location": "Gdynia, Babie Doły",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca 50cm do koparki ładowarki JCB 3cx 4cx"
+      },
+      {
+        "id": "TBD_026",
+        "title": "Łyżka kopiąca skarpowa podsiębierna do koparki",
+        "price": "2 390 zł",
+        "location": "Górna",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca skarpowa podsiębierna do koparki"
+      },
+      {
+        "id": "TBD_027",
+        "title": "Wiertła wiertnica z napędem hydraulicznym do koparki minikoparki",
+        "price": "2 560 zł",
+        "location": "Sigajny",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",  
+        "description": "Wiertła i wiertnica z napędem hydraulicznym do koparki i minikoparki"
+      },
+      {
+        "id": "TBD_028",
+        "title": "Zrywak do korzeni pasujący pod szybkozłącze HS02 do Wacker Neuson",
+        "price": "1 722 zł",
+        "location": "Warszawa, Białołęka",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Zrywak do korzeni pod szybkozłącze HS02 do Wacker Neuson"
+      },
+      {
+        "id": "TBD_029",
+        "title": "Łyżka skarpowa 90cm do minikoparki koparki Kubota Kx sworzeń fi30",
+        "price": "1 200 zł",
+        "location": "Pobłocie Małe",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 90cm do minikoparki Kubota KX z pinem fi30"
+      },
+      {
+        "id": "TBD_030",
+        "title": "Łyżka skarpowa 100cm do minikoparki koparki Kubota",
+        "price": "1 130 zł",
+        "location": "Trzebiatkowa",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 100cm do minikoparki Kubota"
+      },
+      {
+        "id": "TBD_031",
+        "title": "Łyżka skarpowa 150cm do korytowania, do koparki JCB CAT MST Volvo New",
+        "price": "3 001 zł",
+        "location": "Linia",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 150cm do korytowania kompatybilna z JCB, CAT, MST, Volvo"
+      },
+      {
+        "id": "TBD_032",
+        "title": "Grabie 120cm do równania, wygrabiania pasuje do minikoparki JCB 8018",
+        "price": "2 091 zł",
+        "location": "Strużnica",
+        "date_updated": "2025-08-04",
+        "category": "Motoryzacja",
+        "description": "Grabie 120cm do równania i wygrabiania, pasuje do JCB 8018"
+      },
+      {
+        "id": "TBD_033",
+        "title": "Karczownik minikoparki do wyrywania drzewek, samosiejek, korzeni, tui",
+        "price": "1 840 zł",
+        "location": "Warszawa, Praga-Południe",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Karczownik do wyrywania drzewek, samosiejek, korzeni i tui"
+      },
+      {
+        "id": "TBD_034",
+        "title": "Łyżka skarpowa 90cm wzór skandynawski do koparki minikoparki",
+        "price": "1 920 zł",
+        "location": "Budy Czarnockie",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 90cm wzór skandynawski do minikoparki"
+      },
+      {
+        "id": "TBD_035",
+        "title": "Wiertnica napęd wiertła do koparki minikoparki",
+        "price": "3 013 zł",
+        "location": "Rudna Wielka",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Wiertnica z napędem hydraulicznym do koparki i minikoparki"
+      },
+      {
+        "id": "TBD_036",
+        "title": "Szybkozłącze na rączkę do minikoparki JCB Kubota",
+        "price": "1 460 zł",
+        "location": "Budy Czarnockie",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze na rączkę do JCB i Kubota"
+      },
+      {
+        "id": "TBD_037",
+        "title": "Grabie 100cm przesiewające, równające, wygrabiające",
+        "price": "3 140 zł",
+        "location": "Jeżowe",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Grabie 100cm do przesiewania, równania i wygrabiania"
+      },
+      {
+        "id": "TBD_038",
+        "title": "Karczownik, zrywka korzeni, wyrywania pni do minikoparki pod szybkozłącze",
+        "price": "1 940 zł",
+        "location": "Żabokliki-Kolonia",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Karczownik i zrywka korzeni pod szybkozłącze do minikoparki"
+      },
+      {
+        "id": "TBD_039",
+        "title": "Szybkozłącze półautomatyczne pasujące do koparki JCB 8014,8015,8018",
+        "price": "1 796 zł",
+        "location": "Jeżowe",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze półautomatyczne pasujące do JCB 8014,8015,8018"
+      },
+      {
+        "id": "TBD_040",
+        "title": "Szybkozłącze półautomatyczne pasujące do minikoparki Kubota KX 19 inne",
+        "price": "1 660 zł",
+        "location": "Jeżowe",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze półautomatyczne pasujące do Kubota KX19"
+      },
+      {
+        "id": "TBD_041",
+        "title": "Szybkozłącze na dźwignię do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "1 350 zł",
+        "location": "Bielkowo",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze na dźwignię dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_042",
+        "title": "Szybkozłącze pasujące do koparki Kubota KX027-4, U27-4 Bobcat JCB",
+        "price": "2 200 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze dla Kubota KX027-4, U27-4, Bobcat, JCB"
+      },
+      {
+        "id": "TBD_043",
+        "title": "Łyżka kopiąca 30cm do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "690 zł",
+        "location": "Warszawa, Białołęka",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka 30cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_044",
+        "title": "Łyżka kopiąca 30cm do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "860 zł",
+        "location": "Gdańsk, Brzeźno",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka 30cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_045",
+        "title": "Łyżka skarpowa 100cm do minikoparki JCB 8014/8015/8016/8017/8018/8020",
+        "price": "1 132 zł",
+        "location": "Kraków, Bronowice",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 100cm dla JCB 8014-8020"
+      },
+      {
+        "id": "TBD_046",
+        "title": "Łyżka skarpowa Hydrauliczna 120cm pasująca do szybkozłącza CW05 Verach",
+        "price": "4 182 zł",
+        "location": "Marcelin",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Hydrauliczna łyżka skarpowa 120cm dla szybkozłącza CW05"
+      },
+      {
+        "id": "TBD_047",
+        "title": "Przystawka wideł paletowych do koparki koparko ładowarki pod szybkozłącze",
+        "price": "2 152 zł",
+        "location": "Świnoujście",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Przystawka wideł paletowych dla koparko-ładowarki"
+      },
+      {
+        "id": "TBD_048",
+        "title": "Łyżka załadunkowa objętościowa do Ładowarki teleskopowej JCB CAT Manit",
+        "price": "10 824 zł",
+        "location": "Warszawa, Białołęka",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Objętościowa łyżka załadunkowa 2.4m³ dla ładowarek JCB, CAT, Manitou"
+      },
+      {
+        "id": "TBD_049",
+        "title": "Łyżka kopiąca 45cm do koparki pasująca pod szybkozłącze S40",
+        "price": "1 623 zł",
+        "location": "Kozaki",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka 45cm dla szybkozłącza S40"
+      },
+      {
+        "id": "TBD_050",
+        "title": "Łyżka kopiąca 60cm pasująca pod szybkozłącze S40",
+        "price": "1 200 zł",
+        "location": "Okolice",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka 60cm dla szybkozłącza S40"
+      },
+      {
+        "id": "TBD_051",
+        "title": "Łyżka kopiąca 60cm z zębami do koparki pasująca pod szybkozłącze S40",
+        "price": "1 440 zł",
+        "location": "Kozaki",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka 60cm z zębami dla szybkozłącza S40"
+      },
+      {
+        "id": "TBD_052",
+        "title": "Łyżka kopiąca 90cm do koparki ładowarki JCB 3cx 4cx CAT",
+        "price": "2 600 zł",
+        "location": "Warszawa, Bemowo",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka 90cm dla JCB 3cx 4cx CAT"
+      },
+      {
+        "id": "TBD_053",
+        "title": "Łyżka kopiąca 60cm do koparki ładowarki JCB 3cx 4cx",
+        "price": "2 040 zł",
+        "location": "Rzeszówek",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka 60cm dla JCB 3cx 4cx"
+      },
+      {
+        "id": "TBD_054",
+        "title": "Łyżka skarpowa 150cm ukosowana do koparki koparko-ładowarki",
+        "price": "2 337 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Ukosowana łyżka skarpowa 150cm dla koparko-ładowarki"
+      },
+      {
+        "id": "TBD_055",
+        "title": "Łyżka objętościowa do Ładowarki teleskopowej JCB mocowanie Q-Fit",
+        "price": "4 800 zł",
+        "location": "Krotoszyn",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Objętościowa łyżka dla ładowarki teleskopowej JCB, Q-Fit"
+      },
+      {
+        "id": "TBD_056",
+        "title": "Łyżka kopiąca 100cm do koparki ładowarki JCB 3cx 4cx",
+        "price": "2 600 zł",
+        "location": "Szczecin, Bukowe",
+        "date_updated": "2025-08-03",
+        "category": "Motoryzacja",
+        "description": "Łyżka 100cm dla JCB 3cx 4cx"
+      },
+      {
+        "id": "TBD_057",
+        "title": "Łyżka skarpowa 125cm do koparki koparko ładowarki JCB 3cx 4cx Cat",
+        "price": "2 952 zł",
+        "location": "Księży Dwór",
+        "date_updated": "2025-08-02",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 125cm dla JCB 3cx 4cx Cat"
+      },
+      {
+        "id": "TBD_058",
+        "title": "Łyżka 40cm z zębami pasująca do koparki koparko ładowarki JCB 3cx 4cx",
+        "price": "1 722 zł",
+        "location": "Gutkowo",
+        "date_updated": "2025-08-02",
+        "category": "Motoryzacja",
+        "description": "Łyżka 40cm z zębami dla JCB 3cx 4cx"
+      },
+      {
+        "id": "TBD_059",
+        "title": "Karetka przystawka do wideł paletowych, pasuje do ładowarki JCB Q-fit",
+        "price": "2 152 zł",
+        "location": "Rzeszów",
+        "date_updated": "2025-08-02",
+        "category": "Motoryzacja",
+        "description": "Karetka przystawka do wideł paletowych dla JCB, Q-fit"
+      },
+      {
+        "id": "TBD_060",
+        "title": "Łyżka objętościowa 1m3 2.4m do Ładowarki JCB mocowanie Q-Fit",
+        "price": "4 950 zł",
+        "location": "Bydgoszcz",
+        "date_updated": "2025-08-02",
+        "category": "Motoryzacja",
+        "description": "Łyżka objętościowa 1m³ 2.4m dla ładowarki JCB, Q-Fit"
+      },
+      {
+        "id": "TBD_061",
+        "title": "Głowica wiertnicy glebowej pod szybkozłącze ms03",
+        "price": "4 428 zł",
+        "location": "Lisnowo-Zamek",
+        "date_updated": "2025-08-02",
+        "category": "Motoryzacja",
+        "description": "Głowica wiertnicy glebowej dla ms03"
+      },
+      {
+        "id": "TBD_062",
+        "title": "Kciuk palec chwytak do koparki mikioparki JCB CAT Kubota Wacker neuson",
+        "price": "1 620 zł",
+        "location": "Pogorzel",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Kciuk/palec chwytak dla JCB, CAT, Kubota, Wacker Neuson"
+      },
+      {
+        "id": "TBD_063",
+        "title": "Mocowanie do łyżki płyty uszy pasujące do szybkozłącza CW05",
+        "price": "350 zł",
+        "location": "Warszawa, Białołęka",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Mocowanie do łyżki dla CW05"
+      },
+      {
+        "id": "TBD_064",
+        "title": "Łyżka kablowa 18cm/80cm do kopania pod kable, rury, światłowody",
+        "price": "1 680 zł",
+        "location": "Bydgoszcz",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka kablowa 18cm/80cm do kabli, rur, światłowodów"
+      },
+      {
+        "id": "TBD_065",
+        "title": "Łyżka skarpowa 120cm sztywna do minikoparki z złączem ms03",
+        "price": "2 070 zł",
+        "location": "Toruń",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 120cm sztywna dla ms03"
+      },
+      {
+        "id": "TBD_066",
+        "title": "Łyżka kopiąca 27cm pasująca do mini koparki JCB 8014/8015/8016/8018/17",
+        "price": "811 zł",
+        "location": "Gdańsk, Aniołki",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 27cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_067",
+        "title": "Grabie 120cm do mini koparki, pasuje na szybkozłącze ms03 ms01",
+        "price": "1 480 zł",
+        "location": "Rzeszów",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Grabie 120cm dla ms03/ms01"
+      },
+      {
+        "id": "TBD_068",
+        "title": "Łyżka kopiąca 30cm pasująca do mini koparki JCB 8014/8015/8016/8018/17",
+        "price": "860 zł",
+        "location": "Rzeszów",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 30cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_069",
+        "title": "Łyżka kopiąca 45cm pasująca do mini koparki JCB 8014/8015/8016/8018/17",
+        "price": "890 zł",
+        "location": "Szczecin, Bukowo",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 45cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_070",
+        "title": "Wiertnica napęd do wiertła koparki minikoparki",
+        "price": "2 400 zł",
+        "location": "Rozogi",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Napęd do wiertła dla koparki i minikoparki"
+      },
+      {
+        "id": "TBD_071",
+        "title": "Łyżka skandynawska skarpowa do koparki z szybkozlaczem MS03 JCB Kubota",
+        "price": "2 640 zł",
+        "location": "Rydzewo-Świątki",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Skandynawska łyżka skarpowa for MS03"
+      },
+      {
+        "id": "TBD_072",
+        "title": "Łyżka kopiąca 40cm pasująca do mini koparki JCB 8014/8015/8016/8018/17",
+        "price": "885 zł",
+        "location": "Opole",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 40cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_073",
+        "title": "Łyżka kopiąca 25cm pasująca do mini koparki JCB 8014/8015/8016/8018/17",
+        "price": "787 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 25cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_074",
+        "title": "Łyżka skarpowa 150cm do koparki pasuje pod Ms08",
+        "price": "2 400 zł",
+        "location": "Karolew",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 150cm for MS08"
+      },
+      {
+        "id": "TBD_075",
+        "title": "Zrywak korzeni darni samosiejek drzew do minikoparki koparki pod MS03",
+        "price": "1 722 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Zrywak korzeni do MS03"
+      },
+      {
+        "id": "TBD_076",
+        "title": "Łyżka skarpowa 100cm Hydrauliczna ukosowana pod szybkozłącze HS02",
+        "price": "3 815 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Hydrauliczna łyżka 100cm HS02"
+      },
+      {
+        "id": "TBD_077",
+        "title": "Łyżka kopiąca 50cm pasująca do mini koparki JCB 8014/8015/8016/8018/17",
+        "price": "900 zł",
+        "location": "Konin",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 50cm for JCB 8014-8018"
+      },
+      {
+        "id": "TBD_078",
+        "title": "Wiertnica napęd wiertła do minikoparki JCB CAT Kubota Yanmar Bobcat WN",
+        "price": "2 860 zł",
+        "location": "Karolew",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Napęd wiertła do minikoparki"
+      },
+      {
+        "id": "TBD_079",
+        "title": "Łyżka typu skandynawska 90cm 100cm 120cm pod szybkozłącze MS03",
+        "price": "2 583 zł",
+        "location": "Nowa Krępa",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Skandynawska łyżka 90/100/120cm MS03"
+      },
+      {
+        "id": "TBD_080",
+        "title": "Szybkozłącze półautomatyczne do minikoparki koparki Kubota kx",
+        "price": "1 784 zł",
+        "location": "Zduny",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Półautomatyczne szybkozłącze dla Kubota KX"
+      },
+      {
+        "id": "TBD_081",
+        "title": "Wiertnica napędzana wiertła do koparki minikoparki",
+        "price": "2 840 zł",
+        "location": "Rzeszów",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Wiertnica napędzana do minikoparki"
+      },
+      {
+        "id": "TBD_082",
+        "title": "Szybkozłącze pasujące do minikoparki koparki ze złączem ms01",
+        "price": "2 583 zł",
+        "location": "Milicz",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze ms01"
+      },
+      {
+        "id": "TBD_083",
+        "title": "Szybkozłącze półautomatyczne pasujące do minikoparki JCB8014/8015/8018",
+        "price": "1 784 zł",
+        "location": "Warszawa, Bielany",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Półautomatyczne szybkozłącze JCB 8014-8018"
+      },
+      {
+        "id": "TBD_084",
+        "title": "Szybkozłącze półautomatyczne pasujące do minikoparki JCB8014/8015/8018",
+        "price": "1 784 zł",
+        "location": "Białystok, Bojary",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Półautomatyczne szybkozłącze JCB 8014-8018"
+      },
+      {
+        "id": "TBD_085",
+        "title": "Kciuk palec do minikoparki z płytą montażową",
+        "price": "1 845 zł",
+        "location": "Łyśniewo Sierakowickie",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Kciuk palec z płytą montażową"
+      },
+      {
+        "id": "TBD_086",
+        "title": "Łyżka typu skandynawskiego o szerokości roboczej 90cm pod złącze S40",
+        "price": "2 337 zł",
+        "location": "Rzeszówek",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Skandynawska łyżka 90cm S40"
+      },
+      {
+        "id": "TBD_087",
+        "title": "Łyżka kopiąca 30cm do minikoparki koparki Kubota KX na sworzeń fi30",
+        "price": "850 zł",
+        "location": "Żurawiec",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 30cm Kubota KX fi30"
+      },
+      {
+        "id": "TBD_088",
+        "title": "Łyżka kopiąca 18cm pasująca do mini koparki JCB 8014/8015/8016/8018/17",
+        "price": "720 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 18cm JCB 8014-8018"
+      },
+      {
+        "id": "TBD_089",
+        "title": "Łyżka kopiąca 23cm pasująca do mini koparki JCB 8014/8015/8016/8018/17",
+        "price": "760 zł",
+        "location": "Kalisz",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 23cm JCB 8014-8018"
+      },
+      {
+        "id": "TBD_090",
+        "title": "Zęby do grabienia wygrabiania oczyszczania terenu po budowie wykopie",
+        "price": "1 760 zł",
+        "location": "Szczecin, Niebuszewo",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Zęby do grabienia i czyszczenia terenu"
+      },
+      {
+        "id": "TBD_091",
+        "title": "Łyżka skarpowa skandynawska pod szybkozłącze MS03",
+        "price": "2 870 zł",
+        "location": "Fiukówka",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Skandynawska łyżka skarpowa MS03"
+      },
+      {
+        "id": "TBD_092",
+        "title": "Grabie do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "1 480 zł",
+        "location": "Darżkowo",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Grabie 120cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_093",
+        "title": "Łyżka kopiąca 20cm pasująca do mini koparki JCB 8014/8015/8016/8018/17",
+        "price": "740 zł",
+        "location": "Poznań, Chartowo",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 20cm JCB 8014-8018"
+      },
+      {
+        "id": "TBD_094",
+        "title": "Łyżka skarpowa 120cm do mini koparki JCB CAT Kubota Wacker Neuson MS03",
+        "price": "2 070 zł",
+        "location": "Brenno",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 120cm dla MS03"
+      },
+      {
+        "id": "TBD_095",
+        "title": "Łyżka kopiąca 30cm do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "850 zł",
+        "location": "Bysław",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Łyżka 30cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_096",
+        "title": "Łyżka skarpowa 100cm Hydrauliczna ukosowana pod szybkozłącze s30",
+        "price": "3 815 zł",
+        "location": "Pobłocie Małe",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Hydrauliczna łyżka 100cm ukosowana s30"
+      },
+      {
+        "id": "TBD_097",
+        "title": "Niwelator powierzchni terenu do koparki pod szybkozłącze MS03 Simlock",
+        "price": "4 550 zł",
+        "location": "Pobłocie Małe",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Niwelator powierzchni 120cm MS03 Simlock"
+      },
+      {
+        "id": "TBD_098",
+        "title": "Kciuk dociskowy hydrauliczny do ramienia koparki minikoparki",
+        "price": "1 850 zł",
+        "location": "Częstochowa, Wrzosowiak",
+        "date_updated": "2025-08-01",
+        "category": "Motoryzacja",
+        "description": "Hydrauliczny kciuk dociskowy do minikoparek"
+      },
+    {
+      "id": "TBD_099",
+      "title": "Łyżka kopiąca 70cm pasująca pod szybkozłącze S40",
+      "price": "1 350 zł",
+      "location": "Warszawa, Żoliborz",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Łyżka kopiąca 70cm do mini koparki, szybkozłącze S40"
+    },
+    {
+      "id": "TBD_100",
+      "title": "Łyżka skarpowa 80cm pod szybkozłącze MS01",
+      "price": "1 200 zł",
+      "location": "Kraków, Nowa Huta",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Łyżka skarpowa 80cm, kompatybilna z szybkozłączem MS01"
+    },
+    {
+      "id": "TBD_101",
+      "title": "Zrywak korzeni pod szybkozłącze CW05",
+      "price": "1 900 zł",
+      "location": "Poznań, Stare Miasto",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Zrywak korzeni pod szybkozłącze CW05, do minikoparki"
+    },
+    {
+      "id": "TBD_102",
+      "title": "Grabie 140cm do minikoparki, pasa MS03",
+      "price": "2 800 zł",
+      "location": "Wrocław, Krzyki",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Grabie 140cm przesiewowe, pasuje do MS03"
+    },
+    {
+      "id": "TBD_103",
+      "title": "Wiertnica 1500mm do słupków, szybkozłącze MS03",
+      "price": "3 500 zł",
+      "location": "Gdańsk, Wrzeszcz",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Wiertnica 1500mm pod szybkozłącze MS03"
+    },
+    {
+      "id": "TBD_104",
+      "title": "Łyżka kablowa 25cm/90cm do kopania pod światłowody",
+      "price": "1 950 zł",
+      "location": "Łódź, Bałuty",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Łyżka kablowa 25x90cm do kopania pod światłowody"
+    },
+    {
+      "id": "TBD_105",
+      "title": "Szybkozłącze na rączkę do JCB 8018",
+      "price": "1 500 zł",
+      "location": "Szczecin, Pogodno",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Półautomatyczne szybkozłącze na rączkę do JCB 8018"
+    },
+    {
+      "id": "TBD_106",
+      "title": "Łyżka glebogryzarka do minikoparki",
+      "price": "2 200 zł",
+      "location": "Lublin, Węglin",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Glebogryzarka łyżka do minikoparki"
+    },
+    {
+      "id": "TBD_107",
+      "title": "Niwelator 180cm do koparki pod szybkozłącze MS03",
+      "price": "4 800 zł",
+      "location": "Katowice, Załęże",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Niwelator 180cm pod szybkozłącze MS03"
+    },
+    {
+      "id": "TBD_108",
+      "title": "Łyżka skarpowa 110cm pod szybkozłącze CW05",
+      "price": "2 900 zł",
+      "location": "Bytom, Śródmieście",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Łyżka skarpowa 110cm, szybkozłącze CW05"
+    },
+    {
+      "id": "TBD_109",
+      "title": "Grabie 130cm do równania, pasujące do MS01",
+      "price": "2 500 zł",
+      "location": "Rzeszów, Staromieście",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Grabie 130cm do równania, dla MS01"
+    },
+    {
+      "id": "TBD_110",
+      "title": "Łyżka kopiąca 55cm z zębami do koparki",
+      "price": "1 700 zł",
+      "location": "Poznań, Wilda",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Łyżka 55cm z zębami do koparki"
+    },
+    {
+      "id": "TBD_111",
+      "title": "Wiertnica do słupków pod szybkozłącze MS01",
+      "price": "3 700 zł",
+      "location": "Warszawa, Mokotów",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Wiertnica do słupków, kompatybilna z MS01"
+    },
+    {
+      "id": "TBD_112",
+      "title": "Łyżka do zbierania zieleni 120cm",
+      "price": "2 200 zł",
+      "location": "Gdańsk, Przymorze",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Łyżka 120cm do zbierania zieleni"
+    },
+    {
+      "id": "TBD_113",
+      "title": "Szybkozłącze do Caterpillar CAT 302.7D",
+      "price": "1 900 zł",
+      "location": "Kraków, Podgórze",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Szybkozłącze CAT 302.7D"
+    },
+    {
+      "id": "TBD_114",
+      "title": "Łyżka podwyższona 140cm z bocznymi ściankami",
+      "price": "2 800 zł",
+      "location": "Łódź, Polesie",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Łyżka 140cm z bocznymi ściankami"
+    },
+    {
+      "id": "TBD_115",
+      "title": "Zestaw lemieszy Hardox do łyżki 60cm",
+      "price": "1 200 zł",
+      "location": "Wrocław, Śródmieście",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Komplet lemieszy Hardox do 60cm łyżki"
+    },
+    {
+      "id": "TBD_116",
+      "title": "Szybkozłącze hydrauliczne MS03 z czujnikiem",
+      "price": "2 900 zł",
+      "location": "Szczecin, Centrum",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Hydrauliczne szybkozłącze MS03 z czujnikiem"
+    },
+    {
+      "id": "TBD_117",
+      "title": "Wysokość podniesienia łyżki 160cm",
+      "price": "3 500 zł",
+      "location": "Lublin, Bronowice",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Zwiększona wysokość podniesienia 160cm"
+    },
+    {
+      "id": "TBD_118",
+      "title": "Łyżka do odśnieżania 200cm z gumową krawędzią",
+      "price": "5 000 zł",
+      "location": "Katowice, Dąb",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Łyżka odśnieżająca 200cm z gumową krawędzią"
+    },
+    {
+      "id": "TBD_119",
+      "title": "Ripper wielozębny 4-zębny do koparki 3t",
+      "price": "2 400 zł",
+      "location": "Rzeszów, Drabinianka",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Wielozębny ripper 4-zębny do koparki 3t"
+    },
+    {
+      "id": "TBD_120",
+      "title": "Łyżka skarpowa z nadlewem 100cm",
+      "price": "1 800 zł",
+      "location": "Gdynia, Redłowo",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Łyżka skarpowa 100cm z nadlewem"
+    },
+    {
+      "id": "TBD_121",
+      "title": "Zestaw 2 lemieszy do łyżki 80cm",
+      "price": "980 zł",
+      "location": "Opole, Malinka",
+      "date_updated": "2025-08-02",
+      "category": "Motoryzacja",
+      "description": "Lemiesze do 80cm łyżki komplet"
+    },
+    {
+        "id": "TBD_122",
+        "title": "Łyżka skarpowa 100cm do minikoparki JCB 8014/8015/8016/8017/8018/8020",
+        "price": "1 160 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 100cm dla JCB 8014-8020"
+      },
+      {
+        "id": "TBD_123", 
+        "title": "Niwelator powierzchni 150cm do koparki minikoparki pod szybkozłącze ms",
+        "price": "4 674 zł",
+        "location": "Łódź",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Niwelator powierzchni 150cm pod szybkozłącze MS"
+      },
+      {
+        "id": "TBD_124",
+        "title": "Grabie do wygrabiania kamieni, gruzu, gałęzi, rzęsy, równania",
+        "price": "1 480 zł",
+        "location": "Cholewy",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Grabie do wygrabiania kamieni, gruzu, gałęzi i równania"
+      },
+      {
+        "id": "TBD_125",
+        "title": "Zrywak korzeni jednozęby o długości 80cm nakładką J200 Cat",
+        "price": "2 930 zł",
+        "location": "Rydzewo-Świątki",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Zrywak korzeni jednozębny 80cm z nakładką J200 Cat"
+      },
+      {
+        "id": "TBD_126",
+        "title": "Szybkozłącze pasujące do minikoparki koparki z złączem ms01 do JCB",
+        "price": "2 690 zł",
+        "location": "Gdańsk, Aniołki",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze ms01 dla JCB"
+      },
+      {
+        "id": "TBD_127",
+        "title": "Łyżka kopiąca przedsiębierna 40cm do minikoparki koparki ze złączem ms",
+        "price": "885 zł",
+        "location": "Turowo",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca przedsiębierna 40cm ze złączem MS"
+      },
+      {
+        "id": "TBD_128",
+        "title": "Grabie do wygrabiania do koparki posiadające szybkozłącze MS03",
+        "price": "2 120 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Grabie do wygrabiania z szybkozłączem MS03"
+      },
+      {
+        "id": "TBD_129",
+        "title": "Łyżka kopiąca przedsiębierna 30cm z zębami koparki pod szybkozłącze ms",
+        "price": "980 zł",
+        "location": "Warszawa, Targówek",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca przedsiębierna 30cm z zębami pod szybkozłącze MS"
+      },
+      {
+        "id": "TBD_130",
+        "title": "Łyżka skarpowa 90cm do minikoparki JCB 8014/8015/8016/8017/8018/8020",
+        "price": "1 220 zł",
+        "location": "Bydgoszcz",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 90cm dla JCB 8014-8020"
+      },
+      {
+        "id": "TBD_131",
+        "title": "Łyżka skarpowa 80cm do minikoparki JCB 8014/8015/8016/8017/8018/8020",
+        "price": "1 107 zł",
+        "location": "Warszawa, Bemowo",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 80cm dla JCB 8014-8020"
+      },
+      {
+        "id": "TBD_132",
+        "title": "Łyżka kopiąca 35cm do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "920 zł",
+        "location": "Poznań, Chartowo",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca 35cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_133",
+        "title": "Łyżka kopiąca 40cm do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "950 zł",
+        "location": "Kalisz",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja", 
+        "description": "Łyżka kopiąca 40cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_134",
+        "title": "Łyżka kopiąca 45cm do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "980 zł",
+        "location": "Rzeszów",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca 45cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_135",
+        "title": "Łyżka kopiąca 50cm do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "1 020 zł",
+        "location": "Gdańsk, Aniołki",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca 50cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_136",
+        "title": "Łyżka kopiąca 55cm do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "1 080 zł",
+        "location": "Warszawa, Białołęka",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca 55cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_137",
+        "title": "Łyżka kopiąca 60cm do minikoparki JCB 8014/8015/8016/8017/8018",
+        "price": "1 140 zł",
+        "location": "Toruń",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka kopiąca 60cm dla JCB 8014-8018"
+      },
+      {
+        "id": "TBD_138",
+        "title": "Szybkozłącze pasujące do koparki Kubota KX015-4, KX016-4, KX018-4",
+        "price": "1 950 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze dla Kubota KX015-4, KX016-4, KX018-4"
+      },
+      {
+        "id": "TBD_139",
+        "title": "Szybkozłącze pasujące do koparki Yanmar VIO15, VIO17, VIO20",
+        "price": "1 850 zł",
+        "location": "Warszawa, Praga-Południe",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze dla Yanmar VIO15, VIO17, VIO20"
+      },
+      {
+        "id": "TBD_140",
+        "title": "Wiertnica do słupków 1200mm pod szybkozłącze MS01",
+        "price": "3 200 zł",
+        "location": "Warszawa, Mokotów",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Wiertnica 1200mm do słupków pod MS01"
+      },
+      {
+        "id": "TBD_141",
+        "title": "Młotek hydrauliczny 60kg do minikoparki 1-1.5t",
+        "price": "8 500 zł",
+        "location": "Poznań, Wilda",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Młotek hydrauliczny 60kg dla maszyn 1-1.5t"
+      },
+      {
+        "id": "TBD_142",
+        "title": "Młotek hydrauliczny 90kg do minikoparki 1.5-2.5t",
+        "price": "9 800 zł",
+        "location": "Kraków, Podgórze",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Młotek hydrauliczny 90kg dla maszyn 1.5-2.5t"
+      },
+      {
+        "id": "TBD_143",
+        "title": "Młotek hydrauliczny 130kg do minikoparki 2.5-4t",
+        "price": "12 500 zł",
+        "location": "Łódź, Bałuty",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Młotek hydrauliczny 130kg dla maszyn 2.5-4t"
+      },
+      {
+        "id": "TBD_144",
+        "title": "Nożyce hydrauliczne do betonu i metalu do minikoparki",
+        "price": "15 000 zł",
+        "location": "Szczecin, Centrum",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Nożyce hydrauliczne do betonu i metalu"
+      },
+      {
+        "id": "TBD_145",
+        "title": "Krusząca szczęka hydrauliczna do minikoparki 2-4t",
+        "price": "18 500 zł",
+        "location": "Lublin, Bronowice",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Krusząca szczęka hydrauliczna dla maszyn 2-4t"
+      },
+      {
+        "id": "TBD_146",
+        "title": "Przesiewacz bębnowy do minikoparki 1.5-3t",
+        "price": "22 000 zł",
+        "location": "Katowice, Załęże",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Przesiewacz bębnowy dla maszyn 1.5-3t"
+      },
+      {
+        "id": "TBD_147",
+        "title": "Równiarka do asfaltu 120cm do minikoparki",
+        "price": "12 800 zł",
+        "location": "Bytom, Śródmieście",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Równiarka do asfaltu 120cm"
+      },
+      {
+        "id": "TBD_148",
+        "title": "Koparka łańcuchowa 60cm do wykopów liniowych",
+        "price": "25 000 zł",
+        "location": "Rzeszów, Staromieście",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Koparka łańcuchowa 60cm do wykopów liniowych"
+      },
+      {
+        "id": "TBD_149",
+        "title": "Belka wibracyjna 180cm do zagęszczania gruntu",
+        "price": "8 900 zł",
+        "location": "Gdynia, Redłowo",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Belka wibracyjna 180cm do zagęszczania"
+      },
+      {
+        "id": "TBD_150",
+        "title": "Glebogryzarka 120cm z bocznym przesunięciem hydraulicznym",
+        "price": "16 500 zł",
+        "location": "Opole, Malinka",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Glebogryzarka 120cm z bocznym przesunięciem hydraulicznym"
+      },
+      {
+        "id": "TBD_151",
+        "title": "Łyżka skarpowa 120cm do minikoparki pod szybkozłącze S40 sworzeń Fi40",
+        "price": "4 059 zł",
+        "location": "Ostrzeszów",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka skarpowa 120cm Fi40 S40"
+      },
+      {
+        "id": "TBD_152",
+        "title": "Grabie poziomowane hydraulicznie ukosowane do minikoparki 120cm",
+        "price": "4 428 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Hydrauliczne grabie 120cm ukosowane"
+      },
+      {
+        "id": "TBD_153",
+        "title": "Szybkozłącze pasujące do minikoparki koparki ze złączem ms03 do Kubota",
+        "price": "3 198 zł",
+        "location": "Białystok, Antoniuk",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze ms03 dla Kubota"
+      },
+      {
+        "id": "TBD_154",
+        "title": "Grabie do minikoparki JCB CAT Kubota yanmar Wacker cw05 ms03 ms01",
+        "price": "1 460 zł",
+        "location": "Pustki",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Grabie 120cm dla różnych szybkozłączy"
+      },
+      {
+        "id": "TBD_155",
+        "title": "Szybkozłącze pasujące do minikoparki koparki ze złączem ms03 do JCB",
+        "price": "3 200 zł",
+        "location": "Świnoujście",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze ms03 dla JCB"
+      },
+      {
+        "id": "TBD_156",
+        "title": "Łyżka kopiąca 30cm podsiębierna odsiębierna do koparki komatsu JCB CAT",
+        "price": "1 425 zł",
+        "location": "Gutkowo",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Łyżka podsiębierna 30cm dla Komatsu, JCB, CAT"
+      },
+      {
+        "id": "TBD_157",
+        "title": "Osprzęt Grabie ażurowe przesiewowe zgarniające do koparki minikoparki",
+        "price": "1 700 zł",
+        "location": "Szczecin, Niebuszewo",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Grabie ażurowe przesiewowe i zgarniające"
+      },
+      {
+        "id": "TBD_158",
+        "title": "Łyżka skarpowa skandynawska część osprzętu do maszyny koparki minikoparki",
+        "price": "1 980 zł",
+        "location": "Szczecin, Niebuszewo",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Część osprzętu skarpowa skandynawska"
+      },
+      {
+        "id": "TBD_159",
+        "title": "Łyżka kopiąca 60cm przedsiębierna do koparki z złączem CW05",
+        "price": "1 100 zł",
+        "location": "Bystra",
+        "date_updated": "2025-07-31",
+        "category": "Motoryzacja",
+        "description": "Przedsiębierna łyżka 60cm CW05"
+      },
+      {
+        "id": "TBD_160",
+        "title": "Wycinanie laserowe Cięcie laserem Fiber Gięcie blach Prasą Krawędziową",
+        "price": null,
+        "location": "Cieszków",
+        "date_updated": "2025-07-31",
+        "category": "Usługi",
+        "description": "Usługi laserowego cięcia i gięcia blach"
+      },
+      {
+        "id": "TBD_161",
+        "title": "Szybkozłącze do minikoparki JCB sworzeń Fi35 model 8025/8027/8030/8032",
+        "price": "2 276 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze Fi35 dla modeli JCB 8025-8032"
+      },
+      {
+        "id": "TBD_162",
+        "title": "Niwelator powierzchni 120cm do koparki minikoparki pod szybkozłącze ms",
+        "price": "4 182 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Niwelator 120cm pod szybkozłącze MS"
+      },
+      {
+        "id": "TBD_163",
+        "title": "Wiertnica hydrauliczna do ziemi z mocowaniem pod szybkozłącze ms03",
+        "price": "5 620 zł",
+        "location": "Przyjaźń",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Hydrauliczna wiertnica ziemna MS03"
+      },
+      {
+        "id": "TBD_164",
+        "title": "Zrywak korzeni do zrywania darni, korzeni, samosiejek, krzewów, tui CW",
+        "price": "1 784 zł",
+        "location": "Zduny",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Zrywak korzeni CW05 do darni i krzewów"
+      },
+      {
+        "id": "TBD_165",
+        "title": "Szybkozłącze do minikoparki Kubota kx na sworzeń Fi30",
+        "price": "1 784 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Szybkozłącze Fi30 dla Kubota KX"
+      },
+      {
+        "id": "TBD_166",
+        "title": "Zrywak korzeni pojedynczy do koparki pod szybkozłącze MS03 Ms01",
+        "price": "1 784 zł",
+        "location": "Cieszków",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Pojedynczy zrywak korzeni MS03/MS01"
+      },
+      {
+        "id": "TBD_167",
+        "title": "Łyżka kopiąca szerokość 40cm do koparki minikoparki z szybkozłącz MS03",
+        "price": "1 772 zł",
+        "location": "Sopot, Górny Sopot",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Łyżka 40cm dla szybkozłącza MS03"
+      },
+      {
+        "id": "TBD_168",
+        "title": "Łyżka kopiąca szerokość 30cm do koparki minikoparki z szybkozłącz MS03",
+        "price": "1 475 zł",
+        "location": "Koszalin",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Łyżka 30cm dla MS03"
+      },
+      {
+        "id": "TBD_169",
+        "title": "Łyżka kopiąca 50cm pasująca pod szybkozłącze S40",
+        "price": "1 550 zł",
+        "location": "Strużnica",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Łyżka 50cm dla S40"
+      },
+      {
+        "id": "TBD_170",
+        "title": "Wiertnica glebowa, do wiercenia otworów pod słupki, drzewa, szklanki",
+        "price": "2 440 zł",
+        "location": "Warszawa, Praga-Południe",
+        "date_updated": "2025-07-30",
+        "category": "Motoryzacja",
+        "description": "Glebowa wiertnica do słupków i drzew"
+      }
+    ]
+  }
+  
