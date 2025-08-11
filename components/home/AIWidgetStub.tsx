@@ -55,16 +55,31 @@ const AIWidgetStub = () => {
     const formData = new FormData(form);
     // move and compress files from the input into formData
     const files = Array.from((form.elements.namedItem("images") as HTMLInputElement)?.files || []);
+    // clear existing images appended by native form
+    formData.delete("images");
     for (const file of files) {
       const compressed = await compressImage(file);
+      if (compressed.size > 5 * 1024 * 1024) {
+        alert(`Plik ${compressed.name} ma ponad 5MB. Zmniejsz rozmiar i spróbuj ponownie.`);
+        continue;
+      }
       formData.append("images", compressed);
     }
     setSubmitting(true);
     try {
       const res = await fetch("/api/fit-check", { method: "POST", body: formData });
       const body = await res.json();
-      setOk(Boolean(body?.ok));
-      if (body?.ok) form.reset();
+      if (!res.ok || !body?.ok) {
+        const msg = body?.error || "Nie udało się wysłać zgłoszenia. Spróbuj ponownie.";
+        alert(msg);
+        setOk(false);
+        return;
+      }
+      if (Array.isArray(body.rejected) && body.rejected.length) {
+        alert(`Część plików odrzucono: \n` + body.rejected.map((r: any) => `• ${r.name}: ${r.reason}`).join("\n"));
+      }
+      setOk(true);
+      form.reset();
     } finally {
       setSubmitting(false);
     }

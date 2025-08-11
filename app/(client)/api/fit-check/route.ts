@@ -15,17 +15,21 @@ export async function POST(req: Request) {
     const message = String(formData.get("message") || "").trim();
 
     if (!name || !phone) {
-      return NextResponse.json({ ok: false, error: "Missing required fields" }, { status: 400 });
+      return NextResponse.json({ ok: false, error: "Brak wymaganych pól: imię i nazwisko, telefon" }, { status: 400 });
     }
 
     // Upload images to Sanity first
     const images: any[] = [];
     const files = formData.getAll("images");
+    let rejected: Array<{ name: string; reason: string }> = [];
     for (const file of files) {
       if (file instanceof File) {
         const typeOk = /image\/(png|jpe?g|webp)/i.test(file.type);
         const sizeOk = file.size <= 5 * 1024 * 1024; // 5MB
-        if (!typeOk || !sizeOk) continue;
+        if (!typeOk || !sizeOk) {
+          rejected.push({ name: file.name, reason: !typeOk ? "Niedozwolony format" : "Za duży rozmiar (max 5MB)" });
+          continue;
+        }
         const asset = await backendClient.assets.upload("image", file as unknown as Blob, {
           filename: file.name,
           contentType: file.type,
@@ -48,11 +52,10 @@ export async function POST(req: Request) {
       createdAt: new Date().toISOString(),
     };
     const created = await backendClient.create(doc);
-
-    return NextResponse.json({ ok: true, id: created._id });
+    return NextResponse.json({ ok: true, id: created._id, rejected });
   } catch (error) {
     console.error("FitCheck error:", error);
-    return NextResponse.json({ ok: false, error: "Failed to submit fit check" }, { status: 500 });
+    return NextResponse.json({ ok: false, error: String((error as Error)?.message || "Błąd przetwarzania zgłoszenia") }, { status: 500 });
   }
 }
 
