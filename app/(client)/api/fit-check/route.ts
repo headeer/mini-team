@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     // Upload images to Sanity first
     const images: any[] = [];
     const files = formData.getAll("images");
-    let rejected: Array<{ name: string; reason: string }> = [];
+    const rejected: Array<{ name: string; reason: string }> = [];
     for (const file of files) {
       if (file instanceof File) {
         const typeOk = /image\/(png|jpe?g|webp)/i.test(file.type);
