@@ -18,7 +18,8 @@ const LatestBlog = async () => {
         <div className="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-5">
           {/* Featured */}
           <article className="lg:col-span-2 rounded-xl overflow-hidden border bg-white">
-            <Link href={`/blog/${blogs[0]?.slug?.current}`}>
+            {(() => { const s = (typeof blogs[0]?.slug === 'string' ? blogs[0]?.slug : blogs[0]?.slug?.current) || ''; return (
+              <Link href={`/blog/${s}`}>
               {blogs[0]?.mainImage && (
                 <Image
                   src={urlFor(blogs[0]?.mainImage).url()}
@@ -29,7 +30,8 @@ const LatestBlog = async () => {
                   priority
                 />
               )}
-            </Link>
+              </Link>
+            ); })()}
             <div className="p-5 space-y-2">
               <div className="text-xs flex items-center gap-4 text-lightColor">
                 <div className="flex items-center gap-2">
@@ -41,16 +43,19 @@ const LatestBlog = async () => {
                   <span className="flex items-center gap-1"><Calendar size={14} /> {dayjs(blogs[0]?.publishedAt).format("D MMMM YYYY")}</span>
                 ) : null}
               </div>
-              <Link href={`/blog/${blogs[0]?.slug?.current}`} className="text-2xl font-bold tracking-tight hover:text-shop_dark_green">
-                {blogs[0]?.title}
-              </Link>
+              {(() => { const s = (typeof blogs[0]?.slug === 'string' ? blogs[0]?.slug : blogs[0]?.slug?.current) || ''; return (
+                <Link href={`/blog/${s}`} className="text-2xl font-bold tracking-tight hover:text-shop_dark_green">
+                  {blogs[0]?.title}
+                </Link>
+              ); })()}
             </div>
           </article>
           {/* Others */}
           <div className="grid grid-cols-1 gap-5">
             {blogs.slice(1, 4).map((blog) => (
               <article key={blog?._id} className="rounded-xl overflow-hidden border bg-white">
-                <Link href={`/blog/${blog?.slug?.current}`}>
+                {(() => { const s = (typeof blog?.slug === 'string' ? blog?.slug : blog?.slug?.current) || ''; return (
+                  <Link href={`/blog/${s}`}>
                   {blog?.mainImage && (
                     <Image
                       src={urlFor(blog?.mainImage).url()}
@@ -60,7 +65,8 @@ const LatestBlog = async () => {
                       className="w-full h-32 object-cover"
                     />
                   )}
-                </Link>
+                  </Link>
+                ); })()}
                 <div className="p-4 space-y-1">
                   <div className="text-[11px] flex items-center gap-3 text-lightColor">
                     <div className="flex items-center gap-2">
@@ -72,9 +78,11 @@ const LatestBlog = async () => {
                       <span className="flex items-center gap-1"><Calendar size={12} /> {dayjs(blog.publishedAt).format("D MMMM")}</span>
                     ) : null}
                   </div>
-                  <Link href={`/blog/${blog?.slug?.current}`} className="text-sm font-semibold tracking-wide line-clamp-2 hover:text-shop_dark_green">
-                    {blog?.title}
-                  </Link>
+                  {(() => { const s = (typeof blog?.slug === 'string' ? blog?.slug : blog?.slug?.current) || ''; return (
+                    <Link href={`/blog/${s}`} className="text-sm font-semibold tracking-wide line-clamp-2 hover:text-shop_dark_green">
+                      {blog?.title}
+                    </Link>
+                  ); })()}
                 </div>
               </article>
             ))}
