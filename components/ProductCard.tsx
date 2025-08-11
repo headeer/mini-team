@@ -10,7 +10,7 @@ import Title from "./Title";
 import ProductSideMenu from "./ProductSideMenu";
 import AddToCartButton from "./AddToCartButton";
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({ product, activeMachine }: { product: Product; activeMachine?: string }) => {
   type ProductWithVariant = Product & {
     slug?: string | { current?: string };
     categories?: Array<string | { title?: string } | null | undefined>;
@@ -25,11 +25,23 @@ const ProductCard = ({ product }: { product: Product }) => {
         .filter((v): v is string => Boolean(v))
     : [];
 
+  // Minimal card: no extra quick specs, no fits badge
+  const isRipper = /zrywak/i.test(String(product?.name)) || categoryLabels.some((c) => /zrywaki|zrywak/i.test(c || ""));
+  const priceValue = ((): number | string | undefined => {
+    const rawPrice = (product as unknown as { price?: number | string | undefined }).price;
+    const basePrice = (product as unknown as { basePrice?: number | undefined }).basePrice;
+    // Prefer string price (e.g., "Zamówienia telefoniczne"). If numeric, prefer positive basePrice, else numeric price
+    if (typeof rawPrice === "string") return rawPrice;
+    if (typeof basePrice === "number" && basePrice > 0) return basePrice;
+    return typeof rawPrice === "number" ? rawPrice : basePrice;
+  })();
+  const derivedPhoneOrderOnly = Boolean((product as any)?.phoneOrderOnly) || typeof ((product as any)?.price) === "string" || ((product as any)?.basePrice === 0 && isRipper);
+
   return (
-    <div className="text-sm border rounded-xl border-gray-200 group bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+    <div className="text-sm border rounded-xl border-gray-200 group bg-white overflow-hidden shadow-sm hover:shadow-xl hover:border-gray-300 transition flex flex-col h-full">
       <div className="relative group bg-white">
         <Link href={slugValue ? `/product/${slugValue}` : "#"}>
-          <div className="relative aspect-[4/3] bg-shop_light_bg">
+          <div className="relative aspect-[4/3] bg-gradient-to-br from-white to-gray-50">
             {(() => {
               const toSrc = (img: any): string | null => {
                 if (!img) return null;
@@ -48,7 +60,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                   fill
                   sizes="(max-width:768px) 50vw, (max-width:1200px) 25vw, 300px"
                   priority={false}
-                  className={`object-contain transition-transform duration-500 ${product?.stock !== 0 ? "group-hover:scale-[1.02]" : "opacity-50"}`}
+                   className={`object-contain transition-transform duration-500 ${product?.stock !== 0 ? "group-hover:scale-[1.03]" : "opacity-50"}`}
                 />
               ) : (
                 <div className="w-full h-full bg-gray-100" />
@@ -57,25 +69,15 @@ const ProductCard = ({ product }: { product: Product }) => {
           </div>
         </Link>
         <ProductSideMenu product={product} />
-        {product?.status === "sale" ? (
-          <p className="absolute top-2 left-2 z-10 text-xs border border-darkColor/50 px-2 rounded-full group-hover:border-lightGreen hover:text-shop_dark_green hoverEffect">
-            Sale!
-          </p>
-        ) : (
-          <Link
-            href={"/deal"}
-            className="absolute top-2 left-2 z-10 border border-shop_orange/50 p-1 rounded-full group-hover:border-shop_orange hover:text-shop_dark_green hoverEffect"
-          >
-            <Flame
-              size={18}
-              fill="#fb6c08"
-              className="text-shop_orange/50 group-hover:text-shop_orange hoverEffect"
-            />
-          </Link>
+        {product?.status === "sale" && (
+          <span className="absolute top-2 left-2 z-10 text-[10px] px-2 py-0.5 rounded-full bg-red-500 text-white">Promocja</span>
         )}
       </div>
       <div className="p-4 flex flex-col gap-2 flex-1">
-        {categoryLabels.length > 0 ? (
+        {isRipper ? (
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-fit">Zrywak korzeni</span>
+        ) : null}
+        {!isRipper && categoryLabels.length > 0 ? (
           <p className="uppercase line-clamp-1 text-xs font-medium text-gray-500">
             {categoryLabels.join(", ")}
           </p>
@@ -83,31 +85,23 @@ const ProductCard = ({ product }: { product: Product }) => {
         <Link href={slugValue ? `/product/${slugValue}` : "#"} className="hover:underline underline-offset-2">
           <Title className="text-[15px] line-clamp-2 min-h-[40px]">{product?.name}</Title>
         </Link>
-        <div className="flex items-center gap-2 min-h-[20px]">
-          <div className="flex items-center">
-            {[...Array(5)].map((_, index) => (
-              <StarIcon
-                key={index}
-                className={
-                  index < 4 ? "text-shop_light_green" : " text-lightText"
-                }
-                fill={index < 4 ? "#93D991" : "#ababab"}
-              />
-            ))}
-          </div>
-          <p className="text-lightText text-xs tracking-wide">5 opinii</p>
-        </div>
+        {product?.description && (
+          <p className="text-xs text-gray-600 line-clamp-2">{String(product.description)}</p>
+        )}
+        
+        {/* simplified: removed quick coupler, compatibility, and tier badges */}
 
-        <div className="flex items-center justify-between min-h-[28px]">
+        <div className="flex items-center justify-between min-h-[28px] mt-1">
           <span className={`px-2 py-0.5 rounded-md text-xs font-medium ${product?.stock === 0 ? "bg-red-50 text-red-600 border border-red-200" : "bg-green-50 text-green-700 border border-green-200"}`}>
             {(product?.stock as number) > 0 ? `W magazynie: ${product?.stock}` : "Brak w magazynie"}
           </span>
         </div>
 
         <PriceView
-          price={product?.basePrice ?? product?.price}
+          price={priceValue}
           discount={product?.discount}
           priceOlx={(product as unknown as { priceOlx?: number | string })?.priceOlx}
+          phoneOrderOnly={derivedPhoneOrderOnly}
           className="text-base"
         />
         <div className="mt-auto pt-2">

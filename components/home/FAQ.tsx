@@ -78,7 +78,7 @@ const FAQ = () => {
                   Zapytaj naszego <Link href="#chat" className="text-[var(--color-brand-orange)] hover:underline">AI‑asystenta</Link> lub skontaktuj się bezpośrednio – odpowiemy w 24 h.
                 </p>
                 <div>
-                  <p><strong>Telefon:</strong> <a href="tel:+48570037128" className="hover:underline">+48 570 037 128</a></p>
+                  <p><strong>Telefon:</strong> <a href="tel:+48782851962" className="hover:underline">782-851-962</a></p>
                   <p><strong>Email:</strong> <a href="mailto:teodorczykpt@gmail.com" className="hover:underline">teodorczykpt@gmail.com</a></p>
                 </div>
                 <Button asChild className="w-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">

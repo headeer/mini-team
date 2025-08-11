@@ -53,17 +53,17 @@ const AddToCartButton = ({ product, className }: Props) => {
           onClick={isPhoneOnly ? undefined : handleAddToCart}
           disabled={isOutOfStock || isPhoneOnly}
           className={cn(
-            "w-full bg-shop_dark_green/80 text-lightBg shadow-none border border-shop_dark_green/80 font-semibold tracking-wide text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect",
+            "w-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold tracking-wide shadow-none border-0 hover:opacity-95",
             className
           )}
         >
           {isPhoneOnly ? (
-            <a href="tel:+48570037128" className="w-full flex items-center justify-center gap-2">
+            <a href="tel:+48782851962" className="w-full flex items-center justify-center gap-2">
               <ShoppingBag /> Zamów telefonicznie
             </a>
           ) : (
             <>
-              <ShoppingBag /> {isOutOfStock ? "Out of Stock" : "Add to Cart"}
+              <ShoppingBag /> {isOutOfStock ? "Brak w magazynie" : "Dodaj do koszyka"}
             </>
           )}
         </Button>

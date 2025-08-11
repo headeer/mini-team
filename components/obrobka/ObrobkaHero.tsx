@@ -33,7 +33,7 @@ const ObrobkaHero = () => {
             className="bg-white/20 text-white font-semibold backdrop-blur-md border border-white/40 hover:bg-white/30 hover:text-white shadow-md"
             asChild
           >
-            <a href="tel:+48570037128">ZADZWOŃ TERAZ</a>
+            <a href="tel:+48782851962">ZADZWOŃ TERAZ</a>
           </Button>
         </div>
       </Container>

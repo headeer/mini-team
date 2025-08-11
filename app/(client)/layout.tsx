@@ -4,14 +4,51 @@ import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
-import TidioChat from "@/components/TidioChat";
+import FloatingMachineSelector from "@/components/FloatingMachineSelector";
+import Script from "next/script";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://example.com"),
   title: {
-    template: "%s - Shopcart online store",
-    default: "Shopcart online store",
+    template: "%s – MTT Osprzęt do koparek",
+    default: "MTT Osprzęt do koparek – Łyżki, zrywaki, osprzęt",
   },
-  description: "Shopcart online store, Your one stop shop for all your needs",
+  description: "Osprzęt do koparek: łyżki, zrywaki, szybkozłącza. Hardox HB500, dostawa 48h, polska produkcja.",
+  applicationName: "MTT Sklep",
+  authors: [{ name: "MTT" }],
+  keywords: [
+    "osprzęt do koparek",
+    "łyżki kopiące",
+    "łyżki skarpowe",
+    "zrywak korzeni",
+    "szybkozłącza",
+    "Hardox HB500",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    siteName: "MTT Osprzęt do koparek",
+    type: "website",
+    title: "MTT Osprzęt do koparek – Łyżki, zrywaki, osprzęt",
+    description: "Osprzęt do koparek: łyżki, zrywaki, szybkozłącza. Hardox HB500, dostawa 48h, polska produkcja.",
+    images: [{ url: "/images/main/yellow-earth-mover-at-a-construction-site-2025-01-07-23-59-23-utc.jpg" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MTT Osprzęt do koparek",
+    description: "Osprzęt do koparek: łyżki, zrywak, szybkozłącza.",
+    images: ["/images/main/yellow-earth-mover-at-a-construction-site-2025-01-07-23-59-23-utc.jpg"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({
@@ -27,7 +64,21 @@ export default function RootLayout({
         <Header />
         <main id="content" className="flex-1">{children}</main>
         <Footer />
-        <TidioChat />
+        <FloatingMachineSelector />
+        {/* Tawk.to chat */}
+        <Script id="tawk-chat" strategy="afterInteractive">
+          {`
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6899b3aa3df3eb1928b7d199/1j2c6bkn1';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+})();
+          `}
+        </Script>
       </div>
     </ClerkProvider>
   );

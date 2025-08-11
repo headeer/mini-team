@@ -48,7 +48,13 @@ export const productType = defineType({
       name: "price",
       title: "Cena (zł)",
       type: "number",
-      validation: (Rule) => Rule.required().min(0),
+      validation: (Rule) =>
+        Rule.custom((value, ctx) => {
+          const doc = ctx?.document as any;
+          if (doc?.phoneOrderOnly) return true; // price optional when phone orders only
+          if (typeof value === "number" && value >= 0) return true;
+          return "Cena jest wymagana (chyba, że zaznaczysz 'Zamówienia telefoniczne').";
+        }),
     }),
     // Dodatkowe pola cenowe dla MiniTeam
     defineField({ name: "basePrice", title: "Cena bazowa (zł)", type: "number" }),
@@ -126,6 +132,13 @@ export const productType = defineType({
       ],
     }),
     defineField({ name: "dateUpdated", title: "Data aktualizacji", type: "datetime" }),
+    defineField({
+      name: "phoneOrderOnly",
+      title: "Zamówienia telefoniczne",
+      type: "boolean",
+      description: "Jeśli włączone, cena nie jest wymagana – kupno tylko telefonicznie.",
+      initialValue: false,
+    }),
     defineField({ name: "externalId", title: "Zewnętrzne ID", type: "string" }),
     defineField({ name: "location", title: "Lokalizacja", type: "string" }),
     defineField({ name: "viewsCount", title: "Liczba wyświetleń", type: "number", initialValue: 0 }),

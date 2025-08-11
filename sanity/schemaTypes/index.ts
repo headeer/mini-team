@@ -9,6 +9,7 @@ import { blogCategoryType } from "./blogCategoryType";
 import { authorType } from "./authorType";
 import { addressType } from "./addressType";
 import { defineType } from "sanity";
+import { fitCheckType } from "./fitCheckType";
 
 // New custom schemas aligned with MiniTeamProject
 const companyType = defineType({
@@ -51,5 +52,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     addressType,
     companyType,
     customerType,
+    fitCheckType,
   ],
 };

@@ -3,15 +3,15 @@ import React from "react";
 
 interface ContactItemData {
   title: string;
-  subtitle: string;
+  subtitle: React.ReactNode;
   icon: React.ReactNode;
 }
 
 const data: ContactItemData[] = [
   { title: "Adres", subtitle: "Ujazd 11, 56-330 Cieszków", icon: (<MapPin className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />) },
-  { title: "Telefon", subtitle: "+48 782 851 962", icon: (<Phone className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />) },
+  { title: "Telefon", subtitle: (<a href="tel:+48782851962" className="hover:underline">782-851-962</a>), icon: (<Phone className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />) },
   { title: "Godziny pracy", subtitle: "Pn - Sb: 8:00 - 18:00", icon: (<Clock className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />) },
-  { title: "Email", subtitle: "teodorczykpt@gmail.com", icon: (<Mail className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />) },
+  { title: "Email", subtitle: (<a href="mailto:teodorczykpt@gmail.com" className="hover:underline">teodorczykpt@gmail.com</a>), icon: (<Mail className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />) },
 ];
 
 const FooterTop = () => {

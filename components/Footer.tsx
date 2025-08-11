@@ -56,7 +56,7 @@ const Footer = () => {
               MiniTeam Project Sp. z o.o.<br/>Cieszków, Polska<br/>NIP: 000-000-00-00
             </SubText>
             <SubText>
-              E-mail: kontakt@miniteamproject.pl<br/>Tel.: +48 570 037 128
+              E-mail: <a href="mailto:kontakt@miniteamproject.pl" className="hover:underline">kontakt@miniteamproject.pl</a><br/>Tel.: <a href="tel:+48782851962" className="hover:underline">782-851-962</a>
             </SubText>
           </div>
         </div>

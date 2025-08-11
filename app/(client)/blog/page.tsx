@@ -1,4 +1,53 @@
 import Container from "@/components/Container";
+import Link from "next/link";
+
+const posts = [
+  {
+    slug: "jak-dobrac-lyzke-do-minikoparki-przewodnik-operatora",
+    title: "Jak dobrać łyżkę do minikoparki – przewodnik operatora",
+    excerpt: "Na co zwrócić uwagę: waga maszyny, szybkozłącze (MS03/S40), szerokość robocza i Hardox HB500.",
+    href: "/shop",
+  },
+  {
+    slug: "hardox-hb500-w-praktyce-dlaczego-zuzywa-sie-3x-wolniej",
+    title: "Hardox HB500 w praktyce – dlaczego zużywa się 3× wolniej",
+    excerpt: "Porównanie z klasyczną stalą, realne korzyści: mniej przestojów i niższe koszty.",
+    href: "/shop",
+  },
+  {
+    slug: "szybkozlacza-ms03-s40-cw05-co-wybrac-i-dla-kogo",
+    title: "Szybkozłącza MS03, S40, CW05 – co wybrać i dla kogo?",
+    excerpt: "Różnice funkcjonalne, kompatybilność i dobór pod typ pracy.",
+    href: "/shop",
+  },
+];
+
+export default function BlogIndex() {
+  return (
+    <div className="bg-white">
+      <Container className="py-10 space-y-6">
+        <h1 className="text-3xl font-bold text-gray-900">Blog</h1>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {posts.map((p) => (
+            <article key={p.slug} className="rounded-xl border bg-white p-4 hover:shadow-md transition">
+              <h2 className="text-lg font-semibold text-gray-900 mb-1">
+                <Link href={`/blog/${p.slug}`} className="hover:underline">
+                  {p.title}
+                </Link>
+              </h2>
+              <p className="text-sm text-gray-700 mb-3">{p.excerpt}</p>
+              <div className="text-sm">
+                <Link href={p.href} className="text-[var(--color-brand-orange)] hover:underline">Przejdź do sklepu</Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </div>
+  );
+}
+
+import Container from "@/components/Container";
 import Title from "@/components/Title";
 import { urlFor } from "@/sanity/lib/image";
 import { getAllBlogs } from "@/sanity/queries";

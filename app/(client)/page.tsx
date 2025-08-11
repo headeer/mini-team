@@ -14,6 +14,9 @@ import FinalCTA from "@/components/home/FinalCTA";
 import HomeShowcase from "@/components/home/HomeShowcase";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import BestSellers from "@/components/home/BestSellers";
+import AIWidgetStub from "@/components/home/AIWidgetStub";
+import ProjectsInAction from "@/components/home/ProjectsInAction";
+import BrandStory from "@/components/home/BrandStory";
 
 import React from "react";
 
@@ -43,6 +46,12 @@ const Home = async () => {
         <AppSection>
           <SevenReasons />
         </AppSection>
+        <AppSection>
+          <BrandStory />
+        </AppSection>
+        <AppSection>
+          <ProjectsInAction />
+        </AppSection>
         {/* @ts-expect-error Async Server Component */}
         <BestSellers />
         <AppSection>
@@ -54,6 +63,8 @@ const Home = async () => {
         </AppSection>
         <FinalCTA />
         <LatestBlog />
+        {/* Floating Fit Check widget and inline AI placeholder */}
+        <AIWidgetStub />
       </Container>
     </div>
   );

@@ -2,6 +2,7 @@ import AddToCartButton from "@/components/AddToCartButton";
 import Container from "@/components/Container";
 import FavoriteButton from "@/components/FavoriteButton";
 import ImageView from "@/components/ImageView";
+import MediaTabs from "@/components/MediaTabs";
 import PriceView from "@/components/PriceView";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,11 +11,43 @@ import { Button } from "@/components/ui/button";
 import { getProductBySlug } from "@/sanity/queries";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
-import { Shield, StarIcon, Truck, Award, CheckCircle2, Phone, Factory, BadgeCheck, Package, Hammer } from "lucide-react";
+import { Shield, StarIcon, Truck, Award, CheckCircle2, Phone, Factory, BadgeCheck, Package, Hammer, Ruler, Gauge, Box, Wrench, Tag, ShieldCheck } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { notFound } from "next/navigation";
 import React from "react";
+import type { Metadata } from "next";
 import { urlFor } from "@/sanity/lib/image";
+// JSON-LD scripts will use plain <script> to avoid hydration issues
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProductBySlug(slug);
+  if (!product) return {};
+  const title = `${product?.name} – MTT Osprzęt do koparek`;
+  const description = String(product?.description || "Osprzęt do koparek: Hardox HB500, dostawa 48h.").slice(0, 160);
+  const cover = (product?.images?.[0] && (typeof product.images[0] === 'object' && (product.images[0] as any).asset?._ref ? urlFor(product.images[0]).url() : (product as any).cover)) || undefined;
+  const url = `/product/${slug}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      title,
+      description,
+      url,
+      images: cover ? [{ url: cover }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: cover ? [cover] : undefined,
+    },
+  };
+}
 
 const SingleProductPage = async ({
   params,
@@ -33,7 +66,10 @@ const SingleProductPage = async ({
     product?.brand?._ref ? similarQuery : fallbackSimilarQuery,
     { slug, brand: product?.brand?._ref }
   );
-  const isPhoneOnly = typeof (product as any)?.price !== "number" || (product as any)?.basePrice === 0 || typeof (product as any)?.priceText === "string";
+  const isPhoneOnly =
+    typeof (product as any)?.price === "string" ||
+    typeof (product as any)?.priceText === "string" ||
+    (typeof (product as any)?.basePrice === "number" && (product as any)?.basePrice === 0);
   const toSrc = (img: any): string | null => {
     if (!img) return null;
     if (typeof img === "string") return img || null;
@@ -49,6 +85,38 @@ const SingleProductPage = async ({
   };
   return (
     <div className="bg-white">
+      {/* JSON-LD Product + FAQ */}
+      {(() => {
+        const ld: any = {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: product?.name,
+          description: product?.description,
+          image: product?.images?.length ? product.images.map((img: any) => (typeof img === 'object' && img.asset?._ref ? urlFor(img).url() : (img?.url || ''))) : undefined,
+          offers: {
+            "@type": "Offer",
+            availability: (product?.stock as number) > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            priceCurrency: "PLN",
+            price: typeof (product as any)?.price === 'number' ? (product as any).price : undefined,
+          },
+          brand: product?.brand ? { "@type": "Brand", name: "MTT" } : undefined,
+        };
+        const faq = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            { "@type": "Question", name: "Jak dobrać odpowiednią łyżkę do mojej maszyny?", acceptedAnswer: { "@type": "Answer", text: "Sprawdź wagę maszyny i rodzaj mocowania (np. MS01, MS03, CW05). Jeśli masz wątpliwości, zadzwoń: 782-851-962." } },
+            { "@type": "Question", name: "Ile trwa dostawa?", acceptedAnswer: { "@type": "Answer", text: "Standardowo 24–48 h na terenie Polski. Produkty z magazynu wysyłamy tego samego lub następnego dnia." } },
+            { "@type": "Question", name: "Czy mogę zwrócić produkt?", acceptedAnswer: { "@type": "Answer", text: "Tak, masz 14 dni na zwrot. Produkt musi być nieużywany i w oryginalnym stanie." } }
+          ]
+        };
+        return (
+          <>
+            <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+            <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
+          </>
+        );
+      })()}
       {/* Breadcrumb */}
       <div className="bg-white border-b border-gray-200">
         <Container className="py-3">
@@ -65,9 +133,47 @@ const SingleProductPage = async ({
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left: images + trust */}
           <div>
-            {product?.images && (
-              <ImageView images={product?.images} isStock={product?.stock} />
-            )}
+            {product?.images ? (() => {
+              // Decide by category name (e.g., "Łyżki kopiące 1-2t", "Łyżki skarpowe 1-2t")
+              const catTitles: string[] = Array.isArray((product as any)?.categories)
+                ? ((product as any).categories as Array<{ title?: string } | null>).map((c) => c?.title || "").filter(Boolean)
+                : [];
+              const catText = catTitles.join(" ").toLowerCase();
+              let hints: string[] = [];
+              if (/1-?2t|1[\._-]?2t|1-1\.5t|1\.5-2\.3t/.test(catText)) {
+                // for 1-1.5t group map to first set if explicitly matches 1-1.5; otherwise also covered by below rules
+              }
+              if (/1-?2t/.test(catText)) {
+                // 1-2t buckets
+                hints = [
+                  "lyska_skarpowa",
+                  "lyska_skarpowa_2",
+                  "lyzka_1_5-2_3",
+                  "lyzka_1_5-2_3_2",
+                ];
+              } else if (/1\.5-2\.3t|1,5-2,3t|1-?5\s*–?\s*2-?3t/.test(catText)) {
+                // 1.5-2.3t
+                hints = [
+                  "lyzka_hydr_1.5_2.3",
+                  "lyzka_hydr_2_1.5_2.3",
+                  "lyska_1.5_2.3",
+                  "lyska_1.5_2.3_2",
+                ];
+              } else if (/2\.3-3t|2,3-3t/.test(catText)) {
+                // 2.3-3t
+                hints = [
+                  "lyzka_hydr_2.3_3.5",
+                  "lyzka_hydr_2.3_3",
+                ];
+              }
+              return (
+                <MediaTabs
+                  slug={slug}
+                  hints={hints}
+                  gallery={<ImageView images={product?.images} isStock={product?.stock} />}
+                />
+              );
+            })() : null}
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div className="flex items-center gap-2 p-3 rounded-lg border bg-white">
                 <Truck className="h-5 w-5 text-[var(--color-brand-orange)]" />
@@ -120,8 +226,14 @@ const SingleProductPage = async ({
             </div>
             <div className="space-y-3 border-t border-b border-gray-200 py-5">
               <div className="flex items-baseline gap-2">
-                <PriceView price={product?.price as number | string | undefined} discount={product?.discount} priceOlx={product?.priceOlx as number | string | undefined} className="text-2xl font-bold" />
+                <PriceView price={product?.price as number | string | undefined} discount={product?.discount} priceOlx={product?.priceOlx as number | string | undefined} phoneOrderOnly={Boolean((product as any)?.phoneOrderOnly)} className="text-2xl font-bold" />
               </div>
+              {isPhoneOnly && (
+                <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-2 py-1 inline-flex items-center gap-2">
+                  <span>Ten produkt zamówisz wyłącznie telefonicznie – przygotujemy ofertę i termin.</span>
+                  <a href="tel:+48782851962" className="underline underline-offset-2 font-semibold">Zadzwoń: 782-851-962</a>
+                </div>
+              )}
               <p className={`px-4 py-1.5 text-sm inline-block font-semibold rounded-lg ${product?.stock === 0 ? "bg-red-100 text-red-600" : "text-green-600 bg-green-100"}`}>
                 {(product?.stock as number) > 0 ? `W magazynie: ${product?.stock}` : "Brak w magazynie"}
               </p>
@@ -130,71 +242,25 @@ const SingleProductPage = async ({
                 <span className="flex items-center gap-1"><Package className="h-4 w-4 text-green-600" /> Bezpieczne pakowanie</span>
                 <span className="flex items-center gap-1"><Shield className="h-4 w-4 text-green-600" /> Zwrot 14 dni</span>
               </div>
+              {/* Stripe security */}
+              <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-gray-700 bg-gray-50 border border-gray-200 rounded-md px-3 py-2">
+                <ShieldCheck className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                <span className="font-semibold">Bezpieczne płatności:</span>
+                <span className="text-gray-900 font-medium">Stripe</span>
+                <span>• 3D Secure • Szyfrowanie TLS • Apple Pay / Google Pay</span>
+              </div>
             </div>
             <div className="flex items-center gap-3 my-4">
               <AddToCartButton product={product} />
               <FavoriteButton showProduct={true} product={product} />
               {isPhoneOnly && (
-                <a href="tel:+48570037128" className="ml-auto inline-flex items-center gap-2 text-sm px-3 py-2 rounded-md border hover:bg-gray-50">
+                <a href="tel:+48782851962" className="ml-auto inline-flex items-center gap-2 text-sm px-3 py-2 rounded-md border hover:bg-gray-50">
                   <Phone className="h-4 w-4" /> Zamów telefonicznie
                 </a>
               )}
             </div>
 
-            {/* Specyfikacja techniczna */}
-            <Card className="mb-6">
-              <CardHeader>
-                <CardTitle className="text-lg">Specyfikacja techniczna</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                  <div className="space-y-3">
-                    {product?.specifications?.widthCm && (
-                      <div>
-                        <span className="text-gray-600">Szerokość robocza:</span>
-                        <span className="font-semibold ml-2">{product.specifications.widthCm} cm</span>
-                      </div>
-                    )}
-                    {product?.specifications?.pinDiameterMm && (
-                      <div>
-                        <span className="text-gray-600">Średnica sworznia:</span>
-                        <span className="font-semibold ml-2">{product.specifications.pinDiameterMm} mm</span>
-                      </div>
-                    )}
-                    {product?.specifications?.volumeM3 && (
-                      <div>
-                        <span className="text-gray-600">Pojemność:</span>
-                        <span className="font-semibold ml-2">{product.specifications.volumeM3} m³</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="space-y-3">
-                    {product?.specifications?.quickCoupler && (
-                      <div>
-                        <span className="text-gray-600">Szybkozłącze:</span>
-                        <span className="font-semibold ml-2">{product.specifications.quickCoupler}</span>
-                      </div>
-                    )}
-                    {product?.specifications?.machineCompatibility?.length ? (
-                      <div>
-                        <span className="text-gray-600">Kompatybilność:</span>
-                        <span className="font-semibold ml-2">{product.specifications.machineCompatibility.join(", ")}</span>
-                      </div>
-                    ) : null}
-                  </div>
-                  {product?.specifications?.features?.length ? (
-                    <div className="col-span-full mt-2 p-3 bg-gray-50 rounded-lg">
-                      <h4 className="font-semibold text-gray-900 mb-2">Cechy:</h4>
-                      <ul className="list-disc ml-5 text-sm text-gray-700 space-y-1">
-                        {product.specifications.features.map((f: string, i: number) => (
-                          <li key={i}>{f}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                </div>
-              </CardContent>
-            </Card>
+            {/* Specyfikacja przeniesiona niżej nad podobne produkty */}
 
             {/* Zamów w 60 sekund */}
             <Card className="bg-gradient-to-br from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border-[var(--color-brand-orange)]/20">
@@ -202,9 +268,9 @@ const SingleProductPage = async ({
                 <CardTitle className="text-xl text-[var(--color-brand-red)]">Zamów w 60 sekund</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Input placeholder="Imię i nazwisko" />
-                <Input placeholder="Numer telefonu" />
-                <Input placeholder="Adres email" />
+                <Input suppressHydrationWarning placeholder="Imię i nazwisko" />
+                <Input suppressHydrationWarning placeholder="Numer telefonu" />
+                <Input suppressHydrationWarning placeholder="Adres email" />
                 <Button className="w-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">ZAMAWIAM - DOSTAWA 48H</Button>
                 <div className="text-xs text-gray-600 flex items-center gap-2"><Shield className="h-4 w-4" />🔒 Bezpieczne zamówienie | 📋 Faktura VAT</div>
               </CardContent>
@@ -212,14 +278,104 @@ const SingleProductPage = async ({
           </div>
         </div>
 
+        {/* Specyfikacja techniczna – pełna szerokość */}
+        <div className="mt-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Specyfikacja techniczna</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-sm">
+            {/* Kluczowe parametry */}
+            <div className="p-3 rounded-lg border bg-white">
+              <div className="text-xs uppercase text-gray-500 mb-2">Kluczowe parametry</div>
+              <div className="space-y-2">
+                {product?.specifications?.widthCm ? (
+                  <div className="flex items-center gap-2">
+                    <Ruler className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                    <span className="text-gray-600">Szerokość robocza:</span>
+                    <span className="font-semibold ml-auto">{product.specifications.widthCm} cm</span>
+                  </div>
+                ) : null}
+                {product?.specifications?.pinDiameterMm ? (
+                  <div className="flex items-center gap-2">
+                    <Gauge className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                    <span className="text-gray-600">Średnica sworznia:</span>
+                    <span className="font-semibold ml-auto">{product.specifications.pinDiameterMm} mm</span>
+                  </div>
+                ) : null}
+                {product?.specifications?.volumeM3 ? (
+                  <div className="flex items-center gap-2">
+                    <Box className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                    <span className="text-gray-600">Pojemność:</span>
+                    <span className="font-semibold ml-auto">{product.specifications.volumeM3} m³</span>
+                  </div>
+                ) : null}
+                {(product as any)?.toothQty ? (
+                  <div className="flex items-center gap-2">
+                    <Hammer className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                    <span className="text-gray-600">Ilość zębów:</span>
+                    <span className="font-semibold ml-auto">{(product as any).toothQty}</span>
+                  </div>
+                ) : null}
+                {product?.specifications?.toothThickness ? (
+                  <div className="flex items-center gap-2">
+                    <Hammer className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                    <span className="text-gray-600">Grubość zęba:</span>
+                    <span className="font-semibold ml-auto">{product.specifications.toothThickness} mm</span>
+                  </div>
+                ) : null}
+                {(product as any)?.priceTier ? (
+                  <div className="flex items-center gap-2">
+                    <Tag className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                    <span className="text-gray-600">Zakres maszyn:</span>
+                    <span className="font-semibold ml-auto">{(product as any).priceTier}</span>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Kompatybilność i mocowania */}
+            <div className="p-3 rounded-lg border bg-white">
+              <div className="text-xs uppercase text-gray-500 mb-2">Kompatybilność i mocowania</div>
+              {product?.specifications?.quickCoupler ? (
+                <div className="flex items-center gap-2 mb-2">
+                  <Wrench className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                  <span className="text-gray-600">Szybkozłącze:</span>
+                  <span className="font-semibold ml-auto">{product.specifications.quickCoupler}</span>
+                </div>
+              ) : null}
+              {product?.specifications?.machineCompatibility?.length ? (
+                <div className="flex flex-wrap gap-1">
+                  {product.specifications.machineCompatibility.map((m: string, i: number) => (
+                    <span key={i} className="px-2 py-0.5 text-[11px] rounded-md border bg-gray-50 text-gray-800">{m}</span>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-xs text-gray-500">Brak danych o kompatybilności</div>
+              )}
+            </div>
+
+            {/* Cechy */}
+            <div className="p-3 rounded-lg border bg-white">
+              <div className="text-xs uppercase text-gray-500 mb-2">Cechy</div>
+              {product?.specifications?.features?.length ? (
+                <div className="flex flex-wrap gap-1">
+                  {product.specifications.features.map((f: string, i: number) => (
+                    <span key={i} className="px-2 py-0.5 text-[11px] rounded-md bg-gray-100 text-gray-800">{f}</span>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-xs text-gray-500">Brak dodatkowych cech</div>
+              )}
+            </div>
+          </div>
+        </div>
+
         {/* Sticky CTA mobile */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 border-t bg-white p-3 z-40">
           <div className="flex items-center gap-3">
             <div className="flex-1">
-              <PriceView price={product?.price as number | string | undefined} discount={product?.discount} priceOlx={product?.priceOlx as number | string | undefined} className="text-lg font-bold" />
+              <PriceView price={product?.price as number | string | undefined} discount={product?.discount} priceOlx={product?.priceOlx as number | string | undefined} phoneOrderOnly={Boolean((product as any)?.phoneOrderOnly)} className="text-lg font-bold" />
             </div>
             {isPhoneOnly ? (
-              <a href="tel:+48570037128" className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold">
+              <a href="tel:+48782851962" className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold">
                 <Phone className="h-4 w-4" /> Zadzwoń
               </a>
             ) : (
@@ -350,7 +506,7 @@ const SingleProductPage = async ({
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="q1">
                 <AccordionTrigger>Jak dobrać odpowiednią łyżkę do mojej maszyny?</AccordionTrigger>
-                <AccordionContent>Sprawdź wagę maszyny i rodzaj mocowania (np. MS01, MS03, CW05). W opisie produktu podajemy zgodność – jeśli masz wątpliwości, zadzwoń: +48 570 037 128.</AccordionContent>
+                <AccordionContent>Sprawdź wagę maszyny i rodzaj mocowania (np. MS01, MS03, CW05). W opisie produktu podajemy zgodność – jeśli masz wątpliwości, zadzwoń: <a href="tel:+48782851962" className="underline hover:no-underline">782-851-962</a>.</AccordionContent>
               </AccordionItem>
               <AccordionItem value="q2">
                 <AccordionTrigger>Ile trwa dostawa?</AccordionTrigger>

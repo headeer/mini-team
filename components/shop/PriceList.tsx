@@ -1,6 +1,4 @@
 import React from "react";
-import Title from "../Title";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 
 const priceArray = [
@@ -18,36 +16,36 @@ interface Props {
 const PriceList = ({ selectedPrice, setSelectedPrice }: Props) => {
   return (
     <div className="w-full bg-white p-5">
-      <Title className="text-base font-black">Cena</Title>
-      <RadioGroup className="mt-2 space-y-1" value={selectedPrice || ""}>
-        {priceArray?.map((price, index) => (
-          <div
-            key={index}
-            onClick={() => setSelectedPrice(price?.value)}
-            className="flex items-center space-x-2 hover:cursor-pointer"
+      <div className="flex items-center justify-between mb-2">
+        <Label className="text-sm font-semibold">Cena</Label>
+        {selectedPrice && (
+          <button
+            onClick={() => setSelectedPrice(null)}
+            className="text-xs font-medium underline underline-offset-2 hover:text-shop_dark_green"
           >
-            <RadioGroupItem
-              value={price?.value}
-              id={price?.value}
-              className="rounded-sm"
-            />
-            <Label
-              htmlFor={price.value}
-              className={`${selectedPrice === price?.value ? "font-semibold text-shop_dark_green" : "font-normal"}`}
+            Wyczyść
+          </button>
+        )}
+      </div>
+      <div className="grid grid-cols-1 gap-2">
+        {priceArray.map(({ title, value }) => {
+          const active = selectedPrice === value;
+          return (
+            <button
+              key={value}
+              type="button"
+              onClick={() => setSelectedPrice(value)}
+              className={`w-full text-left px-3 py-2 rounded-md border transition ${
+                active
+                  ? "bg-[var(--color-brand-orange)]/10 border-[var(--color-brand-orange)] text-gray-900"
+                  : "bg-white border-gray-200 hover:bg-gray-50"
+              }`}
             >
-              {price?.title}
-            </Label>
-          </div>
-        ))}
-      </RadioGroup>
-      {selectedPrice && (
-        <button
-          onClick={() => setSelectedPrice(null)}
-          className="text-sm font-medium mt-2 underline underline-offset-2 decoration-[1px] hover:text-shop_dark_green hoverEffect"
-        >
-          Wyczyść wybór
-        </button>
-      )}
+              {title}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };

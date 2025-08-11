@@ -96,7 +96,7 @@ const ObrobkaContactForm = () => {
                     id="phone" 
                     name="phone" 
                     required 
-                    placeholder="+48 570 037 128"
+                    placeholder="+48 782 851 962"
                     className="border-gray-300 focus:border-orange-500 focus:ring-orange-500"
                   />
                 </div>

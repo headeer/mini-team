@@ -25,10 +25,10 @@ const HomeHero = () => {
         <div className="flex flex-col gap-2 items-center">
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <Button asChild className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white px-7 py-4 text-base font-semibold rounded-lg shadow hover:shadow-md">
-              <a href="/obrobka-blach#wycena">Bezpłatna wycena</a>
+              <a href="#fit-check">Sprawdź dopasowanie</a>
             </Button>
             <Button asChild variant="outline" className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-gray-900 px-7 py-4 text-base font-semibold rounded-lg">
-              <a href="tel:+48570037128">Zadzwoń</a>
+              <a href="tel:+48782851962">Zadzwoń: 782-851-962</a>
             </Button>
           </div>
           <div className="text-sm text-white/80">lub</div>

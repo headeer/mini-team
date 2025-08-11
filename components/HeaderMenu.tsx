@@ -8,29 +8,38 @@ const HeaderMenu = () => {
   const pathname = usePathname();
 
   return (
-    <div className="hidden md:inline-flex w-1/3 items-center justify-center gap-7 text-sm capitalize font-semibold text-lightColor">
-      {headerData?.map((item) => (
-        <Link
-          key={item?.title}
-          href={item?.href}
-          className={`hover:text-shop_light_green hoverEffect relative group ${
-            pathname === item?.href && "text-shop_light_green"
-          }`}
-        >
-          {item?.title}
-          <span
-            className={`absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-shop_light_green group-hover:w-1/2 hoverEffect group-hover:left-0 ${
-              pathname === item?.href && "w-1/2"
+    <nav aria-label="Główne menu" className="hidden lg:flex items-center gap-1 text-sm font-semibold">
+      {/* Primary highlighted links */}
+      <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+        {headerData?.slice(0, 3).map((item) => (
+          <Link
+            key={item?.title}
+            href={item?.href}
+            className={`px-3 py-2 rounded-md transition ${
+              pathname === item?.href
+                ? "bg-white text-gray-900 shadow-sm"
+                : "text-gray-700 hover:text-gray-900 hover:bg-white"
             }`}
-          />
-          <span
-            className={`absolute -bottom-0.5 right-1/2 w-0 h-0.5 bg-shop_light_green group-hover:w-1/2 hoverEffect group-hover:right-0 ${
-              pathname === item?.href && "w-1/2"
+          >
+            {item?.title}
+          </Link>
+        ))}
+      </div>
+      {/* Secondary links */}
+      <div className="flex items-center gap-1 ml-1">
+        {headerData?.slice(3).map((item) => (
+          <Link
+            key={item?.title}
+            href={item?.href}
+            className={`px-3 py-2 rounded-md transition ${
+              pathname === item?.href ? "text-gray-900 bg-gray-50" : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             }`}
-          />
-        </Link>
-      ))}
-    </div>
+          >
+            {item?.title}
+          </Link>
+        ))}
+      </div>
+    </nav>
   );
 };
 
