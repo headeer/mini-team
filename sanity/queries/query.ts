@@ -3,12 +3,11 @@ import { defineQuery } from "next-sanity";
 const BRANDS_QUERY = defineQuery(`*[_type=='brand'] | order(name asc) `);
 
 const LATEST_BLOG_QUERY = defineQuery(
-  ` *[_type == 'blog' && isLatest == true]|order(name asc){
-      ...,
-      blogcategories[]->{
-      title
-    }
-    }`
+  `*[_type == 'blog'] | order(publishedAt desc)[0...4]{
+    ...,
+    blogcategories[]->{ title },
+    "slug": slug.current
+  }`
 );
 
 const DEAL_PRODUCTS = defineQuery(

@@ -388,7 +388,7 @@ const SingleProductPage = async ({
                 <Card key={p._id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <CardHeader className="p-0">
                     {(() => { const s = toSrc(p?.images?.[0]); return s ? (
-                      <img src={s} alt={p.name} className="w-full h-32 object-cover" />
+                      <Image src={s} alt={p.name} width={800} height={200} className="w-full h-32 object-cover" />
                     ) : (<div className="w-full h-32 bg-gray-100" />); })()}
                   </CardHeader>
                   <CardContent className="p-4">

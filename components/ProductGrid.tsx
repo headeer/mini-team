@@ -32,7 +32,7 @@ const ProductGrid = ({ limit = 8 }: ProductGridProps) => {
       }
     };
     fetchData();
-  }, [limit]);
+  }, [limit, query]);
 
   return (
     <Container className="flex flex-col lg:px-0 my-10">

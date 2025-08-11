@@ -1,4 +1,4 @@
-import React from "react";
+// no-op
 import { redirect } from "next/navigation";
 
 const CategoryPage = async ({

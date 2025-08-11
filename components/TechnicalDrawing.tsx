@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ChevronLeft, ChevronRight, Download, X, ZoomIn, ZoomOut, Maximize2, Minimize2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download, X, ZoomIn, ZoomOut, Minimize2 } from "lucide-react";
 import { getDrawingByName } from "@/images/rys_techniczne";
 
 interface TechnicalDrawingProps {
@@ -13,14 +13,6 @@ interface TechnicalDrawingProps {
 }
 
 export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
-  if (!files.length) {
-    return (
-      <div className="text-sm text-gray-600 p-4 border rounded-md bg-gray-50">
-        Brak zdefiniowanych rysunków technicznych dla tej kategorii.
-      </div>
-    );
-  }
-
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const [zoom, setZoom] = useState(1);
@@ -71,27 +63,33 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {items.map((it, i) => (
-          <button
-            key={it.file}
-            type="button"
-            onClick={() => openAt(i)}
-            className="border rounded-lg overflow-hidden bg-white text-left hover:shadow-md transition"
-          >
-            <div className="relative w-full h-64 bg-white">
-              <Image
-                src={it.src}
-                alt="Rysunek techniczny"
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-contain"
-              />
-            </div>
-            <div className="px-3 py-2 text-xs text-gray-600 truncate">{it.file}</div>
-          </button>
-        ))}
-      </div>
+      {!files.length ? (
+        <div className="text-sm text-gray-600 p-4 border rounded-md bg-gray-50">
+          Brak zdefiniowanych rysunków technicznych dla tej kategorii.
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {items.map((it, i) => (
+            <button
+              key={it.file}
+              type="button"
+              onClick={() => openAt(i)}
+              className="border rounded-lg overflow-hidden bg-white text-left hover:shadow-md transition"
+            >
+              <div className="relative w-full h-64 bg-white">
+                <Image
+                  src={it.src}
+                  alt="Rysunek techniczny"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-contain"
+                />
+              </div>
+              <div className="px-3 py-2 text-xs text-gray-600 truncate">{it.file}</div>
+            </button>
+          ))}
+        </div>
+      )}
 
       <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) setZoom(1); }}>
         <DialogContent className="max-w-[95vw] w-[95vw] h-[90vh] p-2">

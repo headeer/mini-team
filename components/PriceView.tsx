@@ -11,10 +11,7 @@ interface Props {
 }
 const PriceView = ({ price, discount, className, priceOlx, phoneOrderOnly }: Props) => {
   const sitePriceNum = typeof price === 'number' ? price : undefined;
-  const priceIsText = typeof price === 'string';
-  const isZero = sitePriceNum === 0;
   const olxIsNum = typeof priceOlx === 'number';
-  const olxIsText = typeof priceOlx === 'string';
 
   // Phone-order custom view
   if (phoneOrderOnly) {

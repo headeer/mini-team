@@ -3,14 +3,14 @@ import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { StarIcon } from "@sanity/icons";
-import { Flame } from "lucide-react";
+// import { StarIcon } from "@sanity/icons";
+// import { Flame } from "lucide-react";
 import PriceView from "./PriceView";
 import Title from "./Title";
 import ProductSideMenu from "./ProductSideMenu";
 import AddToCartButton from "./AddToCartButton";
 
-const ProductCard = ({ product, activeMachine }: { product: Product; activeMachine?: string }) => {
+const ProductCard = ({ product }: { product: Product }) => {
   type ProductWithVariant = Product & {
     slug?: string | { current?: string };
     categories?: Array<string | { title?: string } | null | undefined>;

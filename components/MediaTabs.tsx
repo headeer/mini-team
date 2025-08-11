@@ -10,7 +10,7 @@ interface MediaTabsProps {
   defaultTab?: "gallery" | "tech";
 }
 
-export default function MediaTabs({ slug, gallery, files, defaultTab = "gallery" }: MediaTabsProps) {
+export default function MediaTabs({ slug: _slug, gallery, files, defaultTab = "gallery" }: MediaTabsProps) {
   const [tab, setTab] = useState<"gallery" | "tech">(defaultTab);
   return (
     <div className="mt-4">
