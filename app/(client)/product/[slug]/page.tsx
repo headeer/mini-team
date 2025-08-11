@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { getProductBySlug } from "@/sanity/queries";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
+import Image from "next/image";
 import { Shield, StarIcon, Truck, Award, CheckCircle2, Phone, Factory, BadgeCheck, Package, Hammer, Ruler, Gauge, Box, Wrench, Tag, ShieldCheck } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { notFound } from "next/navigation";

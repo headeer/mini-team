@@ -1,0 +1,182 @@
+[
+    {
+      "_id": "author-mtt",
+      "_type": "author",
+      "name": "Zespół MTT"
+    },
+  
+    { "_id": "blogcategory-przewodnik", "_type": "blogcategory", "title": "Przewodnik", "slug": { "_type": "slug", "current": "przewodnik" } },
+    { "_id": "blogcategory-sprzet", "_type": "blogcategory", "title": "Sprzęt", "slug": { "_type": "slug", "current": "sprzet" } },
+    { "_id": "blogcategory-materialy", "_type": "blogcategory", "title": "Materiały", "slug": { "_type": "slug", "current": "materialy" } },
+    { "_id": "blogcategory-ekonomia", "_type": "blogcategory", "title": "Ekonomia pracy", "slug": { "_type": "slug", "current": "ekonomia" } },
+    { "_id": "blogcategory-zrywaki", "_type": "blogcategory", "title": "Zrywaki korzeni", "slug": { "_type": "slug", "current": "zrywaki-korzeni" } },
+    { "_id": "blogcategory-porady", "_type": "blogcategory", "title": "Porady", "slug": { "_type": "slug", "current": "porady" } },
+  
+    {
+      "_type": "blog",
+      "_id": "blog-znajdz-idealna-lyzke-dla-minikoparki",
+      "title": "Jak dobrać idealną łyżkę do minikoparki? Przewodnik operatora od MTT",
+      "slug": { "_type": "slug", "current": "jak-dobrac-idealna-lyzke-do-minikoparki" },
+      "author": { "_type": "reference", "_ref": "author-mtt" },
+      "blogcategories": [
+        { "_type": "reference", "_ref": "blogcategory-przewodnik" },
+        { "_type": "reference", "_ref": "blogcategory-sprzet" }
+      ],
+      "publishedAt": "2025-03-01T08:00:00Z",
+      "isLatest": true,
+      "body": [
+        {
+          "_type": "block", "style": "h2",
+          "markDefs": [], "children": [{ "_type": "span", "text": "Dlaczego dobór łyżki ma znaczenie?", "marks": [] }]
+        },
+        {
+          "_type": "block", "style": "normal", "markDefs": [],
+          "children": [
+            { "_type": "span", "text": "Źle dobrana łyżka to stracone godziny, większe zużycie paliwa i szybsze zużycie osprzętu. W MTT od lat pomagamy operatorom dobrać osprzęt, który po prostu robi robotę — bez nerwów i bez kompromisów.", "marks": [] }
+          ]
+        },
+        {
+          "_type": "block", "style": "h3", "markDefs": [],
+          "children": [{ "_type": "span", "text": "1) Waga maszyny i zakresy MTT", "marks": [] }]
+        },
+        {
+          "_type": "block", "style": "normal", "markDefs": [],
+          "children": [
+            { "_type": "span", "text": "Zacznij od masy własnej maszyny. Nasze łyżki oznaczamy zakresami (1–1.5t, 1.5–2.3t, 2.3–3t, 3–5t), abyś od razu trafił w odpowiedni segment. Lżejsza łyżka nie znaczy słabsza — klucz to materiał i geometria.", "marks": [] }
+          ]
+        },
+        {
+          "_type": "block", "style": "h3", "markDefs": [],
+          "children": [{ "_type": "span", "text": "2) Mocowanie i szybkozłącza", "marks": [] }]
+        },
+        {
+          "_type": "block", "style": "normal", "markDefs": [],
+          "children": [
+            { "_type": "span", "text": "Najczęstsze: MS01, MS03, S40, CW05, Q-Fit. W opisie produktów podajemy zgodność. Jeśli masz wątpliwości — wyślij zdjęcie uchwytu w naszym „Fit Check” i potwierdzimy zgodność w 24h.", "marks": [] }
+          ]
+        },
+        {
+          "_type": "block", "style": "h3", "markDefs": [],
+          "children": [{ "_type": "span", "text": "3) Materiał: Hardox HB500", "marks": [] }]
+        },
+        {
+          "_type": "block", "style": "normal", "markDefs": [],
+          "children": [
+            { "_type": "span", "text": "Stosujemy Hardox HB500 — żywotność nawet 3× dłuższa niż stal konstrukcyjna. Mniej postojów, mniej spawania, więcej pracy.", "marks": [] }
+          ]
+        },
+        {
+          "_type": "block", "style": "blockquote", "markDefs": [],
+          "children": [{ "_type": "span", "text": "„Pierwszy raz łyżka wytrzymała cały sezon bez napawania. To robi różnicę.” — Marek, operator CAT 301.8", "marks": [] }]
+        },
+        {
+          "_type": "block", "style": "h3", "markDefs": [],
+          "children": [{ "_type": "span", "text": "Checklista zakupu", "marks": [] }]
+        },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Waga maszyny i rodzaj mocowania", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Szerokość robocza i geometria", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Warianty: zęby / płaskowniki / lemiesz", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Potwierdzenie dopasowania przez Fit Check", "marks": [] }] },
+        {
+          "_type": "block", "style": "normal",
+          "markDefs": [{ "_key": "link1", "_type": "link", "href": "/#fit-check" }, { "_key": "link2", "_type": "link", "href": "/shop?category=lyzki-1-1-5t" }],
+          "children": [
+            { "_type": "span", "text": "Chcesz wiedzieć, co polecamy do Twojej maszyny? ", "marks": [] },
+            { "_type": "span", "text": "Sprawdź dopasowanie", "marks": ["link1"] },
+            { "_type": "span", "text": " lub ", "marks": [] },
+            { "_type": "span", "text": "zobacz łyżki 1–1.5t", "marks": ["link2"] }
+          ]
+        }
+      ]
+    },
+  
+    {
+      "_type": "blog",
+      "_id": "blog-hb500-w-praktyce-realne-oszczednosci",
+      "title": "Hardox HB500 w praktyce: realne oszczędności i dłuższa żywotność",
+      "slug": { "_type": "slug", "current": "hardox-hb500-w-praktyce" },
+      "author": { "_type": "reference", "_ref": "author-mtt" },
+      "blogcategories": [
+        { "_type": "reference", "_ref": "blogcategory-materialy" },
+        { "_type": "reference", "_ref": "blogcategory-ekonomia" }
+      ],
+      "publishedAt": "2025-03-05T08:00:00Z",
+      "isLatest": true,
+      "body": [
+        {
+          "_type": "block", "style": "normal", "markDefs": [],
+          "children": [
+            { "_type": "span", "text": "Jeśli liczysz całkowity koszt posiadania osprzętu (TCO), materiał ma kluczowe znaczenie. Hardox HB500 w naszych łyżkach realnie skraca przestoje i koszty serwisu.", "marks": [] }
+          ]
+        },
+        { "_type": "block", "style": "h3", "markDefs": [], "children": [{ "_type": "span", "text": "Test długowieczności na koparce 3t", "marks": [] }] },
+        {
+          "_type": "block", "style": "normal", "markDefs": [],
+          "children": [{ "_type": "span", "text": "Po 2400 h pracy łyżka HB500 zachowała geometrię i ostrość lemiesza, podczas gdy stal konstrukcyjna wymagała 2× napawania i wymiany krawędzi tnącej.", "marks": [] }]
+        },
+        { "_type": "block", "style": "h3", "markDefs": [], "children": [{ "_type": "span", "text": "Wynik: mniej przerw, więcej fakturowanych godzin", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "–35% czasu serwisu rocznie", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "+18% wykonanych zleceń przy tym samym parku maszyn", "marks": [] }] },
+        { "_type": "block", "style": "blockquote", "markDefs": [], "children": [{ "_type": "span", "text": "„Przestaliśmy napawać co miesiąc. Ekipa robi robotę, a nie czeka na spawacza.” — Dawid, brygadzista", "marks": [] }] },
+        { "_type": "block", "style": "h3", "markDefs": [], "children": [{ "_type": "span", "text": "Dlaczego HB500 wygrywa?", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Wyższa odporność na ścieranie = mniej ubytków", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Stabilna geometria pod obciążeniem", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Możliwość cieńszych elementów bez utraty wytrzymałości", "marks": [] }] },
+        {
+          "_type": "block", "style": "normal",
+          "markDefs": [{ "_key": "shop", "_type": "link", "href": "/shop" }],
+          "children": [
+            { "_type": "span", "text": "Zobacz naszą ofertę osprzętu z HB500 i skróć TCO: ", "marks": [] },
+            { "_type": "span", "text": "Przejdź do sklepu", "marks": ["shop"] }
+          ]
+        }
+      ]
+    },
+  
+    {
+      "_type": "blog",
+      "_id": "blog-zrywak-korzeni-czy-warto",
+      "title": "Zrywak korzeni: kiedy oszczędza czas, a kiedy lepiej wybrać inny osprzęt?",
+      "slug": { "_type": "slug", "current": "zrywak-korzeni-czy-warto" },
+      "author": { "_type": "reference", "_ref": "author-mtt" },
+      "blogcategories": [
+        { "_type": "reference", "_ref": "blogcategory-zrywaki" },
+        { "_type": "reference", "_ref": "blogcategory-porady" }
+      ],
+      "publishedAt": "2025-03-08T08:00:00Z",
+      "isLatest": true,
+      "body": [
+        {
+          "_type": "block", "style": "normal", "markDefs": [],
+          "children": [
+            { "_type": "span", "text": "Zrywak potrafi uratować dzień na inwestycji — gdy korzenie, kępy i kamienie zatrzymują postęp. Ale są sytuacje, gdy łyżka skarpowa lub kopiąca zrobi to szybciej i czyściej. Jak zdecydować?", "marks": [] }
+          ]
+        },
+        { "_type": "block", "style": "h3", "markDefs": [], "children": [{ "_type": "span", "text": "Kiedy zrywak wygrywa?", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Gęste korzenie i pnie do 25–30 cm", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Zmarznięta ziemia (późna jesień / zima)", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Usuwanie kamienia polnego i głazów", "marks": [] }] },
+        { "_type": "block", "style": "h3", "markDefs": [], "children": [{ "_type": "span", "text": "A kiedy nie?", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Gdy liczy się czysty wykop — lepsza łyżka kopiąca", "marks": [] }] },
+        { "_type": "block", "listItem": "bullet", "markDefs": [], "children": [{ "_type": "span", "text": "Formowanie skarp i profilowanie — łyżka skarpowa", "marks": [] }] },
+        {
+          "_type": "block", "style": "blockquote", "markDefs": [],
+          "children": [{ "_type": "span", "text": "„Na zamarzniętej glinie zrywak był bezkonkurencyjny, ale przy rowach melioracyjnych łyżka skarpowa była 2× szybsza.” — Paweł, kierownik robót", "marks": [] }]
+        },
+        { "_type": "block", "style": "h3", "markDefs": [], "children": [{ "_type": "span", "text": "Jak dobrać zrywak?", "marks": [] }] },
+        {
+          "_type": "block", "style": "normal", "markDefs": [],
+          "children": [
+            { "_type": "span", "text": "Dopasuj do masy maszyny (sprawdź nasze zakresy), zwróć uwagę na grubość zęba (20–40 mm), adapter (J200/J250) i możliwość wymiany nakładki. Nasze modele dostępne są również z opcjonalnym lemieszem tnącym.", "marks": [] }
+          ]
+        },
+        {
+          "_type": "block", "style": "normal",
+          "markDefs": [{ "_key": "fit", "_type": "link", "href": "/#fit-check" }],
+          "children": [
+            { "_type": "span", "text": "Sprawdź dostępne zrywaki MTT i potwierdź dopasowanie przez Fit Check — odpowiadamy w 24h.", "marks": [] }
+          ]
+        }
+      ]
+    }
+  ]

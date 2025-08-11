@@ -37,7 +37,7 @@ export default function CheckoutPage() {
     return base + toothCost * toothQty;
   };
 
-  const subtotal = useMemo(() => groupedItems.reduce((sum, it) => sum + computeUnitFullPrice(it.product) * it.quantity, 0), [groupedItems]);
+  const subtotal = useMemo(() => groupedItems.reduce((sum, it) => sum + computeUnitFullPrice(it.product) * it.quantity, 0), [groupedItems, computeUnitFullPrice]);
   const shipping = subtotal >= 1000 ? 0 : 39;
   const total = subtotal + shipping;
 
