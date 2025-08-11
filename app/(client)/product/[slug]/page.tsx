@@ -139,37 +139,32 @@ const SingleProductPage = async ({
                 ? ((product as any).categories as Array<{ title?: string } | null>).map((c) => c?.title || "").filter(Boolean)
                 : [];
               const catText = catTitles.join(" ").toLowerCase();
-              let hints: string[] = [];
-              if (/1-?2t|1[\._-]?2t|1-1\.5t|1\.5-2\.3t/.test(catText)) {
-                // for 1-1.5t group map to first set if explicitly matches 1-1.5; otherwise also covered by below rules
-              }
+              let files: string[] = [];
               if (/1-?2t/.test(catText)) {
-                // 1-2t buckets
-                hints = [
-                  "lyska_skarpowa",
-                  "lyska_skarpowa_2",
-                  "lyzka_1_5-2_3",
-                  "lyzka_1_5-2_3_2",
+                files = [
+                  "lyska_skarpowa.png",
+                  "lyska_skarpowa_2.png",
+                  "lyzka_1_5-2_3.png",
+                  "lyzka_1_5-2_3_2.png",
                 ];
               } else if (/1\.5-2\.3t|1,5-2,3t|1-?5\s*–?\s*2-?3t/.test(catText)) {
-                // 1.5-2.3t
-                hints = [
-                  "lyzka_hydr_1.5_2.3",
-                  "lyzka_hydr_2_1.5_2.3",
-                  "lyska_1.5_2.3",
-                  "lyska_1.5_2.3_2",
+                files = [
+                  "lyzka_hydr_1.5_2.3.png",
+                  "lyzka_hydr_2_1.5_2.3.png",
+                  "lyska_1.5_2.3.png",
+                  "lyska_1.5_2.3_2.png",
                 ];
               } else if (/2\.3-3t|2,3-3t/.test(catText)) {
-                // 2.3-3t
-                hints = [
-                  "lyzka_hydr_2.3_3.5",
-                  "lyzka_hydr_2.3_3",
+                files = [
+                  "lyzka_hydr_2.3_3.5.png",
+                  "lyzka_hydr_2.3_3.png",
                 ];
               }
               return (
                 <MediaTabs
                   slug={slug}
-                  hints={hints}
+                  files={files}
+                  defaultTab={files.length ? "tech" : "gallery"}
                   gallery={<ImageView images={product?.images} isStock={product?.stock} />}
                 />
               );

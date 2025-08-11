@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { Shield, BadgeCheck, Ruler, Tag, Gauge } from "lucide-react";
 
 type Prefs = {
   highContrast: boolean;
@@ -54,30 +55,88 @@ export default function AccessibilityPanel() {
       <button
         aria-label={open ? "Zamknij panel dostępności" : "Otwórz panel dostępności"}
         aria-expanded={open}
-        className="a11y-toggle"
+        className="a11y-toggle shadow-lg bg-gradient-to-br from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white"
         onClick={() => setOpen((v) => !v)}
       >
-        <span aria-hidden>♿</span>
+        <Shield className="w-4 h-4" aria-hidden />
       </button>
       {open && (
         <div role="dialog" aria-modal="false" aria-label="Ustawienia dostępności" className="a11y-sheet">
-          <div className="a11y-row">
-            <label><input type="checkbox" checked={prefs.highContrast} onChange={() => toggle("highContrast")} /> Wysoki kontrast</label>
+          <div className="mb-2 text-xs text-gray-600">Dopasuj widok do swoich potrzeb</div>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              role="switch"
+              aria-checked={prefs.highContrast}
+              onClick={() => toggle("highContrast")}
+              className={`flex items-center gap-2 p-2 rounded-md border text-left ${prefs.highContrast ? "bg-gray-900 text-white border-gray-800" : "bg-white hover:bg-gray-50"}`}
+            >
+              <Gauge className="w-4 h-4" />
+              <div>
+                <div className="text-xs font-semibold">Wysoki kontrast</div>
+                <div className="text-[10px] opacity-75">Czytelniejsze kolory</div>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              role="switch"
+              aria-checked={prefs.largerText}
+              onClick={() => toggle("largerText")}
+              className={`flex items-center gap-2 p-2 rounded-md border text-left ${prefs.largerText ? "bg-gray-900 text-white border-gray-800" : "bg-white hover:bg-gray-50"}`}
+            >
+              <Ruler className="w-4 h-4" />
+              <div>
+                <div className="text-xs font-semibold">Większy tekst</div>
+                <div className="text-[10px] opacity-75">Zwiększa rozmiar czcionki</div>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              role="switch"
+              aria-checked={prefs.underlineLinks}
+              onClick={() => toggle("underlineLinks")}
+              className={`flex items-center gap-2 p-2 rounded-md border text-left ${prefs.underlineLinks ? "bg-gray-900 text-white border-gray-800" : "bg-white hover:bg-gray-50"}`}
+            >
+              <Tag className="w-4 h-4" />
+              <div>
+                <div className="text-xs font-semibold">Podkreślaj linki</div>
+                <div className="text-[10px] opacity-75">Lepsza widoczność odnośników</div>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              role="switch"
+              aria-checked={prefs.reduceMotion}
+              onClick={() => toggle("reduceMotion")}
+              className={`flex items-center gap-2 p-2 rounded-md border text-left ${prefs.reduceMotion ? "bg-gray-900 text-white border-gray-800" : "bg-white hover:bg-gray-50"}`}
+            >
+              <Shield className="w-4 h-4" />
+              <div>
+                <div className="text-xs font-semibold">Ogranicz animacje</div>
+                <div className="text-[10px] opacity-75">Mniej ruchu na stronie</div>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              role="switch"
+              aria-checked={prefs.dyslexicFont}
+              onClick={() => toggle("dyslexicFont")}
+              className={`flex items-center gap-2 p-2 rounded-md border text-left col-span-2 ${prefs.dyslexicFont ? "bg-gray-900 text-white border-gray-800" : "bg-white hover:bg-gray-50"}`}
+            >
+              <BadgeCheck className="w-4 h-4" />
+              <div>
+                <div className="text-xs font-semibold">Czcionka przyjazna dysleksji</div>
+                <div className="text-[10px] opacity-75">Łatwiejsza czytelność tekstu</div>
+              </div>
+            </button>
           </div>
-          <div className="a11y-row">
-            <label><input type="checkbox" checked={prefs.largerText} onChange={() => toggle("largerText")} /> Większy tekst</label>
-          </div>
-          <div className="a11y-row">
-            <label><input type="checkbox" checked={prefs.underlineLinks} onChange={() => toggle("underlineLinks")} /> Podkreślaj linki</label>
-          </div>
-          <div className="a11y-row">
-            <label><input type="checkbox" checked={prefs.reduceMotion} onChange={() => toggle("reduceMotion")} /> Ogranicz animacje</label>
-          </div>
-          <div className="a11y-row">
-            <label><input type="checkbox" checked={prefs.dyslexicFont} onChange={() => toggle("dyslexicFont")} /> Czcionka przyjazna dysleksji</label>
-          </div>
-          <div className="a11y-row">
+          <div className="a11y-row mt-2 flex items-center gap-2">
             <button className="a11y-reset" onClick={() => setPrefs(defaultPrefs)} aria-label="Przywróć domyślne ustawienia">Przywróć domyślne</button>
+            <button className="ml-auto px-3 py-1.5 text-xs rounded-md border bg-white hover:bg-gray-50" onClick={() => setOpen(false)}>Zamknij</button>
           </div>
         </div>
       )}

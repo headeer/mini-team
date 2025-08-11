@@ -6,11 +6,12 @@ import TechnicalDrawing from "./TechnicalDrawing";
 interface MediaTabsProps {
   slug: string;
   gallery: React.ReactNode;
-  hints?: string[];
+  files?: string[]; // explicit file list under /images/rys_techniczne
+  defaultTab?: "gallery" | "tech";
 }
 
-export default function MediaTabs({ slug, gallery, hints }: MediaTabsProps) {
-  const [tab, setTab] = useState<"gallery" | "tech">("gallery");
+export default function MediaTabs({ slug, gallery, files, defaultTab = "gallery" }: MediaTabsProps) {
+  const [tab, setTab] = useState<"gallery" | "tech">(defaultTab);
   return (
     <div className="mt-4">
       <div className="flex items-center gap-2 border-b">
@@ -31,7 +32,7 @@ export default function MediaTabs({ slug, gallery, hints }: MediaTabsProps) {
       </div>
       <div className="pt-4">
         {tab === "gallery" ? gallery : (
-          <TechnicalDrawing slug={slug} hints={hints} />
+          <TechnicalDrawing files={files || []} />
         )}
       </div>
     </div>
