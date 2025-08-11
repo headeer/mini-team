@@ -2,12 +2,12 @@ import React from "react";
 import Title from "./Title";
 import { Category } from "@/sanity.types";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import { categoryIconFor } from "./CustomIcons";
+// import { urlFor } from "@/sanity/lib/image";
+// import { categoryIconFor } from "./CustomIcons";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
+// Removed carousel for a denser grid layout
+import excavatorIcon from "@/images/excavator.svg";
 const HomeCategories = ({ categories }: { categories: Category[] }) => {
   const pluralize = (n?: number) => {
     if (!n || n <= 0) return null;
@@ -19,67 +19,44 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
   };
 
   return (
-    <section className="my-8 md:my-12">
-      <div className="flex items-center justify-between mb-4">
-        <Title className="!mb-0">Popularne kategorie</Title>
-        <Link href="/shop" className="text-sm text-[var(--color-brand-orange)] hover:underline underline-offset-2">Zobacz wszystkie</Link>
+    <section className="my-6 md:my-8">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <p className="uppercase tracking-widest text-[var(--color-brand-orange)] text-xs font-semibold mb-1">Hardox HB500</p>
+          <Title className="!mb-0 text-2xl md:text-3xl">Popularne kategorie</Title>
+        </div>
+        <Link href="/shop" className="text-sm font-semibold text-shop_dark_green hover:underline underline-offset-4">Zobacz wszystkie</Link>
       </div>
-      <Carousel opts={{ align: "start" }} className="w-full">
-        <CarouselContent>
-          {categories?.slice(0, 12).map((category) => {
-            const Icon = categoryIconFor(category?.title);
-            const countText = pluralize(category?.productCount as number);
-            return (
-              <CarouselItem key={category?._id} className="basis-3/4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                <Link href={`/category/${category?.slug?.current}`} className="group block">
-                  <div className="relative h-44 md:h-56 rounded-2xl overflow-hidden border bg-white hover:shadow-lg transition">
-                    {category?.image ? (
-                      <Image
-                        src={urlFor(category?.image).url()}
-                        alt={category?.title || "Kategoria"}
-                        fill
-                        sizes="(max-width:768px) 70vw, (max-width:1200px) 33vw, 25vw"
-                        className="object-cover group-hover:scale-[1.03] transition-transform"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center bg-gray-50">
-                        <Icon className="w-10 h-10 text-[var(--color-brand-orange)]" />
+      {(() => {
+        const withProducts = (categories || []).filter((c) => Number((c as any)?.productCount) > 0).slice(0, 12);
+        return (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+            {withProducts.map((category) => {
+              const countText = pluralize((category as any)?.productCount as number);
+              return (
+                <Link key={category?._id} href={`/category/${category?.slug?.current}`} className="group block">
+                  <div className="rounded-2xl border bg-white hover:shadow-lg hover:border-[var(--color-brand-orange)]/30 transition p-3 flex items-center justify-between">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="flex items-center justify-center h-10 w-10 rounded-xl bg-[var(--color-brand-orange)]/10">
+                        <Image src={excavatorIcon.src} alt="Ikona koparki" width={22} height={22} />
                       </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
-                    <div className="absolute top-3 left-3 flex items-center gap-2">
-                      <div className="bg-white/85 backdrop-blur px-2 py-1 rounded-md text-[11px] font-medium text-gray-900 inline-flex items-center gap-1">
-                        <Icon className="w-3.5 h-3.5 text-[var(--color-brand-orange)]" />
-                        <span className="line-clamp-1">{category?.title}</span>
-                      </div>
-                    </div>
-                    <div className="absolute top-3 right-3">
-                      {countText ? (
-                        <span className="bg-white/85 backdrop-blur px-2 py-1 rounded-md text-[11px] font-medium text-gray-900">{countText}</span>
-                      ) : null}
-                    </div>
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                      <div className="text-white drop-shadow-sm">
-                        <div className="font-semibold text-base line-clamp-1">{category?.title}</div>
+                      <div className="min-w-0">
+                        <div className="font-semibold text-sm line-clamp-1 group-hover:text-[var(--color-brand-orange)] transition-colors">{category?.title}</div>
                         {countText ? (
-                          <div className="text-white/80 text-xs">{countText}</div>
-                        ) : (
-                          <div className="text-white/80 text-xs">Sprawdź produkty</div>
-                        )}
+                          <div className="text-gray-600 text-[11px]">{countText}</div>
+                        ) : null}
                       </div>
-                      <span className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-white/90 text-gray-900 group-hover:bg-white">
-                        Przejdź <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
                     </div>
+                    <span className="inline-flex items-center justify-center size-7 rounded-full bg-gray-100 text-gray-900 group-hover:bg-[var(--color-brand-orange)] group-hover:text-white transition-colors">
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
                   </div>
                 </Link>
-              </CarouselItem>
-            );
-          })}
-        </CarouselContent>
-        <CarouselPrevious className="-left-3" />
-        <CarouselNext className="-right-3" />
-      </Carousel>
+              );
+            })}
+          </div>
+        );
+      })()}
     </section>
   );
 };

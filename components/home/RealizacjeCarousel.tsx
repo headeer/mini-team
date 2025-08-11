@@ -1,18 +1,22 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import imgA from "@/images/main/industrial-backhoe-excavator-loader-2024-09-12-10-51-04-utc.webp";
+import imgB from "@/images/main/mini-excavator-digging-preparing-ground-under-home-2024-10-31-04-20-43-utc.webp";
+import imgC from "@/images/main/excavator-bulldozer-repair-work-on-the-road-norw-2025-03-10-05-20-48-utc.webp";
 
 const items = [
   {
     title: "Budowa drogi lokalnej – łyżka skarpowa 120 cm",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F1da19f26bd614858b393d192aecff340%2F9c6084cb6ae549c4946df0af676d89d7?format=webp&width=800",
+    image: imgA.src,
   },
   {
     title: "Prace rolnicze – szybkozłącze MS03 montaż w 5 min",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F1da19f26bd614858b393d192aecff340%2F28e45546454a456fb2c0d4a2ff02c810?format=webp&width=800",
+    image: imgB.src,
   },
   {
     title: "Przesiewanie gruzu – grabie 140 cm",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F1da19f26bd614858b393d192aecff340%2Ff4392396593447b2b34120f6ee55308b?format=webp&width=800",
+    image: imgC.src,
   },
 ];
 
@@ -24,7 +28,7 @@ const RealizacjeCarousel = () => {
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((it) => (
             <Card key={it.title}>
-              <img src={it.image} alt={it.title} className="w-full h-48 object-cover" />
+              <Image src={it.image} alt={it.title} width={1200} height={600} className="w-full h-48 object-cover" />
               <CardContent className="p-4">
                 <p className="text-sm text-gray-800">{it.title}</p>
               </CardContent>

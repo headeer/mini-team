@@ -6,6 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Play, MapPin, Quote, User } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import imgA from "@/images/main/close-up-of-excavator-at-construction-site-backho-2025-01-29-04-41-18-utc.webp";
+import imgB from "@/images/main/excavator-2025-03-15-06-31-29-utc.webp";
+import imgC from "@/images/main/excavator-2025-04-02-09-43-54-utc.webp";
+import imgD from "@/images/main/industrial-backhoe-excavator-loader-2024-09-12-10-51-04-utc.webp";
+import imgE from "@/images/main/yellow-earth-mover-at-a-construction-site-2025-01-07-23-59-23-utc.webp";
+import imgF from "@/images/main/repairman-fixing-excavator-2024-10-18-06-55-12-utc.webp";
 
 type Project = {
   title: string;
@@ -21,7 +28,7 @@ const projects: Project[] = [
   {
     title: "Korytowanie pod zjazd – łyżka skarpowa 120 cm",
     location: "Wrocław",
-    image: "/images/main/yellow-earth-mover-at-a-construction-site-2025-01-07-23-59-23-utc.jpg",
+    image: imgA.src,
     videoUrl: "https://www.youtube-nocookie.com/embed/bm1oOOgKh7c?autoplay=1&mute=1&controls=1&rel=0",
     operator: { name: "Marek", role: "Operator minikoparki" },
     quote: "Wybrałem skarpówkę HB500 – równa krawędź i zero odkształceń po całym dniu.",
@@ -30,7 +37,7 @@ const projects: Project[] = [
   {
     title: "Wykop pod przyłącze – łyżka 30 cm z zębami",
     location: "Poznań",
-    image: "/images/main/repairman-fixing-excavator-2024-10-18-06-55-12-utc.jpg",
+    image: imgB.src,
     operator: { name: "Daniel", role: "Wykonawca przyłączy" },
     quote: "Zęby trzymają, a materiał się nie klinuje. Robota idzie szybciej.",
     tags: ["Łyżka kopiąca 30 cm", "MS03"],
@@ -38,7 +45,7 @@ const projects: Project[] = [
   {
     title: "Profilowanie skarp – łyżka skandynawska",
     location: "Katowice",
-    image: "/images/main/excavator-digging-into-the-ground-with-its-large-b-2025-02-09-20-08-19-utc.jpg",
+    image: imgC.src,
     operator: { name: "Sławek", role: "Brygadzista" },
     quote: "Większa pojemność to mniej przebiegów i oszczędność czasu.",
     tags: ["Łyżka skandynawska", "S40"],
@@ -46,7 +53,7 @@ const projects: Project[] = [
   {
     title: "Porządkowanie terenu – grabie 140 cm",
     location: "Łódź",
-    image: "/images/main/closeup-of-a-backhoe-with-dirt-against-sky-2024-12-02-05-49-43-utc.jpg",
+    image: imgD.src,
     operator: { name: "Tomek" },
     quote: "Twarde zęby + szerokość 140 cm = szybkie czesanie bez zatorów.",
     tags: ["Grabie 140 cm", "Hardox"],
@@ -54,13 +61,13 @@ const projects: Project[] = [
   {
     title: "Zagęszczanie podsypki – łyżka 60 cm",
     location: "Gdańsk",
-    image: "/images/main/yellow-earth-mover-at-a-construction-site-2025-01-07-23-59-23-utc.jpg",
+    image: imgE.src,
     tags: ["Łyżka 60 cm", "JCB 8018"],
   },
   {
     title: "Prace brukarskie – szybkozłącze MS03",
     location: "Opole",
-    image: "/images/main/repairman-fixing-excavator-2024-10-18-06-55-12-utc.jpg",
+    image: imgF.src,
     tags: ["Szybkozłącze MS03", "HB500"],
   },
 ];
@@ -77,7 +84,7 @@ const ProjectsInAction = () => {
           {projects.map((p, idx) => (
             <Card key={`${p.title}-${idx}`} className="group overflow-hidden border-gray-200 hover:shadow-lg transition">
               <div className="relative">
-                <img src={p.image} alt={p.title} className="w-full h-48 object-cover" />
+                <Image src={p.image} alt={p.title} width={1200} height={600} className="w-full h-48 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80" />
                 {p.videoUrl && (
                   <button

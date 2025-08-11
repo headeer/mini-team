@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.miniteamproject.pl",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.builder.io",
+      },
     ],
   },
   typescript: {

@@ -149,10 +149,18 @@ const AIWidgetStub = () => {
                   <label className="text-sm font-medium">Wiadomość</label>
                   <Textarea name="message" rows={3} placeholder="Opisz czego potrzebujesz" />
                 </div>
-                <div className="flex items-start gap-2">
-                  <input id="rodo-fit" name="rodo" type="checkbox" required className="mt-1" />
-                  <label htmlFor="rodo-fit" className="text-xs text-gray-600">Wyrażam zgodę na przetwarzanie danych w celu potwierdzenia kompatybilności.</label>
-                </div>
+                <label htmlFor="rodo-fit" className="flex items-start gap-2 cursor-pointer select-none">
+                  <span className="relative inline-block" style={{ width: 24, height: 24 }}>
+                    <input id="rodo-fit" name="rodo" type="checkbox" required className="absolute opacity-0 h-0 w-0" />
+                    <span className="inline-block h-6 w-6 rounded-[8px] overflow-hidden shadow-[0_0_0_2px_#fff_inset] bg-white transition-[transform] [box-shadow:0_0_0_2px_#e5e7eb_inset] rodo-check" aria-hidden>
+                      <span className="absolute -top-[52px] -left-[52px] h-[60px] w-[60px] rotate-45 bg-[#fff] transition-all duration-300 rodo-transition" />
+                    </span>
+                  </span>
+                  <span className="text-xs text-gray-600">Wyrażam zgodę na przetwarzanie danych w celu potwierdzenia kompatybilności.</span>
+                </label>
+                <style jsx>{`
+                  #rodo-fit:checked + .rodo-check .rodo-transition { left: -10px; top: -10px; }
+                `}</style>
                 <div className="flex flex-col sm:flex-row gap-2 sm:justify-end">
                   <Button type="button" asChild variant="outline" className="border-gray-300">
                     <a href="tel:+48782851962"><Phone className="h-4 w-4 mr-2" /> 782-851-962</a>

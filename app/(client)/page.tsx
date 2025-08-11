@@ -29,8 +29,8 @@ const Home = async () => {
         <title>Łyżki Hardox HB500 – Polska produkcja | Dostawa 48 h</title>
         <meta name="description" content="Polskie łyżki Hardox HB500 – 3× dłuższa żywotność. Kompatybilne mocowania, 2 lata gwarancji, dostawa 48 h." />
       </Head>
+      <HomeHero />
       <Container>
-        <HomeHero />
         <AppSection>
           <div id="products" className="mt-4 scroll-mt-28 sm:scroll-mt-32">
             {/* Use curated featured block with local images for strong visual consistency */}

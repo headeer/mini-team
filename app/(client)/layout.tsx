@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     type: "website",
     title: "MTT Osprzęt do koparek – Łyżki, zrywaki, osprzęt",
     description: "Osprzęt do koparek: łyżki, zrywaki, szybkozłącza. Hardox HB500, dostawa 48h, polska produkcja.",
-    images: [{ url: "/images/main/yellow-earth-mover-at-a-construction-site-2025-01-07-23-59-23-utc.jpg" }],
+    images: [{ url: "/images/main/excavator-2025-03-15-06-31-29-utc.webp" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "MTT Osprzęt do koparek",
     description: "Osprzęt do koparek: łyżki, zrywak, szybkozłącza.",
-    images: ["/images/main/yellow-earth-mover-at-a-construction-site-2025-01-07-23-59-23-utc.jpg"],
+    images: ["/images/main/excavator-2025-03-15-06-31-29-utc.webp"],
   },
   icons: {
     icon: "/favicon.ico",

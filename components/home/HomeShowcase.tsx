@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Use public paths to avoid bundling very large assets
-const imgA = "/images/main/closeup-of-a-backhoe-with-dirt-against-sky-2024-12-02-05-49-43-utc.jpg" as const;
-const imgB = "/images/main/excavator-digging-into-the-ground-with-its-large-b-2025-02-09-20-08-19-utc.jpg" as const;
-const imgC = "/images/main/repairman-fixing-excavator-2024-10-18-06-55-12-utc.jpg" as const;
-const imgD = "/images/main/yellow-earth-mover-at-a-construction-site-2025-01-07-23-59-23-utc.jpg" as const;
+import imgA from "@/images/main/close-up-of-excavator-at-construction-site-backho-2025-01-29-04-41-18-utc.webp";
+import imgB from "@/images/main/excavator-2025-03-15-06-31-29-utc.webp";
+import imgC from "@/images/main/excavator-2025-04-02-09-43-54-utc.webp";
+import imgD from "@/images/main/industrial-backhoe-excavator-loader-2024-09-12-10-51-04-utc.webp";
 
 const tiles = [
   {

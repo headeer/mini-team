@@ -44,18 +44,23 @@ const FavoriteButton = ({
           </span>
         </Link>
       ) : (
-        <button
-          onClick={handleFavorite}
-          className="group relative hover:text-shop_light_green hoverEffect border border-shop_light_green/80 hover:border-shop_light_green p-1.5 rounded-sm"
-        >
-          {existingProduct ? (
-            <Heart
-              fill="#3b9c3c"
-              className="text-shop_light_green/80 group-hover:text-shop_light_green hoverEffect mt-.5 w-5 h-5"
-            />
-          ) : (
-            <Heart className="text-shop_light_green/80 group-hover:text-shop_light_green hoverEffect mt-.5 w-5 h-5" />
-          )}
+        <button onClick={handleFavorite} aria-label="Dodaj do ulubionych" className="group relative">
+          <span className="container inline-block cursor-pointer transition-transform duration-100 group-hover:scale-110">
+            <input type="checkbox" checked={Boolean(existingProduct)} readOnly className="absolute opacity-0 h-0 w-0" />
+            <span className="checkmark inline-flex items-center justify-center align-middle" aria-hidden>
+              <svg viewBox="0 0 256 256" className="h-6 w-6">
+                <rect fill="none" height={256} width={256} />
+                <path d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z" strokeWidth="20px" stroke="#3b9c3c" fill="none" />
+              </svg>
+            </span>
+          </span>
+          <style jsx>{`
+            .container input:checked ~ .checkmark path { fill: #FF5353; stroke-width: 0; }
+            .checkmark { height: 2em; width: 2em; transition: 100ms; animation: dislike_effect 400ms ease; display: inline-block; }
+            .container input:checked ~ .checkmark { animation: like_effect 400ms ease; }
+            @keyframes like_effect { 0% { transform: scale(0); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+            @keyframes dislike_effect { 0% { transform: scale(0); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+          `}</style>
         </button>
       )}
     </>

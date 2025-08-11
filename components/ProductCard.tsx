@@ -38,10 +38,23 @@ const ProductCard = ({ product }: { product: Product }) => {
   const derivedPhoneOrderOnly = Boolean((product as any)?.phoneOrderOnly) || typeof ((product as any)?.price) === "string" || ((product as any)?.basePrice === 0 && isRipper);
 
   return (
-    <div className="text-sm border rounded-xl border-gray-200 group bg-white overflow-hidden shadow-sm hover:shadow-xl hover:border-gray-300 transition flex flex-col h-full">
-      <div className="relative group bg-white">
+    <div className="relative text-sm border rounded-2xl border-gray-200 group bg-white overflow-hidden shadow-sm hover:shadow-2xl hover:border-[var(--color-brand-orange)]/30 transition-all duration-500 ease-out flex flex-col h-full">
+      {/* Shine sweep */}
+      <div className="pointer-events-none absolute inset-0 z-[1] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms] ease-out" />
+      </div>
+      {/* Subtle glow */}
+      <div
+        className="pointer-events-none absolute -inset-2 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 0%, rgba(255,115,0,0.15) 0%, rgba(255,115,0,0) 65%)",
+        }}
+      />
+
+      <div className="relative z-10 bg-white">
         <Link href={slugValue ? `/product/${slugValue}` : "#"}>
-          <div className="relative aspect-[4/3] bg-gradient-to-br from-white to-gray-50">
+          <div className="relative aspect-[4/3] bg-gradient-to-br from-white to-gray-50 rounded-xl overflow-hidden">
             {(() => {
               const toSrc = (img: any): string | null => {
                 if (!img) return null;
@@ -60,7 +73,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                   fill
                   sizes="(max-width:768px) 50vw, (max-width:1200px) 25vw, 300px"
                   priority={false}
-                   className={`object-contain transition-transform duration-500 ${product?.stock !== 0 ? "group-hover:scale-[1.03]" : "opacity-50"}`}
+                  className={`object-contain transition-transform duration-500 ${product?.stock !== 0 ? "group-hover:scale-[1.04] group-hover:translate-y-0.5" : "opacity-50"}`}
                 />
               ) : (
                 <div className="w-full h-full bg-gray-100" />
@@ -70,10 +83,14 @@ const ProductCard = ({ product }: { product: Product }) => {
         </Link>
         <ProductSideMenu product={product} />
         {product?.status === "sale" && (
-          <span className="absolute top-2 left-2 z-10 text-[10px] px-2 py-0.5 rounded-full bg-red-500 text-white">Promocja</span>
+          <span className="absolute top-2 left-2 z-20 text-[10px] px-2 py-0.5 rounded-full bg-red-500 text-white shadow">Promocja</span>
         )}
+        {/* Inspired micro-badge */}
+        <span className="absolute top-2 right-2 z-20 bg-emerald-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full transform scale-90 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100">
+          HB500
+        </span>
       </div>
-      <div className="p-4 flex flex-col gap-2 flex-1">
+      <div className="p-4 flex flex-col gap-2 flex-1 relative z-10">
         {isRipper ? (
           <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-fit">Zrywak korzeni</span>
         ) : null}
@@ -83,7 +100,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           </p>
         ) : null}
         <Link href={slugValue ? `/product/${slugValue}` : "#"} className="hover:underline underline-offset-2">
-          <Title className="text-[15px] line-clamp-2 min-h-[40px]">{product?.name}</Title>
+          <Title className="text-[15px] line-clamp-2 min-h-[40px] transition-colors duration-300 group-hover:text-[var(--color-brand-orange)]">{product?.name}</Title>
         </Link>
         {product?.description && (
           <p className="text-xs text-gray-600 line-clamp-2">{String(product.description)}</p>

@@ -3,15 +3,20 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Quote } from "lucide-react";
+import Image from "next/image";
+import brandBg from "@/images/main/close-up-of-excavator-at-construction-site-backho-2025-01-29-04-41-18-utc.webp";
 
 const BrandStory = () => {
   return (
     <section className="relative overflow-hidden rounded-2xl">
       <div className="absolute inset-0">
-        <img
-          src="/images/main/closeup-of-a-backhoe-with-dirt-against-sky-2024-12-02-05-49-43-utc.jpg"
+        <Image
+          src={brandBg}
           alt="Nasze osprzęty w pracy"
-          className="w-full h-full object-cover"
+          fill
+          sizes="(max-width:768px) 100vw, (max-width:1200px) 100vw, 100vw"
+          priority
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/50" />
       </div>

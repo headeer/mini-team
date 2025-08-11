@@ -2,7 +2,7 @@ import { Category } from "@/sanity.types";
 import React, { useMemo, useState } from "react";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
-import { Input } from "../ui/input";
+import FancySearchInput from "../ui/FancySearchInput";
 
 interface Props {
   categories: Category[];
@@ -20,11 +20,12 @@ const CategoryList = ({ categories, selectedCategory, setSelectedCategory }: Pro
 
   return (
     <div className="w-full bg-white">
-      <Input
+      <FancySearchInput
         placeholder="Szukaj kategorii"
         value={filter}
-        onChange={(e) => setFilter(e.target.value)}
+        onChange={(v) => setFilter(v)}
         className="mb-2"
+        onReset={() => setFilter("")}
       />
       <RadioGroup value={selectedCategory || ""} className="space-y-1">
         {filtered?.map((category) => {

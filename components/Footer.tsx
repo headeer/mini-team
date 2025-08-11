@@ -53,10 +53,10 @@ const Footer = () => {
           <div className="space-y-4">
             <SubTitle>Dane firmy</SubTitle>
             <SubText>
-              MiniTeam Project Sp. z o.o.<br/>Cieszków, Polska<br/>NIP: 000-000-00-00
+              MiniTeamProject Teodorczyk Piotr<br/>Ujazd 11, 56-330 Ujazd, Dolnośląskie<br/>NIP: 9161401364
             </SubText>
             <SubText>
-              E-mail: <a href="mailto:kontakt@miniteamproject.pl" className="hover:underline">kontakt@miniteamproject.pl</a><br/>Tel.: <a href="tel:+48782851962" className="hover:underline">782-851-962</a>
+              E-mail: <a href="mailto:teodorczykpt@gmail.com" className="hover:underline">teodorczykpt@gmail.com</a><br/>Tel.: <a href="tel:+48570037128" className="hover:underline">570-037-128</a>
             </SubText>
           </div>
         </div>
