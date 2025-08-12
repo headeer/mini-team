@@ -39,6 +39,7 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
             <Link
               href={item?.href}
               key={item?.title}
+              onClick={onClose}
               className={`hover:text-shop_light_green hoverEffect ${
                 pathname === item?.href && "text-white"
               }`}
@@ -48,6 +49,16 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
           ))}
         </div>
         <SocialMedia />
+        {/* Mobile quick tools */}
+        <div className="mt-auto space-y-2 md:hidden">
+          <div className="text-xs text-white/60">Szybkie narzędzia</div>
+          <div className="grid grid-cols-2 gap-2">
+            <a href="#a11y" onClick={onClose} className="px-3 py-2 rounded-md border border-white/20 bg-white/10 hover:bg-white/15">Dostępność</a>
+            <a href="#chat" onClick={onClose} className="px-3 py-2 rounded-md border border-white/20 bg-white/10 hover:bg-white/15">Chat</a>
+            <a href="#fit-check" onClick={onClose} className="px-3 py-2 rounded-md border border-white/20 bg-white/10 hover:bg-white/15">Wyślij zdjęcie</a>
+            <a href="#machine-finder" onClick={onClose} className="px-3 py-2 rounded-md border border-white/20 bg-white/10 hover:bg-white/15">Dobierz maszynę</a>
+          </div>
+        </div>
       </div>
     </div>
   );

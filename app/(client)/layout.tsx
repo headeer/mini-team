@@ -65,18 +65,37 @@ export default function RootLayout({
         <main id="content" className="flex-1">{children}</main>
         <Footer />
         <FloatingMachineSelector />
-        {/* Tawk.to chat */}
+        {/* Tawk.to chat - do not auto-open on mobile; push away from floating buttons; open via #chat */}
         <Script id="tawk-chat" strategy="afterInteractive">
           {`
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/6899b3aa3df3eb1928b7d199/1j2c6bkn1';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-})();
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+              s1.async=true;
+              s1.src='https://embed.tawk.to/6899b3aa3df3eb1928b7d199/1j2c6bkn1';
+              s1.charset='UTF-8';
+              s1.setAttribute('crossorigin','*');
+              s0.parentNode.insertBefore(s1,s0);
+            })();
+            Tawk_API = Tawk_API || {};
+            Tawk_API.onLoad = function(){
+              try {
+                // move chat a bit up to not cover floating camera/machine selector
+                Tawk_API.setAttributes({ position: 'br', bottom: 24, right: 24 }, function(){});
+                // prevent proactive/auto-open on small screens
+                if (window.matchMedia('(max-width: 768px)').matches) {
+                  Tawk_API.minimize();
+                }
+                // Open chat when #chat present or clicked
+                function openChat() { try { Tawk_API.maximize(); } catch(e){} }
+                if (window.location.hash === '#chat') {
+                  setTimeout(openChat, 200);
+                }
+                window.addEventListener('hashchange', function(){
+                  if (window.location.hash === '#chat') setTimeout(openChat, 200);
+                });
+              } catch(e){}
+            };
           `}
         </Script>
       </div>

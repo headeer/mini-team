@@ -23,6 +23,9 @@ export default function AccessibilityPanel() {
   const [prefs, setPrefs] = useState<Prefs>(defaultPrefs);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash === "#a11y") {
+      setOpen(true);
+    }
     try {
       const stored = localStorage.getItem("a11y-prefs");
       if (stored) setPrefs(JSON.parse(stored));

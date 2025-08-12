@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import NoProductAvailable from "./NoProductAvailable";
 import ProductCard from "./ProductCard";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 interface Props {
   categories: Category[];
@@ -167,8 +168,61 @@ const Shop = ({ categories }: Props) => {
           ))}
         </div>
         <Separator className="mb-4" />
-          <div className="flex flex-col md:flex-row gap-5 border-t border-t-shop_dark_green/50">
-          <div className="md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-y-auto md:min-w-72 pb-3 md:border-r border-r-shop_btn_dark_green/50 nice-scrollbar space-y-3">
+
+        {/* Mobile: collapsible filters (closed by default) */}
+        <div className="md:hidden mb-4">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="filters" className="border rounded-md bg-white">
+              <AccordionTrigger className="px-3">
+                <div className="flex items-center gap-2">
+                  <Filter className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                  <span className="font-semibold text-gray-900">Filtry produktów</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-3">
+                <div className="rounded-md border bg-white shadow-sm overflow-hidden">
+                  <div className="p-3">
+                    <CategoryList
+                      categories={categories}
+                      selectedCategory={selectedCategory}
+                      setSelectedCategory={setSelectedCategory}
+                    />
+                  </div>
+                </div>
+                <div className="rounded-md border bg-white shadow-sm overflow-hidden mt-3">
+                  <div className="p-3">
+                    <PriceList
+                      setSelectedPrice={setSelectedPrice}
+                      selectedPrice={selectedPrice}
+                    />
+                  </div>
+                </div>
+                <div className="flex gap-2 mt-3">
+                  <button
+                    onClick={() => fetchProducts()}
+                    className="px-3 py-1.5 rounded-md bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-medium w-full"
+                  >
+                    Zastosuj
+                  </button>
+                  {(selectedCategory !== null || selectedPrice !== null) && (
+                    <button
+                      onClick={() => {
+                        setSelectedCategory(null);
+                        setSelectedPrice(null);
+                      }}
+                      className="px-3 py-1.5 rounded-md border text-sm font-medium hover:bg-gray-50 w-full"
+                    >
+                      Wyczyść
+                    </button>
+                  )}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-5 border-t border-t-shop_dark_green/50">
+          <div className="hidden md:block md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-y-auto md:min-w-72 pb-3 md:border-r border-r-shop_btn_dark_green/50 nice-scrollbar space-y-3">
             {/* Filters Header */}
             <div className="bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border rounded-md p-4">
               <div className="flex items-center gap-2">
@@ -216,7 +270,7 @@ const Shop = ({ categories }: Props) => {
           </div>
            <div className="flex-1 pt-5">
             <div className="mb-3 text-sm text-gray-600">Znaleziono: <span className="font-semibold">{products?.length || 0}</span> produktów</div>
-            <div className="h-[calc(100vh-160px)] overflow-y-auto pr-2 nice-scrollbar">
+            <div className="md:h-[calc(100vh-160px)] md:overflow-y-auto pr-2 nice-scrollbar">
               {loading ? (
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
                   {Array.from({ length: 8 }).map((_, i) => (

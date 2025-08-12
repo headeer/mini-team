@@ -23,7 +23,7 @@ const Header = async () => {
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-200">
-      <Container className="flex items-center justify-between h-16">
+      <Container className="flex items-center justify-between h-14 md:h-16">
         {/* Logo + Mobile */}
         <div className="flex items-center gap-3">
           <MobileMenu />
@@ -36,13 +36,17 @@ const Header = async () => {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-4">
-          <SearchBar />
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+          <div className="hidden xs:flex">
+            <SearchBar />
+          </div>
           <CartIcon />
-          <FavoriteButton />
+          <div className="hidden sm:block">
+            <FavoriteButton />
+          </div>
           {user && (
-            <Link href={"/orders"} className="group relative text-gray-700 hover:text-orange-500">
-              <Logs />
+            <Link href={"/orders"} className="group relative text-gray-700 hover:text-orange-500 hidden sm:inline-flex">
+              <Logs className="w-5 h-5" />
               <span className="absolute -top-1 -right-1 bg-shop_btn_dark_green text-white h-3.5 w-3.5 rounded-full text-xs font-semibold flex items-center justify-center">
                 {orders?.length ? orders?.length : 0}
               </span>
@@ -50,7 +54,7 @@ const Header = async () => {
           )}
           <ClerkLoaded>
             <SignedIn>
-              <UserButton />
+              <UserButton appearance={{ elements: { avatarBox: "w-7 h-7" } }} />
             </SignedIn>
             {!user && <SignIn />}
           </ClerkLoaded>
