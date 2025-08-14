@@ -135,31 +135,59 @@ const SingleProductPage = async ({
           {/* Left: images + trust */}
           <div>
             {product?.images ? (() => {
-              // Decide by category name (e.g., "Łyżki kopiące 1-2t", "Łyżki skarpowe 1-2t")
+              // Decide technical drawings by priceTier if available, otherwise infer from category text
+              const tier = String((product as any)?.priceTier || "").toLowerCase();
               const catTitles: string[] = Array.isArray((product as any)?.categories)
                 ? ((product as any).categories as Array<{ title?: string } | null>).map((c) => c?.title || "").filter(Boolean)
                 : [];
               const catText = catTitles.join(" ").toLowerCase();
               let files: string[] = [];
-              if (/1-?2t/.test(catText)) {
+              const isRipper = /zrywak|ripper/.test((product?.name || "")?.toLowerCase() + " " + catText + " " + (product?.description || "").toLowerCase());
+              const ripperTier = String((product as any)?.ripperTier || "").toLowerCase();
+              if (isRipper) {
+                // Zrywaki mają inne zakresy: 1–1.5t, 2–4t, 4–8t
+                if (ripperTier === '1-1.5t' || /1\s*[–-]?\s*1\.5\s*t|1-1\.5t/.test(tier) || /1\s*-\s*1\.5\s*t/.test((product?.name||"").toLowerCase())) {
+                  files = ["ripper_1-1.5t.png", "rysunek_techniczny_ripper1-1.5tony.pdf"]; // PNG + PDF
+                } else if (ripperTier === '2-4t' || /2\s*[–-]?\s*4\s*t|2-4t/.test((product?.name||"").toLowerCase() + " " + (product?.description||"").toLowerCase())) {
+                  files = [
+                    "zrywak_pojedynczy_2-4t.png",
+                    "zrywak_podwojny_2-4t.png",
+                    "rysunek_techniczny_zrywak_pojedynczy_2-4_tony.pdf",
+                    "rysunek_techniczniczny_zrywak_podwojny_2-4_tony.pdf",
+                  ];
+                } else if (ripperTier === '4-8t' || /4\s*[–-]?\s*8\s*t|4-8t/.test((product?.name||"").toLowerCase() + " " + (product?.description||"").toLowerCase())) {
+                  files = [
+                    "zrywak_pojedynczy_4-8t.png",
+                    "zrywak_podwojny_4-8t.png",
+                    "rysunek_techniczny_zrywak_pojedynczy_4-8_tony.pdf",
+                    "rysunek_techniczny_zrywak_podwojny_4-8_tony.pdf",
+                  ];
+                }
+              } else {
+              if (tier === '1-1.5t' || /1\s*[–-]\s*1\.5\s*t/.test(catText)) {
+                // 1–1.5 t: use two base visuals
                 files = [
                   "lyska_skarpowa.png",
                   "lyska_skarpowa_2.png",
-                  "lyzka_1_5-2_3.png",
-                  "lyzka_1_5-2_3_2.png",
                 ];
-              } else if (/1\.5-2\.3t|1,5-2,3t|1-?5\s*–?\s*2-?3t/.test(catText)) {
+              } else if (tier === '1.5-2.3t' || /1\.5\s*[–-]\s*2\.3\s*t/.test(catText)) {
+                // 1.5–2.3 t: provided set
                 files = [
                   "lyzka_hydr_1.5_2.3.png",
                   "lyzka_hydr_2_1.5_2.3.png",
                   "lyska_1.5_2.3.png",
                   "lyska_1.5_2.3_2.png",
                 ];
-              } else if (/2\.3-3t|2,3-3t/.test(catText)) {
+              } else if (tier === '2.3-3t' || /2\.3\s*[–-]\s*3\s*t/.test(catText)) {
+                // 2.3–3 t: last image differs vs 1.5–2.3 t
                 files = [
                   "lyzka_hydr_2.3_3.5.png",
                   "lyzka_hydr_2.3_3.png",
                 ];
+              } else if (tier === '3-5t' || /3\s*[–-]\s*5\s*t/.test(catText)) {
+                // 3–5 t: awaiting final assets – keep gallery default
+                files = [];
+              }
               }
               return (
                 <MediaTabs

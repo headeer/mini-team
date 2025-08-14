@@ -46,8 +46,8 @@ const SevenReasons = () => {
                 <Link href="/shop">Sprawdź ofertę</Link>
               </Button>
               <Button variant="outline" asChild className="border-gray-300">
-                <a href="tel:+48570037128" aria-label="Zadzwoń do nas">
-                  <Phone className="h-4 w-4 mr-2" /> Zadzwoń: 570-037-128
+                <a href="tel:+48782851962" aria-label="Zadzwoń do nas">
+                  <Phone className="h-4 w-4 mr-2" /> Zadzwoń: 782-851-962
                 </a>
               </Button>
             </div>

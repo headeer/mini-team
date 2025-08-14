@@ -31,7 +31,7 @@ export default function KontaktPage() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <a href="tel:+48570037128" className="hover:underline">570-037-128</a>
+                <a href="tel:+48782851962" className="hover:underline">782-851-962</a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-5 w-5 text-[var(--color-brand-orange)]" />

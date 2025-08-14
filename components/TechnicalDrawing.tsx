@@ -17,11 +17,9 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
   const [index, setIndex] = useState(0);
   const [zoom, setZoom] = useState(1);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [fallbackMap, setFallbackMap] = useState<Record<number, boolean>>({}); // true => use rys_techniczne, false/undefined => use techniczne
 
-  const items = useMemo(() => files.map((file) => ({
-    file,
-    src: getDrawingByName(file) || `/images/rys_techniczne/${file}`,
-  })), [files]);
+  const items = useMemo(() => files.map((file) => ({ file })), [files]);
 
   const current = items[index];
 
@@ -55,10 +53,31 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
   };
 
   const downloadCurrent = () => {
+    const isPdf = current?.file?.toLowerCase().endsWith(".pdf");
+    const href = isPdf
+      ? (fallbackMap[index] ? `/images/rys_techniczne/${current.file}` : `/images/techniczne/${current.file}`)
+      : (() => {
+          const imported = getDrawingByName(current.file);
+          if (imported) return imported;
+          return fallbackMap[index]
+            ? `/images/rys_techniczne/${current.file}`
+            : `/images/techniczne/${current.file}`;
+        })();
     const link = document.createElement("a");
-    link.href = typeof current.src === "string" ? current.src : (current.src?.src || "");
+    link.href = typeof href === "string" ? href : (href?.src || "");
     link.download = current.file;
     link.click();
+  };
+
+  const resolveSrc = (i: number) => {
+    const file = items[i]?.file || "";
+    const isPdf = file.toLowerCase().endsWith(".pdf");
+    if (isPdf) {
+      return fallbackMap[i] ? `/images/rys_techniczne/${file}` : `/images/techniczne/${file}`;
+    }
+    const imported = getDrawingByName(file);
+    if (imported) return imported;
+    return fallbackMap[i] ? `/images/rys_techniczne/${file}` : `/images/techniczne/${file}`;
   };
 
   return (
@@ -69,25 +88,57 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {items.map((it, i) => (
-            <button
-              key={it.file}
-              type="button"
-              onClick={() => openAt(i)}
-              className="border rounded-lg overflow-hidden bg-white text-left hover:shadow-md transition"
-            >
-              <div className="relative w-full h-64 bg-white">
-                <Image
-                  src={it.src}
-                  alt="Rysunek techniczny"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-contain"
-                />
-              </div>
-              <div className="px-3 py-2 text-xs text-gray-600 truncate">{it.file}</div>
-            </button>
-          ))}
+          {items.map((it, i) => {
+            const isPdf = it.file.toLowerCase().endsWith(".pdf");
+            if (isPdf) {
+              const pdfSrcPrimary = `/images/techniczne/${it.file}`;
+              const pdfSrcFallback = `/images/rys_techniczne/${it.file}`;
+              return (
+                <div key={it.file} className="border rounded-lg overflow-hidden bg-white">
+                  <div className="p-3 text-xs text-gray-700 flex items-center justify-between">
+                    <span className="truncate">{it.file}</span>
+                    <button
+                      type="button"
+                      onClick={() => openAt(i)}
+                      className="text-[var(--color-brand-orange)] underline underline-offset-2"
+                    >
+                      Podgląd
+                    </button>
+                  </div>
+                  <object
+                    data={fallbackMap[i] ? pdfSrcFallback : pdfSrcPrimary}
+                    type="application/pdf"
+                    className="w-full h-64"
+                    onError={() => setFallbackMap((m) => ({ ...m, [i]: true }))}
+                  >
+                    <div className="p-3 text-xs text-gray-600">Nie można wyświetlić PDF. Pobierz, aby zobaczyć.</div>
+                  </object>
+                </div>
+              );
+            }
+            const primary = `/images/techniczne/${it.file}`;
+            const fallback = `/images/rys_techniczne/${it.file}`;
+            return (
+              <button
+                key={it.file}
+                type="button"
+                onClick={() => openAt(i)}
+                className="border rounded-lg overflow-hidden bg-white text-left hover:shadow-md transition"
+              >
+                <div className="relative w-full h-64 bg-white">
+                  <Image
+                    src={fallbackMap[i] ? fallback : primary}
+                    alt="Rysunek techniczny"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-contain"
+                    onError={() => setFallbackMap((m) => ({ ...m, [i]: true }))}
+                  />
+                </div>
+                <div className="px-3 py-2 text-xs text-gray-600 truncate">{it.file}</div>
+              </button>
+            );
+          })}
         </div>
       )}
 
@@ -138,16 +189,24 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
             <button type="button" onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/80 hover:bg-white p-2 shadow"><ChevronRight className="w-5 h-5" /></button>
             <div ref={containerRef} onWheel={onWheel} className="w-full h-full overflow-auto cursor-grab active:cursor-grabbing">
               <div style={{ transform: `scale(${zoom})`, transformOrigin: "center center" }} className="w-full h-full flex items-center justify-center p-4">
-                {current && (
+                {current && (current.file.toLowerCase().endsWith(".pdf") ? (
+                  <object
+                    data={resolveSrc(index)}
+                    type="application/pdf"
+                    className="w-full h-full"
+                  >
+                    <div className="p-3 text-sm text-gray-600">Nie można wyświetlić PDF w przeglądarce. Pobierz plik.</div>
+                  </object>
+                ) : (
                   <Image
-                    src={current.src}
+                    src={resolveSrc(index)}
                     alt="Rysunek techniczny"
                     width={2000}
                     height={2000}
                     className="max-w-none h-auto"
                     priority
                   />
-                )}
+                ))}
               </div>
             </div>
           </div>

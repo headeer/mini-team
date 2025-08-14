@@ -57,7 +57,7 @@ const HomeHero = () => {
                 <a href="#fit-check">Sprawdź dopasowanie</a>
               </Button>
               <Button asChild variant="outline" className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-gray-900 px-7 py-4 text-base font-semibold rounded-lg">
-                <a href="tel:+48570037128">Zadzwoń: 570-037-128</a>
+                <a href="tel:+48782851962">Zadzwoń: 782-851-962</a>
               </Button>
             </div>
           </div>

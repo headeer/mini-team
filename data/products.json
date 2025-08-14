@@ -1471,6 +1471,7 @@
     "toothCost": 0,
     "toothQty": 1,
     "priceTier": "1-1.5t",
+    "ripperTier": "1-1.5t",
     "discount": 0,
     "categories": [
       {
@@ -1531,6 +1532,7 @@
     "toothCost": 0,
     "toothQty": 1,
     "priceTier": "1.5-2.3t",
+    "ripperTier": "2-4t",
     "discount": 0,
     "categories": [
       {
@@ -1591,6 +1593,7 @@
     "toothCost": 0,
     "toothQty": 1,
     "priceTier": "3-5t",
+    "ripperTier": "4-8t",
     "discount": 0,
     "categories": [
       {

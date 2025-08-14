@@ -15,6 +15,7 @@ interface InputProduct {
   toothCost?: number;
   toothQty?: number;
   priceTier?: string;
+  ripperTier?: string;
   discount?: number;
   categories?: Array<{ _ref?: string }>;
   stock?: number;
@@ -66,6 +67,7 @@ function mapProduct(p: InputProduct) {
     toothCost: p.toothCost ?? 0,
     toothQty: p.toothQty ?? 0,
     priceTier: p.priceTier,
+    ripperTier: p.ripperTier,
     discount: p.discount ?? 0,
     categories: (p.categories || []).map((c) => ({ _type: "reference", _ref: c._ref })),
     stock: p.stock ?? 0,

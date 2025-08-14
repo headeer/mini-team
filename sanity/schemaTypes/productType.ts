@@ -82,6 +82,19 @@ export const productType = defineType({
       validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
+      name: "ripperTier",
+      title: "Zakres maszyn (zrywak)",
+      type: "string",
+      description: "Używane dla zrywaków korzeni. Np. 1-1.5t, 2-4t, 4-8t.",
+      options: {
+        list: [
+          { title: "1–1.5T", value: "1-1.5t" },
+          { title: "2–4T", value: "2-4t" },
+          { title: "4–8T", value: "4-8t" },
+        ],
+      },
+    }),
+    defineField({
       name: "categories",
       title: "Kategorie",
       type: "array",

@@ -15,10 +15,10 @@ export const quickLinksData = [
   { title: "Help", href: "/help" },
 ];
 export const categoriesData = [
-  { title: "Łyżki 1–1.5 t", href: "1-1.5t" },
-  { title: "Łyżki 1.5–2.3 t", href: "1.5-2.3t" },
-  { title: "Łyżki 2.3–3 t", href: "2.3-3t" },
-  { title: "Łyżki 3–5 t", href: "3-5t" },
+  { title: "Łyżki 1–1.5 Tony", href: "1-1.5t" },
+  { title: "Łyżki 1.5–2.3 Tony", href: "1.5-2.3t" },
+  { title: "Łyżki 2.3–3 Tony", href: "2.3-3t" },
+  { title: "Łyżki 3–5 Tony", href: "3-5t" },
 ];
 export const productType = [
   { title: "Gadget", value: "gadget" },
