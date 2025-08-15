@@ -19,6 +19,8 @@ export const categoriesData = [
   { title: "Łyżki 1.5–2.3 Tony", href: "1.5-2.3t" },
   { title: "Łyżki 2.3–3 Tony", href: "2.3-3t" },
   { title: "Łyżki 3–5 Tony", href: "3-5t" },
+  { title: "Grabie", href: "grabie" },
+  { title: "Zrywaki korzeni", href: "zrywarki-korzeni" },
 ];
 export const productType = [
   { title: "Gadget", value: "gadget" },

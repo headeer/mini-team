@@ -95,7 +95,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200 w-fit">Zrywak korzeni</span>
         ) : null}
         {!isRipper && categoryLabels.length > 0 ? (
-          <p className="uppercase line-clamp-1 text-xs font-medium text-gray-500">
+          <p className="uppercase line-clamp-2 text-xs font-medium text-gray-500 leading-tight">
             {categoryLabels.join(", ")}
           </p>
         ) : null}

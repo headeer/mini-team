@@ -13,11 +13,15 @@ function ensureOut() {
 type Product = { categories?: Array<{ _ref?: string } | null> | null };
 
 const TITLE_MAP: Record<string, string> = {
-  "category-1-2t-kopiace": "Łyżki kopiące 1-2t",
-  "category-1-2t-skarpowe": "Łyżki skarpowe 1-2t",
-  "category-2-3t-kopiace": "Łyżki kopiące 2-3t",
-  "category-3-4-5t-kopiace": "Łyżki kopiące 3-4.5t",
+  "category-1-2t-kopiace": "Łyżki kopiące 1-2 t",
+  "category-1-2t-skarpowe": "Łyżki skarpowe 1-2 t",
+  "category-2-3t-kopiace": "Łyżki kopiące 2-3 t",
+  "category-3-4-5t-kopiace": "Łyżki kopiące 3-4.5 t",
   "category-grabie": "Grabie",
+  "category-grabie-100cm-12mm": "Grabie 100cm • 12mm zęby",
+  "category-grabie-100cm-15mm": "Grabie 100cm • 15mm zęby",
+  "category-grabie-120cm-12mm": "Grabie 120cm • 12mm zęby",
+  "category-grabie-120cm-15mm": "Grabie 120cm • 15mm zęby",
   "category-zrywarki": "Zrywaki korzeni",
 };
 

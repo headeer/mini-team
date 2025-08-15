@@ -96,7 +96,7 @@ const WishListProducts = () => {
                       </td>
                       <td className="p-2 capitalize hidden md:table-cell">
                         {product?.categories && (
-                          <p className="uppercase line-clamp-1 text-xs font-medium">
+                          <p className="uppercase line-clamp-2 text-xs font-medium leading-tight">
                             {product.categories.map((cat) => cat).join(", ")}
                           </p>
                         )}

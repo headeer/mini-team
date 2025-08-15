@@ -1396,14 +1396,14 @@
     "isFeatured": false
   },
   {
-    "name": "Grabie 120cm",
-    "slug": "grabie-120cm",
+    "name": "Grabie 120cm (Standard)",
+    "slug": "grabie-120cm-standard",
     "images": [
       {
-        "url": "http://www.miniteamproject.pl/103-3876315246-full-size/zdj-inventor.webp"
+        "url": "/images/grabie/grabie_120cm-removebg-preview.png"
       }
     ],
-    "description": "Grabie 120cm z 22 zębami grubość 12mm. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "description": "Grabie 120cm z 22 zębami grubość 12mm - wersja standardowa. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
     "price": 1700,
     "priceOlx": 1837,
     "basePrice": 1700,
@@ -1413,7 +1413,7 @@
     "discount": 0,
     "categories": [
       {
-        "_ref": "category-grabie"
+        "_ref": "category-grabie-120cm-12mm"
       }
     ],
     "stock": 3,
@@ -1450,7 +1450,7 @@
       "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
     },
     "dateUpdated": "2025-08-09T16:00:00Z",
-    "externalId": "grabie-120cm",
+    "externalId": "grabie-120cm-glowna",
     "location": "Cieszków",
     "viewsCount": 0,
     "featuredRank": 4,
@@ -1639,5 +1639,253 @@
     "viewsCount": 0,
     "featuredRank": 0,
     "isFeatured": false
+  },
+  {
+    "name": "Grabie 100cm grubość zęba 12mm",
+    "slug": "grabie-100cm-12mm",
+    "images": [
+      {
+        "url": "/images/grabie/grabie_100cm_grubosc_zeba-removebg-preview.png"
+      }
+    ],
+    "description": "Grabie 100cm z 20 zębami grubość 12mm. Lemiesz tnący Hardox HB500. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "price": 1500,
+    "priceOlx": 1620,
+    "basePrice": 1500,
+    "toothCost": 0,
+    "toothQty": 20,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-grabie-100cm-12mm"
+      }
+    ],
+    "stock": 4,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 100,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "toothThickness": 12,
+      "toothCount": 20,
+      "features": [
+        "20 zęby grubość 12mm",
+        "Lemiesz Hardox HB500",
+        "Kompatybilne mocowania"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
+    },
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "externalId": "grabie-100cm-12mm",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Grabie 100cm grubość zęba 15mm",
+    "slug": "grabie-100cm-15mm",
+    "images": [
+      {
+        "url": "/images/grabie/grabie_100cm_grubosc_zeba-removebg-preview.png"
+      }
+    ],
+    "description": "Grabie 100cm z 20 zębami grubość 15mm. Lemiesz tnący Hardox HB500. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "price": 1580,
+    "priceOlx": 1707,
+    "basePrice": 1580,
+    "toothCost": 0,
+    "toothQty": 20,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-grabie-100cm-15mm"
+      }
+    ],
+    "stock": 3,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 100,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "toothThickness": 15,
+      "toothCount": 20,
+      "features": [
+        "20 zęby grubość 15mm",
+        "Lemiesz Hardox HB500",
+        "Kompatybilne mocowania"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
+    },
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "externalId": "grabie-100cm-15mm",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Grabie 120cm grubość zęba 12mm",
+    "slug": "grabie-120cm-12mm",
+    "images": [
+      {
+        "url": "/images/grabie/grabie_120cm-removebg-preview.png"
+      }
+    ],
+    "description": "Grabie 120cm z 22 zęby grubość 12mm. Lemiesz tnący Hardox HB500. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "price": 1650,
+    "priceOlx": 1783,
+    "basePrice": 1650,
+    "toothCost": 0,
+    "toothQty": 22,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-grabie-120cm-12mm"
+      }
+    ],
+    "stock": 2,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 120,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "toothThickness": 12,
+      "toothCount": 22,
+      "features": [
+        "22 zęby grubość 12mm",
+        "Lemiesz Hardox HB500",
+        "Kompatybilne mocowania"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
+    },
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "externalId": "grabie-120cm-12mm",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Grabie 120cm grubość zęba 15mm",
+    "slug": "grabie-120cm-15mm",
+    "images": [
+      {
+        "url": "/images/grabie/grabie_120cm-removebg-preview.png"
+      }
+    ],
+    "description": "Grabie 120cm z 22 zęby grubość 15mm. Lemiesz tnący Hardox HB500. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "price": 1750,
+    "priceOlx": 1890,
+    "basePrice": 1750,
+    "toothCost": 0,
+    "toothQty": 22,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-grabie-120cm-15mm"
+      }
+    ],
+    "stock": 3,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "hot",
+    "specifications": {
+      "widthCm": 120,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "toothThickness": 15,
+      "toothCount": 22,
+      "features": [
+        "22 zęby grubość 15mm",
+        "Lemiesz Hardox HB500",
+        "Kompatybilne mocowania"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
+    },
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "externalId": "grabie-120cm-15mm",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 5,
+    "isFeatured": true
   }
 ]
