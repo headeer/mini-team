@@ -506,21 +506,29 @@ const SingleProductPage = async ({
           </div>
         </div>
 
-        {/* Sticky CTA mobile */}
-        <div className="md:hidden fixed bottom-0 left-0 right-0 border-t bg-white p-3 z-40">
-          <div className="flex items-center gap-3">
-            <div className="flex-1">
-              <PriceView price={product?.price as number | string | undefined} discount={product?.discount} priceOlx={product?.priceOlx as number | string | undefined} phoneOrderOnly={Boolean((product as any)?.phoneOrderOnly)} className="text-lg font-bold" />
+        {/* Sticky CTA mobile - Enhanced with better positioning */}
+        <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-50">
+          <div className="px-4 py-4">
+            <div className="flex items-center gap-3">
+              <div className="flex-1">
+                <PriceView price={product?.price as number | string | undefined} discount={product?.discount} priceOlx={product?.priceOlx as number | string | undefined} phoneOrderOnly={Boolean((product as any)?.phoneOrderOnly)} className="text-lg font-bold" />
+              </div>
+              {isPhoneOnly ? (
+                <a href="tel:+48782851962" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300">
+                  <Phone className="h-5 w-5" /> 
+                  <span>Zadzwoń</span>
+                </a>
+              ) : (
+                <div className="min-w-[140px]"><AddToCartButton product={product} /></div>
+              )}
             </div>
-            {isPhoneOnly ? (
-              <a href="tel:+48782851962" className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold">
-                <Phone className="h-4 w-4" /> Zadzwoń
-              </a>
-            ) : (
-              <div className="min-w-[140px]"><AddToCartButton product={product} /></div>
-            )}
           </div>
+          {/* Safe area padding for iPhone */}
+          <div className="h-safe-area-inset-bottom"></div>
         </div>
+        
+        {/* Add bottom padding to content on mobile to prevent overlay */}
+        <div className="md:hidden h-24"></div>
 
         {/* Enhanced Similar Products Section */}
         {similar?.length ? (

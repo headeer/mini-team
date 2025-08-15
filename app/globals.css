@@ -285,15 +285,113 @@ html {
   top: 12px;
 }
 
-.a11y-panel { position: fixed; right: 12px; bottom: 12px; z-index: 10000; }
-.a11y-panel.left { right: auto; left: 12px; }
+.a11y-panel { 
+  position: fixed; 
+  right: 12px; 
+  bottom: 12px; 
+  z-index: 10000; 
+}
+.a11y-panel.left { 
+  right: auto; 
+  left: 12px; 
+}
+
+/* Responsive positioning to avoid conflicts with floating elements */
+@media (max-width: 768px) {
+  .a11y-panel { 
+    bottom: 180px; /* Higher on mobile to avoid sticky bars */
+    left: 16px;
+    right: auto;
+  }
+  .a11y-panel.left {
+    bottom: 180px;
+    left: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .a11y-panel {
+    top: 50%;
+    bottom: auto;
+    right: 16px;
+    transform: translateY(-50%);
+  }
+  .a11y-panel.left {
+    top: 50%;
+    bottom: auto;
+    left: 80px; /* Move right to avoid machine selector */
+    right: auto;
+    transform: translateY(-50%);
+  }
+}
 .a11y-toggle {
-  background: linear-gradient(90deg, var(--color-brand-orange), var(--color-brand-red));
+  background: linear-gradient(135deg, var(--color-brand-orange), var(--color-brand-red));
   color: #fff;
   font-weight: 700;
-  border-radius: 9999px;
-  padding: 10px 14px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+  border-radius: 50%;
+  padding: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 0 2px rgba(255,255,255,0.1);
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+.a11y-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 0 3px rgba(255,255,255,0.2);
+}
+
+.a11y-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Floating animation */
+.a11y-toggle {
+  animation: a11y-float 3s ease-in-out infinite;
+}
+
+@keyframes a11y-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.a11y-toggle:hover {
+  animation: none;
+}
+
+/* Shine effect on hover */
+.a11y-toggle::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+  transform: rotate(-45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.a11y-toggle:hover::before {
+  animation: a11y-shine 0.8s ease-out;
+}
+
+@keyframes a11y-shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(-45deg);
+    opacity: 0;
+  }
 }
 .a11y-sheet {
   margin-top: 8px;
@@ -305,6 +403,46 @@ html {
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 .a11y-row { margin: 10px 0; display: flex; align-items: center; gap: 8px; }
+
+/* Force Tawk.to chat repositioning to avoid conflicts */
+div[id*="tawk"], 
+iframe[src*="tawk"],
+div[class*="tawk"] {
+  bottom: 120px !important;
+  right: 24px !important;
+  z-index: 9999 !important;
+}
+
+@media (max-width: 768px) {
+  div[id*="tawk"], 
+  iframe[src*="tawk"],
+  div[class*="tawk"] {
+    bottom: 280px !important;
+    right: 16px !important;
+    z-index: 9999 !important;
+  }
+}
+
+/* Alternative approach - target common Tawk.to element patterns */
+#tawk-widget,
+.tawk-widget,
+[id^="tawk-"],
+[class^="tawk-"] {
+  bottom: 120px !important;
+  right: 24px !important;
+  z-index: 9999 !important;
+}
+
+@media (max-width: 768px) {
+  #tawk-widget,
+  .tawk-widget,
+  [id^="tawk-"],
+  [class^="tawk-"] {
+    bottom: 280px !important;
+    right: 16px !important;
+    z-index: 9999 !important;
+  }
+}
 .a11y-row label { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #111; }
 .a11y-row input[type="checkbox"] { width: 16px; height: 16px; }
 .a11y-reset { font-size: 12px; color: #111; border: 1px solid #e5e7eb; border-radius: 10px; padding: 8px 10px; background: #f9fafb; }

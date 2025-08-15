@@ -88,7 +88,7 @@ const AIWidgetStub = () => {
   return (
     <>
       {/* Floating Fit Check Button */}
-      <div className="fixed bottom-24 sm:bottom-6 right-4 sm:right-6 z-50">
+      <div className="fixed bottom-32 sm:bottom-6 right-4 sm:right-6 z-40">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <button className="h-12 w-12 bg-[var(--color-brand-orange)] text-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center">

@@ -80,12 +80,76 @@ export default function RootLayout({
             Tawk_API = Tawk_API || {};
             Tawk_API.onLoad = function(){
               try {
-                // move chat a bit up to not cover floating camera/machine selector
-                Tawk_API.setAttributes({ position: 'br', bottom: 24, right: 24 }, function(){});
-                // prevent proactive/auto-open on small screens
-                if (window.matchMedia('(max-width: 768px)').matches) {
-                  Tawk_API.minimize();
+                // Force positioning with CSS override - more aggressive approach
+                function forceRepositionChat() {
+                  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                  
+                  if (isMobile) {
+                    // On mobile: position much higher to avoid all conflicts
+                    Tawk_API.setAttributes({ position: 'br', bottom: 280, right: 16 }, function(){});
+                    Tawk_API.minimize();
+                  } else {
+                    // On desktop: position higher on right
+                    Tawk_API.setAttributes({ position: 'br', bottom: 120, right: 24 }, function(){});
+                  }
+                  
+                  // Force CSS override with !important
+                  setTimeout(function() {
+                    const tawkWidget = document.getElementById('tawk-widget');
+                    const tawkContainer = document.querySelector('[id^="tawk-"]');
+                    const tawkFrame = document.querySelector('iframe[src*="tawk"]');
+                    
+                    [tawkWidget, tawkContainer, tawkFrame].forEach(function(element) {
+                      if (element) {
+                        element.style.setProperty('bottom', isMobile ? '280px' : '120px', 'important');
+                        element.style.setProperty('right', isMobile ? '16px' : '24px', 'important');
+                        element.style.setProperty('z-index', '9999', 'important');
+                      }
+                    });
+                    
+                    // Find parent container and style it too
+                    const tawkElements = document.querySelectorAll('[id*="tawk"], [class*="tawk"]');
+                    tawkElements.forEach(function(el) {
+                      if (el && el.style) {
+                        el.style.setProperty('bottom', isMobile ? '280px' : '120px', 'important');
+                        el.style.setProperty('right', isMobile ? '16px' : '24px', 'important');
+                      }
+                    });
+                  }, 500);
                 }
+                
+                // Initial positioning
+                forceRepositionChat();
+                
+                // Reposition on resize
+                window.addEventListener('resize', function() {
+                  setTimeout(forceRepositionChat, 100);
+                });
+                
+                // Watch for DOM changes (Tawk.to loads dynamically)
+                const observer = new MutationObserver(function(mutations) {
+                  mutations.forEach(function(mutation) {
+                    if (mutation.addedNodes.length > 0) {
+                      mutation.addedNodes.forEach(function(node) {
+                        if (node.nodeType === 1 && (
+                          node.id && node.id.includes('tawk') ||
+                          node.className && node.className.includes('tawk') ||
+                          node.tagName === 'IFRAME' && node.src && node.src.includes('tawk')
+                        )) {
+                          setTimeout(forceRepositionChat, 200);
+                        }
+                      });
+                    }
+                  });
+                });
+                
+                observer.observe(document.body, {
+                  childList: true,
+                  subtree: true
+                });
+                
+                // Periodic check as fallback
+                setInterval(forceRepositionChat, 3000);
                 // Open chat when #chat present or clicked
                 function openChat() { try { Tawk_API.maximize(); } catch(e){} }
                 if (window.location.hash === '#chat') {
