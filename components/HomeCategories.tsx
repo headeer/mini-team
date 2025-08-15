@@ -55,14 +55,34 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
       {(() => {
         const withProducts = (categories || []).filter((c) => Number((c as any)?.productCount) > 0).slice(0, 12);
         return (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
             {withProducts.map((category) => {
               const countText = pluralize((category as any)?.productCount as number);
               return (
-                <Link key={category?._id} href={`/category/${category?.slug?.current}`} className="group block">
-                  <div className="rounded-2xl border bg-white hover:shadow-lg hover:border-[var(--color-brand-orange)]/30 transition p-3 flex items-center justify-between">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="flex items-center justify-center h-16 w-16 rounded-xl bg-[var(--color-brand-orange)]/10 overflow-hidden">
+                <Link key={category?._id} href={`/category/${category?.slug?.current}`} className="group relative overflow-hidden">
+                  <div className="relative border border-gray-200/60 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50/30 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:scale-[1.02] p-4 flex items-center justify-between">
+                    
+                    {/* Floating shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                    
+                    {/* Animated border glow */}
+                    <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                         style={{
+                           background: 'linear-gradient(45deg, transparent 30%, rgba(255,115,0,0.2) 50%, transparent 70%)',
+                           mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                           maskComposite: 'xor',
+                           padding: '2px'
+                         }} />
+                    
+                    <div className="flex items-center gap-3 min-w-0 relative z-10">
+                      <div className="relative flex items-center justify-center h-20 w-20 rounded-2xl bg-gradient-to-br from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 overflow-hidden border border-orange-200/30 shadow-inner">
+                        {/* Premium background pattern */}
+                        <div className="absolute inset-0 opacity-5" 
+                             style={{
+                               backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0,0,0,0.1) 1px, transparent 0)`,
+                               backgroundSize: '12px 12px'
+                             }} />
+                        
                         {(() => {
                           const categoryImage = getCategoryImage(category?.title);
                           const isRealImage = categoryImage !== excavatorIcon;
@@ -72,17 +92,27 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
                             <Image 
                               src={categoryImage} 
                               alt={`Zdjęcie ${category?.title}`} 
-                              width={isGrabie ? 64 : 56} 
-                              height={isGrabie ? 64 : 56} 
-                              className={`${isGrabie ? 'object-contain' : 'object-cover'} w-full h-full ${isGrabie ? '' : 'rounded-lg'}`}
+                              width={isGrabie ? 80 : 64} 
+                              height={isGrabie ? 80 : 64} 
+                              className={`${isGrabie ? 'object-contain' : 'object-cover'} w-full h-full transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1 ${isGrabie ? '' : 'rounded-xl'}`}
                             />
                           ) : (
-                            <div className="w-8 h-8">{getCategoryIcon(category?.title)}</div>
+                            <div className="w-10 h-10 transition-transform duration-500 group-hover:scale-110">
+                              {getCategoryIcon(category?.title)}
+                            </div>
                           );
                         })()}
+                        
+                        {/* Floating number badge */}
+                        {countText && (
+                          <div className="absolute -top-1 -right-1 bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-lg border border-white transform scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300">
+                            {countText.replace(' produktów', '').replace(' produkty', '').replace(' produkt', '')}
+                          </div>
+                        )}
                       </div>
+                      
                       <div className="min-w-0 flex-1">
-                        <div className="font-semibold text-sm line-clamp-2 group-hover:text-[var(--color-brand-orange)] transition-colors leading-tight break-words"
+                        <div className="font-bold text-base line-clamp-2 group-hover:text-[var(--color-brand-orange)] transition-all duration-300 leading-tight break-words mb-1"
                              style={{ 
                                wordBreak: 'keep-all',
                                overflowWrap: 'break-word',
@@ -92,13 +122,20 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
                           {category?.title?.replace(/(\d+)([a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ])/g, '$1 $2')}
                         </div>
                         {countText ? (
-                          <div className="text-gray-600 text-[11px] mt-1">{countText}</div>
-                        ) : null}
+                          <div className="flex items-center gap-2 text-gray-600 text-xs">
+                            <span className="bg-gray-100 px-2 py-0.5 rounded-lg font-medium">{countText}</span>
+                            <span className="text-green-600 font-medium">📦 Dostępne</span>
+                          </div>
+                        ) : (
+                          <div className="text-gray-500 text-xs">Sprawdź dostępność</div>
+                        )}
                       </div>
                     </div>
-                    <span className="inline-flex items-center justify-center size-7 rounded-full bg-gray-100 text-gray-900 group-hover:bg-[var(--color-brand-orange)] group-hover:text-white transition-colors">
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
+                    
+                    {/* Arrow indicator */}
+                    <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 group-hover:bg-[var(--color-brand-orange)] group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
+                      <ArrowRight className="w-5 h-5 transform group-hover:translate-x-0.5 transition-transform duration-300" />
+                    </div>
                   </div>
                 </Link>
               );

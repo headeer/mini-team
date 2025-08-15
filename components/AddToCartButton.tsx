@@ -34,48 +34,73 @@ const AddToCartButton = ({ product, className }: Props) => {
     }
   };
   return (
-    <div className="w-full h-12 flex items-center">
+    <div className="w-full flex items-center">
       {itemCount && !isPhoneOnly ? (
-        <div className="text-sm w-full">
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-darkColor/80">Quantity</span>
+        <div className="w-full bg-gradient-to-r from-gray-50 to-white border border-gray-200 rounded-2xl p-4 shadow-sm">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm font-medium text-gray-600 flex items-center gap-2">
+              <ShoppingBag className="w-4 h-4" />
+              W koszyku
+            </span>
             <QuantityButtons product={product} />
           </div>
-          <div className="flex items-center justify-between border-t pt-1">
-            <span className="text-xs font-semibold">Subtotal</span>
+          <div className="flex items-center justify-between pt-3 border-t border-gray-200">
+            <span className="text-sm font-semibold text-gray-800">Suma:</span>
             <PriceFormatter
               amount={product?.price ? product?.price * itemCount : 0}
+              className="text-lg font-bold bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] bg-clip-text text-transparent"
             />
           </div>
         </div>
       ) : (
         <Button
           onClick={isPhoneOnly ? undefined : handleAddToCart}
-          disabled={isOutOfStock || isPhoneOnly}
+          disabled={isOutOfStock}
           className={cn(
-            "w-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold shadow-none border-0 hover:opacity-95 whitespace-normal break-words h-auto min-h-11 leading-snug text-[13px] md:text-sm px-3 py-2",
+            "group relative w-full overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl",
+            isOutOfStock 
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : isPhoneOnly
+              ? "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
+              : "bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] hover:from-[var(--color-brand-red)] hover:to-[var(--color-brand-orange)]",
+            "text-white font-bold border-0 h-auto min-h-12 rounded-2xl px-6 py-3",
             className
           )}
         >
-          {isPhoneOnly ? (
-            <a href="tel:+48782851962" className="w-full flex items-center justify-center gap-2 text-center">
-              <ShoppingBag className="shrink-0" />
-              <span className="md:hidden">Telefonicznie</span>
-              <span className="hidden md:inline">Zamów telefonicznie</span>
-            </a>
-          ) : (
-            <>
-              <ShoppingBag className="shrink-0" />
-              {isOutOfStock ? (
-                <span>Brak w magazynie</span>
-              ) : (
-                <>
-                  <span className="md:hidden">Do koszyka</span>
-                  <span className="hidden md:inline">Dodaj do koszyka</span>
-                </>
-              )}
-            </>
+          {/* Animated background effect */}
+          {!isOutOfStock && (
+            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           )}
+          
+          {/* Shine effect */}
+          {!isOutOfStock && (
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+          )}
+          
+          <div className="relative z-10 flex items-center justify-center gap-3">
+            {isPhoneOnly ? (
+              <a href="tel:+48782851962" className="w-full flex items-center justify-center gap-3 text-center">
+                <span className="text-xl">📞</span>
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold">Zamów telefonicznie</span>
+                  <span className="text-xs opacity-90">782-851-962</span>
+                </div>
+              </a>
+            ) : isOutOfStock ? (
+              <>
+                <span className="text-lg">❌</span>
+                <span className="font-bold">Brak w magazynie</span>
+              </>
+            ) : (
+              <>
+                <ShoppingBag className="w-5 h-5 transition-transform group-hover:scale-110" />
+                <div className="flex flex-col text-left">
+                  <span className="font-bold">Dodaj do koszyka</span>
+                  <span className="text-xs opacity-90">Szybka dostawa 24-48h</span>
+                </div>
+              </>
+            )}
+          </div>
         </Button>
       )}
     </div>

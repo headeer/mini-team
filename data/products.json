@@ -1447,14 +1447,20 @@
         "Liebherr",
         "Taeuchi"
       ],
-      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "technicalDrawing": "/images/techniczne/grabie_120cm_12mm.pdf"
     },
     "dateUpdated": "2025-08-09T16:00:00Z",
     "externalId": "grabie-120cm-glowna",
     "location": "Cieszków",
     "viewsCount": 0,
     "featuredRank": 4,
-    "isFeatured": true
+    "isFeatured": true,
+    "technicalDrawing": {
+      "url": "/images/techniczne/grabie_120cm_12mm.pdf",
+      "title": "Rysunek techniczny - Grabie 120cm (Standard)",
+      "type": "pdf"
+    }
   },
   {
     "name": "Zrywak korzeni 1-2t",
@@ -1693,14 +1699,20 @@
         "Liebherr",
         "Taeuchi"
       ],
-      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "technicalDrawing": "/images/techniczne/grabie_100cm_grubosc_zeba_12mm.pdf"
     },
     "dateUpdated": "2025-08-09T16:00:00Z",
     "externalId": "grabie-100cm-12mm",
     "location": "Cieszków",
     "viewsCount": 0,
     "featuredRank": 0,
-    "isFeatured": false
+    "isFeatured": false,
+    "technicalDrawing": {
+      "url": "/images/techniczne/grabie_100cm_grubosc_zeba_12mm.pdf",
+      "title": "Rysunek techniczny - Grabie 100cm grubość zęba 12mm",
+      "type": "pdf"
+    }
   },
   {
     "name": "Grabie 100cm grubość zęba 15mm",
@@ -1755,14 +1767,20 @@
         "Liebherr",
         "Taeuchi"
       ],
-      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "technicalDrawing": "/images/techniczne/grabie_100cm_grubosc_zeba_15mm.pdf"
     },
     "dateUpdated": "2025-08-09T16:00:00Z",
     "externalId": "grabie-100cm-15mm",
     "location": "Cieszków",
     "viewsCount": 0,
     "featuredRank": 0,
-    "isFeatured": false
+    "isFeatured": false,
+    "technicalDrawing": {
+      "url": "/images/techniczne/grabie_100cm_grubosc_zeba_15mm.pdf",
+      "title": "Rysunek techniczny - Grabie 100cm grubość zęba 15mm",
+      "type": "pdf"
+    }
   },
   {
     "name": "Grabie 120cm grubość zęba 12mm",
@@ -1817,14 +1835,20 @@
         "Liebherr",
         "Taeuchi"
       ],
-      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "technicalDrawing": "/images/techniczne/grabie_120cm_12mm.pdf"
     },
     "dateUpdated": "2025-08-09T16:00:00Z",
     "externalId": "grabie-120cm-12mm",
     "location": "Cieszków",
     "viewsCount": 0,
     "featuredRank": 0,
-    "isFeatured": false
+    "isFeatured": false,
+    "technicalDrawing": {
+      "url": "/images/techniczne/grabie_120cm_12mm.pdf",
+      "title": "Rysunek techniczny - Grabie 120cm grubość zęba 12mm",
+      "type": "pdf"
+    }
   },
   {
     "name": "Grabie 120cm grubość zęba 15mm",
@@ -1879,13 +1903,19 @@
         "Liebherr",
         "Taeuchi"
       ],
-      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05"
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "technicalDrawing": "/images/techniczne/grabie_120cm_15mm.pdf"
     },
     "dateUpdated": "2025-08-09T16:00:00Z",
     "externalId": "grabie-120cm-15mm",
     "location": "Cieszków",
     "viewsCount": 0,
     "featuredRank": 5,
-    "isFeatured": true
+    "isFeatured": true,
+    "technicalDrawing": {
+      "url": "/images/techniczne/grabie_120cm_15mm.pdf",
+      "title": "Rysunek techniczny - Grabie 120cm grubość zęba 15mm",
+      "type": "pdf"
+    }
   }
 ]

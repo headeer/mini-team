@@ -19,7 +19,22 @@ const DEAL_PRODUCTS = defineQuery(
 const PRODUCT_BY_SLUG_QUERY = defineQuery(
   `*[_type == "product" && slug.current == $slug] | order(name asc) [0]{
     ...,
-    "categories": categories[]->{title, "slug": slug.current}
+    technicalDrawing,
+    "categories": categories[]->{title, "slug": slug.current},
+    "similarProducts": similarProducts[]->{
+      _id,
+      name,
+      description,
+      "slug": slug.current,
+      price,
+      basePrice,
+      priceOlx,
+      discount,
+      stock,
+      images,
+      "categories": categories[]->{title}
+    },
+    recommendationSettings
   }`
 );
 

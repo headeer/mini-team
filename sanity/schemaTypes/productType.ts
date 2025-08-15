@@ -163,6 +163,72 @@ export const productType = defineType({
       description: "Włącz/wyłącz wyróżnienie",
       initialValue: false,
     }),
+    
+    // Technical Drawing
+    defineField({
+      name: "technicalDrawing",
+      title: "Rysunek techniczny",
+      type: "object",
+      fields: [
+        defineField({ name: "url", title: "URL pliku PDF", type: "string" }),
+        defineField({ name: "title", title: "Tytuł", type: "string" }),
+        defineField({ name: "type", title: "Typ pliku", type: "string", initialValue: "pdf" }),
+      ],
+    }),
+    
+    // Similar Products - Manual Override
+    defineField({
+      name: "similarProducts",
+      title: "Podobne produkty (ręczne)",
+      type: "array",
+      description: "Jeśli wybierzesz produkty tutaj, będą one pokazane zamiast automatycznych rekomendacji AI",
+      of: [{ 
+        type: "reference", 
+        to: { type: "product" },
+        options: {
+          filter: ({ document }) => ({
+            filter: "_id != $id",
+            params: { id: document._id }
+          })
+        }
+      }],
+      validation: (Rule) => Rule.max(6).warning("Maksymalnie 6 produktów dla najlepszego wyglądu"),
+    }),
+    
+    // AI Recommendations Settings
+    defineField({
+      name: "recommendationSettings",
+      title: "Ustawienia rekomendacji AI",
+      type: "object",
+      description: "Kontroluj jak AI wybiera podobne produkty",
+      fields: [
+        defineField({
+          name: "enableAutoRecommendations",
+          title: "Włącz automatyczne rekomendacje",
+          type: "boolean",
+          description: "Jeśli wyłączone, będą pokazane tylko ręcznie wybrane produkty",
+          initialValue: true,
+        }),
+        defineField({
+          name: "priorityFactors",
+          title: "Priorytet czynników",
+          type: "object",
+          fields: [
+            defineField({ name: "categoryWeight", title: "Waga kategorii (%)", type: "number", initialValue: 40 }),
+            defineField({ name: "typeWeight", title: "Waga typu produktu (%)", type: "number", initialValue: 30 }),
+            defineField({ name: "priceWeight", title: "Waga ceny (%)", type: "number", initialValue: 15 }),
+            defineField({ name: "specWeight", title: "Waga specyfikacji (%)", type: "number", initialValue: 15 }),
+          ],
+        }),
+        defineField({
+          name: "excludeFromRecommendations",
+          title: "Wyklucz z rekomendacji",
+          type: "boolean",
+          description: "Ten produkt nie będzie pokazywany jako podobny do innych",
+          initialValue: false,
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {
