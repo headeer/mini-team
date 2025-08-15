@@ -646,11 +646,11 @@ const SingleProductPage = async ({
                       )}
                       
                       {/* Price */}
-                      <div className="mt-auto pt-4 border-t border-gray-100">
+                      <div className="mt-auto pt-4 border-t border-gray-100 space-y-4">
                         <PriceView 
                           price={p.price as number | string | undefined} 
                           discount={p.discount} 
-                          className="text-xl font-bold mb-4"
+                          className="text-xl font-bold"
                         />
                         
                         {/* Action Button */}
