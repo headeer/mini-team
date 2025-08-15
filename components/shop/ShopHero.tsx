@@ -13,7 +13,7 @@ const ShopHero = () => {
             Ekskluzywnie w Polsce
           </Badge>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            "Nie wiem, czy to łyżka czy czarna magia..."
+            &ldquo;Nie wiem, czy to łyżka czy czarna magia...&rdquo;
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             <strong>Daniel z Poznania</strong> kupił pierwszą łyżkę HB500 z sceptycyzmem. 
@@ -48,7 +48,7 @@ const ShopHero = () => {
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold mb-4">Czy to brzmi znajomo?</h2>
             <p className="text-gray-300">
-              „Każdy miesiąc to ta sama historia. Łyżka pęka, maszyna stoi, klient czeka..."
+              &bdquo;Każdy miesiąc to ta sama historia. Łyżka pęka, maszyna stoi, klient czeka...&rdquo;
             </p>
           </div>
           
@@ -91,7 +91,7 @@ const ShopHero = () => {
         {/* Dead Ends */}
         <div className="bg-gradient-to-r from-yellow-900/20 to-orange-900/20 rounded-2xl p-8 mb-12">
           <h2 className="text-2xl font-bold text-center mb-6">
-            „Próbowałem wszystkiego..."
+            &bdquo;Próbowałem wszystkiego...&rdquo;
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
@@ -111,8 +111,8 @@ const ShopHero = () => {
             </div>
             <div className="bg-black/20 rounded-lg p-6">
               <div className="italic text-gray-300 mb-4">
-                „Myślałem, że to normalne w tej branży. Że każdy ma te problemy. 
-                Aż spotkałem kolegę, który od 2 lat nie wymienił ani jednej łyżki..."
+                &bdquo;Myślałem, że to normalne w tej branży. Że każdy ma te problemy. 
+                Aż spotkałem kolegę, który od 2 lat nie wymienił ani jednej łyżki...&rdquo;
               </div>
               <div className="text-sm text-gray-400">
                 — Prawdziwa historia naszego klienta

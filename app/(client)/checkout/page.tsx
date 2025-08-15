@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import PriceFormatter from "@/components/PriceFormatter";
 import useStore from "@/store";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { createCheckoutSession, Metadata, GroupedCartItems } from "@/actions/createCheckoutSession";
@@ -30,12 +30,12 @@ export default function CheckoutPage() {
     _id?: string;
     images?: Array<{ asset?: { _ref?: string } } | string>;
   };
-  const computeUnitFullPrice = (product: CartProduct) => {
+  const computeUnitFullPrice = useCallback((product: CartProduct) => {
     const base = typeof product?.basePrice === "number" ? product.basePrice : (product?.price ?? 0);
     const toothCost = typeof product?.toothCost === "number" ? product.toothCost : 0;
     const toothQty = typeof product?.toothQty === "number" ? product.toothQty : 0;
     return base + toothCost * toothQty;
-  };
+  }, []);
 
   const subtotal = useMemo(() => groupedItems.reduce((sum, it) => sum + computeUnitFullPrice(it.product) * it.quantity, 0), [groupedItems, computeUnitFullPrice]);
   const shipping = subtotal >= 1000 ? 0 : 39;

@@ -92,7 +92,6 @@ const Shop = ({ categories }: Props) => {
   useEffect(() => {
     setQ(qParam);
     // Trigger refetch when URL q changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qParam]);
   return (
     <div className="border-t">

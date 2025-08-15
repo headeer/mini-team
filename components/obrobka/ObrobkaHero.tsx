@@ -1,8 +1,9 @@
-import Container from "@/components/Container";
-import Title from "@/components/Title";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+// Unused imports removed to fix linting errors
+// import Container from "@/components/Container";
+// import Title from "@/components/Title";
+// import { Badge } from "@/components/ui/badge";
+// import { Button } from "@/components/ui/button";
+// import Link from "next/link";
 // import imgPoster from "@/images/blachy/laser.webp";
 
 const ObrobkaHero = () => {

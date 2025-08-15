@@ -93,7 +93,7 @@ const CartPage = () => {
       setNewAddress({});
       await fetchAddresses();
       setSelectedAddress(created as Address);
-    } catch (e) {
+    } catch {
       setAddingAddress(false);
       toast.error("Nie udało się dodać adresu");
     }
