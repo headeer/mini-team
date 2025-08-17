@@ -87,17 +87,21 @@ const AIWidgetStub = () => {
 
   return (
     <>
-      {/* Floating Fit Check Button */}
-      <div className="fixed bottom-32 sm:bottom-6 right-4 sm:right-6 z-40">
+      {/* Floating Fit Check Button - Hidden on mobile */}
+      <div className="fixed bottom-32 sm:bottom-6 right-4 sm:right-6 z-40 hidden sm:block">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <button className="h-12 w-12 bg-[var(--color-brand-orange)] text-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center">
-              <Camera className="h-5 w-5" />
+            <button className="group relative h-12 w-12 bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95">
+              {/* Animated background pulse */}
+              <div className="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-30"></div>
+              
+              {/* Icon with hover effect */}
+              <Camera className="relative z-10 h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
             </button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-xl">
+          <DialogContent className="w-[95vw] max-w-xl">
             <DialogHeader>
-              <DialogTitle>Nie wiesz, czy będzie pasować? Wyślij zdjęcie 📷</DialogTitle>
+              <DialogTitle className="text-base sm:text-lg">Nie wiesz, czy będzie pasować? Wyślij zdjęcie 📷</DialogTitle>
             </DialogHeader>
             {ok ? (
               <div className="p-2 flex items-start gap-3 text-green-700 bg-green-50 border border-green-200 rounded-md">
@@ -108,46 +112,47 @@ const AIWidgetStub = () => {
                 </div>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="space-y-3" method="post" action="/api/fit-check" encType="multipart/form-data">
-                <div className="grid sm:grid-cols-2 gap-3">
+              <form onSubmit={onSubmit} className="space-y-4" method="post" action="/api/fit-check" encType="multipart/form-data">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="text-sm font-medium">Imię i nazwisko*</label>
-                    <Input name="name" required placeholder="Jan Kowalski" />
+                    <label className="block text-sm font-medium mb-1">Imię i nazwisko*</label>
+                    <Input name="name" required placeholder="Jan Kowalski" className="w-full" />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Telefon*</label>
-                    <Input name="phone" required placeholder="782-851-962" inputMode="tel" />
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="text-sm font-medium">Email</label>
-                    <Input name="email" type="email" placeholder="jan@firma.pl" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Rodzaj osprzętu</label>
-                    <Input name="attachmentType" placeholder="np. łyżka 60 cm MS03" />
+                    <label className="block text-sm font-medium mb-1">Telefon*</label>
+                    <Input name="phone" required placeholder="782-851-962" inputMode="tel" className="w-full" />
                   </div>
                 </div>
-                <div className="grid sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="text-sm font-medium">Marka maszyny</label>
-                    <Input name="machineBrand" placeholder="np. JCB" />
+                    <label className="block text-sm font-medium mb-1">Email</label>
+                    <Input name="email" type="email" placeholder="jan@firma.pl" className="w-full" />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Model maszyny</label>
-                    <Input name="machineModel" placeholder="np. 8018" />
+                    <label className="block text-sm font-medium mb-1">Rodzaj osprzętu</label>
+                    <Input name="attachmentType" placeholder="np. łyżka 60 cm MS03" className="w-full" />
                   </div>
                 </div>
-                <div>
-                  <label className="text-sm font-medium">Zdjęcia* (max 5MB)</label>
-                  <div className="rounded-md border p-3 bg-gray-50">
-                    <input ref={fileInputRef} name="images" type="file" accept="image/*" capture="environment" multiple required />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Marka maszyny</label>
+                    <Input name="machineBrand" placeholder="np. JCB" className="w-full" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Model maszyny</label>
+                    <Input name="machineModel" placeholder="np. 8018" className="w-full" />
                   </div>
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Wiadomość</label>
-                  <Textarea name="message" rows={3} placeholder="Opisz czego potrzebujesz" />
+                  <label className="block text-sm font-medium mb-1">Zdjęcia* (max 5MB)</label>
+                  <div className="rounded-md border-2 border-dashed border-gray-300 p-4 bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <input ref={fileInputRef} name="images" type="file" accept="image/*" capture="environment" multiple required className="w-full text-sm" />
+                    <p className="text-xs text-gray-500 mt-2">Wybierz zdjęcia szybkozłącza i osprzętu</p>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Wiadomość</label>
+                  <Textarea name="message" rows={3} placeholder="Opisz czego potrzebujesz" className="w-full" />
                 </div>
                 <label htmlFor="rodo-fit" className="flex items-start gap-2 cursor-pointer select-none">
                   <span className="relative inline-block" style={{ width: 24, height: 24 }}>
@@ -161,11 +166,17 @@ const AIWidgetStub = () => {
                 <style jsx>{`
                   #rodo-fit:checked + .rodo-check .rodo-transition { left: -10px; top: -10px; }
                 `}</style>
-                <div className="flex flex-col sm:flex-row gap-2 sm:justify-end">
-                  <Button type="button" asChild variant="outline" className="border-gray-300">
-                    <a href="tel:+48782851962"><Phone className="h-4 w-4 mr-2" /> 782-851-962</a>
+                <div className="flex flex-col-reverse sm:flex-row gap-3 sm:justify-end">
+                  <Button type="button" asChild variant="outline" className="border-gray-300 w-full sm:w-auto">
+                    <a href="tel:+48782851962" className="flex items-center justify-center">
+                      <Phone className="h-4 w-4 mr-2" /> 782-851-962
+                    </a>
                   </Button>
-                  <Button type="submit" disabled={submitting} className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">
+                  <Button 
+                    type="submit" 
+                    disabled={submitting} 
+                    className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] w-full sm:w-auto font-semibold py-3"
+                  >
                     {submitting ? "Wysyłanie..." : "Wyślij zgłoszenie"}
                   </Button>
                 </div>

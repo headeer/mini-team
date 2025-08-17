@@ -53,7 +53,7 @@ const BestSellers = async () => {
                     {new Intl.NumberFormat("pl-PL", { style: "currency", currency: "PLN" }).format(price ?? 0)}
                   </div>
                   <div className="flex items-center gap-2">
-                    <Link href={`/product/${p.slug}`} className="text-xs px-3 py-1.5 rounded-md border hover:bg-gray-50">Szczegóły</Link>
+                    <Link href={`/product/${p.slug}`} className="hidden sm:inline-block text-xs px-3 py-1.5 rounded-lg border-2 border-[var(--color-brand-orange)] bg-white hover:bg-[var(--color-brand-orange)] text-[var(--color-brand-orange)] hover:text-white font-semibold transition-all duration-200 shadow-sm hover:shadow-md">Szczegóły</Link>
                     <FavoriteButton showProduct={false} product={{ _id: p._id, name: p.name } as any} />
                   </div>
                 </div>

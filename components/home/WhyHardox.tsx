@@ -56,16 +56,20 @@ const WhyHardox = () => {
               </div>
 
               <div className="mt-8 grid sm:grid-cols-2 gap-4">
-                <Card className="bg-white border-0 shadow-sm">
-                  <CardContent className="p-4 text-center">
-                    <p className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)]">3× DŁUŻEJ</p>
-                    <p className="text-xs text-gray-600 mt-1">Mniej wymian, mniej przestojów</p>
+                <Card className="bg-gradient-to-r from-[var(--color-brand-orange)]/5 to-[var(--color-brand-red)]/5 border border-[var(--color-brand-orange)]/20 shadow-md">
+                  <CardContent className="p-6 text-center">
+                    <div className="mb-3">
+                      <span className="text-4xl sm:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)]">3×</span>
+                      <span className="text-xl sm:text-2xl font-bold text-gray-900 ml-2">DŁUŻEJ</span>
+                    </div>
+                    <p className="text-sm sm:text-base text-gray-700 font-medium">Mniej wymian, mniej przestojów</p>
                   </CardContent>
                 </Card>
-                <Card className="bg-white border-0 shadow-sm">
-                  <CardContent className="p-4 text-center">
-                    <p className="text-sm text-gray-800">Oszczędność: <span className="font-bold text-[var(--color-brand-red)]">1600 zł rocznie</span></p>
-                    <p className="text-xs text-gray-600 mt-1">Szacunkowo dla maszyn 2–3 t</p>
+                <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 shadow-md">
+                  <CardContent className="p-6 text-center">
+                    <p className="text-sm sm:text-base text-gray-800 mb-2">Oszczędność:</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-[var(--color-brand-red)] mb-2">1600 zł</p>
+                    <p className="text-xs sm:text-sm text-gray-600">rocznie dla maszyn 2–3 t</p>
                   </CardContent>
                 </Card>
               </div>
@@ -75,29 +79,35 @@ const WhyHardox = () => {
           {/* Benefits */}
           <div className="space-y-4">
             <Card className="hover:shadow-md transition border-0 shadow-sm">
-              <CardContent className="p-6 flex items-start gap-3">
-                <Shield className="w-6 h-6 text-[var(--color-brand-orange)] mt-1" />
+              <CardContent className="p-4 sm:p-6 flex items-start gap-3 sm:gap-4">
+                <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 rounded-xl flex items-center justify-center">
+                  <Shield className="w-7 h-7 sm:w-8 sm:h-8 text-[var(--color-brand-orange)]" />
+                </div>
                 <div>
-                  <h4 className="text-lg font-bold text-gray-900">3× dłużej</h4>
-                  <p className="text-gray-600">Stal Hardox HB500 wytrzymuje 2400 godzin intensywnej pracy, podczas gdy standardowa stal tylko 800 godzin.</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">3× dłużej</h4>
+                  <p className="text-gray-600 text-sm sm:text-base">Stal Hardox HB500 wytrzymuje 2400 godzin intensywnej pracy, podczas gdy standardowa stal tylko 800 godzin.</p>
                 </div>
               </CardContent>
             </Card>
             <Card className="hover:shadow-md transition border-0 shadow-sm">
-              <CardContent className="p-6 flex items-start gap-3">
-                <TrendingUp className="w-6 h-6 text-[var(--color-brand-red)] mt-1" />
+              <CardContent className="p-4 sm:p-6 flex items-start gap-3 sm:gap-4">
+                <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-[var(--color-brand-red)]/10 to-[var(--color-brand-orange)]/10 rounded-xl flex items-center justify-center">
+                  <TrendingUp className="w-7 h-7 sm:w-8 sm:h-8 text-[var(--color-brand-red)]" />
+                </div>
                 <div>
-                  <h4 className="text-lg font-bold text-gray-900">Mniej wymian</h4>
-                  <p className="text-gray-600">Rzadziej wymieniasz łyżkę = mniej przestojów w pracy = większy zysk.</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">Mniej wymian</h4>
+                  <p className="text-gray-600 text-sm sm:text-base">Rzadziej wymieniasz łyżkę = mniej przestojów w pracy = większy zysk.</p>
                 </div>
               </CardContent>
             </Card>
             <Card className="hover:shadow-md transition border-0 shadow-sm">
-              <CardContent className="p-6 flex items-start gap-3">
-                <Clock className="w-6 h-6 text-green-600 mt-1" />
+              <CardContent className="p-4 sm:p-6 flex items-start gap-3 sm:gap-4">
+                <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl flex items-center justify-center">
+                  <Clock className="w-7 h-7 sm:w-8 sm:h-8 text-green-600" />
+                </div>
                 <div>
-                  <h4 className="text-lg font-bold text-gray-900">Więcej pracy</h4>
-                  <p className="text-gray-600">Twoja koparka pracuje dłużej bez przerw na serwis i wymianę części.</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">Więcej pracy</h4>
+                  <p className="text-gray-600 text-sm sm:text-base">Twoja koparka pracuje dłużej bez przerw na serwis i wymianę części.</p>
                 </div>
               </CardContent>
             </Card>

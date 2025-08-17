@@ -19,45 +19,59 @@ const CategoryList = ({ categories, selectedCategory, setSelectedCategory }: Pro
   }, [categories, filter]);
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full">
       <FancySearchInput
         placeholder="Szukaj kategorii"
         value={filter}
         onChange={(v) => setFilter(v)}
-        className="mb-2"
+        className="mb-3"
         onReset={() => setFilter("")}
       />
-      <RadioGroup value={selectedCategory || ""} className="space-y-1">
+      <div className="space-y-2 max-h-64 overflow-y-auto">
         {filtered?.map((category) => {
           const count = (category as any)?.productCount as number | undefined;
+          const isSelected = selectedCategory === category?.slug?.current;
           return (
             <div
               onClick={() => setSelectedCategory(category?.slug?.current as string)}
               key={category?._id}
-              className="flex items-center justify-between gap-2 hover:cursor-pointer rounded-md px-2 py-1 hover:bg-gray-50"
+              className={`flex items-center justify-between gap-2 hover:cursor-pointer rounded-lg px-3 py-2.5 transition-all duration-200 ${
+                isSelected 
+                  ? "bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border border-[var(--color-brand-orange)]/30" 
+                  : "hover:bg-gray-50 border border-transparent"
+              }`}
             >
-              <div className="flex items-center gap-2">
-                <RadioGroupItem value={category?.slug?.current as string} id={category?.slug?.current} className="rounded-sm" />
-                <Label
-                  htmlFor={category?.slug?.current}
-                  className={`${selectedCategory === category?.slug?.current ? "font-semibold text-shop_dark_green" : "font-normal"}`}
-                >
+              <div className="flex items-center gap-3">
+                <div className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                  isSelected 
+                    ? "bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)]" 
+                    : "bg-gray-300"
+                }`} />
+                <span className={`text-sm transition-colors duration-200 ${
+                  isSelected ? "font-semibold text-[var(--color-brand-orange)]" : "font-medium text-gray-700"
+                }`}>
                   {category?.title}
-                </Label>
+                </span>
               </div>
               {typeof count === "number" && (
-                <span className="text-xs text-gray-600">{count}</span>
+                <span className={`text-xs px-2 py-1 rounded-full ${
+                  isSelected 
+                    ? "bg-[var(--color-brand-orange)]/20 text-[var(--color-brand-orange)] font-medium" 
+                    : "bg-gray-100 text-gray-600"
+                }`}>
+                  {count}
+                </span>
               )}
             </div>
           );
         })}
-      </RadioGroup>
+      </div>
       {selectedCategory && (
         <button
           onClick={() => setSelectedCategory(null)}
-          className="text-sm font-medium mt-3 underline underline-offset-2 decoration-[1px] hover:text-shop_dark_green hoverEffect text-left"
+          className="text-sm font-medium mt-4 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all duration-200 w-full"
         >
-          Wyczyść wybór
+          ✕ Wyczyść wybór
         </button>
       )}
     </div>

@@ -24,7 +24,7 @@ const ObrobkaContactForm = () => {
   };
 
   return (
-    <section id="wycena" className="space-y-8">
+    <section id="wycena" className="space-y-8 max-w-full overflow-hidden">
       <div className="text-center space-y-4">
         <Badge className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white">
           Bezpłatna Wycena
@@ -35,9 +35,9 @@ const ObrobkaContactForm = () => {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-3 gap-8 max-w-full overflow-hidden">
         {/* Process Steps */}
-        <div className="space-y-6">
+        <div className="space-y-6 w-full min-w-0">
           <h3 className="text-xl font-bold text-gray-900 mb-4">Jak to działa?</h3>
           
           {[
@@ -71,12 +71,12 @@ const ObrobkaContactForm = () => {
         </div>
 
         {/* Form */}
-        <Card className="lg:col-span-2 border-0 shadow-xl">
-          <CardContent className="p-8">
-            <form method="post" action="/api/contact" encType="multipart/form-data" className="space-y-6">
+        <Card className="lg:col-span-2 border-0 shadow-xl w-full min-w-0">
+          <CardContent className="p-4 sm:p-8">
+            <form method="post" action="/api/contact" encType="multipart/form-data" className="space-y-6 w-full">
               {/* Contact Info */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2 min-w-0">
                   <Label htmlFor="name" className="text-sm font-medium text-gray-700">
                     Imię i firma *
                   </Label>
@@ -85,10 +85,10 @@ const ObrobkaContactForm = () => {
                     name="name" 
                     required 
                     placeholder="Jan Kowalski / ACME Sp. z o.o."
-                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500 w-full"
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
                     Telefon *
                   </Label>
@@ -97,13 +97,13 @@ const ObrobkaContactForm = () => {
                     name="phone" 
                     required 
                     placeholder="+48 782 851 962"
-                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500 w-full"
                   />
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2 min-w-0">
                   <Label htmlFor="email" className="text-sm font-medium text-gray-700">
                     E-mail *
                   </Label>
@@ -113,10 +113,10 @@ const ObrobkaContactForm = () => {
                     type="email" 
                     required 
                     placeholder="jan@firma.pl"
-                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500 w-full"
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <Label htmlFor="city" className="text-sm font-medium text-gray-700">
                     Miasto
                   </Label>
@@ -124,14 +124,14 @@ const ObrobkaContactForm = () => {
                     id="city" 
                     name="city"
                     placeholder="Wrocław"
-                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500 w-full"
                   />
                 </div>
               </div>
 
               {/* Project Details */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2 min-w-0">
                   <Label htmlFor="material" className="text-sm font-medium text-gray-700">
                     Materiał
                   </Label>
@@ -146,7 +146,7 @@ const ObrobkaContactForm = () => {
                     <option>Inne/nie wiem</option>
                   </select>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <Label htmlFor="thickness" className="text-sm font-medium text-gray-700">
                     Grubość (mm)
                   </Label>
@@ -157,7 +157,7 @@ const ObrobkaContactForm = () => {
                     min={0} 
                     step="0.1" 
                     placeholder="np. 3"
-                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                    className="border-gray-300 focus:border-orange-500 focus:ring-orange-500 w-full"
                   />
                 </div>
               </div>

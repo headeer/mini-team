@@ -12,16 +12,17 @@ const ObrobkaHero = () => {
       {/* dark gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/30 to-black/60 z-10" />
 
-      {/* full-bleed background video (16:9 scaled to cover) */}
+      {/* full-bleed background video (responsive cover) */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="absolute top-1/2 left-1/2 w-[177.78vh] h-[100vh] -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute inset-0 w-full h-full">
           <iframe
-            className="w-full h-full"
+            className="w-full h-full object-cover scale-110"
             src="https://www.youtube-nocookie.com/embed/bm1oOOgKh7c?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&modestbranding=1&rel=0&showinfo=0&enablejsapi=0&fs=0&playlist=bm1oOOgKh7c"
             title="Obróbka blach - video"
             loading="lazy"
             allow="autoplay; encrypted-media; picture-in-picture; clipboard-write"
             allowFullScreen={false}
+            style={{ minWidth: '100%', minHeight: '100%' }}
           />
         </div>
       </div>

@@ -143,10 +143,10 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
       )}
 
       <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) setZoom(1); }}>
-        <DialogContent className="max-w-[98vw] w-[98vw] h-[95vh] p-0 bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 shadow-2xl">
+        <DialogContent className="max-w-[96vw] w-[96vw] h-[92vh] max-h-[calc(100vh-2rem)] p-0 bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 shadow-2xl sm:max-w-[98vw] sm:w-[98vw] sm:h-[95vh]">
           <div className="flex flex-col h-full">
             {/* Header with gradient background */}
-            <div className="bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white px-6 py-4 rounded-t-lg">
+            <div className="bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white px-3 py-3 rounded-t-lg sm:px-6 sm:py-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
@@ -156,7 +156,7 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
                   </div>
                   <div>
                     <h2 className="text-lg font-bold">Rysunek techniczny</h2>
-                    <p className="text-white/80 text-sm truncate max-w-[300px]">{current?.file?.replace(/\.(pdf|png|jpg|jpeg)$/i, '') || 'Dokument techniczny'}</p>
+                    <p className="text-white/80 text-xs truncate max-w-[200px] sm:text-sm sm:max-w-[300px]">{current?.file?.replace(/\.(pdf|png|jpg|jpeg)$/i, '') || 'Dokument techniczny'}</p>
                   </div>
                 </div>
                 
@@ -170,27 +170,27 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
             </div>
 
             {/* Toolbar with improved styling */}
-            <div className="bg-white border-b border-gray-200 px-6 py-3">
+            <div className="bg-white border-b border-gray-200 px-3 py-2 sm:px-6 sm:py-3">
               <div className="flex items-center justify-between">
                 {/* File info */}
-                <div className="flex items-center gap-2 text-gray-600">
-                  <span className="text-xs bg-gray-100 px-2 py-1 rounded-md font-mono">
+                <div className="flex items-center gap-1 text-gray-600 sm:gap-2">
+                  <span className="text-xs bg-gray-100 px-1 py-0.5 rounded font-mono sm:px-2 sm:py-1">
                     {current?.file?.split('.').pop()?.toUpperCase()}
                   </span>
-                  <span className="text-sm">•</span>
-                  <span className="text-sm">{index + 1} z {items.length}</span>
+                  <span className="text-xs sm:text-sm">•</span>
+                  <span className="text-xs sm:text-sm">{index + 1} z {items.length}</span>
                 </div>
                 
                 {/* Control buttons with better styling */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 sm:gap-2">
                   <TooltipProvider>
-                    <div className="flex items-center gap-1 bg-gray-50 rounded-lg p-1">
+                    <div className="flex items-center gap-0.5 bg-gray-50 rounded-lg p-0.5 sm:gap-1 sm:p-1">
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <Button 
                             size="sm" 
                             variant="ghost" 
-                            className="h-8 w-8 p-0 hover:bg-gray-200" 
+                            className="h-6 w-6 p-0 hover:bg-gray-200 sm:h-8 sm:w-8" 
                             onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
                           >
                             <ZoomOut className="w-4 h-4" />
@@ -204,7 +204,7 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
                           <Button 
                             size="sm" 
                             variant="ghost" 
-                            className="h-8 w-8 p-0 hover:bg-gray-200" 
+                            className="h-6 w-6 p-0 hover:bg-gray-200 sm:h-8 sm:w-8" 
                             onClick={() => setZoom(1)}
                           >
                             <Minimize2 className="w-4 h-4" />
@@ -218,7 +218,7 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
                           <Button 
                             size="sm" 
                             variant="ghost" 
-                            className="h-8 w-8 p-0 hover:bg-gray-200" 
+                            className="h-6 w-6 p-0 hover:bg-gray-200 sm:h-8 sm:w-8" 
                             onClick={() => setZoom((z) => Math.min(4, z + 0.2))}
                           >
                             <ZoomIn className="w-4 h-4" />
@@ -228,17 +228,17 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
                       </Tooltip>
                     </div>
                     
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-0.5 sm:gap-1">
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <Button 
                             size="sm" 
                             variant="outline" 
-                            className="h-8 px-3 bg-[var(--color-brand-orange)] text-white hover:bg-[var(--color-brand-orange)]/90 border-[var(--color-brand-orange)]" 
+                            className="h-6 px-2 text-xs bg-[var(--color-brand-orange)] text-white hover:bg-[var(--color-brand-orange)]/90 border-[var(--color-brand-orange)] sm:h-8 sm:px-3 sm:text-sm" 
                             onClick={downloadCurrent}
                           >
-                            <Download className="w-4 h-4 mr-1" />
-                            Pobierz
+                            <Download className="w-3 h-3 mr-1 sm:w-4 sm:h-4" />
+                            <span className="hidden sm:inline">Pobierz</span>
                           </Button>
                         </TooltipTrigger>
                         <TooltipContent>Pobierz plik PDF</TooltipContent>
@@ -249,10 +249,10 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
                           <Button 
                             size="sm" 
                             variant="outline" 
-                            className="h-8 w-8 p-0 hover:bg-red-50 hover:border-red-200 hover:text-red-600" 
+                            className="h-6 w-6 p-0 hover:bg-red-50 hover:border-red-200 hover:text-red-600 sm:h-8 sm:w-8" 
                             onClick={() => setOpen(false)}
                           >
-                            <X className="w-4 h-4" />
+                            <X className="w-3 h-3 sm:w-4 sm:h-4" />
                           </Button>
                         </TooltipTrigger>
                         <TooltipContent>Zamknij (Esc)</TooltipContent>
@@ -264,23 +264,23 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
             </div>
 
             {/* Main content area with improved styling */}
-            <div className="relative flex-1 bg-white m-4 rounded-lg shadow-inner border border-gray-200 overflow-hidden">
+            <div className="relative flex-1 bg-white m-2 rounded-lg shadow-inner border border-gray-200 overflow-hidden sm:m-4">
               {/* Navigation arrows with better styling */}
               {items.length > 1 && (
                 <>
                   <button 
                     type="button" 
                     onClick={prev} 
-                    className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-white border border-gray-200 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110 hover:shadow-xl"
+                    className="absolute left-1 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-white border border-gray-200 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 hover:shadow-xl sm:left-4 sm:p-3"
                   >
-                    <ChevronLeft className="w-5 h-5 text-gray-700" />
+                    <ChevronLeft className="w-4 h-4 text-gray-700 sm:w-5 sm:h-5" />
                   </button>
                   <button 
                     type="button" 
                     onClick={next} 
-                    className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-white border border-gray-200 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110 hover:shadow-xl"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-white border border-gray-200 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 hover:shadow-xl sm:right-4 sm:p-3"
                   >
-                    <ChevronRight className="w-5 h-5 text-gray-700" />
+                    <ChevronRight className="w-4 h-4 text-gray-700 sm:w-5 sm:h-5" />
                   </button>
                 </>
               )}
@@ -289,13 +289,13 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
               <div 
                 ref={containerRef} 
                 onWheel={onWheel} 
-                className="w-full h-full overflow-auto cursor-grab active:cursor-grabbing bg-gradient-to-br from-gray-50 to-white"
-                style={{ scrollbarWidth: 'thin', scrollbarColor: '#d1d5db #f9fafb' }}
-              >
-                <div 
-                  style={{ transform: `scale(${zoom})`, transformOrigin: "center center" }} 
-                  className="w-full h-full flex items-center justify-center p-6 transition-transform duration-200"
+                                  className="w-full h-full overflow-auto cursor-grab active:cursor-grabbing bg-gradient-to-br from-gray-50 to-white"
+                  style={{ scrollbarWidth: 'thin', scrollbarColor: '#d1d5db #f9fafb' }}
                 >
+                  <div 
+                    style={{ transform: `scale(${zoom})`, transformOrigin: "center center" }} 
+                    className="w-full h-full flex items-center justify-center p-2 transition-transform duration-200 sm:p-6"
+                  >
                   {current && (current.file.toLowerCase().endsWith(".pdf") ? (
                     <div className="max-w-4xl max-h-full bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                       <object

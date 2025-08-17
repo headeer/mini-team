@@ -163,7 +163,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
           {/* Product Title */}
           <Link href={slugValue ? `/product/${slugValue}` : "#"} className="group/title">
-            <Title className="text-lg font-bold text-gray-900 line-clamp-2 min-h-[56px] leading-tight transition-all duration-300 group-hover/title:text-[var(--color-brand-orange)] group-hover/title:underline underline-offset-4">
+            <Title className="text-lg font-bold text-gray-900 line-clamp-3 min-h-[72px] leading-tight transition-all duration-300 group-hover/title:text-[var(--color-brand-orange)] group-hover/title:underline underline-offset-4">
               {product?.name}
             </Title>
           </Link>
@@ -199,10 +199,26 @@ const ProductCard = ({ product }: { product: Product }) => {
               className="text-xl font-bold mb-4"
             />
             
+            {/* Details Button - Hidden on mobile */}
+            <div className="hidden sm:flex items-center gap-2 mb-3">
+              <Link 
+                href={slugValue ? `/product/${slugValue}` : "#"} 
+                className="flex-1 text-center text-sm px-3 py-2.5 rounded-xl border-2 border-[var(--color-brand-orange)] bg-white hover:bg-[var(--color-brand-orange)] transition-all duration-200 font-semibold text-[var(--color-brand-orange)] hover:text-white shadow-sm hover:shadow-md"
+              >
+                Szczegóły
+              </Link>
+              <ProductSideMenu product={product} />
+            </div>
+            
+            {/* Mobile: Side menu only */}
+            <div className="sm:hidden flex justify-end mb-3">
+              <ProductSideMenu product={product} />
+            </div>
+            
             {/* Action Button */}
             <AddToCartButton 
               product={product} 
-              className="w-full bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] hover:from-[var(--color-brand-red)] hover:to-[var(--color-brand-orange)] text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-0" 
+              className="w-full" 
             />
           </div>
         </div>

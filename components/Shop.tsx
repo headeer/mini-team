@@ -119,101 +119,140 @@ const Shop = ({ categories }: Props) => {
           </div>
         </div>
 
-        {/* Search + sort + quick tiers */}
-        <div className="mb-4 flex flex-col md:flex-row gap-3 items-start md:items-center justify-between bg-white p-3 rounded-lg border">
-          <div className="flex items-center gap-2 w-full md:max-w-md">
-            <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Szukaj: np. łyżka 60 cm ms03" />
-            <button onClick={() => fetchProducts()} className="px-3 py-2 rounded-md bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-medium">Szukaj</button>
+        {/* Search + modern sorting */}
+        <div className="mb-4 space-y-4">
+          {/* Search bar */}
+          <div className="bg-white p-4 rounded-xl border shadow-sm">
+            <div className="flex items-center gap-3">
+              <Input 
+                value={q} 
+                onChange={(e) => setQ(e.target.value)} 
+                placeholder="Szukaj: np. łyżka 60 cm ms03" 
+                className="flex-1"
+              />
+              <button 
+                onClick={() => fetchProducts()} 
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
+              >
+                Szukaj
+              </button>
+            </div>
           </div>
-           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-600">Sortuj:</span>
-            <div className="inline-flex rounded-md border overflow-hidden">
-              {([
-                { label: "Nowości", value: "new" },
-                { label: "Cena ↑", value: "price-asc" },
-                { label: "Cena ↓", value: "price-desc" },
-                { label: "Polecane", value: "featured" },
-              ] as const).map((opt) => (
-                <button
-                  key={opt.value}
-                  onClick={() => setSort(opt.value)}
-                  className={`px-3 py-1.5 text-sm ${sort === opt.value ? "bg-[var(--color-brand-orange)] text-white" : "bg-white hover:bg-gray-50"}`}
-                >
-                  {opt.label}
-                </button>
-              ))}
+
+          {/* Modern sorting chips */}
+          <div className="bg-white p-4 rounded-xl border shadow-sm">
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="text-sm font-medium text-gray-700">Sortuj:</span>
+              <div className="flex gap-2 flex-wrap">
+                {([
+                  { label: "✨ Nowości", value: "new" },
+                  { label: "💰 Cena ↑", value: "price-asc" },
+                  { label: "💰 Cena ↓", value: "price-desc" },
+                  { label: "⭐ Polecane", value: "featured" },
+                ] as const).map((opt) => (
+                  <button
+                    key={opt.value}
+                    onClick={() => setSort(opt.value)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                      sort === opt.value 
+                        ? "bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white shadow-md scale-105" 
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-          <div className="mb-4 flex flex-wrap gap-2">
-          {[
-            { label: "1–1.5 t", value: "1-1.5t" },
-            { label: "1.5–2.3 t", value: "1.5-2.3t" },
-            { label: "2.3–3 t", value: "2.3-3t" },
-            { label: "3–5 t", value: "3-5t" },
-          ].map((t) => (
-            <Badge
-              key={t.value}
-              onClick={() => {
-                // reuse category filter via search by priceTier in query text
-                setQ(t.value);
-                fetchProducts();
-              }}
-              className="hover:cursor-pointer bg-gray-100 text-gray-800 border hover:bg-gray-200"
-            >
-              {t.label}
-            </Badge>
-          ))}
-        </div>
+          {/* Quick machine tier selection */}
+          <div className="mb-4">
+            <div className="bg-white p-4 rounded-xl border shadow-sm">
+              <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                🚜 Szybki wybór wg wagi maszyny
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { label: "1–1.5 t", value: "1-1.5t" },
+                  { label: "1.5–2.3 t", value: "1.5-2.3t" },
+                  { label: "2.3–3 t", value: "2.3-3t" },
+                  { label: "3–5 t", value: "3-5t" },
+                ].map((t) => (
+                  <button
+                    key={t.value}
+                    onClick={() => {
+                      setQ(t.value);
+                      fetchProducts();
+                    }}
+                    className="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gradient-to-r hover:from-[var(--color-brand-orange)] hover:to-[var(--color-brand-red)] hover:text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         <Separator className="mb-4" />
 
-        {/* Mobile: collapsible filters (closed by default) */}
+        {/* Mobile: improved filters */}
         <div className="md:hidden mb-4">
           <Accordion type="single" collapsible>
-            <AccordionItem value="filters" className="border rounded-md bg-white">
-              <AccordionTrigger className="px-3">
-                <div className="flex items-center gap-2">
-                  <Filter className="h-4 w-4 text-[var(--color-brand-orange)]" />
-                  <span className="font-semibold text-gray-900">Filtry produktów</span>
+            <AccordionItem value="filters" className="border rounded-xl bg-white shadow-sm">
+              <AccordionTrigger className="px-4 py-3">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10">
+                    <Filter className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                  </div>
+                  <div className="text-left">
+                    <span className="font-semibold text-gray-900">Filtry</span>
+                    <p className="text-xs text-gray-600">Znajdź idealny osprzęt</p>
+                  </div>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="px-3">
-                <div className="rounded-md border bg-white shadow-sm overflow-hidden">
-                  <div className="p-3">
+              <AccordionContent className="px-4 pb-4">
+                <div className="space-y-4">
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                      📂 Kategorie
+                    </h4>
                     <CategoryList
                       categories={categories}
                       selectedCategory={selectedCategory}
                       setSelectedCategory={setSelectedCategory}
                     />
                   </div>
-                </div>
-                <div className="rounded-md border bg-white shadow-sm overflow-hidden mt-3">
-                  <div className="p-3">
+                  
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                      💰 Cena
+                    </h4>
                     <PriceList
                       setSelectedPrice={setSelectedPrice}
                       selectedPrice={selectedPrice}
                     />
                   </div>
-                </div>
-                <div className="flex gap-2 mt-3">
-                  <button
-                    onClick={() => fetchProducts()}
-                    className="px-3 py-1.5 rounded-md bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-medium w-full"
-                  >
-                    Zastosuj
-                  </button>
-                  {(selectedCategory !== null || selectedPrice !== null) && (
+                  
+                  <div className="flex gap-2 pt-2">
                     <button
-                      onClick={() => {
-                        setSelectedCategory(null);
-                        setSelectedPrice(null);
-                      }}
-                      className="px-3 py-1.5 rounded-md border text-sm font-medium hover:bg-gray-50 w-full"
+                      onClick={() => fetchProducts()}
+                      className="px-4 py-3 rounded-xl bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200 flex-1"
                     >
-                      Wyczyść
+                      Zastosuj filtry
                     </button>
-                  )}
+                    {(selectedCategory !== null || selectedPrice !== null) && (
+                      <button
+                        onClick={() => {
+                          setSelectedCategory(null);
+                          setSelectedPrice(null);
+                        }}
+                        className="px-4 py-3 rounded-xl border border-gray-300 text-sm font-medium hover:bg-gray-50 transition-all duration-200"
+                      >
+                        Wyczyść
+                      </button>
+                    )}
+                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
@@ -223,18 +262,22 @@ const Shop = ({ categories }: Props) => {
         <div className="flex flex-col md:flex-row gap-5 border-t border-t-shop_dark_green/50">
           <div className="hidden md:block md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-y-auto md:min-w-72 pb-3 md:border-r border-r-shop_btn_dark_green/50 nice-scrollbar space-y-3">
             {/* Filters Header */}
-            <div className="bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border rounded-md p-4">
-              <div className="flex items-center gap-2">
-                <Filter className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <h3 className="font-semibold text-gray-900">Filtry produktów</h3>
+            <div className="bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border rounded-xl p-4 shadow-sm">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-[var(--color-brand-orange)]/20 to-[var(--color-brand-red)]/20">
+                  <Filter className="h-5 w-5 text-[var(--color-brand-orange)]" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Filtry</h3>
+                  <p className="text-xs text-gray-600">Znajdź idealny osprzęt</p>
+                </div>
               </div>
-              <p className="text-sm text-gray-600 mt-1">Znajdź idealny osprzęt dla swojej koparki</p>
-              <div className="flex gap-2 mt-3">
+              <div className="flex gap-2 mt-4">
                 <button
                   onClick={() => fetchProducts()}
-                  className="px-3 py-1.5 rounded-md bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-medium"
+                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
                 >
-                  Zastosuj filtry
+                  Zastosuj
                 </button>
                 {(selectedCategory !== null || selectedPrice !== null) && (
                   <button
@@ -242,15 +285,18 @@ const Shop = ({ categories }: Props) => {
                       setSelectedCategory(null);
                       setSelectedPrice(null);
                     }}
-                    className="px-3 py-1.5 rounded-md border text-sm font-medium hover:bg-gray-50"
+                    className="px-4 py-2 rounded-xl border border-gray-300 text-sm font-medium hover:bg-gray-50 transition-all duration-200"
                   >
                     Wyczyść
                   </button>
                 )}
               </div>
             </div>
-            <div className="rounded-lg border bg-white shadow-sm overflow-hidden">
-              <div className="p-3">
+            <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+              <div className="p-4">
+                <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  📂 Kategorie
+                </h4>
                 <CategoryList
                   categories={categories}
                   selectedCategory={selectedCategory}
@@ -258,8 +304,11 @@ const Shop = ({ categories }: Props) => {
                 />
               </div>
             </div>
-            <div className="rounded-lg border bg-white shadow-sm overflow-hidden">
-              <div className="p-3">
+            <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+              <div className="p-4">
+                <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  💰 Cena
+                </h4>
                 <PriceList
                   setSelectedPrice={setSelectedPrice}
                   selectedPrice={selectedPrice}
@@ -271,13 +320,13 @@ const Shop = ({ categories }: Props) => {
             <div className="mb-3 text-sm text-gray-600">Znaleziono: <span className="font-semibold">{products?.length || 0}</span> produktów</div>
             <div className="md:h-[calc(100vh-160px)] md:overflow-y-auto pr-2 nice-scrollbar">
               {loading ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                   {Array.from({ length: 8 }).map((_, i) => (
-                    <div key={i} className="rounded-xl border bg-white p-3 animate-pulse h-64" />
+                    <div key={i} className="rounded-3xl border bg-white p-6 animate-pulse h-80 shadow-lg" />
                   ))}
                 </div>
               ) : products?.length > 0 ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                   {products?.map((product) => (
                     <div key={product?._id} className="h-full">
                       <ProductCard product={product} activeMachine={machineParam || undefined} />

@@ -69,6 +69,47 @@ export default function RootLayout({
         <Script id="tawk-chat" strategy="afterInteractive">
           {`
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            
+            // Set initial widget positioning before loading
+            Tawk_API = Tawk_API || {};
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            
+            // Configure widget positioning during initialization
+            Tawk_API.embedded = 'tawk-container';
+            if (isMobile) {
+              // Mobile positioning - higher up to avoid conflicts
+              Tawk_API.customStyle = {
+                'visibility': {
+                  'desktop': {
+                    'position': 'br',
+                    'xOffset': '16px',
+                    'yOffset': '350px'
+                  },
+                  'mobile': {
+                    'position': 'br', 
+                    'xOffset': '16px',
+                    'yOffset': '350px'
+                  }
+                }
+              };
+            } else {
+              // Desktop positioning
+              Tawk_API.customStyle = {
+                'visibility': {
+                  'desktop': {
+                    'position': 'br',
+                    'xOffset': '24px', 
+                    'yOffset': '180px'
+                  },
+                  'mobile': {
+                    'position': 'br',
+                    'xOffset': '16px',
+                    'yOffset': '350px'
+                  }
+                }
+              };
+            }
+            
             (function(){
               var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
               s1.async=true;
@@ -77,7 +118,6 @@ export default function RootLayout({
               s1.setAttribute('crossorigin','*');
               s0.parentNode.insertBefore(s1,s0);
             })();
-            Tawk_API = Tawk_API || {};
             Tawk_API.onLoad = function(){
               try {
                 // Force positioning with CSS override - more aggressive approach
@@ -86,11 +126,11 @@ export default function RootLayout({
                   
                   if (isMobile) {
                     // On mobile: position much higher to avoid all conflicts
-                    Tawk_API.setAttributes({ position: 'br', bottom: 280, right: 16 }, function(){});
-                    Tawk_API.minimize();
+                    Tawk_API.setAttributes({ position: 'br', bottom: 350, right: 16 }, function(){});
+                    // Don't auto-minimize on mobile - let users control chat state
                   } else {
                     // On desktop: position higher on right
-                    Tawk_API.setAttributes({ position: 'br', bottom: 120, right: 24 }, function(){});
+                    Tawk_API.setAttributes({ position: 'br', bottom: 180, right: 24 }, function(){});
                   }
                   
                   // Force CSS override with !important
@@ -101,7 +141,7 @@ export default function RootLayout({
                     
                     [tawkWidget, tawkContainer, tawkFrame].forEach(function(element) {
                       if (element) {
-                        element.style.setProperty('bottom', isMobile ? '280px' : '120px', 'important');
+                        element.style.setProperty('bottom', isMobile ? '350px' : '180px', 'important');
                         element.style.setProperty('right', isMobile ? '16px' : '24px', 'important');
                         element.style.setProperty('z-index', '9999', 'important');
                       }
@@ -111,7 +151,7 @@ export default function RootLayout({
                     const tawkElements = document.querySelectorAll('[id*="tawk"], [class*="tawk"]');
                     tawkElements.forEach(function(el) {
                       if (el && el.style) {
-                        el.style.setProperty('bottom', isMobile ? '280px' : '120px', 'important');
+                        el.style.setProperty('bottom', isMobile ? '350px' : '180px', 'important');
                         el.style.setProperty('right', isMobile ? '16px' : '24px', 'important');
                       }
                     });
@@ -125,6 +165,18 @@ export default function RootLayout({
                 window.addEventListener('resize', function() {
                   setTimeout(forceRepositionChat, 100);
                 });
+                
+                // Mobile-specific initialization
+                const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                if (isMobile) {
+                  // Ensure chat widget is properly initialized on mobile
+                  setTimeout(function() {
+                    try {
+                      // Don't auto-minimize, let it stay in default state
+                      Tawk_API.showWidget();
+                    } catch(e){}
+                  }, 1000);
+                }
                 
                 // Watch for DOM changes (Tawk.to loads dynamically)
                 const observer = new MutationObserver(function(mutations) {
@@ -151,13 +203,37 @@ export default function RootLayout({
                 // Periodic check as fallback
                 setInterval(forceRepositionChat, 3000);
                 // Open chat when #chat present or clicked
-                function openChat() { try { Tawk_API.maximize(); } catch(e){} }
+                function openChat() { 
+                  try { 
+                    Tawk_API.maximize(); 
+                    // Ensure chat stays open on mobile
+                    setTimeout(function() {
+                      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                      if (isMobile) {
+                        // Force chat to stay maximized on mobile
+                        try { Tawk_API.maximize(); } catch(e){}
+                      }
+                    }, 100);
+                  } catch(e){} 
+                }
+                
                 if (window.location.hash === '#chat') {
                   setTimeout(openChat, 200);
                 }
                 window.addEventListener('hashchange', function(){
                   if (window.location.hash === '#chat') setTimeout(openChat, 200);
                 });
+                
+                // Prevent auto-minimization on mobile
+                Tawk_API.onChatMinimized = function(){
+                  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                  if (isMobile && window.location.hash === '#chat') {
+                    // Re-maximize if user specifically requested chat
+                    setTimeout(function() {
+                      try { Tawk_API.maximize(); } catch(e){}
+                    }, 100);
+                  }
+                };
               } catch(e){}
             };
           `}

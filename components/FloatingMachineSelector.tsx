@@ -77,25 +77,27 @@ const FloatingMachineSelector: React.FC = () => {
 
   return (
     <>
-      {/* Mobile: Sticky bottom bar - only show on non-product pages */}
+      {/* Mobile: Improved bottom bar - only show on non-product pages */}
       {!isProductPage && (
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] shadow-2xl border-t border-white/20">
-        <Dialog open={open} onOpenChange={setOpen}>
-          <div className="px-4 py-3">
-            <DialogTrigger asChild>
-              <button
-                aria-label="Dobierz do maszyny"
-                className="w-full flex items-center justify-center gap-3 bg-white/95 hover:bg-white text-gray-900 font-semibold py-4 px-6 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                <Wrench className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <span>Dobierz do swojej maszyny</span>
-                <div className="ml-auto bg-[var(--color-brand-orange)] text-white text-xs font-bold px-2 py-1 rounded-full">
-                  SZYBKO
-                </div>
-              </button>
-            </DialogTrigger>
-          </div>
-        </Dialog>
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 shadow-xl">
+          <Dialog open={open} onOpenChange={setOpen}>
+            <div className="p-3 pb-4">
+              <DialogTrigger asChild>
+                <button
+                  aria-label="Dobierz do maszyny"
+                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white font-semibold py-3 px-4 rounded-2xl shadow-lg transition-all duration-200 hover:shadow-xl active:scale-98"
+                >
+                  <div className="flex items-center gap-2">
+                    <Wrench className="h-4 w-4" />
+                    <span className="text-sm">Dobierz maszynę</span>
+                  </div>
+                  <div className="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded-full">
+                    ⚡
+                  </div>
+                </button>
+              </DialogTrigger>
+            </div>
+          </Dialog>
         </div>
       )}
 

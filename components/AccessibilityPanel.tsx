@@ -53,7 +53,7 @@ export default function AccessibilityPanel() {
   }
 
   return (
-    <div aria-live="polite" className="a11y-panel left">
+    <div aria-live="polite" className="a11y-panel left hidden sm:block">
       <a href="#content" className="skip-link">Pomiń do treści</a>
       <button
         aria-label={open ? "Zamknij panel dostępności" : "Otwórz panel dostępności"}

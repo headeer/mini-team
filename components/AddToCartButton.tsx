@@ -93,11 +93,7 @@ const AddToCartButton = ({ product, className }: Props) => {
               </>
             ) : (
               <>
-                <ShoppingBag className="w-5 h-5 transition-transform group-hover:scale-110" />
-                <div className="flex flex-col text-left">
-                  <span className="font-bold">Dodaj do koszyka</span>
-                  <span className="text-xs opacity-90">Szybka dostawa 24-48h</span>
-                </div>
+                <span className="font-bold">Dodaj do koszyka</span>
               </>
             )}
           </div>

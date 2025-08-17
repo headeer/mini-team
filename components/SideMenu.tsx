@@ -22,7 +22,7 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
     >
       <div
         ref={sidebarRef}
-        className="min-w-72 max-w-96 bg-black h-screen p-10 border-r border-r-shop_light_green flex flex-col gap-6"
+        className="w-72 max-w-[85vw] bg-black h-screen p-6 border-r border-r-shop_light_green flex flex-col gap-6 sm:min-w-72 sm:max-w-96 sm:p-10"
       >
         <div className="flex items-center justify-between gap-5">
           <Logo className="text-white" spanDesign="group-hover:text-white" />

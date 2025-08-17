@@ -15,19 +15,8 @@ interface Props {
 }
 const PriceList = ({ selectedPrice, setSelectedPrice }: Props) => {
   return (
-    <div className="w-full bg-white p-5">
-      <div className="flex items-center justify-between mb-2">
-        <Label className="text-sm font-semibold">Cena</Label>
-        {selectedPrice && (
-          <button
-            onClick={() => setSelectedPrice(null)}
-            className="text-xs font-medium underline underline-offset-2 hover:text-shop_dark_green"
-          >
-            Wyczyść
-          </button>
-        )}
-      </div>
-      <div className="grid grid-cols-1 gap-2">
+    <div className="w-full">
+      <div className="space-y-2">
         {priceArray.map(({ title, value }) => {
           const active = selectedPrice === value;
           return (
@@ -35,17 +24,32 @@ const PriceList = ({ selectedPrice, setSelectedPrice }: Props) => {
               key={value}
               type="button"
               onClick={() => setSelectedPrice(value)}
-              className={`w-full text-left px-3 py-2 rounded-md border transition ${
+              className={`w-full text-left px-3 py-3 rounded-lg transition-all duration-200 ${
                 active
-                  ? "bg-[var(--color-brand-orange)]/10 border-[var(--color-brand-orange)] text-gray-900"
-                  : "bg-white border-gray-200 hover:bg-gray-50"
+                  ? "bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border border-[var(--color-brand-orange)]/30 text-[var(--color-brand-orange)] font-semibold"
+                  : "bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-medium"
               }`}
             >
-              {title}
+              <div className="flex items-center gap-3">
+                <div className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                  active 
+                    ? "bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)]" 
+                    : "bg-gray-300"
+                }`} />
+                <span className="text-sm">{title}</span>
+              </div>
             </button>
           );
         })}
       </div>
+      {selectedPrice && (
+        <button
+          onClick={() => setSelectedPrice(null)}
+          className="text-sm font-medium mt-4 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all duration-200 w-full"
+        >
+          ✕ Wyczyść wybór
+        </button>
+      )}
     </div>
   );
 };

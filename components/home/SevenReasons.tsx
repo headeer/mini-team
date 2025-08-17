@@ -12,7 +12,7 @@ const reasons: Reason[] = [
   { title: "Pełna gama rozmiarów", desc: "Od 18 cm do 150 cm – dla każdej pracy.", Icon: Ruler },
   { title: "Wyposażenie opcjonalne", desc: "Zęby i płaskowniki dopasowane do potrzeb.", Icon: Wrench },
   { title: "Polska produkcja", desc: "Kontrola jakości i szybka dostępność.", Icon: Flag },
-  { title: "Szybka dostawa", desc: "48 h na terenie Polski.", Icon: Truck },
+  { title: "Szybka dostawa", desc: "48h na terenie Polski.", Icon: Truck },
 ];
 
 const SevenReasons = () => {
@@ -32,7 +32,7 @@ const SevenReasons = () => {
             <ul className="space-y-2 text-sm text-gray-700">
               {[
                 "Hardox HB500 + precyzyjna obróbka",
-                "Dostawa nawet w 48 h",
+                "Dostawa nawet w 48h",
                 "Kompatybilność z popularnymi szybkozłączami",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">

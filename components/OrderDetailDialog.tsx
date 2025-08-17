@@ -29,7 +29,7 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
   if (!order) return null;
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="!max-w-4xl max-h-[90vh] overflow-y-scroll">
+      <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Szczegóły zamówienia - {order?.orderNumber}</DialogTitle>
         </DialogHeader>
@@ -63,18 +63,18 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
             </Button>
           )}
         </div>
-        <Table>
+        <Table className="order-detail-table">
           <TableHeader>
             <TableRow>
-              <TableHead>Produkt</TableHead>
-              <TableHead>Ilość</TableHead>
-              <TableHead>Cena</TableHead>
+              <TableHead className="text-xs sm:text-sm">Produkt</TableHead>
+              <TableHead className="text-xs sm:text-sm">Ilość</TableHead>
+              <TableHead className="text-xs sm:text-sm">Cena</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {order.products?.map((product, index) => (
               <TableRow key={index}>
-                <TableCell className="flex items-center gap-2">
+                <TableCell className="flex items-center gap-1 sm:gap-2">
                   {product?.product?.images && (() => {
                     const toSrc = (img: any): string | null => {
                       if (!img) return null;
@@ -90,18 +90,18 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
                       <Image
                         src={src}
                         alt="productImage"
-                        width={50}
-                        height={50}
-                        className="border rounded-sm"
+                        width={40}
+                        height={40}
+                        className="border rounded-sm sm:w-[50px] sm:h-[50px]"
                       />
                     ) : (
-                      <div className="h-[50px] w-[50px] bg-gray-100 rounded-sm" />
+                      <div className="h-[40px] w-[40px] bg-gray-100 rounded-sm sm:h-[50px] sm:w-[50px]" />
                     );
                   })()}
 
-                  {product?.product && product?.product?.name}
+                  <span className="text-xs sm:text-sm">{product?.product && product?.product?.name}</span>
                 </TableCell>
-                <TableCell>{product?.quantity}</TableCell>
+                <TableCell className="text-xs sm:text-sm">{product?.quantity}</TableCell>
                 <TableCell>
                   <PriceFormatter
                     amount={product?.product?.price}
