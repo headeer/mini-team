@@ -70,7 +70,7 @@ export default function PolitykaPrywatnosciPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">2.4 Usługa "Dobierz do maszyny"</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">2.4 Usługa &quot;Dobierz do maszyny&quot;</h3>
                   <div className="bg-purple-50 p-4 rounded-lg space-y-2">
                     <p><strong>Zbierane dane:</strong> marka maszyny, model, preferencje wyszukiwania</p>
                     <p><strong>Podstawa prawna:</strong> prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO)</p>

@@ -61,7 +61,7 @@ export default function RegulaminPage() {
                   <li>Udostępnienie katalogu produktów</li>
                   <li>Obsługa konta Klienta</li>
                   <li>Przesyłanie newslettera (po wyrażeniu zgody)</li>
-                  <li>Usługa "Dobierz do maszyny"</li>
+                  <li>Usługa &quot;Dobierz do maszyny&quot;</li>
                   <li>Usługa weryfikacji kompatybilności produktów</li>
                 </ul>
                 <p>2. Wszystkie usługi elektroniczne są świadczone bezpłatnie.</p>

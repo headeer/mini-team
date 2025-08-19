@@ -9,7 +9,7 @@ import { useSearchParams } from "next/navigation";
 import PriceList from "./shop/PriceList";
 // import { client } from "@/sanity/lib/client";
 import { Filter } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+// import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import NoProductAvailable from "./NoProductAvailable";
