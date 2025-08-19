@@ -12,6 +12,7 @@ import { ClerkLoaded, SignedIn, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { Logs } from "lucide-react";
 import { getMyOrders } from "@/sanity/queries";
+import HeaderHelpersMenu from "./HeaderHelpersMenu";
 
 const Header = async () => {
   const user = await currentUser();
@@ -44,6 +45,7 @@ const Header = async () => {
           <div className="hidden sm:block">
             <FavoriteButton />
           </div>
+          <HeaderHelpersMenu />
           {user && (
             <Link href={"/orders"} className="group relative text-gray-700 hover:text-orange-500 hidden sm:inline-flex">
               <Logs className="w-5 h-5" />

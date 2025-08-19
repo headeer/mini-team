@@ -3,7 +3,6 @@ export const headerData = [
   { title: "Oferta", href: "/shop" },
   { title: "Obróbka\u00A0Blach", href: "/obrobka-blach" },
   { title: "Realizacje", href: "/realizacje" },
-  { title: "Urządzenia", href: "/urzadzenia" },
   { title: "Kontakt", href: "/kontakt" },
 ];
 export const quickLinksData = [
@@ -15,10 +14,9 @@ export const quickLinksData = [
   { title: "Help", href: "/help" },
 ];
 export const categoriesData = [
-  { title: "Łyżki 1–1.5 Tony", href: "1-1.5t" },
-  { title: "Łyżki 1.5–2.3 Tony", href: "1.5-2.3t" },
-  { title: "Łyżki 2.3–3 Tony", href: "2.3-3t" },
-  { title: "Łyżki 3–5 Tony", href: "3-5t" },
+  { title: "Łyżki 1–2t", href: "1-2t" },
+  { title: "Łyżki 2–3t", href: "2-3t" },
+  { title: "Łyżki 3–4.5t", href: "3-4.5t" },
   { title: "Grabie", href: "grabie" },
   { title: "Zrywaki korzeni", href: "zrywarki-korzeni" },
 ];

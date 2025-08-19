@@ -1,4 +1,5 @@
 import React from "react";
+import { categoriesData } from "@/constants/data";
 import Title from "./Title";
 import { Category } from "@/sanity.types";
 import Image from "next/image";
@@ -53,14 +54,34 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
         <Link href="/shop" className="text-sm font-semibold text-shop_dark_green hover:underline underline-offset-4">Zobacz wszystkie</Link>
       </div>
       {(() => {
-        const withProducts = (categories || []).filter((c) => Number((c as any)?.productCount) > 0).slice(0, 12);
+        // Take categories that actually have products
+        const withProducts = (categories || []).filter((c) => Number((c as any)?.productCount) > 0);
+        // Build a fallback list to always show 4 categories
+        const existingSlugs = new Set(
+          withProducts
+            .map((c: any) => c?.slug?.current || c?.slug)
+            .filter(Boolean)
+        );
+        const preferredOrder = ["1-2t", "2-3t", "3-4.5t", "grabie"] as const;
+        const fallbackFromConfig = preferredOrder
+          .map((slug) => categoriesData.find((c) => c.href === slug))
+          .filter(Boolean)
+          .filter((c) => !existingSlugs.has((c as any).href))
+          .map((c: any) => ({
+            _id: `virtual-${c.href}`,
+            title: c.title,
+            slug: c.href,
+            productCount: 0,
+          }));
+        const displayCategories = [...withProducts, ...fallbackFromConfig].slice(0, 4);
         return (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-            {withProducts.map((category) => {
+            {displayCategories.map((category) => {
               const countText = pluralize((category as any)?.productCount as number);
+              const linkSlug = (category as any)?.slug?.current || (category as any)?.slug || (category as any)?.href || "";
               return (
-                <Link key={category?._id} href={`/category/${category?.slug?.current}`} className="group relative overflow-hidden">
-                  <div className="relative border border-gray-200/60 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50/30 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:scale-[1.02] p-4 flex items-center justify-between">
+                <Link key={(category as any)?._id || linkSlug} href={`/shop?category=${encodeURIComponent(String(linkSlug))}`} className="group relative overflow-hidden">
+                  <div className="relative border border-gray-200/60 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50/30 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-2xl p-4 flex items-center justify-between">
                     
                     {/* Floating shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
@@ -94,21 +115,16 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
                               alt={`Zdjęcie ${category?.title}`} 
                               width={isGrabie ? 80 : 64} 
                               height={isGrabie ? 80 : 64} 
-                              className={`${isGrabie ? 'object-contain' : 'object-cover'} w-full h-full transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1 ${isGrabie ? '' : 'rounded-xl'}`}
+                              className={`${isGrabie ? 'object-contain' : 'object-cover'} w-full h-full transition-transform duration-500 ${isGrabie ? '' : 'rounded-xl'}`}
                             />
                           ) : (
-                            <div className="w-10 h-10 transition-transform duration-500 group-hover:scale-110">
+                            <div className="w-10 h-10 transition-transform duration-500">
                               {getCategoryIcon(category?.title)}
                             </div>
                           );
                         })()}
                         
-                        {/* Floating number badge */}
-                        {countText && (
-                          <div className="absolute -top-1 -right-1 bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-lg border border-white transform scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300">
-                            {countText.replace(' produktów', '').replace(' produkty', '').replace(' produkt', '')}
-                          </div>
-                        )}
+                        {/* Removed floating number badge on hover over image */}
                       </div>
                       
                       <div className="min-w-0 flex-1">
@@ -133,7 +149,7 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
                     </div>
                     
                     {/* Arrow indicator */}
-                    <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 group-hover:bg-[var(--color-brand-orange)] group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
+                    <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 group-hover:bg-[var(--color-brand-orange)] group-hover:text-white transition-all duration-300">
                       <ArrowRight className="w-5 h-5 transform group-hover:translate-x-0.5 transition-transform duration-300" />
                     </div>
                   </div>

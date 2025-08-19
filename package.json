@@ -12,7 +12,8 @@
     "test:e2e": "playwright test",
     "typegen": "npx sanity@latest schema extract && npx sanity@latest typegen generate",
     "build:import": "node scripts/convert-sample-products.js",
-    "build:import:sample": "node scripts/import-from-sample-products.js"
+    "build:import:sample": "node scripts/import-from-sample-products.js",
+    "migrate:categories": "node scripts/update-categories-weight-and-subcats.js"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.29.0",

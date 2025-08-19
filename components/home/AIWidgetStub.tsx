@@ -41,12 +41,15 @@ const AIWidgetStub = () => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const onHash = () => {
-      if (window.location.hash === "#fit-check") setOpen(true);
-    };
+    const onHash = () => { if (window.location.hash === "#fit-check") setOpen(true); };
+    const onOpen = () => setOpen(true);
     onHash();
     window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
+    window.addEventListener("open-fit-check", onOpen as EventListener);
+    return () => {
+      window.removeEventListener("hashchange", onHash);
+      window.removeEventListener("open-fit-check", onOpen as EventListener);
+    };
   }, []);
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
@@ -87,8 +90,8 @@ const AIWidgetStub = () => {
 
   return (
     <>
-      {/* Floating Fit Check Button - Hidden on mobile */}
-      <div className="fixed bottom-32 sm:bottom-6 right-4 sm:right-6 z-40 hidden sm:block">
+      {/* Desktop: modal can be opened via custom event; trigger button hidden */}
+      <div className="fixed bottom-32 sm:bottom-6 right-4 sm:right-6 z-40 hidden">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <button className="group relative h-12 w-12 bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95">

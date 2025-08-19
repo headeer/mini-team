@@ -14,7 +14,6 @@ import FinalCTA from "@/components/home/FinalCTA";
 import HomeShowcase from "@/components/home/HomeShowcase";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import BestSellers from "@/components/home/BestSellers";
-import AIWidgetStub from "@/components/home/AIWidgetStub";
 import ProjectsInAction from "@/components/home/ProjectsInAction";
 import BrandStory from "@/components/home/BrandStory";
 
@@ -63,8 +62,7 @@ const Home = async () => {
         </AppSection>
         <FinalCTA />
         <LatestBlog />
-        {/* Floating Fit Check widget and inline AI placeholder */}
-        <AIWidgetStub />
+        {/* Fit Check is mounted globally in layout */}
       </Container>
     </div>
   );

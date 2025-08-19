@@ -100,6 +100,37 @@ export const productType = defineType({
       type: "array",
       of: [{ type: "reference", to: { type: "category" } }],
     }),
+    // Hidden subcategory to support technical drawings grouping
+    defineField({
+      name: "subcategory",
+      title: "Podkategoria (ukryta)",
+      type: "string",
+      description: "Używane tylko do rysunków technicznych i wewnętrznego grupowania (np. łyżki kopiące / skarpowe; grabie wariant)",
+      options: {
+        list: [
+          { title: "Łyżki kopiące", value: "lyzki-kopiace" },
+          { title: "Łyżki skarpowe", value: "lyzki-skarpowe" },
+          { title: "Grabie 100cm/12mm", value: "grabie-100-12" },
+          { title: "Grabie 100cm/15mm", value: "grabie-100-15" },
+          { title: "Grabie 120cm/12mm", value: "grabie-120-12" },
+          { title: "Grabie 120cm/15mm", value: "grabie-120-15" },
+        ],
+      },
+    }),
+    // Weight range for top-level bucket grouping (visible categories)
+    defineField({
+      name: "weightRange",
+      title: "Zakres wagowy (T)",
+      type: "string",
+      description: "Służy do mapowania na kategorie: 1–2t, 2–3t, 3–4.5t",
+      options: {
+        list: [
+          { title: "1–2t", value: "1-2t" },
+          { title: "2–3t", value: "2-3t" },
+          { title: "3–4.5t", value: "3-4.5t" },
+        ],
+      },
+    }),
     defineField({
       name: "stock",
       title: "Stan magazynowy",

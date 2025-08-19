@@ -316,17 +316,17 @@ body {
 
 @media (min-width: 769px) {
   .a11y-panel {
-    top: 50%;
+    top: 72px; /* align near header */
     bottom: auto;
     right: 16px;
-    transform: translateY(-50%);
+    transform: none;
   }
   .a11y-panel.left {
-    top: 50%;
+    top: 72px;
     bottom: auto;
-    left: 80px; /* Move right to avoid machine selector */
+    left: 16px;
     right: auto;
-    transform: translateY(-50%);
+    transform: none;
   }
 }
 .a11y-toggle {

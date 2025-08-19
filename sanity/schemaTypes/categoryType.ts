@@ -43,6 +43,13 @@ export const categoryType = defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: "visible",
+      title: "Widoczna dla użytkowników",
+      type: "boolean",
+      description: "Jeśli wyłączone, kategoria nie będzie wyświetlana w sklepie (użyteczne dla podkategorii technicznych)",
+      initialValue: true,
+    }),
   ],
   preview: {
     select: {

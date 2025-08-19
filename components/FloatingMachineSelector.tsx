@@ -44,7 +44,12 @@ const FloatingMachineSelector: React.FC = () => {
     };
     onHash();
     window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
+    const onOpen = () => setOpen(true);
+    window.addEventListener("open-machine-finder", onOpen as EventListener);
+    return () => {
+      window.removeEventListener("hashchange", onHash);
+      window.removeEventListener("open-machine-finder", onOpen as EventListener);
+    };
   }, []);
 
   useEffect(() => {
@@ -101,8 +106,8 @@ const FloatingMachineSelector: React.FC = () => {
         </div>
       )}
 
-      {/* Desktop: Floating side button */}
-      <div className="hidden md:block fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      {/* Desktop: No floating button (triggered from header via #machine-finder) */}
+      <div className="hidden">
         <Dialog open={open} onOpenChange={setOpen}>
           <div
             className="relative"

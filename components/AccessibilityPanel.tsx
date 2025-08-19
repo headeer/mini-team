@@ -32,6 +32,18 @@ export default function AccessibilityPanel() {
     } catch {}
   }, []);
 
+  // Support opening from header icon via hash change
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onHash = () => {
+      if (window.location.hash === "#a11y") setOpen(true);
+    };
+    const onOpen = () => setOpen(true);
+    window.addEventListener("hashchange", onHash);
+    window.addEventListener("open-a11y", onOpen as EventListener);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
   useEffect(() => {
     const root = document.documentElement;
     const set = (name: string, on: boolean) => {
@@ -53,12 +65,12 @@ export default function AccessibilityPanel() {
   }
 
   return (
-    <div aria-live="polite" className="a11y-panel left hidden sm:block">
+    <div aria-live="polite" className="a11y-panel">
       <a href="#content" className="skip-link">Pomiń do treści</a>
       <button
         aria-label={open ? "Zamknij panel dostępności" : "Otwórz panel dostępności"}
         aria-expanded={open}
-        className="a11y-toggle shadow-lg bg-gradient-to-br from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white"
+        className="a11y-toggle shadow-lg bg-gradient-to-br from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white md:hidden"
         onClick={() => setOpen((v) => !v)}
       >
         <Shield className="w-4 h-4" aria-hidden />

@@ -1,6 +1,7 @@
 "use client";
 import { BRANDS_QUERYResult, Category, Product } from "@/sanity.types";
 import React, { useEffect, useState } from "react";
+import { categoriesData } from "@/constants/data";
 import Container from "./Container";
 import CategoryList from "./shop/CategoryList";
 import { useSearchParams } from "next/navigation";
@@ -37,6 +38,9 @@ const Shop = ({ categories }: Props) => {
     "new" | "price-asc" | "price-desc" | "popular" | "featured"
   >("new");
   const [viewing, setViewing] = useState<number>(Math.floor(8 + Math.random() * 12));
+  const [sidebarCategories, setSidebarCategories] = useState<Array<any>>(
+    () => categoriesData.map((c) => ({ _id: `virtual-${c.href}`, title: c.title, slug: { current: c.href }, productCount: 0 }))
+  );
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -77,6 +81,18 @@ const Shop = ({ categories }: Props) => {
       if (sort === 'price-desc') list.sort((a, b) => toNum(b.basePrice ?? b.price) - toNum(a.basePrice ?? a.price));
       if (sort === 'featured') list.sort((a, b) => (a.featuredRank ?? 9999) - (b.featuredRank ?? 9999));
       setProducts(list as Product[]);
+      try {
+        const counts: Record<string, number> = {};
+        for (const cat of categoriesData) counts[cat.href] = 0;
+        for (const p of list as any[]) {
+          const cats = Array.isArray(p?.categories) ? p.categories : [];
+          for (const c of cats) {
+            const slug = typeof c?.slug === 'string' ? c.slug : c?.slug?.current;
+            if (slug && slug in counts) counts[slug] += 1;
+          }
+        }
+        setSidebarCategories(categoriesData.map((c) => ({ _id: `virtual-${c.href}`, title: c.title, slug: { current: c.href }, productCount: counts[c.href] || 0 })));
+      } catch {}
     } catch (error) {
       console.log("Shop product fetching Error", error);
     } finally {
@@ -218,7 +234,7 @@ const Shop = ({ categories }: Props) => {
                       📂 Kategorie
                     </h4>
                     <CategoryList
-                      categories={categories}
+                      categories={sidebarCategories}
                       selectedCategory={selectedCategory}
                       setSelectedCategory={setSelectedCategory}
                     />
@@ -260,7 +276,7 @@ const Shop = ({ categories }: Props) => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-5 border-t border-t-shop_dark_green/50">
-          <div className="hidden md:block md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-y-auto md:min-w-72 pb-3 md:border-r border-r-shop_btn_dark_green/50 nice-scrollbar space-y-3">
+          <div className="hidden md:block md:flex-none md:basis-1/3 lg:basis-1/4 xl:basis-1/5 md:min-w-[220px] md:max-w-[360px] md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-y-auto pb-3 md:border-r border-r-shop_btn_dark_green/50 nice-scrollbar space-y-3">
             {/* Filters Header */}
             <div className="bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border rounded-xl p-4 shadow-sm">
               <div className="flex items-center gap-3">
@@ -298,7 +314,7 @@ const Shop = ({ categories }: Props) => {
                   📂 Kategorie
                 </h4>
                 <CategoryList
-                  categories={categories}
+                  categories={sidebarCategories}
                   selectedCategory={selectedCategory}
                   setSelectedCategory={setSelectedCategory}
                 />

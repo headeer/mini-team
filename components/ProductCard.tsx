@@ -136,30 +136,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         {/* Content Section */}
         <div className="relative z-10 p-6 flex flex-col gap-3 flex-1 bg-white/80 backdrop-blur-sm">
           
-          {/* Category & Type */}
-          <div className="flex items-start justify-between gap-2">
-            {isRipper ? (
-              <span className="bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-semibold px-3 py-1.5 rounded-full border border-amber-200/50 shadow-sm">
-                ⚡ Zrywak korzeni
-              </span>
-            ) : categoryLabels.length > 0 ? (
-              <span className="bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-full border border-blue-200/50 line-clamp-1">
-                {categoryLabels[0]}
-              </span>
-            ) : null}
-            
-            {/* Stock Indicator */}
-            <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${
-              product?.stock === 0 
-                ? "bg-red-50 text-red-700 border-red-200" 
-                : "bg-emerald-50 text-emerald-700 border-emerald-200"
-            }`}>
-              <div className={`w-2 h-2 rounded-full ${
-                product?.stock === 0 ? "bg-red-400" : "bg-emerald-400"
-              } ${product?.stock !== 0 ? "animate-pulse" : ""}`} />
-              {(product?.stock as number) > 0 ? `${product?.stock}` : "0"}
-            </div>
-          </div>
+          {/* Category & stock badges removed for a cleaner header */}
 
           {/* Product Title */}
           <Link href={slugValue ? `/product/${slugValue}` : "#"} className="group/title">
