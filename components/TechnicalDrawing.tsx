@@ -111,7 +111,23 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
                     className="w-full h-64"
                     onError={() => setFallbackMap((m) => ({ ...m, [i]: true }))}
                   >
-                    <div className="p-3 text-xs text-gray-600">Nie można wyświetlić PDF. Pobierz, aby zobaczyć.</div>
+                    {(() => {
+                      const src = fallbackMap[i] ? pdfSrcFallback : pdfSrcPrimary;
+                      return (
+                        <div className="h-64 flex items-center justify-center p-4 bg-gray-50">
+                          <div className="text-center">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-200 text-gray-900 text-sm font-semibold">
+                              <span>📄</span>
+                              <span>PDF</span>
+                            </div>
+                            <div className="mt-2 text-xs text-gray-600">Podgląd niedostępny</div>
+                            <a href={src} download className="mt-3 inline-block px-3 py-1.5 rounded-md bg-[var(--color-brand-orange)] text-white text-xs font-semibold">
+                              Pobierz
+                            </a>
+                          </div>
+                        </div>
+                      );
+                    })()}
                   </object>
                 </div>
               );

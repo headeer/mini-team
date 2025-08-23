@@ -31,11 +31,12 @@ async function ensureCategory(title) {
   return created._id;
 }
 
-function detectWeightRange(name) {
-  const n = String(name || "").toLowerCase();
-  if (/\b1[.,-]?\s*[-–]?\s*2\s*t/.test(n) || /\b1\s*t\b/.test(n)) return "1-2t";
-  if (/\b2[.,-]?\s*[-–]?\s*3\s*t/.test(n) || /\b2\s*t\b/.test(n)) return "2-3t";
-  if (/\b3[.,-]?\s*[-–]?\s*4(\.5)?\s*t/.test(n) || /\b4\.?5\s*t\b/.test(n)) return "3-4.5t";
+function detectWeightRange(nameOrTier) {
+  const n = String(nameOrTier || "").toLowerCase();
+  if (/\b1\s*-?\s*1\.5\s*t\b/.test(n)) return "1-1.5t";
+  if (/\b1\.5\s*-?\s*2\.3\s*t\b/.test(n)) return "1.5-2.3t";
+  if (/\b2\.3\s*-?\s*3\s*t\b/.test(n)) return "2.3-3t";
+  if (/\b3\s*-?\s*5\s*t\b/.test(n)) return "3-5t";
   return undefined;
 }
 
@@ -55,48 +56,58 @@ function detectSubcategory(name) {
 const DRY_RUN = String(process.env.DRY_RUN || "false").toLowerCase() === "true";
 
 async function run() {
-  const cat12 = await ensureCategory("Łyżki 1–2t");
-  const cat23 = await ensureCategory("Łyżki 2–3t");
-  const cat345 = await ensureCategory("Łyżki 3–4.5t");
+  // New category set
+  const catW1 = await ensureCategory("Łyżki kat. 1-1.5 Tony");
+  const catW2 = await ensureCategory("Łyżki kat. 1.5-2.3 Tony");
+  const catW3 = await ensureCategory("Łyżki kat. 2.3-3 Tony");
+  const catW4 = await ensureCategory("Łyżki kat. 3-5 Tony");
+  const catKablowe = await ensureCategory("Łyżki kablowe");
+  const catPrzesiewowe = await ensureCategory("Łyżki przesiewowe");
+  const catSkandynawskie = await ensureCategory("Łyżki skandynawskie");
+  const catGrabie = await ensureCategory("Grabie");
+  const catRippery = await ensureCategory("Rippery");
+  const catWiertnice = await ensureCategory("Wiertnice");
+  const catNiwelatory = await ensureCategory("Niwelatory");
+  const catSzybkozlacza = await ensureCategory("Szybkozłącza");
 
-  const oldCats = await client.fetch(`*[_type=='category' && (title match 'Łyżki *kop*' || title match 'Łyżki *skar*')][]{_id}`);
+  // Hide old buckets/types
+  const oldCats = await client.fetch(`*[_type=='category' && (title match 'Łyżki *kop*' || title match 'Łyżki *skar*' || title match 'Łyżki 1–2t' || title match 'Łyżki 2–3t' || title match 'Łyżki 3–4.5t')][]{_id}`);
   for (const c of oldCats) {
     if (DRY_RUN) console.log(`[dry-run] Would hide old category ${c._id}`);
     else await client.patch(c._id).set({ visible: false }).commit();
   }
 
-  const grabieId = await ensureCategory("Grabie");
-
-  const products = await client.fetch(`*[_type=='product']{_id,name,slug,categories[]-> { _id, title }, weightRange, subcategory}`);
+  const products = await client.fetch(`*[_type=='product']{_id,name,slug,categories[]-> { _id, title }, weightRange, subcategory, priceTier}`);
   for (const p of products) {
     const updates = {};
-    const wr = p.weightRange || detectWeightRange(p.name || "");
+    const wr = p.weightRange || detectWeightRange(p.name || p.priceTier || "");
     const sub = p.subcategory || detectSubcategory(p.name || "");
     if (wr && wr !== p.weightRange) updates.weightRange = wr;
     if (sub && sub !== p.subcategory) updates.subcategory = sub;
 
-    const catRefs = (p.categories || []).map((c) => c && c._id).filter(Boolean);
-    let desiredTop;
-    if (wr === "1-2t") desiredTop = cat12;
-    if (wr === "2-3t") desiredTop = cat23;
-    if (wr === "3-4.5t") desiredTop = cat345;
+    const nameLower = String(p.name || "").toLowerCase();
+    const desiredIds = new Set();
 
-    const isGrabie = /grabie/i.test(String(p.name || ""));
-    if (isGrabie) {
-      if (grabieId) {
-        if (!catRefs.includes(grabieId)) catRefs.push(grabieId);
-        const filtered = catRefs.filter((id) => id === grabieId);
-        updates.categories = filtered.map((id) => ({ _type: "reference", _ref: id }));
-      } else if (!allowCreate) {
-        console.warn(`[no-create] Skipping Grabie mapping for ${p._id} – missing Grabie category`);
-      }
-    } else if (desiredTop) {
-      if (!catRefs.includes(desiredTop)) catRefs.push(desiredTop);
-      const filtered = catRefs.filter((id) => [cat12, cat23, cat345].includes(id));
-      updates.categories = filtered.map((id) => ({ _type: "reference", _ref: id }));
-    } else if (!allowCreate) {
-      // No detected weight or missing bucket categories in no-create mode
-      // Leave categories as-is
+    // Type-based mapping
+    if (/grabie/.test(nameLower) && catGrabie) desiredIds.add(catGrabie);
+    if (/(zrywak|ripper)/.test(nameLower) && catRippery) desiredIds.add(catRippery);
+    if (/wiertnic/.test(nameLower) && catWiertnice) desiredIds.add(catWiertnice);
+    if (/niwelator/.test(nameLower) && catNiwelatory) desiredIds.add(catNiwelatory);
+    if (/szybkozł\u0105cz|szybkozlacz|szybkoz\u0142\u0105cz/.test(nameLower) && catSzybkozlacza) desiredIds.add(catSzybkozlacza);
+    if (/kablow/.test(nameLower) && catKablowe) desiredIds.add(catKablowe);
+    if (/przesiew/.test(nameLower) && catPrzesiewowe) desiredIds.add(catPrzesiewowe);
+    if (/skandyn/.test(nameLower) && catSkandynawskie) desiredIds.add(catSkandynawskie);
+
+    // Weight buckets
+    if (wr) {
+      if (wr === "1-1.5t" && catW1) desiredIds.add(catW1);
+      if (wr === "1.5-2.3t" && catW2) desiredIds.add(catW2);
+      if (wr === "2.3-3t" && catW3) desiredIds.add(catW3);
+      if (wr === "3-5t" && catW4) desiredIds.add(catW4);
+    }
+
+    if (desiredIds.size > 0) {
+      updates.categories = Array.from(desiredIds).map((id) => ({ _type: "reference", _ref: id }));
     }
 
     if (Object.keys(updates).length > 0) {

@@ -340,34 +340,44 @@ const CartPage = () => {
                 </div>
                 {/* Order summary for mobile view */}
                 <div className="md:hidden fixed bottom-0 left-0 w-full bg-white pt-2">
-                  <div className="bg-white p-4 rounded-lg border mx-4">
-                    <h2>Podsumowanie</h2>
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <span>Suma częściowa</span>
-                        <PriceFormatter amount={getSubTotalPrice()} />
+                  <div className="bg-white p-3 rounded-t-2xl border-t border-x mx-2 shadow-[0_-6px_20px_rgba(0,0,0,0.06)]">
+                    <details>
+                      <summary className="list-none cursor-pointer select-none">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div className="text-xs text-gray-600">Zobacz koszyk</div>
+                            <div className="text-base font-semibold">Razem</div>
+                          </div>
+                          <PriceFormatter amount={getTotalPrice()} className="text-lg font-bold text-black" />
+                        </div>
+                      </summary>
+                      <div className="space-y-3 mt-3">
+                        <div className="flex items-center justify-between">
+                          <span>Suma częściowa</span>
+                          <PriceFormatter amount={getSubTotalPrice()} />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span>Koszt wysyłki</span>
+                          <span className="text-sm text-gray-600">Obliczany przy kasie</span>
+                        </div>
+                        <Separator />
+                        <div className="flex items-center justify-between font-semibold text-lg">
+                          <span>RAZEM</span>
+                          <PriceFormatter
+                            amount={getTotalPrice()}
+                            className="text-lg font-bold text-black"
+                          />
+                        </div>
                       </div>
-                      <div className="flex items-center justify-between">
-                        <span>Koszt wysyłki</span>
-                        <span className="text-sm text-gray-600">Obliczany przy kasie</span>
-                      </div>
-                      <Separator />
-                      <div className="flex items-center justify-between font-semibold text-lg">
-                        <span>RAZEM</span>
-                        <PriceFormatter
-                          amount={getTotalPrice()}
-                          className="text-lg font-bold text-black"
-                        />
-                      </div>
-                      <Button
-                        className="w-full rounded-full font-semibold tracking-wide hoverEffect"
-                        size="lg"
-                        disabled={loading}
-                        onClick={handleCheckout}
-                      >
-                        {loading ? "Proszę czekać..." : "Przejdź do płatności"}
-                      </Button>
-                    </div>
+                    </details>
+                    <Button
+                      className="mt-3 w-full rounded-full font-semibold tracking-wide hoverEffect"
+                      size="lg"
+                      disabled={loading}
+                      onClick={handleCheckout}
+                    >
+                      {loading ? "Proszę czekać..." : "Przejdź do płatności"}
+                    </Button>
                   </div>
                 </div>
               </div>

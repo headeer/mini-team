@@ -33,7 +33,7 @@ const BestSellers = async () => {
           const cover = p.cover || null;
           const price = typeof p.basePrice === "number" ? p.basePrice : p.price;
           return (
-            <CarouselItem key={p._id} className="basis-1/2 md:basis-1/4">
+            <CarouselItem key={p._id} className="basis-full xs:basis-1/2 md:basis-1/4">
               <div className="rounded-xl border bg-white hover:shadow-lg transition overflow-hidden flex flex-col h-full">
               <Link href={`/product/${p.slug}`} className="relative aspect-[4/3] block">
                 {cover ? (

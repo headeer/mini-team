@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { Product } from "@/sanity.types";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -8,50 +9,83 @@ import useStore from "@/store";
 import toast from "react-hot-toast";
 import PriceFormatter from "./PriceFormatter";
 import QuantityButtons from "./QuantityButtons";
+import { urlFor } from "@/sanity/lib/image";
 
 interface Props {
   product: Product;
   className?: string;
+  compact?: boolean; // compact summary for cards (shop)
 }
 
-const AddToCartButton = ({ product, className }: Props) => {
+const AddToCartButton = ({ product, className, compact = false }: Props) => {
   const { addItem, getItemCount } = useStore();
   const itemCount = getItemCount(product?._id);
   const isOutOfStock = product?.stock === 0;
   const priceAsUnknown = typeof (product as unknown as { price?: unknown }).price === "string";
   const hasPriceText = typeof (product as unknown as { priceText?: unknown }).priceText === "string";
   const baseIsZero = (product as unknown as { basePrice?: number })?.basePrice === 0;
-  const isPhoneOnly = priceAsUnknown || hasPriceText || baseIsZero;
+  const explicitPhoneOnly = Boolean((product as unknown as { phoneOrderOnly?: boolean })?.phoneOrderOnly);
+  const isPhoneOnly = priceAsUnknown || hasPriceText || baseIsZero || explicitPhoneOnly;
 
   const handleAddToCart = () => {
     if ((product?.stock as number) > itemCount) {
       addItem(product);
-      toast.success(
-        `${product?.name?.substring(0, 12)}... added successfully!`
-      );
+      toast.success(`${product?.name?.substring(0, 12)}... dodano do koszyka`);
     } else {
-      toast.error("Can not add more than available stock");
+      toast.error("Nie można dodać więcej niż dostępny stan");
     }
   };
   return (
     <div className="w-full flex items-center">
       {itemCount && !isPhoneOnly ? (
-        <div className="w-full bg-gradient-to-r from-gray-50 to-white border border-gray-200 rounded-2xl p-4 shadow-sm">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-medium text-gray-600 flex items-center gap-2">
-              <ShoppingBag className="w-4 h-4" />
-              W koszyku
-            </span>
-            <QuantityButtons product={product} />
+        compact ? (
+          <div className="w-full bg-white border border-gray-200 rounded-xl p-2 shadow-sm">
+            <div className="flex items-center justify-between gap-3">
+              <QuantityButtons product={product} />
+              <div className="text-right">
+                <div className="text-[11px] text-gray-600 leading-none">Razem</div>
+                <div className="text-base font-bold bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] bg-clip-text text-transparent">
+                  <PriceFormatter amount={product?.price ? product?.price * itemCount : 0} />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center justify-between pt-3 border-t border-gray-200">
-            <span className="text-sm font-semibold text-gray-800">Suma:</span>
-            <PriceFormatter
-              amount={product?.price ? product?.price * itemCount : 0}
-              className="text-lg font-bold bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] bg-clip-text text-transparent"
-            />
+        ) : (
+          <div className="w-full bg-white border border-gray-200 rounded-2xl p-3 shadow-sm">
+            {(() => {
+              const toSrc = (img: any): string | null => {
+                if (!img) return null;
+                if (typeof img === "string") return img || null;
+                if (typeof img === "object" && img.url) return img.url || null;
+                if (typeof img === "object" && img.asset?._ref) {
+                  try { return urlFor(img).url(); } catch { return null; }
+                }
+                return null;
+              };
+              const src = toSrc((product as any)?.images?.[0]) || (product as any)?.imageUrls?.[0]?.url || (product as any)?.cover || null;
+              return (
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="relative w-12 h-12 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
+                    {src ? (
+                      <Image src={src} alt="Miniatura produktu" fill className="object-cover" sizes="48px" />
+                    ) : null}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-semibold text-gray-900 truncate">{product?.name}</div>
+                    <div className="text-xs text-gray-600 truncate">{String(product?.description || "").slice(0, 60)}</div>
+                  </div>
+                  <QuantityButtons product={product} />
+                </div>
+              );
+            })()}
+            <div className="flex items-center justify-between pt-2 border-t border-gray-200">
+              <span className="text-sm font-semibold text-gray-800">Razem</span>
+              <span className="text-lg font-bold bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] bg-clip-text text-transparent">
+                <PriceFormatter amount={product?.price ? product?.price * itemCount : 0} />
+              </span>
+            </div>
           </div>
-        </div>
+        )
       ) : (
         <Button
           onClick={isPhoneOnly ? undefined : handleAddToCart}
@@ -79,11 +113,9 @@ const AddToCartButton = ({ product, className }: Props) => {
           
           <div className="relative z-10 flex items-center justify-center gap-3">
             {isPhoneOnly ? (
-              <a href="tel:+48782851962" className="w-full flex items-center justify-center gap-3 text-center">
-                <span className="text-xl">📞</span>
+              <a href="/kontakt" className="w-full flex items-center justify-center gap-3 text-center">
                 <div className="flex flex-col">
-                  <span className="text-sm font-bold">Zamów telefonicznie</span>
-                  <span className="text-xs opacity-90">782-851-962</span>
+                  <span className="text-sm font-bold">Zapytaj o ofertę</span>
                 </div>
               </a>
             ) : isOutOfStock ? (

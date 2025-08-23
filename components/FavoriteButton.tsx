@@ -28,8 +28,8 @@ const FavoriteButton = ({
       addToFavorite(product).then(() => {
         toast.success(
           existingProduct
-            ? "Product removed successfully!"
-            : "Product added successfully!"
+            ? "Usunięto z ulubionych"
+            : "Dodano do ulubionych"
         );
       });
     }

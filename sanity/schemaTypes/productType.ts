@@ -207,6 +207,37 @@ export const productType = defineType({
       ],
     }),
     
+    // Mount systems (Wahacze) configuration for products like Wiertnica
+    defineField({
+      name: "mountSystems",
+      title: "Dostępne systemy mocowania (wahacze)",
+      type: "array",
+      of: [{
+        type: "object",
+        fields: [
+          defineField({ name: "title", title: "Nazwa", type: "string" }),
+          defineField({ name: "price", title: "Cena (zł)", type: "number" }),
+          defineField({ name: "drawingFile", title: "Plik rysunku (PDF)", type: "string", description: "np. rysunek_techniczny_wahacza_gietego.pdf (umieść w public/images/techniczne)" }),
+          defineField({ name: "productRef", title: "Powiązany produkt (opcjonalnie)", type: "reference", to: [{ type: "product" }] }),
+        ],
+      }],
+    }),
+
+    // Drill bits configuration
+    defineField({
+      name: "drillBits",
+      title: "Dostępne wiertła",
+      type: "array",
+      of: [{
+        type: "object",
+        fields: [
+          defineField({ name: "title", title: "Nazwa (np. Fi 250)", type: "string" }),
+          defineField({ name: "price", title: "Cena (zł)", type: "number" }),
+          defineField({ name: "productRef", title: "Powiązany produkt (opcjonalnie)", type: "reference", to: [{ type: "product" }] }),
+        ],
+      }],
+    }),
+    
     // Similar Products - Manual Override
     defineField({
       name: "similarProducts",

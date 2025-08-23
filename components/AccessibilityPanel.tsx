@@ -70,7 +70,7 @@ export default function AccessibilityPanel() {
       <button
         aria-label={open ? "Zamknij panel dostępności" : "Otwórz panel dostępności"}
         aria-expanded={open}
-        className="a11y-toggle shadow-lg bg-gradient-to-br from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white md:hidden"
+        className="a11y-toggle shadow-lg bg-gradient-to-br from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white hidden"
         onClick={() => setOpen((v) => !v)}
       >
         <Shield className="w-4 h-4" aria-hidden />

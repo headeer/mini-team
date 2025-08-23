@@ -19,6 +19,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { urlFor } from "@/sanity/lib/image";
 // JSON-LD scripts will use plain <script> to avoid hydration issues
+import ProductConfigurator from "@/components/ProductConfigurator";
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
@@ -303,6 +304,15 @@ const SingleProductPage = async ({
               }
               }
               }
+
+              // Special case: Wiertnica – always show the three mount system PDFs if present in public assets
+              if (/wiertnic/.test(String((product as any)?.name || "").toLowerCase())) {
+                files = [
+                  "rysunek_techniczny_wahacza_gietego.pdf",
+                  "rysunek_techniczny_wahacz_kostka.pdf",
+                  "rysunek_techniczny_premium.pdf",
+                ];
+              }
               return (
                 <MediaTabs
                   slug={slug}
@@ -397,6 +407,11 @@ const SingleProductPage = async ({
                 </a>
               )}
             </div>
+
+            {/* Configurator for mount systems and drill bits */}
+            {((product as any)?.mountSystems?.length || (product as any)?.drillBits?.length) ? (
+              <ProductConfigurator product={product as any} />
+            ) : null}
 
             {/* Specyfikacja przeniesiona niżej nad podobne produkty */}
 

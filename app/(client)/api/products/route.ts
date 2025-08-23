@@ -41,15 +41,21 @@ export async function GET() {
       const name = String(p?.name || "").toLowerCase();
       const tier = String(p?.priceTier || "").toLowerCase();
 
-      // Weight bucket mapping
-      if (/1\s*-?\s*1\.5t/.test(tier) || /1\s*-?\s*2t/.test(name)) add("1-2t", "Łyżki 1–2t");
-      if (/1\.5\s*-?\s*2\.3t/.test(tier) || /2\s*-?\s*3t/.test(tier) || /2\s*-?\s*3t/.test(name)) add("2-3t", "Łyżki 2–3t");
-      if (/3\s*-?\s*5t/.test(tier) || /3\s*-?\s*4\.5t/.test(name)) add("3-4.5t", "Łyżki 3–4.5t");
+      // Weight bucket mapping (new slugs)
+      if (/\b1\s*-?\s*1\.5\s*t\b/.test(tier) || /\b1\s*-?\s*1\.5\s*t\b/.test(name)) add("lyzki-1-1.5t", "Łyżki kat. 1-1.5 Tony");
+      if (/\b1\.5\s*-?\s*2\.3\s*t\b/.test(tier) || /\b1\.5\s*-?\s*2\.3\s*t\b/.test(name)) add("lyzki-1.5-2.3t", "Łyżki kat. 1.5-2.3 Tony");
+      if (/\b2\.3\s*-?\s*3\s*t\b/.test(tier) || /\b2\.3\s*-?\s*3\s*t\b/.test(name)) add("lyzki-2.3-3t", "Łyżki kat. 2.3-3 Tony");
+      if (/\b3\s*-?\s*5\s*t\b/.test(tier) || /\b3\s*-?\s*5\s*t\b/.test(name)) add("lyzki-3-5t", "Łyżki kat. 3-5 Tony");
 
-      // Grabie
+      // Product types
       if (/grabie/.test(name)) add("grabie", "Grabie");
-      // Zrywaki korzeni
-      if (/zrywak/.test(name)) add("zrywarki-korzeni", "Zrywaki korzeni");
+      if (/zrywak|ripper/.test(name)) add("rippery", "Rippery");
+      if (/wiertnic/.test(name)) add("wiertnice", "Wiertnice");
+      if (/niwelator/.test(name)) add("niwelatory", "Niwelatory");
+      if (/szybkoz\u0142\u0105cz|szybkozlacz|szybkoz\u0142\u0105cz/.test(name)) add("szybkozlacza", "Szybkozłącza");
+      if (/kablow/.test(name)) add("lyzki-kablowe", "Łyżki kablowe");
+      if (/przesiew/.test(name)) add("lyzki-przesiewowe", "Łyżki przesiewowe");
+      if (/skandyn/.test(name)) add("lyzki-skandynawskie", "Łyżki skandynawskie");
 
       return { ...p, categories };
     });

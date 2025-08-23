@@ -54,26 +54,13 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
         <Link href="/shop" className="text-sm font-semibold text-shop_dark_green hover:underline underline-offset-4">Zobacz wszystkie</Link>
       </div>
       {(() => {
-        // Take categories that actually have products
-        const withProducts = (categories || []).filter((c) => Number((c as any)?.productCount) > 0);
-        // Build a fallback list to always show 4 categories
-        const existingSlugs = new Set(
-          withProducts
-            .map((c: any) => c?.slug?.current || c?.slug)
-            .filter(Boolean)
-        );
-        const preferredOrder = ["1-2t", "2-3t", "3-4.5t", "grabie"] as const;
-        const fallbackFromConfig = preferredOrder
-          .map((slug) => categoriesData.find((c) => c.href === slug))
-          .filter(Boolean)
-          .filter((c) => !existingSlugs.has((c as any).href))
-          .map((c: any) => ({
-            _id: `virtual-${c.href}`,
-            title: c.title,
-            slug: c.href,
-            productCount: 0,
-          }));
-        const displayCategories = [...withProducts, ...fallbackFromConfig].slice(0, 4);
+        // Display the configured category list always (links filter the shop)
+        const displayCategories = categoriesData.slice(0, 4).map((c) => ({
+          _id: `virtual-${c.href}`,
+          title: c.title,
+          slug: c.href,
+          productCount: undefined,
+        }));
         return (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
             {displayCategories.map((category) => {

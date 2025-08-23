@@ -14,11 +14,18 @@ export const quickLinksData = [
   { title: "Help", href: "/help" },
 ];
 export const categoriesData = [
-  { title: "Łyżki 1–2t", href: "1-2t" },
-  { title: "Łyżki 2–3t", href: "2-3t" },
-  { title: "Łyżki 3–4.5t", href: "3-4.5t" },
+  { title: "Łyżki kat. 1-1.5 Tony", href: "lyzki-1-1.5t" },
+  { title: "Łyżki kat. 1.5-2.3 Tony", href: "lyzki-1.5-2.3t" },
+  { title: "Łyżki kat. 2.3-3 Tony", href: "lyzki-2.3-3t" },
+  { title: "Łyżki kat. 3-5 Tony", href: "lyzki-3-5t" },
+  { title: "Łyżki kablowe", href: "lyzki-kablowe" },
+  { title: "Łyżki przesiewowe", href: "lyzki-przesiewowe" },
+  { title: "Łyżki skandynawskie", href: "lyzki-skandynawskie" },
   { title: "Grabie", href: "grabie" },
-  { title: "Zrywaki korzeni", href: "zrywarki-korzeni" },
+  { title: "Rippery", href: "rippery" },
+  { title: "Wiertnice", href: "wiertnice" },
+  { title: "Niwelatory", href: "niwelatory" },
+  { title: "Szybkozłącza", href: "szybkozlacza" },
 ];
 export const productType = [
   { title: "Gadget", value: "gadget" },

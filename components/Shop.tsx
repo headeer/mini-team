@@ -217,14 +217,19 @@ const Shop = ({ categories }: Props) => {
           <Accordion type="single" collapsible>
             <AccordionItem value="filters" className="border rounded-xl bg-white shadow-sm">
               <AccordionTrigger className="px-4 py-3">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10">
-                    <Filter className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                <div className="flex items-center justify-between w-full gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10">
+                      <Filter className="h-4 w-4 text-[var(--color-brand-orange)]" />
+                    </div>
+                    <div className="text-left">
+                      <span className="font-semibold text-gray-900">Filtry</span>
+                      <p className="text-xs text-gray-600">Znajdź idealny osprzęt</p>
+                    </div>
                   </div>
-                  <div className="text-left">
-                    <span className="font-semibold text-gray-900">Filtry</span>
-                    <p className="text-xs text-gray-600">Znajdź idealny osprzęt</p>
-                  </div>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white shadow">
+                    ✨ Dotknij, aby filtrować
+                  </span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="px-4 pb-4">

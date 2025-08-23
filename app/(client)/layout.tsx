@@ -65,7 +65,10 @@ export default function RootLayout({
         <Header />
         <main id="content" className="flex-1">{children}</main>
         <Footer />
-        <FloatingMachineSelector />
+        {/* Show machine selector only on homepage */}
+        {typeof window !== 'undefined' && window?.location?.pathname === '/' ? (
+          <FloatingMachineSelector />
+        ) : null}
         {/* Fit Check modal mounted globally to open from header */}
         <AIWidgetStub />
         {/* Tawk.to chat - simplified to avoid null references; position adjusted on load */}

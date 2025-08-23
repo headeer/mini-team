@@ -20,6 +20,31 @@ const PRODUCT_BY_SLUG_QUERY = defineQuery(
   `*[_type == "product" && slug.current == $slug] | order(name asc) [0]{
     ...,
     technicalDrawing,
+    mountSystems[]{
+      title,
+      price,
+      drawingFile,
+      productRef->{
+        _id,
+        name,
+        "slug": slug.current,
+        price,
+        basePrice,
+        images
+      }
+    },
+    drillBits[]{
+      title,
+      price,
+      productRef->{
+        _id,
+        name,
+        "slug": slug.current,
+        price,
+        basePrice,
+        images
+      }
+    },
     "categories": categories[]->{title, "slug": slug.current},
     "similarProducts": similarProducts[]->{
       _id,

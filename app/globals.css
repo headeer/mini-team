@@ -229,14 +229,14 @@ body {
   left: 0; right: 0; bottom: -10px; height: 18px;
   pointer-events: none;
 }
-.hero-underline-svg .main {
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: underline-draw 900ms ease-out forwards, underline-glint 3s linear 1.4s infinite;
-}
-.hero-underline-svg .glow {
-  opacity: 0.4;
-  stroke-width: 8;
+.hero-underline-svg .main { stroke-dasharray: 600; stroke-dashoffset: 600; animation: underline-draw 900ms ease-out forwards, underline-glint 3s linear 1.4s infinite; }
+.hero-underline-svg .glow { opacity: 0.4; stroke-width: 8; }
+
+/* Mobile tweaks: smaller height, reduced glow, slower animation */
+@media (max-width: 640px) {
+  .hero-underline-svg { bottom: -6px; height: 12px; }
+  .hero-underline-svg .main { stroke-width: 2; animation-duration: 700ms; }
+  .hero-underline-svg .glow { opacity: 0.25; stroke-width: 5; }
 }
 @keyframes underline-draw {
   from { stroke-dashoffset: 600; }

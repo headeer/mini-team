@@ -99,8 +99,8 @@ const ProductCard = ({ product }: { product: Product }) => {
                 );
               })()}
 
-              {/* Floating Action Menu */}
-              <div className="absolute top-3 right-3 z-20 transform translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+              {/* Favorite (heart) - fixed position */}
+              <div className="absolute top-3 right-3 z-20">
                 <ProductSideMenu product={product} />
               </div>
             </div>
@@ -167,35 +167,22 @@ const ProductCard = ({ product }: { product: Product }) => {
           </div>
 
           {/* Price Section */}
-          <div className="mt-auto pt-4 border-t border-gray-100">
+          <div className="mt-auto pt-4 border-t border-gray-100 space-y-2">
             <PriceView
               price={priceValue}
               discount={product?.discount}
               priceOlx={(product as unknown as { priceOlx?: number | string })?.priceOlx}
               phoneOrderOnly={derivedPhoneOrderOnly}
-              className="text-xl font-bold mb-4"
+              className="text-xl font-bold"
             />
             
-            {/* Details Button - Hidden on mobile */}
-            <div className="hidden sm:flex items-center gap-2 mb-3">
-              <Link 
-                href={slugValue ? `/product/${slugValue}` : "#"} 
-                className="flex-1 text-center text-sm px-3 py-2.5 rounded-xl border-2 border-[var(--color-brand-orange)] bg-white hover:bg-[var(--color-brand-orange)] transition-all duration-200 font-semibold text-[var(--color-brand-orange)] hover:text-white shadow-sm hover:shadow-md"
-              >
-                Szczegóły
-              </Link>
-              <ProductSideMenu product={product} />
-            </div>
-            
-            {/* Mobile: Side menu only */}
-            <div className="sm:hidden flex justify-end mb-3">
-              <ProductSideMenu product={product} />
-            </div>
+            {/* No details button; clicking card elements links to product page above */}
             
             {/* Action Button */}
             <AddToCartButton 
               product={product} 
               className="w-full" 
+              compact
             />
           </div>
         </div>

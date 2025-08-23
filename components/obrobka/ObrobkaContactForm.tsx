@@ -274,7 +274,8 @@ const ObrobkaContactForm = () => {
                 className="w-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] hover:scale-105 transition-transform text-lg py-6"
               >
                 <Send className="w-5 h-5 mr-2" />
-                WYŚLIJ ZAPYTANIE – WYCENA W 2H
+                <span className="hidden sm:inline">WYŚLIJ ZAPYTANIE – WYCENA W 2H</span>
+                <span className="sm:hidden">WYŚLIJ – WYCENA 2H</span>
               </Button>
             </form>
           </CardContent>
