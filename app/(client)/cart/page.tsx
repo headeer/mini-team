@@ -146,7 +146,7 @@ const CartPage = () => {
               <div className="grid lg:grid-cols-3 md:gap-8">
                 <div className="lg:col-span-2 rounded-lg">
                   <div className="border bg-white rounded-md">
-                    {groupedItems?.map(({ product }) => {
+                    {groupedItems?.map(({ product, configuration }) => {
                       const itemCount = getItemCount(product?._id);
                       return (
                         <div
@@ -196,6 +196,29 @@ const CartPage = () => {
                                   {product?.specifications?.widthCm ? `, ${product.specifications.widthCm} cm` : ""}
                                   {product?.specifications?.quickCoupler ? `, ${product.specifications.quickCoupler}` : ""}
                                 </p>
+                                {configuration ? (
+                                  <div className="text-sm text-gray-700 space-y-0.5">
+                                    {configuration.mount?.title ? (
+                                      <div>
+                                        System mocowania: <span className="font-medium">{configuration.mount.title}</span>
+                                        {typeof configuration.mount.price === "number" ? (
+                                          <span className="text-gray-600"> (+{configuration.mount.price} zł)</span>
+                                        ) : null}
+                                      </div>
+                                    ) : null}
+                                    {configuration.drill?.title ? (
+                                      <div>
+                                        Wiertło: <span className="font-medium">{configuration.drill.title}</span>
+                                        {typeof configuration.drill.price === "number" ? (
+                                          <span className="text-gray-600"> (+{configuration.drill.price} zł)</span>
+                                        ) : null}
+                                      </div>
+                                    ) : null}
+                                    <Link href={`/product/${product?.slug?.current}#konfigurator`} className="text-xs text-[var(--color-brand-orange)] underline">
+                                      Zmień konfigurację
+                                    </Link>
+                                  </div>
+                                ) : null}
                               </div>
                               <div className="flex items-center gap-2">
                                 <TooltipProvider>

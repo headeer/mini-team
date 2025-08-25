@@ -21,7 +21,7 @@ type WithMounts = Product & {
 };
 
 export default function ProductConfigurator({ product }: { product: WithMounts }) {
-  const { addItem } = useStore();
+  const { addItem, addConfiguredItem } = useStore();
   const [mountIndex, setMountIndex] = useState<number | null>(null);
   const [drillIndex, setDrillIndex] = useState<number | null>(null);
 
@@ -43,18 +43,17 @@ export default function ProductConfigurator({ product }: { product: WithMounts }
   }, [basePrice, selectedMount, selectedDrill]);
 
   const addConfiguredToCart = () => {
-    // Add base product
-    addItem(product);
-    // Add-ons as separate items if referenced product exists; otherwise info-only toast
-    if (selectedMount?.productRef) addItem(selectedMount.productRef);
-    if (selectedDrill?.productRef) addItem(selectedDrill.productRef);
+    addConfiguredItem(product, {
+      mount: selectedMount ? { title: selectedMount.title, price: selectedMount.price } : undefined,
+      drill: selectedDrill ? { title: selectedDrill.title, price: selectedDrill.price } : undefined,
+    });
     toast.success("Dodano do koszyka (z konfiguracją)");
   };
 
   if (!product?.mountSystems?.length && !product?.drillBits?.length) return null;
 
   return (
-    <div className="mt-6 space-y-5 border rounded-lg p-4 bg-white">
+    <div id="konfigurator" className="mt-6 space-y-5 border rounded-lg p-4 bg-white">
       <div>
         <div className="font-semibold mb-2">Dostępne systemy mocowania</div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
