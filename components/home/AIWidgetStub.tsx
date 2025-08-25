@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Camera, CheckCircle2, Phone } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 const compressImage = async (file: File, quality = 0.8, maxWidth = 1600): Promise<File> => {
   try {
@@ -38,6 +40,7 @@ const AIWidgetStub = () => {
   const [submitting, setSubmitting] = useState(false);
   const [ok, setOk] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [rodo, setRodo] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -54,6 +57,10 @@ const AIWidgetStub = () => {
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    if (!rodo) {
+      alert("Zaznacz zgodę RODO, aby wysłać zdjęcia.");
+      return;
+    }
     const form = e.currentTarget;
     const formData = new FormData(form);
     // move and compress files from the input into formData
@@ -68,6 +75,8 @@ const AIWidgetStub = () => {
       }
       formData.append("images", compressed);
     }
+    // ensure rodo flag is present in payload
+    formData.set("rodo", "on");
     setSubmitting(true);
     try {
       const res = await fetch("/api/fit-check", { method: "POST", body: formData });
@@ -157,18 +166,12 @@ const AIWidgetStub = () => {
                   <label className="block text-sm font-medium mb-1">Wiadomość</label>
                   <Textarea name="message" rows={3} placeholder="Opisz czego potrzebujesz" className="w-full" />
                 </div>
-                <label htmlFor="rodo-fit" className="flex items-start gap-2 cursor-pointer select-none">
-                  <span className="relative inline-block" style={{ width: 24, height: 24 }}>
-                    <input id="rodo-fit" name="rodo" type="checkbox" required className="absolute opacity-0 h-0 w-0" />
-                    <span className="inline-block h-6 w-6 rounded-[8px] overflow-hidden shadow-[0_0_0_2px_#fff_inset] bg-white transition-[transform] [box-shadow:0_0_0_2px_#e5e7eb_inset] rodo-check" aria-hidden>
-                      <span className="absolute -top-[52px] -left-[52px] h-[60px] w-[60px] rotate-45 bg-[#fff] transition-all duration-300 rodo-transition" />
-                    </span>
-                  </span>
-                  <span className="text-xs text-gray-600">Wyrażam zgodę na przetwarzanie danych w celu potwierdzenia kompatybilności.</span>
-                </label>
-                <style jsx>{`
-                  #rodo-fit:checked + .rodo-check .rodo-transition { left: -10px; top: -10px; }
-                `}</style>
+                <div className="flex items-start gap-2">
+                  <Checkbox id="rodo-fit" checked={rodo} onCheckedChange={(v) => setRodo(Boolean(v))} className="mt-0.5" />
+                  <Label htmlFor="rodo-fit" className="text-xs text-gray-600 font-normal leading-snug">
+                    Wyrażam zgodę na przetwarzanie danych w celu potwierdzenia kompatybilności.
+                  </Label>
+                </div>
                 <div className="flex flex-col-reverse sm:flex-row gap-3 sm:justify-end">
                   <Button type="button" asChild variant="outline" className="border-gray-300 w-full sm:w-auto">
                     <a href="tel:+48782851962" className="flex items-center justify-center">

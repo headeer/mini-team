@@ -29,52 +29,38 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
   if (!order) return null;
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-[92vw] max-w-xl">
         <DialogHeader>
-          <DialogTitle>Szczegóły zamówienia - {order?.orderNumber}</DialogTitle>
+          <DialogTitle className="text-lg">Zamówienie #{order?.orderNumber}</DialogTitle>
         </DialogHeader>
-        <div className="mt-4">
-          <p>
-            <strong>Klient:</strong> {order.customerName}
-          </p>
-          <p>
-            <strong>Email:</strong> {order.email}
-          </p>
-          <p>
-            <strong>Data:</strong>{" "}
-            {order.orderDate && new Date(order.orderDate).toLocaleDateString()}
-          </p>
-          <p>
-            <strong>Status:</strong>{" "}
-            <span className="capitalize text-green-600 font-medium">
-              {order.status}
-            </span>
-          </p>
-          <p>
-            <strong>Invoice Number:</strong> {order?.invoice?.number}
-          </p>
-          {order?.invoice && (
-            <Button className="bg-transparent border text-darkColor/80 mt-2 hover:text-darkColor hover:border-darkColor hover:bg-darkColor/10 hoverEffect ">
-              {order?.invoice?.hosted_invoice_url && (
-                <Link href={order?.invoice?.hosted_invoice_url} target="_blank">
-                  Pobierz fakturę
-                </Link>
-              )}
-            </Button>
-          )}
-        </div>
-        <Table className="order-detail-table">
-          <TableHeader>
-            <TableRow>
-              <TableHead className="text-xs sm:text-sm">Produkt</TableHead>
-              <TableHead className="text-xs sm:text-sm">Ilość</TableHead>
-              <TableHead className="text-xs sm:text-sm">Cena</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {order.products?.map((product, index) => (
-              <TableRow key={index}>
-                <TableCell className="flex items-center gap-1 sm:gap-2">
+        <div className="space-y-3 text-sm">
+          <div className="grid grid-cols-2 gap-2">
+            <div className="text-gray-600">Klient</div>
+            <div className="text-gray-900 font-medium text-right">{order.customerName}</div>
+            <div className="text-gray-600">Email</div>
+            <div className="text-gray-900 font-medium text-right break-all">{order.email}</div>
+            <div className="text-gray-600">Data</div>
+            <div className="text-gray-900 font-medium text-right">{order.orderDate && new Date(order.orderDate).toLocaleDateString()}</div>
+            <div className="text-gray-600">Status</div>
+            <div className="text-right">
+              <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-green-100 text-green-700">
+                {order.status}
+              </span>
+            </div>
+          </div>
+
+          {order?.invoice?.hosted_invoice_url ? (
+            <div className="flex justify-end">
+              <Button asChild className="bg-[var(--color-brand-orange)] hover:brightness-95">
+                <Link href={order.invoice.hosted_invoice_url} target="_blank">Pobierz fakturę</Link>
+              </Button>
+            </div>
+          ) : null}
+
+          <div className="border-t pt-3">
+            <div className="space-y-2">
+              {order.products?.map((product, index) => (
+                <div key={index} className="flex items-center gap-3">
                   {product?.product?.images && (() => {
                     const toSrc = (img: any): string | null => {
                       if (!img) return null;
@@ -87,60 +73,29 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
                     };
                     const src = toSrc(product?.product?.images?.[0]);
                     return src ? (
-                      <Image
-                        src={src}
-                        alt="productImage"
-                        width={40}
-                        height={40}
-                        className="border rounded-sm sm:w-[50px] sm:h-[50px]"
-                      />
+                      <Image src={src} alt="produkt" width={44} height={44} className="rounded border" />
                     ) : (
-                      <div className="h-[40px] w-[40px] bg-gray-100 rounded-sm sm:h-[50px] sm:w-[50px]" />
+                      <div className="h-11 w-11 rounded border bg-gray-50" />
                     );
                   })()}
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-medium text-gray-900 truncate">{product?.product?.name}</div>
+                    <div className="text-xs text-gray-600">Ilość: {product?.quantity}</div>
+                  </div>
+                  <div className="text-sm font-semibold text-gray-900">
+                    <PriceFormatter amount={product?.product?.price} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-                  <span className="text-xs sm:text-sm">{product?.product && product?.product?.name}</span>
-                </TableCell>
-                <TableCell className="text-xs sm:text-sm">{product?.quantity}</TableCell>
-                <TableCell>
-                  <PriceFormatter
-                    amount={product?.product?.price}
-                    className="text-black font-medium"
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        <div className="mt-4 text-right flex items-center justify-end">
-          <div className="w-44 flex flex-col gap-1">
-            {order?.amountDiscount !== 0 && (
-              <div className="w-full flex items-center justify-between">
-                <strong>Discount: </strong>
-                <PriceFormatter
-                  amount={order?.amountDiscount}
-                  className="text-black font-bold"
-                />
+          <div className="border-t pt-3">
+            <div className="flex items-center justify-between text-sm">
+              <div className="text-gray-600">Razem</div>
+              <div className="font-bold text-gray-900">
+                <PriceFormatter amount={order?.totalPrice} />
               </div>
-            )}
-            {order?.amountDiscount !== 0 && (
-              <div className="w-full flex items-center justify-between">
-                <strong>Subtotal: </strong>
-                <PriceFormatter
-                  amount={
-                    (order?.totalPrice as number) +
-                    (order?.amountDiscount as number)
-                  }
-                  className="text-black font-bold"
-                />
-              </div>
-            )}
-            <div className="w-full flex items-center justify-between">
-              <strong>Total: </strong>
-              <PriceFormatter
-                amount={order?.totalPrice}
-                className="text-black font-bold"
-              />
             </div>
           </div>
         </div>

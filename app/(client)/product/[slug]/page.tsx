@@ -322,35 +322,19 @@ const SingleProductPage = async ({
                 />
               );
             })() : null}
-            <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="flex items-center gap-2 p-3 rounded-lg border bg-white">
-                <Truck className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <div className="text-xs">
-                  <div className="font-semibold text-gray-900">Dostawa 48 h</div>
-                  <div className="text-gray-600">Na terenie Polski</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 p-3 rounded-lg border bg-white">
-                <BadgeCheck className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <div className="text-xs">
-                  <div className="font-semibold text-gray-900">HARDOX HB500</div>
-                  <div className="text-gray-600">Trwałość 3× dłuższa</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 p-3 rounded-lg border bg-white">
-                <Award className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <div className="text-xs">
-                  <div className="font-semibold text-gray-900">2 lata gwarancji</div>
-                  <div className="text-gray-600">Faktura VAT</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 p-3 rounded-lg border bg-white">
-                <Factory className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <div className="text-xs">
-                  <div className="font-semibold text-gray-900">Polska produkcja</div>
-                  <div className="text-gray-600">Kontrola jakości</div>
-                </div>
-              </div>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200">
+                <Truck className="h-4 w-4" /> Dostawa 48 h
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                <BadgeCheck className="h-4 w-4" /> Hardox HB500
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <Award className="h-4 w-4" /> 2 lata gwarancji
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gray-50 text-gray-700 border border-gray-200">
+                <Factory className="h-4 w-4" /> Polska produkcja
+              </span>
             </div>
           </div>
 
