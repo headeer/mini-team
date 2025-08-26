@@ -19,7 +19,12 @@ interface Props {
 
 const AddToCartButton = ({ product, className, compact = false }: Props) => {
   const { addItem, getItemCount } = useStore();
-  const itemCount = getItemCount(product?._id);
+  const [isHydrated, setIsHydrated] = React.useState(false);
+  React.useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+  const computedItemCount = getItemCount(product?._id);
+  const itemCount = isHydrated ? computedItemCount : 0;
   const isOutOfStock = product?.stock === 0;
   const priceAsUnknown = typeof (product as unknown as { price?: unknown }).price === "string";
   const hasPriceText = typeof (product as unknown as { priceText?: unknown }).priceText === "string";
