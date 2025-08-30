@@ -3,16 +3,18 @@ import { defineField, defineType } from "sanity";
 
 export const brandType = defineType({
   name: "brand",
-  title: "Brand",
+  title: "Marka",
   type: "document",
   icon: TagIcon,
   fields: [
     defineField({
       name: "title",
+      title: "Tytuł",
       type: "string",
     }),
     defineField({
       name: "slug",
+      title: "Slug",
       type: "slug",
       options: {
         source: "title",
@@ -21,11 +23,12 @@ export const brandType = defineType({
     }),
     defineField({
       name: "description",
+      title: "Opis",
       type: "text",
     }),
     defineField({
       name: "image",
-      title: "Brand Image",
+      title: "Obraz marki",
       type: "image",
       options: {
         hotspot: true,

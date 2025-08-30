@@ -3,13 +3,13 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const orderType = defineType({
   name: "order",
-  title: "Order",
+  title: "Zamówienie",
   type: "document",
   icon: BasketIcon,
   fields: [
     defineField({
       name: "orderNumber",
-      title: "Order Number",
+      title: "Numer zamówienia",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
@@ -35,19 +35,19 @@ export const orderType = defineType({
     }),
     defineField({
       name: "clerkUserId",
-      title: "Store User ID",
+      title: "ID użytkownika sklepu",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "customerName",
-      title: "Customer Name",
+      title: "Nazwa klienta",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "email",
-      title: "Customer Email",
+      title: "E-mail klienta",
       type: "string",
       validation: (Rule) => Rule.required().email(),
     }),
@@ -59,7 +59,7 @@ export const orderType = defineType({
     }),
     defineField({
       name: "products",
-      title: "Products",
+      title: "Produkty",
       type: "array",
       of: [
         defineArrayMember({
@@ -67,13 +67,13 @@ export const orderType = defineType({
           fields: [
             defineField({
               name: "product",
-              title: "Product Bought",
+              title: "Kupiony produkt",
               type: "reference",
               to: [{ type: "product" }],
             }),
             defineField({
               name: "quantity",
-              title: "Quantity Purchased",
+              title: "Ilość",
               type: "number",
             }),
           ],
@@ -98,53 +98,53 @@ export const orderType = defineType({
     }),
     defineField({
       name: "totalPrice",
-      title: "Total Price",
+      title: "Suma",
       type: "number",
       validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
       name: "currency",
-      title: "Currency",
+      title: "Waluta",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "amountDiscount",
-      title: "Amount Discount",
+      title: "Kwota rabatu",
       type: "number",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "address",
-      title: "Shipping Address",
+      title: "Adres dostawy",
       type: "object",
       fields: [
-        defineField({ name: "state", title: "State", type: "string" }),
-        defineField({ name: "zip", title: "Zip Code", type: "string" }),
-        defineField({ name: "city", title: "City", type: "string" }),
-        defineField({ name: "address", title: "Address", type: "string" }),
-        defineField({ name: "name", title: "Name", type: "string" }),
+        defineField({ name: "state", title: "Województwo", type: "string" }),
+        defineField({ name: "zip", title: "Kod pocztowy", type: "string" }),
+        defineField({ name: "city", title: "Miasto", type: "string" }),
+        defineField({ name: "address", title: "Adres", type: "string" }),
+        defineField({ name: "name", title: "Imię i nazwisko", type: "string" }),
       ],
     }),
     defineField({
       name: "status",
-      title: "Order Status",
+      title: "Status zamówienia",
       type: "string",
       options: {
         list: [
-          { title: "Pending", value: "pending" },
-          { title: "Processing", value: "processing" },
-          { title: "Paid", value: "paid" },
-          { title: "Shipped", value: "shipped" },
-          { title: "Out for Delivery", value: "out_for_delivery" },
-          { title: "Delivered", value: "delivered" },
-          { title: "Cancelled", value: "cancelled" },
+          { title: "Oczekujące", value: "pending" },
+          { title: "W realizacji", value: "processing" },
+          { title: "Opłacone", value: "paid" },
+          { title: "Wysłane", value: "shipped" },
+          { title: "W doręczeniu", value: "out_for_delivery" },
+          { title: "Dostarczone", value: "delivered" },
+          { title: "Anulowane", value: "cancelled" },
         ],
       },
     }),
     defineField({
       name: "orderDate",
-      title: "Order Date",
+      title: "Data zamówienia",
       type: "datetime",
       validation: (Rule) => Rule.required(),
     }),

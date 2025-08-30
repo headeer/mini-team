@@ -58,7 +58,7 @@ const Shop = ({ categories }: Props) => {
       // Use server API then filter client-side to avoid client token/CORS issues
       const res = await fetch('/api/products', { cache: 'no-store' });
       const body = await res.json();
-      type ApiProduct = { _id: string; name?: string; description?: string; price?: number | string; basePrice?: number; priceTier?: string; categories?: { slug?: string }[]; brand?: { slug?: string; _ref?: string } };
+      type ApiProduct = { _id: string; name?: string; description?: string; price?: number | string; basePrice?: number; priceTier?: string; categories?: { slug?: string }[]; brand?: { slug?: string; _ref?: string }; featuredRank?: number };
       let list: ApiProduct[] = Array.isArray(body?.data) ? body.data : [];
       // filter
       const [min, max] = selectedPrice ? selectedPrice.split('-').map(Number) : [undefined, undefined];
@@ -79,7 +79,7 @@ const Shop = ({ categories }: Props) => {
       const toNum = (v: unknown): number => (typeof v === 'number' ? v : 0);
       if (sort === 'price-asc') list.sort((a, b) => toNum(a.basePrice ?? a.price) - toNum(b.basePrice ?? b.price));
       if (sort === 'price-desc') list.sort((a, b) => toNum(b.basePrice ?? b.price) - toNum(a.basePrice ?? a.price));
-      if (sort === 'featured') list.sort((a, b) => (a.featuredRank ?? 9999) - (b.featuredRank ?? 9999));
+      if (sort === 'featured') list.sort((a, b) => (Number(a.featuredRank) || 9999) - (Number(b.featuredRank) || 9999));
       setProducts(list as Product[]);
       try {
         const counts: Record<string, number> = {};
@@ -350,7 +350,7 @@ const Shop = ({ categories }: Props) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 lg:gap-8">
                   {products?.map((product) => (
                     <div key={product?._id} className="h-full">
-                      <ProductCard product={product} activeMachine={machineParam || undefined} />
+                      <ProductCard product={product} />
                     </div>
                   ))}
                 </div>

@@ -10,6 +10,7 @@ import { FileX } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
+export const dynamic = 'force-dynamic';
 
 const OrdersPage = async () => {
   const user = await currentUser();

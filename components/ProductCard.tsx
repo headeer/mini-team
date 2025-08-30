@@ -54,8 +54,8 @@ const ProductCard = ({ product }: { product: Product }) => {
                padding: '2px'
              }} />
 
-        {/* Floating Shine Effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+        {/* Floating Shine Effect (no shadow on image hover) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
 
         {/* Image Section */}
         <div className="relative z-10">
@@ -86,9 +86,9 @@ const ProductCard = ({ product }: { product: Product }) => {
                     fill
                     sizes="(max-width:768px) 50vw, (max-width:1200px) 25vw, 300px"
                     priority={false}
-                    className={`object-contain transition-all duration-700 ease-out p-4 ${
+                    className={`object-contain transition-transform duration-700 ease-out p-4 ${
                       product?.stock !== 0 
-                        ? "group-hover:scale-110 group-hover:rotate-1 group-hover:drop-shadow-2xl" 
+                        ? "group-hover:scale-110 group-hover:rotate-1" 
                         : "opacity-40 grayscale"
                     }`}
                   />
@@ -134,13 +134,13 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
 
         {/* Content Section */}
-        <div className="relative z-10 p-6 flex flex-col gap-3 flex-1 bg-white/80 backdrop-blur-sm">
+        <div className="relative z-10 p-6 flex flex-col gap-2 flex-1 bg-white/80 backdrop-blur-sm">
           
           {/* Category & stock badges removed for a cleaner header */}
 
           {/* Product Title */}
           <Link href={slugValue ? `/product/${slugValue}` : "#"} className="group/title">
-            <Title className="text-lg font-bold text-gray-900 line-clamp-3 min-h-[72px] leading-tight transition-all duration-300 group-hover/title:text-[var(--color-brand-orange)] group-hover/title:underline underline-offset-4">
+            <Title className="text-lg font-bold text-gray-900 line-clamp-3 leading-tight transition-all duration-300 group-hover/title:text-[var(--color-brand-orange)] group-hover/title:underline underline-offset-4">
               {product?.name}
             </Title>
           </Link>
