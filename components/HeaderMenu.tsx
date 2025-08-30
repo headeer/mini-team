@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import CategoryIconSprite from "./CategoryIconSprite";
 
 const HeaderMenu = () => {
   const pathname = usePathname();
@@ -27,15 +28,20 @@ const HeaderMenu = () => {
               Oferta
             </Link>
           </PopoverTrigger>
-          <PopoverContent align="start" sideOffset={10} className="w-[520px] p-3 rounded-2xl" onMouseLeave={() => setOfferOpen(false)}>
+          <PopoverContent align="start" sideOffset={10} className="w-[560px] p-3 rounded-2xl" onMouseLeave={() => setOfferOpen(false)}>
             <div className="grid grid-cols-2 gap-2">
               {categoriesData.map((c) => (
                 <Link
                   key={c.href}
                   href={`/shop?category=${encodeURIComponent(c.href)}`}
-                  className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl hover:bg-gray-50 border"
+                  className="flex items-center justify-between gap-3 px-3 py-2 rounded-xl hover:bg-gray-50 border"
                 >
-                  <span className="text-sm font-medium text-gray-800 truncate">{c.title}</span>
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-gray-100 border overflow-hidden flex items-center justify-center">
+                      <CategoryIconSprite title={c.title} className="w-[32px] h-[32px]" />
+                    </div>
+                    <span className="text-sm font-medium text-gray-800 truncate">{c.title}</span>
+                  </div>
                   <span className="text-[10px] text-gray-500">Zobacz</span>
                 </Link>
               ))}

@@ -416,10 +416,28 @@ const SingleProductPage = async ({
         </div>
 
         {/* Specyfikacja techniczna – pełna szerokość */}
+        {(() => {
+          const hasKeyParams = Boolean(
+            product?.specifications?.widthCm ||
+            product?.specifications?.pinDiameterMm ||
+            product?.specifications?.volumeM3 ||
+            (product as any)?.toothQty ||
+            product?.specifications?.toothThickness ||
+            (product as any)?.priceTier
+          );
+          const hasCompat = Boolean(
+            product?.specifications?.quickCoupler ||
+            (product?.specifications?.machineCompatibility?.length || 0) > 0
+          );
+          const hasFeatures = (product?.specifications?.features?.length || 0) > 0;
+          const hasAnySpecs = hasKeyParams || hasCompat || hasFeatures;
+          if (!hasAnySpecs) return null;
+          return (
         <div className="mt-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Specyfikacja techniczna</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-sm">
             {/* Kluczowe parametry */}
+            {hasKeyParams ? (
             <div className="p-3 rounded-lg border bg-white">
               <div className="text-xs uppercase text-gray-500 mb-2">Kluczowe parametry</div>
               <div className="space-y-2">
@@ -467,8 +485,10 @@ const SingleProductPage = async ({
                 ) : null}
               </div>
             </div>
+            ) : null}
 
             {/* Kompatybilność i mocowania */}
+            {hasCompat ? (
             <div className="p-3 rounded-lg border bg-white">
               <div className="text-xs uppercase text-gray-500 mb-2">Kompatybilność i mocowania</div>
               {product?.specifications?.quickCoupler ? (
@@ -484,12 +504,12 @@ const SingleProductPage = async ({
                     <span key={i} className="px-2 py-0.5 text-[11px] rounded-md border bg-gray-50 text-gray-800">{m}</span>
                   ))}
                 </div>
-              ) : (
-                <div className="text-xs text-gray-500">Brak danych o kompatybilności</div>
-              )}
+              ) : null}
             </div>
+            ) : null}
 
             {/* Cechy */}
+            {hasFeatures ? (
             <div className="p-3 rounded-lg border bg-white">
               <div className="text-xs uppercase text-gray-500 mb-2">Cechy</div>
               {product?.specifications?.features?.length ? (
@@ -498,12 +518,13 @@ const SingleProductPage = async ({
                     <span key={i} className="px-2 py-0.5 text-[11px] rounded-md bg-gray-100 text-gray-800">{f}</span>
                   ))}
                 </div>
-              ) : (
-                <div className="text-xs text-gray-500">Brak dodatkowych cech</div>
-              )}
+              ) : null}
             </div>
+            ) : null}
           </div>
         </div>
+          );
+        })()}
 
         {/* Sticky CTA mobile - Enhanced with better positioning */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-50">

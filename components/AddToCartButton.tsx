@@ -92,49 +92,56 @@ const AddToCartButton = ({ product, className, compact = false }: Props) => {
           </div>
         )
       ) : (
-        <Button
-          onClick={isPhoneOnly ? undefined : handleAddToCart}
-          disabled={isOutOfStock}
-          className={cn(
-            "group relative w-full overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl",
-            isOutOfStock 
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-              : isPhoneOnly
-              ? "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
-              : "bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] hover:from-[var(--color-brand-red)] hover:to-[var(--color-brand-orange)]",
-            "text-white font-bold border-0 h-auto min-h-12 rounded-2xl px-6 py-3",
-            className
-          )}
-        >
-          {/* Animated background effect */}
-          {!isOutOfStock && (
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          )}
-          
-          {/* Shine effect */}
-          {!isOutOfStock && (
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
-          )}
-          
-          <div className="relative z-10 flex items-center justify-center gap-3">
-            {isPhoneOnly ? (
-              <a href="/kontakt" className="w-full flex items-center justify-center gap-3 text-center">
-                <div className="flex flex-col">
-                  <span className="text-sm font-bold">Zapytaj o ofertę</span>
-                </div>
-              </a>
-            ) : isOutOfStock ? (
-              <>
-                <span className="text-lg">❌</span>
-                <span className="font-bold">Brak w magazynie</span>
-              </>
-            ) : (
-              <>
-                <span className="font-bold">Dodaj do koszyka</span>
-              </>
+        isPhoneOnly ? (
+          <Button
+            asChild
+            disabled={isOutOfStock}
+            className={cn(
+              "w-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl",
+              isOutOfStock 
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600",
+              "text-white font-bold border-0 h-auto min-h-12 rounded-2xl px-6 py-3",
+              className
             )}
-          </div>
-        </Button>
+          >
+            <a href={`/kontakt?product=${encodeURIComponent(String(product?.name || ''))}`}>
+              Zapytaj o ofertę
+            </a>
+          </Button>
+        ) : (
+          <Button
+            onClick={handleAddToCart}
+            disabled={isOutOfStock}
+            className={cn(
+              "group relative w-full overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl",
+              isOutOfStock 
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] hover:from-[var(--color-brand-red)] hover:to-[var(--color-brand-orange)]",
+              "text-white font-bold border-0 h-auto min-h-12 rounded-2xl px-6 py-3",
+              className
+            )}
+          >
+            {!isOutOfStock && (
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            )}
+            {!isOutOfStock && (
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+            )}
+            <div className="relative z-10 flex items-center justify-center gap-3">
+              {isOutOfStock ? (
+                <>
+                  <span className="text-lg">❌</span>
+                  <span className="font-bold">Brak w magazynie</span>
+                </>
+              ) : (
+                <>
+                  <span className="font-bold">Dodaj do koszyka</span>
+                </>
+              )}
+            </div>
+          </Button>
+        )
       )}
     </div>
   );

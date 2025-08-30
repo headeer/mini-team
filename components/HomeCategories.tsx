@@ -9,10 +9,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 // Import real product images for categories
 import excavatorIcon from "@/images/excavator.svg";
+import CategoryIconSprite from "./CategoryIconSprite";
 import grabie100cm from "@/images/grabie/grabie_100cm_grubosc_zeba-removebg-preview.png";
 import grabie120cm from "@/images/grabie/grabie_120cm-removebg-preview.png";
 import lyzkaKopiaca from "@/images/lyzki_kopiace/lyzka-kopiaca-30cm-01.webp";
 import lyzkaSkarpowa from "@/images/lyzki_kopiace/lyzka-skarpowa-80cm-01.webp";
+import zrywakPojedynczy from "@/images/zrywaki/zrywak_pojedynczy_4-8_tony.png";
+import wiertnicaGlebowa from "@/images/weirtnica_glebowa.png";
 const HomeCategories = ({ categories }: { categories: Category[] }) => {
   const pluralize = (n?: number) => {
     if (!n || n <= 0) return null;
@@ -36,6 +39,8 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
     // Other categories
     if (/skarpow/.test(t)) return lyzkaSkarpowa;
     if (/łyżk|lyzk|kopi/.test(t)) return lyzkaKopiaca;
+    if (/ripper|zrywak/.test(t)) return zrywakPojedynczy;
+    if (/wiertnic/.test(t)) return wiertnicaGlebowa;
     return excavatorIcon;
   };
 
@@ -83,7 +88,7 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
                          }} />
                     
                     <div className="flex items-center gap-3 min-w-0 relative z-10">
-                      <div className="relative flex items-center justify-center h-20 w-20 rounded-2xl bg-gradient-to-br from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 overflow-hidden border border-orange-200/30 shadow-inner">
+                      <div className="relative flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 overflow-hidden border border-orange-200/30 shadow-inner">
                         {/* Premium background pattern */}
                         <div className="absolute inset-0 opacity-5" 
                              style={{
@@ -94,19 +99,22 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
                         {(() => {
                           const categoryImage = getCategoryImage(category?.title);
                           const isRealImage = categoryImage !== excavatorIcon;
-                          const isGrabie = category?.title?.toLowerCase().includes('grabie');
-                          
-                          return isRealImage ? (
-                            <Image 
-                              src={categoryImage} 
-                              alt={`Zdjęcie ${category?.title}`} 
-                              width={isGrabie ? 80 : 64} 
-                              height={isGrabie ? 80 : 64} 
-                              className={`${isGrabie ? 'object-contain' : 'object-cover'} w-full h-full transition-transform duration-500 ${isGrabie ? '' : 'rounded-xl'}`}
-                            />
-                          ) : (
-                            <div className="w-10 h-10 transition-transform duration-500">
-                              {getCategoryIcon(category?.title)}
+                          if (isRealImage) {
+                            return (
+                              <Image 
+                                src={categoryImage} 
+                                alt={`Zdjęcie ${category?.title}`} 
+                                fill
+                                sizes="80px"
+                                className="object-contain transition-transform duration-500 p-2"
+                              />
+                            );
+                          }
+                          // Use sprite-based icon when we don't have a real image
+                          return (
+                            <div className="w-full h-full flex items-center justify-center p-1.5">
+                              {/* Fixed-size cell to match sprite math */}
+                              <CategoryIconSprite title={category?.title} className="w-[64px] h-[64px]" />
                             </div>
                           );
                         })()}

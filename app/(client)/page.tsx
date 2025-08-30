@@ -12,6 +12,7 @@ import RealizacjeCarousel from "@/components/home/RealizacjeCarousel";
 import FAQ from "@/components/home/FAQ";
 import FinalCTA from "@/components/home/FinalCTA";
 import HomeShowcase from "@/components/home/HomeShowcase";
+import AllCategories from "@/components/home/AllCategories";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import BestSellers from "@/components/home/BestSellers";
 import ProjectsInAction from "@/components/home/ProjectsInAction";
@@ -53,6 +54,8 @@ const Home = async () => {
         </AppSection>
         {/* @ts-expect-error Async Server Component */}
         <BestSellers />
+        {/* @ts-expect-error Async Server Component */}
+        <AllCategories />
         <AppSection>
           <AppHeading eyebrow="Realizacje" title="Nasze realizacje" subtitle="Prawdziwe wdrożenia, realne efekty – sprawdź jak pracuje nasz osprzęt" />
           <RealizacjeCarousel />

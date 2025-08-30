@@ -341,13 +341,13 @@ const Shop = ({ categories }: Props) => {
             <div className="mb-3 text-sm text-gray-600">Znaleziono: <span className="font-semibold">{products?.length || 0}</span> produktów</div>
             <div className="md:h-[calc(100vh-160px)] md:overflow-y-auto pr-2 nice-scrollbar">
               {loading ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 lg:gap-8">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <div key={i} className="rounded-3xl border bg-white p-6 animate-pulse h-80 shadow-lg" />
                   ))}
                 </div>
               ) : products?.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 lg:gap-8">
                   {products?.map((product) => (
                     <div key={product?._id} className="h-full">
                       <ProductCard product={product} activeMachine={machineParam || undefined} />

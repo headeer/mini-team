@@ -7,9 +7,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Play, MapPin, Quote, User } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import imgA from "@/images/main/close-up-of-excavator-at-construction-site-backho-2025-01-29-04-41-18-utc.webp";
-import imgB from "@/images/main/excavator-2025-03-15-06-31-29-utc.webp";
-import imgC from "@/images/main/excavator-2025-04-02-09-43-54-utc.webp";
+import imgA from "@/images/realizacje/A_striking_visualization_of_a_CAT_excavator_with_n-1756554699890.png";
+import imgB from "@/images/realizacje/A_vibrant_construction_scene_featuring_a_JCB_machi-1756554695168.png";
+import imgC from "@/images/realizacje/A_vibrant_construction_scene_featuring_a_JCB_machi-1756554705545.png";
 import imgD from "@/images/main/industrial-backhoe-excavator-loader-2024-09-12-10-51-04-utc.webp";
 import imgE from "@/images/main/yellow-earth-mover-at-a-construction-site-2025-01-07-23-59-23-utc.webp";
 import imgF from "@/images/main/repairman-fixing-excavator-2024-10-18-06-55-12-utc.webp";
