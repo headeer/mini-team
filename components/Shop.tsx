@@ -213,21 +213,18 @@ const Shop = ({ categories }: Props) => {
         <Separator className="mb-4" />
 
         {/* Mobile: improved filters */}
-        <div className="md:hidden mb-4">
+        <div className="md:hidden mb-3">
           <Accordion type="single" collapsible>
-            <AccordionItem value="filters" className="border rounded-xl bg-white shadow-sm">
-              <AccordionTrigger className="px-4 py-3">
-                <div className="flex items-center justify-between w-full gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10">
+            <AccordionItem value="filters" className="border rounded-xl bg-white">
+              <AccordionTrigger className="px-3 py-2">
+                <div className="flex items-center justify-between w-full gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="p-1.5 rounded-lg bg-gradient-to-r from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10">
                       <Filter className="h-4 w-4 text-[var(--color-brand-orange)]" />
                     </div>
-                    <div className="text-left">
-                      <span className="font-semibold text-gray-900">Filtry</span>
-                      <p className="text-xs text-gray-600">Znajdź idealny osprzęt</p>
-                    </div>
+                    <span className="font-semibold text-gray-900">Filtry</span>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white shadow">
+                  <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full border border-[var(--color-brand-orange)]/30 text-[var(--color-brand-orange)] bg-white">
                     ✨ Dotknij, aby filtrować
                   </span>
                 </div>
@@ -235,7 +232,7 @@ const Shop = ({ categories }: Props) => {
               <AccordionContent className="px-4 pb-4">
                 <div className="space-y-4">
                   <div className="bg-gray-50 rounded-xl p-4">
-                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
                       📂 Kategorie
                     </h4>
                     <CategoryList
@@ -246,7 +243,7 @@ const Shop = ({ categories }: Props) => {
                   </div>
                   
                   <div className="bg-gray-50 rounded-xl p-4">
-                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
                       💰 Cena
                     </h4>
                     <PriceList
@@ -255,10 +252,10 @@ const Shop = ({ categories }: Props) => {
                     />
                   </div>
                   
-                  <div className="flex gap-2 pt-2">
+                  <div className="flex gap-2 pt-1">
                     <button
                       onClick={() => fetchProducts()}
-                      className="px-4 py-3 rounded-xl bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200 flex-1"
+                      className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200 flex-1"
                     >
                       Zastosuj filtry
                     </button>
@@ -268,7 +265,7 @@ const Shop = ({ categories }: Props) => {
                           setSelectedCategory(null);
                           setSelectedPrice(null);
                         }}
-                        className="px-4 py-3 rounded-xl border border-gray-300 text-sm font-medium hover:bg-gray-50 transition-all duration-200"
+                        className="px-4 py-2.5 rounded-xl border border-gray-300 text-sm font-medium hover:bg-gray-50 transition-all duration-200"
                       >
                         Wyczyść
                       </button>
