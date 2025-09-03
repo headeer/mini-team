@@ -32,12 +32,20 @@ products.forEach((product: any, index: number) => {
     console.log(`   → Category: ${categoryRef}`);
     console.log(`   → Drawing: ${technicalDrawingUrl}`);
     
-    // Add technical drawing field to the product
+    // Add technical drawing field to the product (legacy)
     product.technicalDrawing = {
       url: technicalDrawingUrl,
       title: `Rysunek techniczny - ${product.name}`,
       type: 'pdf'
     };
+    // And new array-based field for multiple drawings
+    (product as any).technicalDrawings = [
+      {
+        _type: 'object',
+        title: `Rysunek techniczny - ${product.name}`,
+        externalUrl: technicalDrawingUrl,
+      },
+    ];
     
     // Also add to specifications if it exists
     if (product.specifications) {

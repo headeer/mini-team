@@ -8,9 +8,12 @@ import toast from "react-hot-toast";
 
 type WithMounts = Product & {
   mountSystems?: Array<{
+    code?: string;
     title?: string;
     price?: number;
-    drawingFile?: string;
+    drawingFile?: string; // legacy string
+    drawingImageUrl?: string; // from GROQ
+    drawingFileUrl?: string;  // from GROQ
     productRef?: Product | null;
   }>;
   drillBits?: Array<{
@@ -64,9 +67,9 @@ export default function ProductConfigurator({ product }: { product: WithMounts }
               onClick={() => setMountIndex(idx)}
               className={`text-left border rounded-md p-3 hover:border-[var(--color-brand-orange)] ${mountIndex === idx ? "border-[var(--color-brand-orange)] bg-orange-50" : "border-gray-200"}`}
             >
-              <div className="font-medium">{m.title}</div>
+              <div className="font-medium">{m.code ? `[${m.code}] ` : ''}{m.title}</div>
               <div className="text-sm text-gray-600">{typeof m.price === "number" ? `${m.price} zł netto` : ""}</div>
-              {m.drawingFile ? (
+              {(m.drawingImageUrl || m.drawingFileUrl || m.drawingFile) ? (
                 <div className="mt-2">
                   <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-gray-100 text-gray-700">
                     <span>📄</span>

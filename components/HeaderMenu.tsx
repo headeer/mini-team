@@ -9,6 +9,7 @@ import CategoryIconSprite from "./CategoryIconSprite";
 const HeaderMenu = () => {
   const pathname = usePathname();
   const [offerOpen, setOfferOpen] = React.useState(false);
+  const [obrobkaOpen, setObrobkaOpen] = React.useState(false);
 
   return (
     <nav aria-label="Główne menu" className="hidden lg:flex items-center gap-1 text-sm font-semibold">
@@ -48,13 +49,12 @@ const HeaderMenu = () => {
             </div>
           </PopoverContent>
         </Popover>
-        {headerData?.slice(2, 3).map((item) => (
-          <Link key={item?.title} href={item?.href} className={`px-3 py-2 rounded-md transition ${pathname === item?.href ? "bg-white text-gray-900 shadow-sm" : "text-gray-700 hover:text-gray-900 hover:bg-white"}`}>{item?.title}</Link>
-        ))}
       </div>
       {/* Secondary links */}
       <div className="flex items-center gap-1 ml-1">
-        {headerData?.slice(3).map((item) => (
+        {headerData?.slice(3)
+          .filter((item) => item?.href !== "/obrobka-blach")
+          .map((item) => (
           <Link
             key={item?.title}
             href={item?.href}
@@ -65,6 +65,34 @@ const HeaderMenu = () => {
             {item?.title}
           </Link>
         ))}
+        {/* Obróbka blach – podmenu usług */}
+        <Popover open={obrobkaOpen} onOpenChange={setObrobkaOpen}>
+          <PopoverTrigger asChild>
+            <Link
+              href="/obrobka-blach"
+              onMouseEnter={() => setObrobkaOpen(true)}
+              className={`px-3 py-2 rounded-md transition ${pathname?.startsWith('/obrobka-blach') ? 'text-gray-900 bg-gray-50' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+              aria-haspopup="menu"
+            >
+              Obróbka blach
+            </Link>
+          </PopoverTrigger>
+          <PopoverContent align="end" sideOffset={10} className="w-[420px] p-3 rounded-2xl" onMouseLeave={() => setObrobkaOpen(false)}>
+            <div className="grid grid-cols-1 gap-2">
+              {[
+                { title: 'Cięcie laserem 6kW', href: '/obrobka-blach/laser' },
+                { title: 'Gięcie blach', href: '/obrobka-blach/giecie' },
+                { title: 'Frezowanie CNC', href: '/obrobka-blach/frezowanie' },
+                { title: 'Toczenie', href: '/obrobka-blach/toczenie' },
+              ].map((s) => (
+                <Link key={s.href} href={s.href} className="flex items-center justify-between gap-3 px-3 py-2 rounded-xl hover:bg-gray-50 border">
+                  <span className="text-sm font-medium text-gray-800 truncate">{s.title}</span>
+                  <span className="text-[10px] text-gray-500">Zobacz</span>
+                </Link>
+              ))}
+            </div>
+          </PopoverContent>
+        </Popover>
       </div>
     </nav>
   );

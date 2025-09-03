@@ -136,7 +136,7 @@ const ProjectsInAction = () => {
         {/* CTA row */}
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-sm text-gray-700">Zobacz więcej historii na stronie realizacji lub wyślij zdjęcie swojej maszyny – potwierdzimy dopasowanie w 24h.</p>
-          <div className="flex gap-3">
+          <div className="flex flex-col xs:flex-row gap-2 w-full sm:w-auto">
             <Button asChild variant="outline" className="border-gray-300">
               <Link href="/realizacje">Zobacz więcej realizacji</Link>
             </Button>

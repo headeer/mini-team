@@ -3,10 +3,10 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Zap, Settings, Clock, MapPin, Users, Lightbulb, DollarSign } from "lucide-react";
 
 const services = [
-  { icon: Zap, title: "Cięcie laserem FIBER 6kW", desc: "Najszybsza i najprecyzyjniejsza technologia" },
-  { icon: Settings, title: "Gięcie blach prasą CNC", desc: "Powtarzalna precyzja ±0,1mm" },
-  { icon: Clock, title: "Wycena w 2h po DXF", desc: "Błyskawiczna odpowiedź na zapytania" },
-  { icon: CheckCircle, title: "Realizacja 24–48h", desc: "Ekspresowe terminy bez kompromisów" },
+  { icon: Zap, title: "Cięcie laserem 6kW", desc: "Bystronic • 3000×1500 mm", href: "/obrobka-blach/laser" },
+  { icon: Settings, title: "Gięcie blach", desc: "Prasy krawędziowe Bystronic", href: "/obrobka-blach/giecie" },
+  { icon: Clock, title: "Frezowanie CNC", desc: "HAAS VF‑3SSYT • 2D/3D", href: "/obrobka-blach/frezowanie" },
+  { icon: CheckCircle, title: "Toczenie", desc: "Obróbka skrawaniem", href: "/obrobka-blach/toczenie" },
 ];
 
 const benefits = [
@@ -42,7 +42,7 @@ const ObrobkaService = () => {
               {services.map((service, index) => {
                 const IconComponent = service.icon;
                 return (
-                  <div key={index} className="flex items-start gap-4 p-4 bg-white/60 rounded-lg">
+                  <a key={index} href={service.href} className="flex items-start gap-4 p-4 bg-white/60 rounded-lg hover:bg-white transition">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center flex-shrink-0">
                       <IconComponent className="w-5 h-5 text-white" />
                     </div>
@@ -50,7 +50,7 @@ const ObrobkaService = () => {
                       <h4 className="font-semibold text-gray-900">{service.title}</h4>
                       <p className="text-sm text-gray-600">{service.desc}</p>
                     </div>
-                  </div>
+                  </a>
                 );
               })}
             </div>

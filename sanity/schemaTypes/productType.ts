@@ -44,21 +44,24 @@ export const productType = defineType({
       title: "Opis",
       type: "text",
     }),
+    // Ceny – nowy model
     defineField({
-      name: "price",
-      title: "Cena (zł)",
+      name: "priceNet",
+      title: "Cena netto (zł)",
       type: "number",
       validation: (Rule) =>
         Rule.custom((value, ctx) => {
           const doc = ctx?.document as any;
-          if (doc?.phoneOrderOnly) return true; // price optional when phone orders only
+          if (doc?.phoneOrderOnly) return true;
           if (typeof value === "number" && value >= 0) return true;
-          return "Cena jest wymagana (chyba, że zaznaczysz 'Zamówienia telefoniczne').";
+          return "Cena netto jest wymagana (chyba, że zaznaczysz 'Zamówienia telefoniczne').";
         }),
     }),
-    // Dodatkowe pola cenowe dla MiniTeam
-    defineField({ name: "basePrice", title: "Cena bazowa (zł)", type: "number" }),
-    defineField({ name: "priceOlx", title: "Cena OLX", type: "string" }),
+    defineField({ name: "priceGross", title: "Cena brutto (zł)", type: "number" }),
+    defineField({ name: "priceOlx", title: "Cena OLX (zł)", type: "number" }),
+    // Legacy (ukryte)
+    defineField({ name: "price", title: "Cena (legacy)", type: "number", hidden: true }),
+    defineField({ name: "basePrice", title: "Cena bazowa (legacy)", type: "number", hidden: true }),
     defineField({ name: "priceText", title: "Cena (tekst)", type: "string" }),
     defineField({ name: "toothCost", title: "Koszt zębów (zł)", type: "number" }),
     defineField({ name: "toothQty", title: "Ilość zębów (szt)", type: "number" }),
@@ -66,6 +69,8 @@ export const productType = defineType({
       name: "priceTier",
       title: "Zakres maszyn",
       type: "string",
+      description: "LEGACY – użyj pola 'Zakres wagowy (T)'.",
+      hidden: true,
       options: {
         list: [
           { title: "1–1.5T", value: "1-1.5t" },
@@ -85,7 +90,8 @@ export const productType = defineType({
       name: "ripperTier",
       title: "Zakres maszyn (zrywak)",
       type: "string",
-      description: "Używane dla zrywaków korzeni. Np. 1-1.5t, 2-4t, 4-8t.",
+      description: "LEGACY – użyj pola 'Zakres wagowy (T)' z opcjami 2–4t/4–8t.",
+      hidden: true,
       options: {
         list: [
           { title: "1–1.5T", value: "1-1.5t" },
@@ -122,12 +128,15 @@ export const productType = defineType({
       name: "weightRange",
       title: "Zakres wagowy (T)",
       type: "string",
-      description: "Służy do mapowania na kategorie: 1–2t, 2–3t, 3–4.5t",
+      description: "Służy do mapowania na kategorie: 1–2t, 2–3t, 3–4.5t oraz dla zrywaków: 2–4t, 4–8t",
       options: {
         list: [
           { title: "1–2t", value: "1-2t" },
           { title: "2–3t", value: "2-3t" },
           { title: "3–4.5t", value: "3-4.5t" },
+          // Extra ranges commonly used by zrywaki (rippers)
+          { title: "2–4t (zrywak)", value: "2-4t" },
+          { title: "4–8t (zrywak)", value: "4-8t" },
         ],
       },
     }),
@@ -195,16 +204,58 @@ export const productType = defineType({
       initialValue: false,
     }),
     
-    // Technical Drawing
+    // Technical Drawing (legacy single)
     defineField({
       name: "technicalDrawing",
-      title: "Rysunek techniczny",
+      title: "Rysunek techniczny (pojedynczy – legacy)",
       type: "object",
       fields: [
         defineField({ name: "url", title: "URL pliku PDF", type: "string" }),
         defineField({ name: "title", title: "Tytuł", type: "string" }),
         defineField({ name: "type", title: "Typ pliku", type: "string", initialValue: "pdf" }),
       ],
+      description: "Pole historyczne – nowe rysunki dodawaj niżej w 'Rysunki techniczne (wiele)'.",
+    }),
+
+    // Technical Drawings (multiple, from Sanity)
+    defineField({
+      name: "technicalDrawings",
+      title: "Rysunki techniczne (wiele)",
+      type: "array",
+      of: [{
+        type: "object",
+        fields: [
+          defineField({ name: "title", title: "Tytuł (opcjonalnie)", type: "string" }),
+          defineField({
+            name: "code",
+            title: "Kod (opcjonalny)",
+            type: "string",
+            description: "Zamiast wgrywać plik, możesz wybrać gotowy wzór – ścieżka podstawi się automatycznie",
+            options: {
+              list: [
+                { title: "lyzka_kopiaca_v1", value: "lyzka_kopiaca_v1" },
+                { title: "lyzka_kopiaca_v2", value: "lyzka_kopiaca_v2" },
+                { title: "lyzka_skarpowa_v1", value: "lyzka_skarpowa_v1" },
+                { title: "lyzka_skarpowa_v2", value: "lyzka_skarpowa_v2" },
+                { title: "zrywak_poj_2_4", value: "zrywak_poj_2_4" },
+                { title: "zrywak_poj_4_8", value: "zrywak_poj_4_8" },
+                { title: "zrywak_podw_2_4", value: "zrywak_podw_2_4" },
+                { title: "zrywak_podw_4_8", value: "zrywak_podw_4_8" },
+                { title: "wiertnica_premium", value: "wiertnica_premium" },
+                { title: "wiertnica_wahacz_giety", value: "wiertnica_wahacz_giety" },
+                { title: "wiertnica_wahacz_kostka", value: "wiertnica_wahacz_kostka" },
+                { title: "grabie_100_12", value: "grabie_100_12" },
+                { title: "grabie_100_15", value: "grabie_100_15" },
+                { title: "grabie_120_12", value: "grabie_120_12" },
+                { title: "grabie_120_15", value: "grabie_120_15" },
+              ]
+            }
+          }),
+          defineField({ name: "image", title: "Obraz (PNG/JPG)", type: "image", options: { hotspot: true } }),
+          defineField({ name: "file", title: "Plik (PDF)", type: "file" }),
+          defineField({ name: "externalUrl", title: "Zewnętrzny URL (awaryjnie)", type: "string", description: "Tylko na czas migracji. Preferuj upload pliku/obrazu w Sanity." }),
+        ],
+      }],
     }),
     
     // Mount systems (Wahacze) configuration for products like Wiertnica
@@ -215,12 +266,49 @@ export const productType = defineType({
       of: [{
         type: "object",
         fields: [
+          defineField({ 
+            name: "code", 
+            title: "Kod mocowania",
+            type: "string",
+            description: "Wybierz kod: MS01, MS03, CW05, CW10",
+            options: { list: [
+              { title: "MS01", value: "MS01" },
+              { title: "MS03", value: "MS03" },
+              { title: "CW05", value: "CW05" },
+              { title: "CW10", value: "CW10" },
+            ]}
+          }),
           defineField({ name: "title", title: "Nazwa", type: "string" }),
           defineField({ name: "price", title: "Cena (zł)", type: "number" }),
-          defineField({ name: "drawingFile", title: "Plik rysunku (PDF)", type: "string", description: "np. rysunek_techniczny_wahacza_gietego.pdf (umieść w public/images/techniczne)" }),
+          // New asset fields – prefer te pola. Stare pole 'drawingFile' (string) zostaje dla zgodności.
+          defineField({ name: "drawingImage", title: "Rysunek – obraz", type: "image", options: { hotspot: true } }),
+          defineField({ name: "drawingFileAsset", title: "Rysunek – plik PDF", type: "file" }),
+          defineField({ name: "drawingFile", title: "Plik rysunku (legacy – tekst)", type: "string", description: "Zachowane dla zgodności. Preferuj pole 'Rysunek – plik PDF'" }),
           defineField({ name: "productRef", title: "Powiązany produkt (opcjonalnie)", type: "reference", to: [{ type: "product" }] }),
         ],
       }],
+    }),
+
+    // Dimensions A/B/C/D (cm, decimal)
+    defineField({
+      name: "dimensions",
+      title: "Wymiary (cm)",
+      type: "object",
+      fields: [
+        defineField({ name: "A", title: "A (cm)", type: "number" }),
+        defineField({ name: "B", title: "B (cm)", type: "number" }),
+        defineField({ name: "C", title: "C (cm)", type: "number" }),
+        defineField({ name: "D", title: "D (cm)", type: "number" }),
+      ],
+    }),
+
+    // Teeth option toggle (uses existing toothCost/toothQty for details)
+    defineField({
+      name: "teethEnabled",
+      title: "Opcja: zęby dostępne",
+      type: "boolean",
+      initialValue: false,
+      description: "Włącz, jeśli produkt może być doposażony w zęby. Cena i ilość w polach poniżej.",
     }),
 
     // Drill bits configuration

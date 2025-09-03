@@ -5,20 +5,38 @@ import Image from "next/image";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Download, X } from "lucide-react";
-import { getDrawingByName } from "@/images/rys_techniczne";
-// using iframe for robust cross-device PDF display
-import { getPreviewByPdfName } from "@/images/techniczne/png";
+// Component now expects direct URLs from Sanity (image/pdf). No local fallback.
 
-interface TechnicalDrawingProps {
-  files: string[]; // exact file names with extension located under /images/rys_techniczne/
-}
+interface TechnicalDrawingItem { imageUrl?: string | null; fileUrl?: string | null; title?: string | null; code?: string | null; externalUrl?: string | null }
+interface TechnicalDrawingProps { files: Array<TechnicalDrawingItem> | string[] }
 
 export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
-  const [fallbackMap, setFallbackMap] = useState<Record<number, boolean>>({}); // true => use rys_techniczne, false/undefined => use techniczne
 
-  const items = useMemo(() => files.map((file) => ({ file })), [files]);
+  // Normalize input: allow old string[] or new array of objects
+  const items = useMemo(() => {
+    if (!Array.isArray(files)) return [] as Array<{ imageUrl?: string | null; fileUrl?: string | null; title?: string | null }>;
+    if (typeof files[0] === "string") {
+      // Legacy: map strings to fileUrl
+      return (files as string[]).map((f) => ({ fileUrl: f })) as Array<TechnicalDrawingItem>;
+    }
+    // Resolve codes → paths (client-side map)
+    try {
+      const map = (window as any).__TECH_MAP__ as Record<string, { png?: string; pdf?: string }> | undefined;
+      return (files as Array<TechnicalDrawingItem>).map((it) => {
+        if (it?.code && map && map[it.code]) {
+          const m = map[it.code];
+          return { ...it, imageUrl: it.imageUrl || m.png || undefined, fileUrl: it.fileUrl || m.pdf || undefined };
+        }
+        if (it?.externalUrl) {
+          const isPdf = /\.pdf$/i.test(it.externalUrl);
+          return { ...it, [isPdf ? 'fileUrl' : 'imageUrl']: it.externalUrl } as any;
+        }
+        return it;
+      });
+    } catch { return files as Array<TechnicalDrawingItem>; }
+  }, [files]);
 
   const current = items[index];
 
@@ -28,34 +46,15 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
   };
 
   
-
   const downloadCurrent = () => {
-    const isPdf = current?.file?.toLowerCase().endsWith(".pdf");
-    const href = isPdf
-      ? (fallbackMap[index] ? `/images/rys_techniczne/${current.file}` : `/images/techniczne/${current.file}`)
-      : (() => {
-          const imported = getDrawingByName(current.file);
-          if (imported) return imported;
-          return fallbackMap[index]
-            ? `/images/rys_techniczne/${current.file}`
-            : `/images/techniczne/${current.file}`;
-        })();
+    const href = current?.fileUrl || current?.imageUrl || "";
     const link = document.createElement("a");
-    link.href = typeof href === "string" ? href : (href?.src || "");
-    link.download = current.file;
+    link.href = href;
+    link.download = (current?.title || "rysunek_techniczny").replace(/\s+/g, "_");
     link.click();
   };
 
-  const resolveSrc = (i: number) => {
-    const file = items[i]?.file || "";
-    const isPdf = file.toLowerCase().endsWith(".pdf");
-    if (isPdf) {
-      return fallbackMap[i] ? `/images/rys_techniczne/${file}` : `/images/techniczne/${file}`;
-    }
-    const imported = getDrawingByName(file);
-    if (imported) return imported;
-    return fallbackMap[i] ? `/images/rys_techniczne/${file}` : `/images/techniczne/${file}`;
-  };
+  const resolveSrc = (i: number) => items[i]?.imageUrl || "";
 
   const iframeAttemptedRef = useRef(false);
   const [pdfOk, setPdfOk] = useState(true);
@@ -79,58 +78,61 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
 
   return (
     <>
-      {!files.length ? (
+      {!items.length ? (
         <div className="text-sm text-gray-600 p-4 border rounded-md bg-gray-50">
           Brak zdefiniowanych rysunków technicznych dla tej kategorii.
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 overflow-x-hidden">
           {items.map((it, i) => {
-            const isPdf = it.file.toLowerCase().endsWith(".pdf");
+            const isPdf = Boolean(it.fileUrl && it.fileUrl.toLowerCase().endsWith(".pdf"));
             if (isPdf) {
-              const mapped = getPreviewByPdfName(it.file);
-              const fallbackComputed = `/images/techniczne/png/${it.file.replace(/\.pdf$/i, "")}-1.png`;
-              const previewPng = mapped || fallbackComputed;
+              const previewPng = it.imageUrl || "";
               return (
                 <button
-                  key={it.file}
+                  key={(it.title || "pdf") + i}
                   type="button"
                   onClick={() => openAt(i)}
                   className="border rounded-lg overflow-hidden bg-white text-left hover:shadow-md transition"
                 >
                   <div className="relative w-full h-64 bg-white">
-                    <Image
-                      src={previewPng}
-                      alt="Podgląd PDF"
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-contain"
-                    />
+                    {previewPng ? (
+                      <Image
+                        src={previewPng}
+                        alt="Podgląd PDF"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-contain"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-xs text-gray-500">PDF</div>
+                    )}
                   </div>
-                  <div className="px-3 py-2 text-xs text-gray-600 truncate">{it.file}</div>
+                  <div className="px-3 py-2 text-xs text-gray-600 truncate">{it.title || "Rysunek techniczny"}</div>
                 </button>
               );
             }
-            const primary = `/images/techniczne/${it.file}`;
-            const fallback = `/images/rys_techniczne/${it.file}`;
             return (
               <button
-                key={it.file}
+                key={(it.title || it.imageUrl || "image") + i}
                 type="button"
                 onClick={() => openAt(i)}
                 className="border rounded-lg overflow-hidden bg-white text-left hover:shadow-md transition"
               >
                 <div className="relative w-full h-64 bg-white">
-                  <Image
-                    src={fallbackMap[i] ? fallback : primary}
-                    alt="Rysunek techniczny"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-contain"
-                    onError={() => setFallbackMap((m) => ({ ...m, [i]: true }))}
-                  />
+                  {it.imageUrl ? (
+                    <Image
+                      src={it.imageUrl}
+                      alt="Rysunek techniczny"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-xs text-gray-500">Brak obrazu</div>
+                  )}
                 </div>
-                <div className="px-3 py-2 text-xs text-gray-600 truncate">{it.file}</div>
+                <div className="px-3 py-2 text-xs text-gray-600 truncate">{it.title || "Rysunek techniczny"}</div>
               </button>
             );
           })}
@@ -138,11 +140,11 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
       )}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-[95vw] sm:w-auto sm:max-w-3xl p-0 no-default-close technical-drawing-content">
-          <DialogTitle className="sr-only">{current?.file || "Rysunek techniczny"}</DialogTitle>
+        <DialogContent className="w-[98vw] sm:w-[96vw] lg:w-[95vw] max-w-none sm:max-w-none lg:max-w-[98vw] p-0 sm:p-0 no-default-close technical-drawing-content">
+          <DialogTitle className="sr-only">{current?.title || "Rysunek techniczny"}</DialogTitle>
           <div className="border-b bg-white px-3 py-2 flex items-center justify-between technical-drawing-toolbar">
             <div className="text-sm font-semibold text-gray-900 truncate">
-              {current?.file || 'Rysunek techniczny'}
+              {current?.title || 'Rysunek techniczny'}
             </div>
             <div className="flex items-center gap-2">
               <Button size="sm" variant="outline" onClick={downloadCurrent}>
@@ -154,43 +156,35 @@ export default function TechnicalDrawing({ files }: TechnicalDrawingProps) {
             </div>
           </div>
           <div className="bg-white">
-            {current && (current.file.toLowerCase().endsWith('.pdf') ? (
+            {current && (Boolean(current.fileUrl && current.fileUrl.toLowerCase().endsWith('.pdf')) ? (
               isSmallScreen ? (
                 <div className="w-full flex items-center justify-center p-4">
-                  {(() => {
-                    const mapped = getPreviewByPdfName(current.file);
-                    const fb = `/images/techniczne/png/${current.file.replace(/\.pdf$/i, "")}-1.png`;
-                    const previewSrc = mapped || fb;
-                    return (
-                      <Image src={previewSrc} alt="Rysunek techniczny" width={2000} height={2000} className="max-w-full h-auto object-contain" style={{ maxHeight: '80vh' }} />
-                    );
-                  })()}
+                  {current.imageUrl ? (
+                    <Image src={current.imageUrl} alt="Rysunek techniczny" width={2000} height={2000} className="max-w-full h-auto object-contain" style={{ maxHeight: '88vh' }} />
+                  ) : null}
                 </div>
               ) : (
                 pdfOk ? (
                   <iframe
-                    src={`${String(resolveSrc(index)).replace(/#.*$/, '')}#page=1&zoom=page-fit`}
+                    src={`${String(current.fileUrl).replace(/#.*$/, '')}#page=1&zoom=page-fit`}
                     title="Podgląd PDF"
-                    className="w-full h-[80vh] border-0"
+                    className="w-full h-[88vh] border-0"
                     onLoad={() => { iframeAttemptedRef.current = true; setPdfOk(true); }}
                     onError={() => { iframeAttemptedRef.current = true; setPdfOk(false); }}
                   />
                 ) : (
                   <div className="w-full flex items-center justify-center p-4">
-                    {(() => {
-                      const mapped = getPreviewByPdfName(current.file);
-                      const fb = `/images/techniczne/png/${current.file.replace(/\.pdf$/i, "")}-1.png`;
-                      const previewSrc = mapped || fb;
-                      return (
-                        <Image src={previewSrc} alt="Rysunek techniczny" width={2000} height={2000} className="max-w-full h-auto object-contain" style={{ maxHeight: '80vh' }} />
-                      );
-                    })()}
+                    {current.imageUrl ? (
+                      <Image src={current.imageUrl} alt="Rysunek techniczny" width={2000} height={2000} className="max-w-full h-auto object-contain" style={{ maxHeight: '88vh' }} />
+                    ) : null}
                   </div>
                 )
               )
             ) : (
               <div className="w-full flex items-center justify-center p-4">
-                <Image src={resolveSrc(index)} alt="Rysunek techniczny" width={2000} height={2000} className="max-w-full h-auto object-contain" style={{ maxHeight: '80vh' }} />
+                {resolveSrc(index) ? (
+                  <Image src={resolveSrc(index)} alt="Rysunek techniczny" width={2000} height={2000} className="max-w-full h-auto object-contain" style={{ maxHeight: '88vh' }} />
+                ) : null}
               </div>
             ))}
           </div>

@@ -9,7 +9,8 @@ const AllCategories = () => {
   // Use the same categories as in the menu (requested)
   const menuCategories = categoriesData;
   const [expanded, setExpanded] = React.useState(false);
-  const mobileVisible = expanded ? menuCategories : menuCategories.slice(0, 6);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const visible = isMobile ? (expanded ? menuCategories : menuCategories.slice(0, 6)) : menuCategories;
   return (
     <section className="my-12">
       <div className="flex items-center justify-between mb-4">
@@ -21,7 +22,7 @@ const AllCategories = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {(mobileVisible).map((cat) => (
+        {visible.map((cat) => (
           <Link
             key={cat.href}
             href={`/shop?category=${encodeURIComponent(cat.href)}`}

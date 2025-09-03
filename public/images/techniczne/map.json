@@ -1,0 +1,19 @@
+{
+  "lyzka_kopiaca_v1": { "png": "/images/rys_techniczne/lyzka_1_5-2_3.png" },
+  "lyzka_kopiaca_v2": { "png": "/images/rys_techniczne/lyzka_1_5-2_3_2.png" },
+  "lyzka_skarpowa_v1": { "png": "/images/rys_techniczne/lyska_skarpowa.png" },
+  "lyzka_skarpowa_v2": { "png": "/images/rys_techniczne/lyska_skarpowa_2.png" },
+  "zrywak_poj_2_4": { "png": "/images/techniczne/zrywaki/rysunek_techniczny_zrywak_pojedynczy_2-4_tony.png" },
+  "zrywak_poj_4_8": { "png": "/images/techniczne/zrywaki/rysunek_techniczny_zrywak_pojedynczy_4-8_tony.png" },
+  "zrywak_podw_2_4": { "png": "/images/techniczne/zrywaki/rysunek_techniczniczny_zrywak_podwojny_2-4_tony.png" },
+  "zrywak_podw_4_8": { "png": "/images/techniczne/zrywaki/rysunek_techniczny_zrywak_podwojny_4-8_tony.png" },
+  "wiertnica_premium": { "pdf": "/images/techniczne/rysunek_techniczny_premium.pdf" },
+  "wiertnica_wahacz_giety": { "pdf": "/images/techniczne/rysunek_techniczny_wahacza_gietego.pdf" },
+  "wiertnica_wahacz_kostka": { "pdf": "/images/techniczne/rysunek_techniczny_wahacz_kostka.pdf" },
+  "grabie_100_12": { "pdf": "/images/techniczne/grabie_100cm_grubosc_zeba_12mm.pdf", "png": "/images/techniczne/png/grabie_100cm_grubosc_zeba_12mm-1.png" },
+  "grabie_100_15": { "pdf": "/images/techniczne/grabie_100cm_grubosc_zeba_15mm.pdf", "png": "/images/techniczne/png/grabie_100cm_grubosc_zeba_15mm-1.png" },
+  "grabie_120_12": { "pdf": "/images/techniczne/grabie_120cm_12mm.pdf", "png": "/images/techniczne/png/grabie_120cm_12mm-1.png" },
+  "grabie_120_15": { "pdf": "/images/techniczne/grabie_120cm_15mm.pdf", "png": "/images/techniczne/png/grabie_120cm_15mm-1.png" }
+}
+
+

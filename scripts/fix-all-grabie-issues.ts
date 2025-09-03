@@ -57,7 +57,14 @@ async function fixAllGrabieIssues() {
                 url: pdfUrl,
                 title: `Rysunek techniczny - ${product.name}`,
                 type: 'pdf'
-              }
+              },
+              technicalDrawings: [
+                {
+                  _type: 'object',
+                  title: `Rysunek techniczny - ${product.name}`,
+                  externalUrl: pdfUrl
+                }
+              ]
             })
             .commit();
           

@@ -7,6 +7,7 @@ import TopBenefitsBar from "@/components/TopBenefitsBar";
 import FloatingMachineSelector from "@/components/FloatingMachineSelector";
 import AIWidgetStub from "@/components/home/AIWidgetStub";
 import Script from "next/script";
+import techMap from "@/public/images/techniczne/map.json";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://example.com"),
@@ -69,6 +70,10 @@ export default function RootLayout({
         <FloatingMachineSelector />
         {/* Fit Check modal mounted globally to open from header */}
         <AIWidgetStub />
+        {/* Technical drawing map (client) */}
+        <Script id="tech-map" strategy="beforeInteractive">
+          {`window.__TECH_MAP__ = ${JSON.stringify(techMap)};`}
+        </Script>
         {/* Tawk.to chat - simplified to avoid null references; position adjusted on load */}
         <Script id="tawk-chat" strategy="afterInteractive">
           {`

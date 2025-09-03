@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Upload, Send, FileText, Clock } from "lucide-react";
 import { useState } from "react";
 
-const ObrobkaContactForm = () => {
+const ObrobkaContactForm = ({ service }: { service?: 'laser'|'giecie'|'frezowanie'|'toczenie' }) => {
   const [dragActive, setDragActive] = useState(false);
 
   const handleDrag = (e: React.DragEvent) => {
@@ -74,6 +74,7 @@ const ObrobkaContactForm = () => {
         <Card className="lg:col-span-2 border-0 shadow-xl w-full min-w-0">
           <CardContent className="p-4 sm:p-8">
             <form method="post" action="/api/contact" encType="multipart/form-data" className="space-y-6 w-full">
+              <input type="hidden" name="service" value={service || ''} />
               {/* Contact Info */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2 min-w-0">
@@ -160,6 +161,27 @@ const ObrobkaContactForm = () => {
                     className="border-gray-300 focus:border-orange-500 focus:ring-orange-500 w-full"
                   />
                 </div>
+              </div>
+
+              {/* Service-specific fields */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2 min-w-0">
+                  <Label htmlFor="quantity" className="text-sm font-medium text-gray-700">Ilość (szt)</Label>
+                  <Input id="quantity" name="quantity" type="number" min={1} placeholder="np. 10" className="border-gray-300 focus:border-orange-500 focus:ring-orange-500 w-full" />
+                </div>
+                {service === 'giecie' ? (
+                  <div className="space-y-2 min-w-0">
+                    <Label htmlFor="bendLength" className="text-sm font-medium text-gray-700">Długość gięcia (mm)</Label>
+                    <Input id="bendLength" name="bendLength" type="number" min={1} placeholder="np. 1200" className="border-gray-300 focus:border-orange-500 focus:ring-orange-500 w-full" />
+                  </div>
+                ) : (service === 'frezowanie' || service === 'toczenie') ? (
+                  <div className="space-y-2 min-w-0">
+                    <Label htmlFor="operations" className="text-sm font-medium text-gray-700">Operacje</Label>
+                    <Input id="operations" name="operations" placeholder="np. frezowanie 2D, gwint M8, pogłębianie" className="border-gray-300 focus:border-orange-500 focus:ring-orange-500 w-full" />
+                  </div>
+                ) : (
+                  <div className="space-y-2 min-w-0" />
+                )}
               </div>
 
               <div className="space-y-2">

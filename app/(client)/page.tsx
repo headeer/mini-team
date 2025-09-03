@@ -34,7 +34,6 @@ const Home = async () => {
         <AppSection>
           <div id="products" className="mt-4 scroll-mt-28 sm:scroll-mt-32">
             {/* Use curated featured block with local images for strong visual consistency */}
-            {/* @ts-expect-error Async Server Component */}
             <FeaturedProducts />
           </div>
         </AppSection>
@@ -43,6 +42,10 @@ const Home = async () => {
         <AppSection>
           <WhyHardox />
         </AppSection>
+        {/* On mobile, show AllCategories before benefits; on larger screens keep original order */}
+        <div className="block md:hidden">
+          <AllCategories />
+        </div>
         <AppSection>
           <SevenReasons />
         </AppSection>
@@ -50,16 +53,16 @@ const Home = async () => {
           <BrandStory />
         </AppSection>
         <AppSection>
+        <AppHeading eyebrow="Realizacje" title="Nasze realizacje" subtitle="Prawdziwe wdrożenia, realne efekty – sprawdź jak pracuje nasz osprzęt" />
+
           <ProjectsInAction />
         </AppSection>
-        {/* @ts-expect-error Async Server Component */}
         <BestSellers />
-        {/* @ts-expect-error Async Server Component */}
-        <AllCategories />
-        <AppSection>
-          <AppHeading eyebrow="Realizacje" title="Nasze realizacje" subtitle="Prawdziwe wdrożenia, realne efekty – sprawdź jak pracuje nasz osprzęt" />
-          <RealizacjeCarousel />
-        </AppSection>
+        {/* Desktop and up: AllCategories here */}
+        <div className="hidden md:block">
+          <AllCategories />
+        </div>
+        
         <AppSection>
           <FAQ />
         </AppSection>

@@ -13,7 +13,11 @@
     "typegen": "npx sanity@latest schema extract && npx sanity@latest typegen generate",
     "build:import": "node scripts/convert-sample-products.js",
     "build:import:sample": "node scripts/import-from-sample-products.js",
-    "migrate:categories": "node scripts/update-categories-weight-and-subcats.js"
+    "migrate:categories": "node scripts/update-categories-weight-and-subcats.js",
+    "migrate:drawings": "ts-node scripts/migrate-technical-drawings-array.ts",
+    "migrate:prices": "ts-node scripts/migrate-prices-to-new-model.ts",
+    "cats:bucket-2.3-3t": "ts-node scripts/set-bucket-category-2_3t.ts",
+    "attach:drawings": "ts-node scripts/attach-technical-drawings.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.29.0",

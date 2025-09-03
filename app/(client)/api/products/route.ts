@@ -12,7 +12,8 @@ export async function GET() {
         "imageUrls": images[]{ "url": coalesce(asset->url, url) },
         "cover": coalesce(images[0].asset->url, images[0].url),
         description,
-        price,
+        priceNet,
+        priceGross,
         priceOlx,
         discount,
         basePrice,
@@ -32,6 +33,7 @@ export async function GET() {
       }`
     );
     // Inject virtual categories so we can filter without Sanity writes
+    const vatRate = 0.23; // PL VAT 23%
     const withVirtual = (data || []).map((p: any) => {
       const categories = Array.isArray(p.categories) ? [...p.categories] : [];
       const hasSlug = (slug: string) => categories.some((c: any) => c?.slug === slug);
@@ -57,7 +59,23 @@ export async function GET() {
       if (/przesiew/.test(name)) add("lyzki-przesiewowe", "Łyżki przesiewowe");
       if (/skandyn/.test(name)) add("lyzki-skandynawskie", "Łyżki skandynawskie");
 
-      return { ...p, categories };
+      // Pricing – provide BE-calculated values
+      const priceNet = typeof p.priceNet === 'number' ? p.priceNet : (typeof p.price === 'number' ? p.price : undefined);
+      const priceGross = typeof p.priceGross === 'number'
+        ? p.priceGross
+        : (typeof priceNet === 'number' ? Math.round(priceNet * (1 + vatRate) * 100) / 100 : undefined);
+      const priceOlxNum = typeof p.priceOlx === 'number' ? p.priceOlx : (typeof p.priceOlx === 'string' ? Number(String(p.priceOlx).replace(/[^0-9.,]/g, '').replace(',', '.')) : undefined);
+
+      return { 
+        ...p, 
+        categories,
+        pricing: {
+          vatRate,
+          priceNet,
+          priceGross,
+          priceOlx: priceOlxNum,
+        }
+      };
     });
     return NextResponse.json({ data: withVirtual });
   } catch (error) {

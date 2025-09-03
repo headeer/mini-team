@@ -32,7 +32,7 @@ const FeaturedProducts = async () => {
           <p className="uppercase tracking-widest text-[var(--color-brand-orange)] text-xs font-semibold mb-1">Hardox HB500</p>
           <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">Wybrane modele – gotowe do wysyłki</h2>
         </div>
-        <Link href="/shop" className="text-sm font-semibold text-shop_dark_green hover:underline underline-offset-4">Zobacz wszystkie</Link>
+        <Link href="/shop" className="hidden sm:inline text-sm font-semibold text-shop_dark_green hover:underline underline-offset-4">Zobacz wszystkie</Link>
       </div>
       <Carousel opts={{ align: "start" }} className="w-full">
         <CarouselContent>

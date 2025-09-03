@@ -37,7 +37,7 @@ async function updateGrabieTechnicalDrawings() {
       );
       
       if (product) {
-        // Update the product with technical drawing
+        // Update the product with technical drawing and new array-based field for migration
         const result = await client
           .patch(product._id)
           .set({
@@ -46,6 +46,13 @@ async function updateGrabieTechnicalDrawings() {
               title: `Rysunek techniczny - ${product.name}`,
               type: 'pdf'
             },
+            technicalDrawings: [
+              {
+                _type: 'object',
+                title: `Rysunek techniczny - ${product.name}`,
+                externalUrl: drawingUrl
+              }
+            ],
             'specifications.technicalDrawing': drawingUrl
           })
           .commit();
@@ -66,7 +73,8 @@ async function updateGrabieTechnicalDrawings() {
         name,
         "slug": slug.current,
         technicalDrawing,
-        "hasTechnicalDrawing": defined(technicalDrawing.url)
+        technicalDrawings,
+        "hasTechnicalDrawing": defined(technicalDrawing.url) || count(technicalDrawings) > 0
       } | order(name)
     `);
     

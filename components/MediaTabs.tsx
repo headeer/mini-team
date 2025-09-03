@@ -6,7 +6,8 @@ import TechnicalDrawing from "./TechnicalDrawing";
 interface MediaTabsProps {
   slug: string;
   gallery: React.ReactNode;
-  files?: string[]; // explicit file list under /images/rys_techniczne
+  // Accept normalized array from Sanity: { imageUrl, fileUrl, title }
+  files?: Array<{ imageUrl?: string | null; fileUrl?: string | null; title?: string | null }> | string[];
   defaultTab?: "gallery" | "tech";
 }
 

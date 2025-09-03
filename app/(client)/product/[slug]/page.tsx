@@ -20,6 +20,8 @@ import type { Metadata } from "next";
 import { urlFor } from "@/sanity/lib/image";
 // JSON-LD scripts will use plain <script> to avoid hydration issues
 import ProductConfigurator from "@/components/ProductConfigurator";
+import ABCDGuide from "@/components/ABCDGuide";
+import BucketConfigurator from "@/components/BucketConfigurator";
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
@@ -235,94 +237,29 @@ const SingleProductPage = async ({
           </div>
         </Container>
       </div>
-      <Container className="py-10">
-        <div className="grid lg:grid-cols-2 gap-10">
+      <Container className="py-6 sm:py-10">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-10 overflow-x-hidden">
           {/* Left: images + trust */}
           <div>
             {product?.images ? (() => {
-              // Decide technical drawings by priceTier if available, otherwise infer from category text
-              const tier = String((product as any)?.priceTier || "").toLowerCase();
-              const catTitles: string[] = Array.isArray((product as any)?.categories)
-                ? ((product as any).categories as Array<{ title?: string } | null>).map((c) => c?.title || "").filter(Boolean)
-                : [];
-              const catText = catTitles.join(" ").toLowerCase();
-              let files: string[] = [];
-              
-              // Check if product has a specific technical drawing (for new Grabie products)
-              const technicalDrawing = (product as any)?.technicalDrawing;
-              if (technicalDrawing?.url) {
-                // Extract just the filename from the URL path
-                const fileName = technicalDrawing.url.split('/').pop() || technicalDrawing.url;
-                files = [fileName];
-              } else {
-                // Fallback to tier-based logic for older products
-                const isRipper = /zrywak|ripper/.test((product?.name || "")?.toLowerCase() + " " + catText + " " + (product?.description || "").toLowerCase());
-                const ripperTier = String((product as any)?.ripperTier || "").toLowerCase();
-                if (isRipper) {
-                // Zrywaki mają inne zakresy: 1–1.5t, 2–4t, 4–8t
-                if (ripperTier === '1-1.5t' || /1\s*[–-]?\s*1\.5\s*t|1-1\.5t/.test(tier) || /1\s*-\s*1\.5\s*t/.test((product?.name||"").toLowerCase())) {
-                  files = ["ripper_1-1.5t.png", "rysunek_techniczny_ripper1-1.5tony.pdf"]; // PNG + PDF
-                } else if (ripperTier === '2-4t' || /2\s*[–-]?\s*4\s*t|2-4t/.test((product?.name||"").toLowerCase() + " " + (product?.description||"").toLowerCase())) {
-                  files = [
-                    "zrywak_pojedynczy_2-4t.png",
-                    "zrywak_podwojny_2-4t.png",
-                    "rysunek_techniczny_zrywak_pojedynczy_2-4_tony.pdf",
-                    "rysunek_techniczniczny_zrywak_podwojny_2-4_tony.pdf",
-                  ];
-                } else if (ripperTier === '4-8t' || /4\s*[–-]?\s*8\s*t|4-8t/.test((product?.name||"").toLowerCase() + " " + (product?.description||"").toLowerCase())) {
-                  files = [
-                    "zrywak_pojedynczy_4-8t.png",
-                    "zrywak_podwojny_4-8t.png",
-                    "rysunek_techniczny_zrywak_pojedynczy_4-8_tony.pdf",
-                    "rysunek_techniczny_zrywak_podwojny_4-8_tony.pdf",
-                  ];
-                }
-              } else {
-              if (tier === '1-1.5t' || /1\s*[–-]\s*1\.5\s*t/.test(catText)) {
-                // 1–1.5 t: use two base visuals
-                files = [
-                  "lyska_skarpowa.png",
-                  "lyska_skarpowa_2.png",
-                ];
-              } else if (tier === '1.5-2.3t' || /1\.5\s*[–-]\s*2\.3\s*t/.test(catText)) {
-                // 1.5–2.3 t: provided set
-                files = [
-                  "lyzka_hydr_1.5_2.3.png",
-                  "lyzka_hydr_2_1.5_2.3.png",
-                  "lyska_1.5_2.3.png",
-                  "lyska_1.5_2.3_2.png",
-                ];
-              } else if (tier === '2.3-3t' || /2\.3\s*[–-]\s*3\s*t/.test(catText)) {
-                // 2.3–3 t: last image differs vs 1.5–2.3 t
-                files = [
-                  "lyzka_hydr_2.3_3.5.png",
-                  "lyzka_hydr_2.3_3.png",
-                ];
-              } else if (tier === '3-5t' || /3\s*[–-]\s*5\s*t/.test(catText)) {
-                // 3–5 t: awaiting final assets – keep gallery default
-                files = [];
-              }
-              }
-              }
-
-              // Special case: Wiertnica – always show the three mount system PDFs if present in public assets
-              if (/wiertnic/.test(String((product as any)?.name || "").toLowerCase())) {
-                files = [
-                  "rysunek_techniczny_wahacza_gietego.pdf",
-                  "rysunek_techniczny_wahacz_kostka.pdf",
-                  "rysunek_techniczny_premium.pdf",
-                ];
+              const drawings: Array<{ imageUrl?: string | null; fileUrl?: string | null; title?: string | null }> =
+                Array.isArray((product as any)?.technicalDrawings)
+                  ? ((product as any).technicalDrawings as Array<{ imageUrl?: string | null; fileUrl?: string | null; title?: string | null }>)
+                  : [];
+              // Legacy single technicalDrawing (URL string) – map to fileUrl so component can render
+              if (!drawings.length && (product as any)?.technicalDrawing?.url) {
+                drawings.push({ fileUrl: (product as any).technicalDrawing.url, title: (product as any).technicalDrawing.title });
               }
               return (
                 <MediaTabs
                   slug={slug}
-                  files={files}
-                  defaultTab={files.length ? "tech" : "gallery"}
+                  files={drawings}
+                  defaultTab={drawings.length ? "tech" : "gallery"}
                   gallery={<ImageView images={product?.images} isStock={product?.stock} />}
                 />
               );
             })() : null}
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-4 sm:mt-6 flex flex-wrap gap-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200">
                 <Truck className="h-4 w-4" /> Dostawa 48 h
               </span>
@@ -339,9 +276,9 @@ const SingleProductPage = async ({
           </div>
 
           {/* Right: info + price + specs + order */}
-          <div>
-            <div className="mb-4">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">{product?.name}</h1>
+          <div className="min-w-0">
+            <div className="mb-3 sm:mb-4">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 break-words">{product?.name}</h1>
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <Badge className="bg-red-600 text-white">HARDOX HB500</Badge>
                 <Badge className="bg-green-600 text-white">2 LATA GWARANCJI</Badge>
@@ -358,7 +295,7 @@ const SingleProductPage = async ({
             </div>
             <div className="space-y-3 border-t border-b border-gray-200 py-5">
               <div className="flex items-baseline gap-2">
-                <PriceView price={product?.price as number | string | undefined} discount={product?.discount} priceOlx={product?.priceOlx as number | string | undefined} phoneOrderOnly={Boolean((product as any)?.phoneOrderOnly)} className="text-2xl font-bold" />
+                <PriceView price={(product as any)?.pricing?.priceNet ?? (product as any)?.priceNet ?? (product as any)?.price} discount={product?.discount} priceOlx={(product as any)?.pricing?.priceOlx ?? (product as any)?.priceOlx} phoneOrderOnly={Boolean((product as any)?.phoneOrderOnly)} className="text-2xl font-bold" />
               </div>
               {isPhoneOnly && (
                 <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-2 py-1 inline-flex items-center gap-2">
@@ -382,15 +319,24 @@ const SingleProductPage = async ({
                 <span>• 3D Secure • Szyfrowanie TLS • Apple Pay / Google Pay</span>
               </div>
             </div>
-            <div className="flex items-center gap-3 my-4">
-              <AddToCartButton product={product} />
-              <FavoriteButton showProduct={true} product={product} />
-              {isPhoneOnly && (
-                <a href="tel:+48782851962" className="ml-auto inline-flex items-center gap-2 text-sm px-3 py-2 rounded-md border hover:bg-gray-50">
-                  <Phone className="h-4 w-4" /> Zamów telefonicznie
-                </a>
-              )}
-            </div>
+            {(/łyżk|lyzk/i.test(String((product as any)?.name || ""))) ? (
+              <div className="my-4">
+                <BucketConfigurator product={product as any} />
+              </div>
+            ) : (
+              <div className="flex items-center gap-3 my-4">
+                <AddToCartButton product={product} />
+                <FavoriteButton showProduct={true} product={product} />
+                {isPhoneOnly && (
+                  <a href="tel:+48782851962" className="ml-auto inline-flex items-center gap-2 text-sm px-3 py-2 rounded-md border hover:bg-gray-50">
+                    <Phone className="h-4 w-4" /> Zamów telefonicznie
+                  </a>
+                )}
+              </div>
+            )}
+
+            {/* ABCD helper placed early in right column for bucket products */}
+            {/* ABCD helper moved into BucketConfigurator for buckets (to keep single Add to cart) */}
 
             {/* Configurator for mount systems and drill bits */}
             {((product as any)?.mountSystems?.length || (product as any)?.drillBits?.length) ? (
@@ -400,15 +346,15 @@ const SingleProductPage = async ({
             {/* Specyfikacja przeniesiona niżej nad podobne produkty */}
 
             {/* Zamów w 60 sekund */}
-            <Card className="bg-gradient-to-br from-[var(--color-brand-orange)]/10 to-[var(--color-brand-red)]/10 border-[var(--color-brand-orange)]/20">
+            <Card className="bg-white border border-gray-200 rounded-2xl shadow-sm">
               <CardHeader>
-                <CardTitle className="text-xl text-[var(--color-brand-red)]">Zamów w 60 sekund</CardTitle>
+                <CardTitle className="text-xl text-gray-900">Zamów w 60 sekund</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <Input suppressHydrationWarning placeholder="Imię i nazwisko" />
                 <Input suppressHydrationWarning placeholder="Numer telefonu" />
                 <Input suppressHydrationWarning placeholder="Adres email" />
-                <Button className="w-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">ZAMAWIAM - DOSTAWA 48H</Button>
+                <Button className="w-full bg-[var(--color-brand-red)] hover:bg-[var(--color-brand-orange)] text-white">ZAMAWIAM - DOSTAWA 48H</Button>
                 <div className="text-xs text-gray-600 flex items-center gap-2"><Shield className="h-4 w-4" />🔒 Bezpieczne zamówienie | 📋 Faktura VAT</div>
               </CardContent>
             </Card>
@@ -435,11 +381,11 @@ const SingleProductPage = async ({
           return (
         <div className="mt-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Specyfikacja techniczna</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 text-sm">
             {/* Kluczowe parametry */}
             {hasKeyParams ? (
-            <div className="p-3 rounded-lg border bg-white">
-              <div className="text-xs uppercase text-gray-500 mb-2">Kluczowe parametry</div>
+            <div className="p-4 sm:p-5 rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-[10px] tracking-wider uppercase text-gray-500 mb-3">Kluczowe parametry</div>
               <div className="space-y-2">
                 {product?.specifications?.widthCm ? (
                   <div className="flex items-center gap-2">
@@ -489,8 +435,8 @@ const SingleProductPage = async ({
 
             {/* Kompatybilność i mocowania */}
             {hasCompat ? (
-            <div className="p-3 rounded-lg border bg-white">
-              <div className="text-xs uppercase text-gray-500 mb-2">Kompatybilność i mocowania</div>
+            <div className="p-4 sm:p-5 rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-[10px] tracking-wider uppercase text-gray-500 mb-3">Kompatybilność i mocowania</div>
               {product?.specifications?.quickCoupler ? (
                 <div className="flex items-center gap-2 mb-2">
                   <Wrench className="h-4 w-4 text-[var(--color-brand-orange)]" />
@@ -499,10 +445,22 @@ const SingleProductPage = async ({
                 </div>
               ) : null}
               {product?.specifications?.machineCompatibility?.length ? (
-                <div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-1.5">
                   {product.specifications.machineCompatibility.map((m: string, i: number) => (
-                    <span key={i} className="px-2 py-0.5 text-[11px] rounded-md border bg-gray-50 text-gray-800">{m}</span>
+                    <span key={i} className="px-2.5 py-1 text-[11px] rounded-lg border bg-white text-gray-800 hover:bg-gray-50">{m}</span>
                   ))}
+                </div>
+              ) : null}
+              {((product as any)?.mountSystems?.length || 0) > 0 ? (
+                <div className="mt-3">
+                  <div className="text-[11px] text-gray-500 mb-1">Mocowania pasujące</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {((product as any).mountSystems || []).map((m: any, i: number) => (
+                      <span key={i} className="px-2.5 py-1 text-[11px] rounded-lg border bg-white text-gray-800">
+                        {m?.code ? `[${m.code}]` : ''} {m?.title || ''}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ) : null}
             </div>
@@ -510,12 +468,12 @@ const SingleProductPage = async ({
 
             {/* Cechy */}
             {hasFeatures ? (
-            <div className="p-3 rounded-lg border bg-white">
-              <div className="text-xs uppercase text-gray-500 mb-2">Cechy</div>
+            <div className="p-4 sm:p-5 rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-[10px] tracking-wider uppercase text-gray-500 mb-3">Cechy</div>
               {product?.specifications?.features?.length ? (
-                <div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-1.5">
                   {product.specifications.features.map((f: string, i: number) => (
-                    <span key={i} className="px-2 py-0.5 text-[11px] rounded-md bg-gray-100 text-gray-800">{f}</span>
+                    <span key={i} className="px-2.5 py-1 text-[11px] rounded-lg bg-gray-50 border border-gray-200 text-gray-800">{f}</span>
                   ))}
                 </div>
               ) : null}
@@ -528,22 +486,25 @@ const SingleProductPage = async ({
 
         {/* Sticky CTA mobile - Enhanced with better positioning */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-50">
-          <div className="px-4 py-4">
-            <div className="flex items-center gap-3">
-              <div className="flex-1">
-                <PriceView price={product?.price as number | string | undefined} discount={product?.discount} priceOlx={product?.priceOlx as number | string | undefined} phoneOrderOnly={Boolean((product as any)?.phoneOrderOnly)} className="text-lg font-bold" />
+          <div className="px-3 py-2">
+            <div className="flex items-center gap-2 max-w-full">
+              <div className="flex-1 min-w-0 overflow-hidden">
+                <PriceView price={(product as any)?.pricing?.priceNet ?? (product as any)?.priceNet ?? (product as any)?.price as number | string | undefined} discount={product?.discount} priceOlx={(product as any)?.pricing?.priceOlx ?? (product as any)?.priceOlx as number | string | undefined} phoneOrderOnly={Boolean((product as any)?.phoneOrderOnly)} className="text-base font-bold" compact />
               </div>
               {isPhoneOnly ? (
-                <a href="tel:+48782851962" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300">
-                  <Phone className="h-5 w-5" /> 
+                <a href="tel:+48782851962" className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[var(--color-brand-red)] hover:bg-[var(--color-brand-orange)] text-white font-semibold shadow transition-all duration-200 text-sm">
+                  <Phone className="h-4 w-4" />
                   <span>Zadzwoń</span>
                 </a>
+              ) : (/łyżk|lyzk/i.test(String((product as any)?.name || "")) ? (
+                <a href="#konfigurator" className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-gray-900 text-white font-semibold shadow transition-all duration-200 text-sm">
+                  <span>A/B/C/D</span>
+                </a>
               ) : (
-                <div className="min-w-[140px]"><AddToCartButton product={product} /></div>
-              )}
+                <div className="min-w-[96px] max-w-[44vw] overflow-hidden"><AddToCartButton product={product} size="sm" alwaysButton /></div>
+              ))}
             </div>
           </div>
-          {/* Safe area padding for iPhone */}
           <div className="h-safe-area-inset-bottom"></div>
         </div>
         
@@ -554,10 +515,10 @@ const SingleProductPage = async ({
         {similar?.length ? (
           <div className="mt-20">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-50 to-red-50 px-6 py-3 rounded-full border border-orange-200/50 mb-4">
+              <div className="inline-flex items-center gap-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 mb-4">
                 <span className="text-2xl">⚡</span>
                 <span className="font-semibold text-gray-700">Polecane produkty</span>
-                <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" />
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-3">Podobne produkty</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
@@ -570,20 +531,17 @@ const SingleProductPage = async ({
                 <div key={p._id} className="group relative">
                   {/* Top Products Badge */}
                   {index < 2 && (
-                    <div className="absolute -top-2 -left-2 z-20 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border-2 border-white">
+                    <div className="absolute -top-2 -left-2 z-20 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border-2 border-white">
                       ⭐ TOP
                     </div>
                   )}
                   
                   <Card className="h-full overflow-hidden bg-white border border-gray-200/60 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-2 hover:scale-[1.02] group">
-                    {/* Premium Gradient Background Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50/30 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    
-                    {/* Floating Shine Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                    {/* Subtle hover overlay */}
+                    <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
                     <CardHeader className="p-0 relative z-10">
-                      <div className="relative aspect-[5/4] bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+                      <div className="relative aspect-[5/4] bg-white overflow-hidden">
                         {/* Premium Image Background Pattern */}
                         <div className="absolute inset-0 opacity-5" 
                              style={{
@@ -602,7 +560,7 @@ const SingleProductPage = async ({
                               className="object-contain transition-all duration-700 ease-out p-4 group-hover:scale-110 group-hover:rotate-1 group-hover:drop-shadow-2xl" 
                             />
                           ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                               <div className="w-16 h-16 bg-gray-300 rounded-full opacity-20" />
                             </div>
                           ); 
@@ -638,7 +596,7 @@ const SingleProductPage = async ({
                         return (
                           <div className="flex flex-wrap gap-2">
                             {validCategories.slice(0, 2).map((cat, idx) => (
-                              <span key={idx} className="bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-full border border-blue-200/50">
+                              <span key={idx} className="bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-full border border-blue-200">
                                 {cat.title}
                               </span>
                             ))}
@@ -676,22 +634,21 @@ const SingleProductPage = async ({
                         {/* Action Button */}
                         <Link 
                           href={`/product/${p.slug}`} 
-                          className="block w-full bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] hover:from-[var(--color-brand-red)] hover:to-[var(--color-brand-orange)] text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center"
+                          className="block w-full bg-[var(--color-brand-red)] hover:bg-[var(--color-brand-orange)] text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center"
                         >
                           Zobacz szczegóły
                         </Link>
                       </div>
                     </CardContent>
                     
-                    {/* Premium Overlay Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   </Card>
                 </div>
               ))}
             </div>
             
             {/* Bottom CTA for Similar Products */}
-            <div className="mt-12 text-center bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-gray-200/50 shadow-lg">
+            <div className="mt-12 text-center bg-white rounded-3xl p-8 border border-gray-200 shadow-lg">
               <h3 className="text-xl font-bold text-gray-800 mb-3">Potrzebujesz pomocy w doborze?</h3>
               <p className="text-gray-600 mb-6">
                 Nasi eksperci pomogą Ci wybrać idealny produkt dla Twojej maszyny
@@ -699,7 +656,7 @@ const SingleProductPage = async ({
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="tel:+48782851962"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white font-semibold px-6 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="inline-flex items-center gap-2 bg-[var(--color-brand-red)] hover:bg-[var(--color-brand-orange)] text-white font-semibold px-6 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <span>📞</span>
                   <span>Zadzwoń: 782-851-962</span>

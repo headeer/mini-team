@@ -20,9 +20,19 @@ const PRODUCT_BY_SLUG_QUERY = defineQuery(
   `*[_type == "product" && slug.current == $slug] | order(name asc) [0]{
     ...,
     technicalDrawing,
+    technicalDrawings[]{
+      title,
+      code,
+      "imageUrl": image.asset->url,
+      "fileUrl": file.asset->url,
+      externalUrl
+    },
     mountSystems[]{
+      code,
       title,
       price,
+      "drawingImageUrl": drawingImage.asset->url,
+      "drawingFileUrl": drawingFileAsset.asset->url,
       drawingFile,
       productRef->{
         _id,
@@ -33,6 +43,8 @@ const PRODUCT_BY_SLUG_QUERY = defineQuery(
         images
       }
     },
+    dimensions,
+    teethEnabled,
     drillBits[]{
       title,
       price,
