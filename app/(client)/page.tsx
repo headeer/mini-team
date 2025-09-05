@@ -4,9 +4,7 @@ import AppHeading from "@/components/ui/AppHeading";
 import HomeHero from "@/components/home/HomeHero";
 import Head from "next/head";
 import WhyHardox from "@/components/home/WhyHardox";
-import HomeCategories from "@/components/HomeCategories";
 import LatestBlog from "@/components/LatestBlog";
-import { getCategories } from "@/sanity/queries";
 import SevenReasons from "@/components/home/SevenReasons";
 import RealizacjeCarousel from "@/components/home/RealizacjeCarousel";
 import FAQ from "@/components/home/FAQ";
@@ -21,7 +19,7 @@ import BrandStory from "@/components/home/BrandStory";
 import React from "react";
 
 const Home = async () => {
-  const categories = await getCategories(6);
+  
 
   return (
     <div className="bg-white">
@@ -37,15 +35,13 @@ const Home = async () => {
             <FeaturedProducts />
           </div>
         </AppSection>
-        <HomeCategories categories={categories} />
+        {/* Removed "Polecane kategorie"; using AllCategories below for mobile/desktop */}
         <HomeShowcase />
         <AppSection>
           <WhyHardox />
         </AppSection>
-        {/* On mobile, show AllCategories before benefits; on larger screens keep original order */}
-        <div className="block md:hidden">
-          <AllCategories />
-        </div>
+        {/* Wszystkie kategorie – przeniesione przed sekcję "Dlaczego Hardox" (widoczne na wszystkich rozdzielczościach) */}
+        <AllCategories />
         <AppSection>
           <SevenReasons />
         </AppSection>
@@ -58,10 +54,7 @@ const Home = async () => {
           <ProjectsInAction />
         </AppSection>
         <BestSellers />
-        {/* Desktop and up: AllCategories here */}
-        <div className="hidden md:block">
-          <AllCategories />
-        </div>
+        {/* AllCategories przeniesione wyżej */}
         
         <AppSection>
           <FAQ />

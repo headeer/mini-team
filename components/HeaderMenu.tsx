@@ -49,29 +49,13 @@ const HeaderMenu = () => {
             </div>
           </PopoverContent>
         </Popover>
-      </div>
-      {/* Secondary links */}
-      <div className="flex items-center gap-1 ml-1">
-        {headerData?.slice(3)
-          .filter((item) => item?.href !== "/obrobka-blach")
-          .map((item) => (
-          <Link
-            key={item?.title}
-            href={item?.href}
-            className={`px-3 py-2 rounded-md transition ${
-              pathname === item?.href ? "text-gray-900 bg-gray-50" : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            }`}
-          >
-            {item?.title}
-          </Link>
-        ))}
-        {/* Obróbka blach – podmenu usług */}
+        {/* Obróbka blach przeniesiona do sekcji z podświetlonym tłem */}
         <Popover open={obrobkaOpen} onOpenChange={setObrobkaOpen}>
           <PopoverTrigger asChild>
             <Link
               href="/obrobka-blach"
               onMouseEnter={() => setObrobkaOpen(true)}
-              className={`px-3 py-2 rounded-md transition ${pathname?.startsWith('/obrobka-blach') ? 'text-gray-900 bg-gray-50' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+              className={`px-3 py-2 rounded-md transition ${pathname?.startsWith('/obrobka-blach') ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-700 hover:text-gray-900 hover:bg-white'}`}
               aria-haspopup="menu"
             >
               Obróbka blach
@@ -93,6 +77,22 @@ const HeaderMenu = () => {
             </div>
           </PopoverContent>
         </Popover>
+      </div>
+      {/* Secondary links */}
+      <div className="flex items-center gap-1 ml-1">
+        {headerData?.slice(3)
+          .filter((item) => item?.href !== "/obrobka-blach")
+          .map((item) => (
+          <Link
+            key={item?.title}
+            href={item?.href}
+            className={`px-3 py-2 rounded-md transition ${
+              pathname === item?.href ? "text-gray-900 bg-gray-50" : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+            }`}
+          >
+            {item?.title}
+          </Link>
+        ))}
       </div>
     </nav>
   );

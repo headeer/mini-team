@@ -9,6 +9,7 @@ export interface CartItem {
     mount?: { title?: string; price?: number };
     drill?: { title?: string; price?: number };
     dimensions?: { A?: number; B?: number; C?: number; D?: number };
+    photoAssetId?: string;
   };
 }
 
@@ -21,6 +22,7 @@ interface StoreState {
       mount?: { title?: string; price?: number };
       drill?: { title?: string; price?: number };
       dimensions?: { A?: number; B?: number; C?: number; D?: number };
+      photoAssetId?: string;
     }
   ) => void;
   removeItem: (productId: string) => void;
@@ -65,10 +67,12 @@ const useStore = create<StoreState>()(
             mount?: { title?: string; price?: number };
             drill?: { title?: string; price?: number };
             dimensions?: { A?: number; B?: number; C?: number; D?: number };
+            photoAssetId?: string;
           }) => ({
             mount: cfg?.mount ? { title: cfg.mount.title, price: cfg.mount.price } : undefined,
             drill: cfg?.drill ? { title: cfg.drill.title, price: cfg.drill.price } : undefined,
             dimensions: cfg?.dimensions ? { ...cfg.dimensions } : undefined,
+            photoAssetId: cfg?.photoAssetId,
           });
           const normalized = normalize(configuration);
           const existingItem = state.items.find(

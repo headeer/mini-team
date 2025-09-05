@@ -16,7 +16,7 @@ interface Props {
   product: Product;
   className?: string;
   compact?: boolean; // compact summary for cards (shop)
-  extraConfiguration?: { dimensions?: { A?: number; B?: number; C?: number; D?: number } };
+  extraConfiguration?: { dimensions?: { A?: number; B?: number; C?: number; D?: number }; photoAssetId?: string };
   disabled?: boolean;
   size?: 'sm' | 'md';
   alwaysButton?: boolean; // force button even if item already in cart
@@ -41,8 +41,8 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
     if (disabled) return;
     if ((product?.stock as number) > itemCount) {
       const hasDims = !!extraConfiguration?.dimensions && Object.values(extraConfiguration.dimensions || {}).some((v) => typeof v === 'number' && !Number.isNaN(v as number));
-      if (hasDims) {
-        addConfiguredItem(product, { dimensions: extraConfiguration?.dimensions });
+      if (hasDims || extraConfiguration?.photoAssetId) {
+        addConfiguredItem(product, { dimensions: extraConfiguration?.dimensions, photoAssetId: extraConfiguration?.photoAssetId });
       } else {
         addItem(product);
       }

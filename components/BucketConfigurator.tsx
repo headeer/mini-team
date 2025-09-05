@@ -18,8 +18,43 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
   const [fixedPins, setFixedPins] = React.useState<boolean>(false);
   // Usuwamy pola kinetyka/ramię/sworzeń (A/B/C/D zastępują te wielkości)
   const [addTeeth, setAddTeeth] = React.useState<boolean>(false);
+  const [photoFile, setPhotoFile] = React.useState<File | null>(null);
+  const [photoPreview, setPhotoPreview] = React.useState<string | null>(null);
+  const [photoAssetId, setPhotoAssetId] = React.useState<string | undefined>(undefined);
+  const [isUploading, setIsUploading] = React.useState<boolean>(false);
 
   const totalExtras = React.useMemo(() => (addTeeth ? (product?.toothCost || 0) : 0), [addTeeth, product?.toothCost]);
+  const standardCouplerCodes = React.useMemo(() => {
+    const codes = Array.isArray((product as any)?.mountSystems)
+      ? ((product as any).mountSystems.map((m: any) => (m?.code || '') as string).filter(Boolean))
+      : [];
+    const unique = Array.from(new Set(codes.map((c: string) => c.toUpperCase())));
+    return unique.length > 0 ? unique : ['MS01', 'MS03', 'CW05', 'CW10'];
+  }, [product]);
+
+  const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setPhotoFile(file);
+    const url = URL.createObjectURL(file);
+    setPhotoPreview(url);
+  };
+
+  const uploadPhoto = async () => {
+    if (!photoFile) return;
+    try {
+      setIsUploading(true);
+      const fd = new FormData();
+      fd.append('file', photoFile);
+      const res = await fetch('/api/upload-image', { method: 'POST', body: fd });
+      const json = await res.json();
+      if (json?.ok && json?.assetId) {
+        setPhotoAssetId(json.assetId as string);
+      }
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   return (
     <div className="space-y-4 border rounded-lg p-3 bg-white">
@@ -57,6 +92,17 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
             </div>
           ) : null}
         </div>
+        <div className="p-3 border rounded-lg bg-gray-50 space-y-2">
+          <div className="text-xs font-medium text-gray-700">Standardowe mocowania (szybkozłącze)</div>
+          <div className="flex flex-wrap items-center gap-2">
+            {standardCouplerCodes.map((code) => (
+              <span key={code} className="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium bg-white text-gray-900">
+                {code}
+              </span>
+            ))}
+          </div>
+          <div className="text-[11px] text-gray-500">Pasujące pod szybkozłącze. W razie wątpliwości wyślij zdjęcie uchwytu.</div>
+        </div>
       </div>
 
       {/* Usunięto pola kinetyka/ramię/sworzeń – użytkownik poda A/B/C/D poniżej */}
@@ -64,6 +110,39 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
       <div className="space-y-2">
         <div className="text-xs uppercase text-gray-500">Wymiary mocowania (A/B/C/D)</div>
         <ABCDGuide onChange={(d) => setDims(d)} />
+      </div>
+
+      <div className="p-3 border rounded-lg bg-gray-50 space-y-2">
+        <div className="text-xs font-medium text-gray-700">Zdjęcie uchwytu (opcjonalne)</div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-start">
+          <div className="sm:col-span-2">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handlePhotoChange}
+              className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-white file:text-gray-700 border border-gray-200 rounded-md"
+            />
+            <div className="text-[11px] text-gray-500 mt-1">Dodaj zdjęcie uchwytu szybkozłącza, jeśli nie jesteś pewien kodu.</div>
+          </div>
+          <div>
+            {photoPreview ? (
+              <img src={photoPreview} alt="Podgląd" className="w-full h-24 object-cover rounded-md border" />
+            ) : (
+              <div className="w-full h-24 rounded-md border bg-white text-[11px] flex items-center justify-center text-gray-400">Brak zdjęcia</div>
+            )}
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={uploadPhoto}
+            disabled={!photoFile || isUploading}
+            className="inline-flex items-center justify-center rounded-md bg-[var(--color-brand-red)] hover:bg-[var(--color-brand-orange)] text-white text-sm font-semibold px-4 py-2 disabled:opacity-50"
+          >
+            {isUploading ? 'Wysyłam...' : (photoAssetId ? 'Wysłano ✅' : 'Wyślij do nas')}
+          </button>
+          {photoAssetId ? <span className="text-xs text-green-700">Zapisano w systemie</span> : null}
+        </div>
       </div>
 
       {product?.teethEnabled ? (
@@ -76,7 +155,7 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
       <div className="pt-2">
         <AddToCartButton 
           product={product}
-          extraConfiguration={{ dimensions: dims }}
+          extraConfiguration={{ dimensions: dims, photoAssetId }}
           className="w-full"
           disabled={!dims.A || !dims.B || !dims.C || !dims.D}
         />
