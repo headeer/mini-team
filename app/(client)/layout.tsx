@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ClerkProvider } from "@clerk/nextjs";
+// import { ClerkProvider } from "@clerk/nextjs";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
 import FloatingMachineSelector from "@/components/FloatingMachineSelector";
@@ -59,8 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen">
         <AccessibilityPanel />
         <TopBenefitsBar />
         <Header />
@@ -87,143 +86,8 @@ export default function RootLayout({
               s1.setAttribute('crossorigin','*');
               s0.parentNode.insertBefore(s1,s0);
             })();
-            Tawk_API.onLoad = function(){
-              try {
-                const isMobile = window.matchMedia('(max-width: 768px)').matches;
-                // Force positioning with CSS override - more aggressive approach
-                function forceRepositionChat() {
-                  if (isMobile) {
-                    // On mobile: position much higher to avoid all conflicts
-                    Tawk_API.setAttributes({ position: 'br', bottom: 350, right: 16 }, function(){});
-                    // Don't auto-minimize on mobile - let users control chat state
-                  } else {
-                    // On desktop: bottom-left
-                    Tawk_API.setAttributes({ position: 'bl', bottom: 24, left: 24 }, function(){});
-                  }
-                  
-                  // Force CSS override with !important
-                  setTimeout(function() {
-                    const tawkWidget = document.getElementById('tawk-widget');
-                    const tawkContainer = document.querySelector('[id^="tawk-"]');
-                    const tawkFrame = document.querySelector('iframe[src*="tawk"]');
-                    
-                    [tawkWidget, tawkContainer, tawkFrame].forEach(function(element) {
-                      if (element && element.style) {
-                        element.style.setProperty('bottom', isMobile ? '350px' : '24px', 'important');
-                        if (isMobile) {
-                          element.style.setProperty('right', '16px', 'important');
-                          element.style.removeProperty('left');
-                        } else {
-                          element.style.setProperty('left', '24px', 'important');
-                          element.style.removeProperty('right');
-                        }
-                        element.style.setProperty('z-index', '9999', 'important');
-                      }
-                    });
-                    
-                    // Find parent container and style it too
-                    const tawkElements = document.querySelectorAll('[id*="tawk"], [class*="tawk"]');
-                    tawkElements.forEach(function(el) {
-                      if (el && el.style) {
-                        el.style.setProperty('bottom', isMobile ? '350px' : '24px', 'important');
-                        if (isMobile) {
-                          el.style.setProperty('right', '16px', 'important');
-                          el.style.removeProperty('left');
-                        } else {
-                          el.style.setProperty('left', '24px', 'important');
-                          el.style.removeProperty('right');
-                        }
-                      }
-                    });
-                  }, 500);
-                }
-                
-                // Initial positioning
-                forceRepositionChat();
-                
-                // Reposition on resize
-                if (typeof window !== 'undefined' && window.addEventListener) {
-                  window.addEventListener('resize', function() {
-                    setTimeout(forceRepositionChat, 100);
-                  });
-                }
-                
-                // Mobile-specific initialization
-                if (isMobile) {
-                  // Ensure chat widget is properly initialized on mobile
-                  setTimeout(function() {
-                    try {
-                      // Don't auto-minimize, let it stay in default state
-                      Tawk_API.showWidget();
-                    } catch(e){}
-                  }, 1000);
-                }
-                
-                // Watch for DOM changes (Tawk.to loads dynamically)
-                const observer = new MutationObserver(function(mutations) {
-                  mutations.forEach(function(mutation) {
-                    if (mutation.addedNodes.length > 0) {
-                      mutation.addedNodes.forEach(function(node) {
-                        if (node.nodeType === 1 && (
-                          node.id && node.id.includes('tawk') ||
-                          node.className && node.className.includes('tawk') ||
-                          node.tagName === 'IFRAME' && node.src && node.src.includes('tawk')
-                        )) {
-                          setTimeout(forceRepositionChat, 200);
-                        }
-                      });
-                    }
-                  });
-                });
-                
-                if (document && document.body) {
-                  observer.observe(document.body, {
-                    childList: true,
-                    subtree: true
-                  });
-                }
-                
-                // Periodic check as fallback
-                setInterval(forceRepositionChat, 3000);
-                // Open chat when #chat present or clicked
-                function openChat() { 
-                  try { 
-                    Tawk_API.maximize(); 
-                    // Ensure chat stays open on mobile
-                    setTimeout(function() {
-                      const isMobile = window.matchMedia('(max-width: 768px)').matches;
-                      if (isMobile) {
-                        // Force chat to stay maximized on mobile
-                        try { Tawk_API.maximize(); } catch(e){}
-                      }
-                    }, 100);
-                  } catch(e){} 
-                }
-                
-                if (window.location.hash === '#chat') {
-                  setTimeout(openChat, 200);
-                }
-                if (typeof window !== 'undefined' && window.addEventListener) {
-                  window.addEventListener('hashchange', function(){
-                    if (window.location.hash === '#chat') setTimeout(openChat, 200);
-                  });
-                }
-                
-                // Prevent auto-minimization on mobile
-                Tawk_API.onChatMinimized = function(){
-                  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-                  if (isMobile && window.location.hash === '#chat') {
-                    // Re-maximize if user specifically requested chat
-                    setTimeout(function() {
-                      try { Tawk_API.maximize(); } catch(e){}
-                    }, 100);
-                  }
-                };
-              } catch(e){}
-            };
           `}
         </Script>
       </div>
-    </ClerkProvider>
   );
 }

@@ -29,6 +29,19 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' chrome-extension://37f47493-e07e-4772-aecf-15cba75dbd83/ https://embed.tawk.to https://cdn.sanity.io; object-src 'none'; base-uri 'self';",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

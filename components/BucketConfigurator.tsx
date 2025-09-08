@@ -40,7 +40,7 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
     if (product.onTeethChange) {
       product.onTeethChange(addTeeth);
     }
-  }, [addTeeth, product]);
+  }, [addTeeth, product.onTeethChange]);
 
   const totalExtras = React.useMemo(() => (addTeeth ? (product?.toothCost || 0) : 0), [addTeeth, product?.toothCost]);
   const standardCouplerCodes = React.useMemo(() => {
