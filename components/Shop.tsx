@@ -59,22 +59,24 @@ const Shop = ({ categories }: Props) => {
       const res = await fetch('/api/products', { cache: 'no-store' });
       const body = await res.json();
       type ApiProduct = { _id: string; name?: string; description?: string; price?: number | string; basePrice?: number; priceTier?: string; categories?: { slug?: string }[]; brand?: { slug?: string; _ref?: string }; featuredRank?: number };
-      let list: ApiProduct[] = Array.isArray(body?.data) ? body.data : [];
-      // filter
+      const all: ApiProduct[] = Array.isArray(body?.data) ? body.data : [];
+      // Build a list for counters that ignores selectedCategory but respects other filters
       const [min, max] = selectedPrice ? selectedPrice.split('-').map(Number) : [undefined, undefined];
-      if (selectedCategory) list = list.filter((p) => p?.categories?.some((c) => c?.slug === selectedCategory));
-      // brand filter removed
       const numeric = (v: unknown) => (typeof v === 'number' ? v : 0);
-      if (typeof min === 'number') list = list.filter((p) => (p.basePrice ?? numeric(p.price)) >= min);
-      if (typeof max === 'number') list = list.filter((p) => (p.basePrice ?? numeric(p.price)) <= max);
+      let listForCounters: ApiProduct[] = [...all];
+      if (typeof min === 'number') listForCounters = listForCounters.filter((p) => (p.basePrice ?? numeric(p.price)) >= min);
+      if (typeof max === 'number') listForCounters = listForCounters.filter((p) => (p.basePrice ?? numeric(p.price)) <= max);
       if (q) {
         const needle = q.toLowerCase();
-        list = list.filter((p) => String(p.name ?? '').toLowerCase().includes(needle) || String(p.description ?? '').toLowerCase().includes(needle) || String(p.priceTier ?? '').toLowerCase().includes(needle));
+        listForCounters = listForCounters.filter((p) => String(p.name ?? '').toLowerCase().includes(needle) || String(p.description ?? '').toLowerCase().includes(needle) || String(p.priceTier ?? '').toLowerCase().includes(needle));
       }
       if (machineParam) {
         const mNeedle = machineParam.toLowerCase();
-        list = list.filter((p: any) => Array.isArray(p?.specifications?.machineCompatibility) && p.specifications.machineCompatibility.some((m: string) => String(m).toLowerCase().includes(mNeedle)));
+        listForCounters = listForCounters.filter((p: any) => Array.isArray(p?.specifications?.machineCompatibility) && p.specifications.machineCompatibility.some((m: string) => String(m).toLowerCase().includes(mNeedle)));
       }
+      // Now derive the actual product list, applying selectedCategory on top of other filters
+      let list: ApiProduct[] = [...listForCounters];
+      if (selectedCategory) list = list.filter((p) => p?.categories?.some((c) => c?.slug === selectedCategory));
       // sort
       const toNum = (v: unknown): number => (typeof v === 'number' ? v : 0);
       if (sort === 'price-asc') list.sort((a, b) => toNum(a.basePrice ?? a.price) - toNum(b.basePrice ?? b.price));
@@ -84,7 +86,7 @@ const Shop = ({ categories }: Props) => {
       try {
         const counts: Record<string, number> = {};
         for (const cat of categoriesData) counts[cat.href] = 0;
-        for (const p of list as any[]) {
+        for (const p of listForCounters as any[]) {
           const cats = Array.isArray(p?.categories) ? p.categories : [];
           for (const c of cats) {
             const slug = typeof c?.slug === 'string' ? c.slug : c?.slug?.current;

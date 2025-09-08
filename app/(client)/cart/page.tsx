@@ -197,20 +197,28 @@ const CartPage = () => {
                                   {product?.specifications?.quickCoupler ? `, ${product.specifications.quickCoupler}` : ""}
                                 </p>
                                 {configuration ? (
-                                  <div className="text-sm text-gray-700 space-y-0.5">
+                                  <div className="text-sm text-gray-700 space-y-1">
                                     {configuration.mount?.title ? (
                                       <div>
-                                        System mocowania: <span className="font-medium">{configuration.mount.title}</span>
+                                        <span className="font-medium">{configuration.mount.title}</span>
                                         {typeof configuration.mount.price === "number" ? (
-                                          <span className="text-gray-600"> (+{configuration.mount.price} zł)</span>
+                                          <span className="text-gray-600 ml-2">{configuration.mount.price} zł netto</span>
                                         ) : null}
                                       </div>
                                     ) : null}
                                     {configuration.drill?.title ? (
                                       <div>
-                                        Wiertło: <span className="font-medium">{configuration.drill.title}</span>
+                                        <span className="font-medium">{configuration.drill.title}</span>
                                         {typeof configuration.drill.price === "number" ? (
-                                          <span className="text-gray-600"> (+{configuration.drill.price} zł)</span>
+                                          <span className="text-gray-600 ml-2">{configuration.drill.price} zł netto</span>
+                                        ) : null}
+                                      </div>
+                                    ) : null}
+                                    {configuration.teeth?.enabled ? (
+                                      <div>
+                                        <span className="font-medium">Zęby</span>
+                                        {typeof configuration.teeth.price === "number" ? (
+                                          <span className="text-gray-600 ml-2">{configuration.teeth.price} zł netto</span>
                                         ) : null}
                                       </div>
                                     ) : null}
@@ -254,10 +262,18 @@ const CartPage = () => {
                             </div>
                           </div>
                           <div className="flex flex-col items-start justify-between h-36 md:h-44 p-0.5 md:p-1">
-                            <PriceFormatter
-                              amount={(product?.price as number) * itemCount}
-                              className="font-bold text-lg"
-                            />
+                            <div className="text-right">
+                              <div className="text-sm text-gray-600">netto</div>
+                              <PriceFormatter
+                                amount={(product?.price as number) * itemCount}
+                                className="font-bold text-lg"
+                              />
+                              <div className="text-sm text-gray-600">brutto</div>
+                              <PriceFormatter
+                                amount={(product?.price as number) * itemCount * 1.23}
+                                className="font-semibold text-base text-gray-700"
+                              />
+                            </div>
                             <QuantityButtons product={product} />
                           </div>
                         </div>
@@ -280,10 +296,56 @@ const CartPage = () => {
                       <h2 className="text-xl font-semibold mb-4">
                         Podsumowanie zamówienia
                       </h2>
+                      
+                      {/* Configuration Summary */}
+                      {groupedItems.some(item => item.configuration) && (
+                        <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+                          <h3 className="font-semibold mb-3 text-gray-800">Wybrane konfiguracje</h3>
+                          <div className="space-y-3">
+                            {groupedItems.map((item, index) => {
+                              if (!item.configuration) return null;
+                              return (
+                                <div key={index} className="text-sm">
+                                  <div className="font-medium text-gray-800 mb-1">{item.product?.name}</div>
+                                  <div className="space-y-1 ml-2">
+                                    {item.configuration.mount?.title && (
+                                      <div className="flex items-center justify-between">
+                                        <span className="text-gray-600">{item.configuration.mount.title}</span>
+                                        <span className="text-gray-800">{item.configuration.mount.price} zł netto</span>
+                                      </div>
+                                    )}
+                                    {item.configuration.drill?.title && (
+                                      <div className="flex items-center justify-between">
+                                        <span className="text-gray-600">{item.configuration.drill.title}</span>
+                                        <span className="text-gray-800">{item.configuration.drill.price} zł netto</span>
+                                      </div>
+                                    )}
+                                    {item.configuration.teeth?.enabled && (
+                                      <div className="flex items-center justify-between">
+                                        <span className="text-gray-600">Zęby</span>
+                                        <span className="text-gray-800">{item.configuration.teeth.price} zł netto</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+                      
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                          <span>Suma częściowa</span>
+                          <span className="text-sm text-gray-600">Suma częściowa (netto)</span>
                           <PriceFormatter amount={getSubTotalPrice()} />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-gray-600">VAT (23%)</span>
+                          <PriceFormatter amount={getSubTotalPrice() * 0.23} />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-gray-600">Suma częściowa (brutto)</span>
+                          <PriceFormatter amount={getSubTotalPrice() * 1.23} />
                         </div>
                         <div className="flex items-center justify-between">
                           <span>Koszt wysyłki</span>
@@ -374,10 +436,55 @@ const CartPage = () => {
                           <PriceFormatter amount={getTotalPrice()} className="text-lg font-bold text-black" />
                         </div>
                       </summary>
+                      {/* Configuration Summary for Mobile */}
+                      {groupedItems.some(item => item.configuration) && (
+                        <div className="mt-3 mb-3 p-3 bg-gray-50 rounded-lg">
+                          <h3 className="font-semibold mb-2 text-gray-800 text-sm">Wybrane konfiguracje</h3>
+                          <div className="space-y-2">
+                            {groupedItems.map((item, index) => {
+                              if (!item.configuration) return null;
+                              return (
+                                <div key={index} className="text-xs">
+                                  <div className="font-medium text-gray-800 mb-1">{item.product?.name}</div>
+                                  <div className="space-y-1 ml-2">
+                                    {item.configuration.mount?.title && (
+                                      <div className="flex items-center justify-between">
+                                        <span className="text-gray-600">{item.configuration.mount.title}</span>
+                                        <span className="text-gray-800">{item.configuration.mount.price} zł netto</span>
+                                      </div>
+                                    )}
+                                    {item.configuration.drill?.title && (
+                                      <div className="flex items-center justify-between">
+                                        <span className="text-gray-600">{item.configuration.drill.title}</span>
+                                        <span className="text-gray-800">{item.configuration.drill.price} zł netto</span>
+                                      </div>
+                                    )}
+                                    {item.configuration.teeth?.enabled && (
+                                      <div className="flex items-center justify-between">
+                                        <span className="text-gray-600">Zęby</span>
+                                        <span className="text-gray-800">{item.configuration.teeth.price} zł netto</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+                      
                       <div className="space-y-3 mt-3">
                         <div className="flex items-center justify-between">
-                          <span>Suma częściowa</span>
+                          <span className="text-sm text-gray-600">Suma częściowa (netto)</span>
                           <PriceFormatter amount={getSubTotalPrice()} />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-gray-600">VAT (23%)</span>
+                          <PriceFormatter amount={getSubTotalPrice() * 0.23} />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-gray-600">Suma częściowa (brutto)</span>
+                          <PriceFormatter amount={getSubTotalPrice() * 1.23} />
                         </div>
                         <div className="flex items-center justify-between">
                           <span>Koszt wysyłki</span>

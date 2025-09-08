@@ -10,6 +10,7 @@ export interface CartItem {
     drill?: { title?: string; price?: number };
     dimensions?: { A?: number; B?: number; C?: number; D?: number };
     photoAssetId?: string;
+    teeth?: { enabled: boolean; price?: number };
   };
 }
 
@@ -23,6 +24,7 @@ interface StoreState {
       drill?: { title?: string; price?: number };
       dimensions?: { A?: number; B?: number; C?: number; D?: number };
       photoAssetId?: string;
+      teeth?: { enabled: boolean; price?: number };
     }
   ) => void;
   removeItem: (productId: string) => void;
@@ -68,11 +70,13 @@ const useStore = create<StoreState>()(
             drill?: { title?: string; price?: number };
             dimensions?: { A?: number; B?: number; C?: number; D?: number };
             photoAssetId?: string;
+            teeth?: { enabled: boolean; price?: number };
           }) => ({
             mount: cfg?.mount ? { title: cfg.mount.title, price: cfg.mount.price } : undefined,
             drill: cfg?.drill ? { title: cfg.drill.title, price: cfg.drill.price } : undefined,
             dimensions: cfg?.dimensions ? { ...cfg.dimensions } : undefined,
             photoAssetId: cfg?.photoAssetId,
+            teeth: cfg?.teeth ? { enabled: !!cfg.teeth.enabled, price: cfg.teeth.price } : undefined,
           });
           const normalized = normalize(configuration);
           const existingItem = state.items.find(
@@ -120,17 +124,17 @@ const useStore = create<StoreState>()(
       resetCart: () => set({ items: [] }),
       getTotalPrice: () => {
         return get().items.reduce((total, item) => {
-          const base = item.product.price ?? 0;
-          const extras = (item.configuration?.mount?.price ?? 0) + (item.configuration?.drill?.price ?? 0);
-          return total + (base + extras) * item.quantity;
+          const priceNet = (item.product as any)?.pricing?.priceNet ?? (item.product as any)?.priceNet ?? item.product.price ?? 0;
+          const extras = (item.configuration?.mount?.price ?? 0) + (item.configuration?.drill?.price ?? 0) + (item.configuration?.teeth?.enabled ? (item.configuration?.teeth?.price ?? 0) : 0);
+          return total + (Number(priceNet) + extras) * item.quantity;
         }, 0);
       },
       getSubTotalPrice: () => {
         return get().items.reduce((total, item) => {
-          const price = item.product.price ?? 0;
-          const discount = ((item.product.discount ?? 0) * price) / 100;
-          const discountedPrice = price + discount;
-          const extras = (item.configuration?.mount?.price ?? 0) + (item.configuration?.drill?.price ?? 0);
+          const baseNet = (item.product as any)?.pricing?.priceNet ?? (item.product as any)?.priceNet ?? item.product.price ?? 0;
+          const discountPct = (item.product.discount ?? 0);
+          const discountedPrice = Number(baseNet) + (discountPct * Number(baseNet)) / 100;
+          const extras = (item.configuration?.mount?.price ?? 0) + (item.configuration?.drill?.price ?? 0) + (item.configuration?.teeth?.enabled ? (item.configuration?.teeth?.price ?? 0) : 0);
           return total + (discountedPrice + extras) * item.quantity;
         }, 0);
       },

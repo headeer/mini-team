@@ -4,7 +4,7 @@ import { client } from "@/sanity/lib/client";
 export async function GET() {
   try {
     const data = await client.fetch(
-      `*[_type == "product" && status != 'hidden'] | order(dateUpdated desc){
+      `*[_type == "product" && coalesce(hidden, false) != true] | order(dateUpdated desc){
         _id,
         name,
         "slug": slug.current,
@@ -27,6 +27,7 @@ export async function GET() {
         },
         stock,
         status,
+        hidden,
         dateUpdated,
         externalId,
         "categories": categories[]-> { _id, title, "slug": slug.current }
@@ -43,18 +44,35 @@ export async function GET() {
       const name = String(p?.name || "").toLowerCase();
       const tier = String(p?.priceTier || "").toLowerCase();
 
-      // Weight bucket mapping (new slugs)
-      if (/\b1\s*-?\s*1\.5\s*t\b/.test(tier) || /\b1\s*-?\s*1\.5\s*t\b/.test(name)) add("lyzki-1-1.5t", "Łyżki kat. 1-1.5 Tony");
-      if (/\b1\.5\s*-?\s*2\.3\s*t\b/.test(tier) || /\b1\.5\s*-?\s*2\.3\s*t\b/.test(name)) add("lyzki-1.5-2.3t", "Łyżki kat. 1.5-2.3 Tony");
-      if (/\b2\.3\s*-?\s*3\s*t\b/.test(tier) || /\b2\.3\s*-?\s*3\s*t\b/.test(name)) add("lyzki-2.3-3t", "Łyżki kat. 2.3-3 Tony");
-      if (/\b3\s*-?\s*5\s*t\b/.test(tier) || /\b3\s*-?\s*5\s*t\b/.test(name)) add("lyzki-3-5t", "Łyżki kat. 3-5 Tony");
+      // Determine product type flags first
+      const isGrabie = /grabie/.test(name);
+      const isRipper = /zrywak|ripper/.test(name);
+      const isWiertnice = /wiertnic/.test(name);
+      const isNiwelator = /niwelator/.test(name);
+      const isSzybkozlacza = /szybkoz\u0142\u0105cz|szybkozlacz|szybkoz\u0142\u0105cz/.test(name);
+      // Treat only actual buckets (including bucket subtypes) as eligible for weight-based virtual categories
+      const isBucketProduct = !(
+        isGrabie ||
+        isRipper ||
+        isWiertnice ||
+        isNiwelator ||
+        isSzybkozlacza
+      );
+
+      // Weight bucket mapping (new slugs) – only for bucket products
+      if (isBucketProduct) {
+        if (/\b1\s*-?\s*1\.5\s*t\b/.test(tier) || /\b1\s*-?\s*1\.5\s*t\b/.test(name)) add("lyzki-1-1.5t", "Łyżki kat. 1-1.5 Tony");
+        if (/\b1\.5\s*-?\s*2\.3\s*t\b/.test(tier) || /\b1\.5\s*-?\s*2\.3\s*t\b/.test(name)) add("lyzki-1.5-2.3t", "Łyżki kat. 1.5-2.3 Tony");
+        if (/\b2\.3\s*-?\s*3\s*t\b/.test(tier) || /\b2\.3\s*-?\s*3\s*t\b/.test(name)) add("lyzki-2.3-3t", "Łyżki kat. 2.3-3 Tony");
+        if (/\b3\s*-?\s*5\s*t\b/.test(tier) || /\b3\s*-?\s*5\s*t\b/.test(name)) add("lyzki-3-5t", "Łyżki kat. 3-5 Tony");
+      }
 
       // Product types
-      if (/grabie/.test(name)) add("grabie", "Grabie");
-      if (/zrywak|ripper/.test(name)) add("rippery", "Rippery");
-      if (/wiertnic/.test(name)) add("wiertnice", "Wiertnice");
-      if (/niwelator/.test(name)) add("niwelatory", "Niwelatory");
-      if (/szybkoz\u0142\u0105cz|szybkozlacz|szybkoz\u0142\u0105cz/.test(name)) add("szybkozlacza", "Szybkozłącza");
+      if (isGrabie) add("grabie", "Grabie");
+      if (isRipper) add("rippery", "Rippery");
+      if (isWiertnice) add("wiertnice", "Wiertnice");
+      if (isNiwelator) add("niwelatory", "Niwelatory");
+      if (isSzybkozlacza) add("szybkozlacza", "Szybkozłącza");
       if (/kablow/.test(name)) add("lyzki-kablowe", "Łyżki kablowe");
       if (/przesiew/.test(name)) add("lyzki-przesiewowe", "Łyżki przesiewowe");
       if (/skandyn/.test(name)) add("lyzki-skandynawskie", "Łyżki skandynawskie");

@@ -7,6 +7,14 @@ export const productType = defineType({
   type: "document",
   icon: TrolleyIcon,
   fields: [
+    // Visibility toggle for storefront - at the top for easy access
+    defineField({
+      name: "hidden",
+      title: "Ukryj w sklepie",
+      type: "boolean",
+      description: "Jeśli włączone, produkt nie będzie widoczny na stronie sklepu ani na stronie produktu.",
+      initialValue: false,
+    }),
     defineField({
       name: "name",
       title: "Tytuł",

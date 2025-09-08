@@ -30,7 +30,7 @@ const PriceView = ({ price, discount, className, priceOlx, phoneOrderOnly, gross
           <span className="text-lg">📞</span>
           <span className="font-semibold text-sm">Zamówienia telefoniczne</span>
         </div>
-        {olxIsNum && (
+        {olxIsNum && priceOlx && priceOlx > 0 && (
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <span className="bg-gray-100 px-2 py-1 rounded-lg text-xs font-medium uppercase tracking-wide">OLX</span>
             <PriceFormatter amount={priceOlx} className="line-through text-gray-500 font-medium" />
@@ -76,7 +76,7 @@ const PriceView = ({ price, discount, className, priceOlx, phoneOrderOnly, gross
           <span className="text-[11px] text-gray-500">(VAT {Math.round(vatRate*100)}%)</span>
         </div>
       ) : null}
-      {olxIsNum ? (
+      {olxIsNum && priceOlx && priceOlx > 0 ? (
         <div className="flex items-center gap-2 text-sm text-gray-600">
           <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded-lg text-xs font-semibold uppercase tracking-wide border border-blue-200">
             OLX

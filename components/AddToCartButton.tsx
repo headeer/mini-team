@@ -10,13 +10,14 @@ import useStore from "@/store";
 import toast from "react-hot-toast";
 import PriceFormatter from "./PriceFormatter";
 import QuantityButtons from "./QuantityButtons";
+import QuickConfigModal from "./QuickConfigModal";
 import { urlFor } from "@/sanity/lib/image";
 
 interface Props {
   product: Product;
   className?: string;
   compact?: boolean; // compact summary for cards (shop)
-  extraConfiguration?: { dimensions?: { A?: number; B?: number; C?: number; D?: number }; photoAssetId?: string };
+  extraConfiguration?: { dimensions?: { A?: number; B?: number; C?: number; D?: number }; photoAssetId?: string; teeth?: { enabled: boolean; price?: number } };
   disabled?: boolean;
   size?: 'sm' | 'md';
   alwaysButton?: boolean; // force button even if item already in cart
@@ -25,12 +26,13 @@ interface Props {
 const AddToCartButton = ({ product, className, compact = false, extraConfiguration, disabled = false, size = 'md', alwaysButton = false }: Props) => {
   const { addItem, addConfiguredItem, getItemCount } = useStore();
   const [isHydrated, setIsHydrated] = React.useState(false);
+  const [showConfigModal, setShowConfigModal] = React.useState(false);
   React.useEffect(() => {
     setIsHydrated(true);
   }, []);
   const computedItemCount = getItemCount(product?._id);
   const itemCount = isHydrated ? computedItemCount : 0;
-  const isOutOfStock = product?.stock === 0;
+  const isOutOfStock = typeof product?.stock === 'number' && product.stock === 0;
   const priceAsUnknown = typeof (product as unknown as { price?: unknown }).price === "string";
   const hasPriceText = typeof (product as unknown as { priceText?: unknown }).priceText === "string";
   const baseIsZero = (product as unknown as { basePrice?: number })?.basePrice === 0;
@@ -39,10 +41,23 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
 
   const handleAddToCart = () => {
     if (disabled) return;
-    if ((product?.stock as number) > itemCount) {
+    
+    // Check if product needs configuration
+    const needsConfig = (product as any)?.mountSystems?.length > 0 || (product as any)?.drillBits?.length > 0;
+    const needsDims = (product as any)?.teethEnabled && !extraConfiguration?.dimensions;
+    const hasConfig = extraConfiguration?.mount || extraConfiguration?.drill || extraConfiguration?.teeth?.enabled;
+    
+    // If product needs configuration and none provided, show modal
+    if ((needsConfig || needsDims) && !hasConfig) {
+      setShowConfigModal(true);
+      return;
+    }
+    
+    const stock = typeof product?.stock === 'number' ? product.stock : Infinity; // If no stock limit, allow unlimited
+    if (stock > itemCount) {
       const hasDims = !!extraConfiguration?.dimensions && Object.values(extraConfiguration.dimensions || {}).some((v) => typeof v === 'number' && !Number.isNaN(v as number));
-      if (hasDims || extraConfiguration?.photoAssetId) {
-        addConfiguredItem(product, { dimensions: extraConfiguration?.dimensions, photoAssetId: extraConfiguration?.photoAssetId });
+      if (hasDims || extraConfiguration?.photoAssetId || extraConfiguration?.teeth?.enabled) {
+        addConfiguredItem(product, { dimensions: extraConfiguration?.dimensions, photoAssetId: extraConfiguration?.photoAssetId, teeth: extraConfiguration?.teeth });
       } else {
         addItem(product);
       }
@@ -52,6 +67,9 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
     }
   };
   const shouldShowSummary = Boolean(itemCount && !isPhoneOnly && !alwaysButton);
+  
+  // Check if product needs configuration
+  const needsConfiguration = (product as any)?.mountSystems?.length > 0 || (product as any)?.drillBits?.length > 0 || (product as any)?.teethEnabled;
 
   return (
     <div className="w-full flex items-center">
@@ -128,13 +146,22 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
                 </>
               ) : (
                 <>
-                  <span className="font-bold">Dodaj do koszyka</span>
+                  <span className="font-bold">
+                    {needsConfiguration ? "Konfiguruj i dodaj" : "Dodaj do koszyka"}
+                  </span>
                 </>
               )}
             </div>
           </Button>
         )
       )}
+      
+      {/* Quick Configuration Modal */}
+      <QuickConfigModal
+        isOpen={showConfigModal}
+        onClose={() => setShowConfigModal(false)}
+        product={product}
+      />
     </div>
   );
 };

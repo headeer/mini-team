@@ -1,0 +1,3268 @@
+[
+  {
+    "name": "Łyżka kopiąca 18cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-18cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-18cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 18cm do maszyn 1-1.5t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 680,
+    "priceOlx": 734,
+    "basePrice": 680,
+    "toothCost": 120,
+    "toothQty": 2,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 18,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 836.4,
+      "teethTotalNetto": 240,
+      "teethTotalBrutto": 295.2,
+      "totalBrutto": 1131.6
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 18cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "18cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 20cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-20cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/main/excavator.svg"
+      }
+    ],
+    "description": "Łyżka kopiąca 20cm do maszyn 1-1.5t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 700,
+    "priceOlx": 756,
+    "basePrice": 700,
+    "toothCost": 120,
+    "toothQty": 2,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 20,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 861.0,
+      "teethTotalNetto": 240,
+      "teethTotalBrutto": 295.2,
+      "totalBrutto": 1156.2
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 20cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "20cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 23cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-23cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-23cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 23cm do maszyn 1-1.5t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 710,
+    "priceOlx": 767,
+    "basePrice": 710,
+    "toothCost": 120,
+    "toothQty": 2,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 23,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 873.3,
+      "teethTotalNetto": 240,
+      "teethTotalBrutto": 295.2,
+      "totalBrutto": 1168.5
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 23cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "23cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 25cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-25cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/main/excavator.svg"
+      }
+    ],
+    "description": "Łyżka kopiąca 25cm do maszyn 1-1.5t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 730,
+    "priceOlx": 788,
+    "basePrice": 730,
+    "toothCost": 120,
+    "toothQty": 2,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 25,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 897.9,
+      "teethTotalNetto": 240,
+      "teethTotalBrutto": 295.2,
+      "totalBrutto": 1193.1
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 25cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "25cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 27cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-27cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-27cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 27cm do maszyn 1-1.5t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 740,
+    "priceOlx": 799,
+    "basePrice": 740,
+    "toothCost": 120,
+    "toothQty": 3,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 27,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 910.2,
+      "teethTotalNetto": 360,
+      "teethTotalBrutto": 442.8,
+      "totalBrutto": 1353.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 27cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "27cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 30cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-30cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-30cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 30cm do maszyn 1-1.5t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 760,
+    "priceOlx": 821,
+    "basePrice": 760,
+    "toothCost": 160,
+    "toothQty": 3,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 30,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 934.8,
+      "teethTotalNetto": 480,
+      "teethTotalBrutto": 590.4,
+      "totalBrutto": 1525.2
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 30cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "30cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 40cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-40cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-40cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 40cm do maszyn 1-1.5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 910,
+    "priceOlx": 983,
+    "basePrice": 910,
+    "toothCost": 160,
+    "toothQty": 3,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 40,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1119.3,
+      "teethTotalNetto": 480,
+      "teethTotalBrutto": 590.4,
+      "totalBrutto": 1709.7
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 40cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "40cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 45cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-45cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-45cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 45cm do maszyn 1-1.5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 830,
+    "priceOlx": 896,
+    "basePrice": 830,
+    "toothCost": 200,
+    "toothQty": 4,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 45,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1020.9,
+      "teethTotalNetto": 800,
+      "teethTotalBrutto": 984.0,
+      "totalBrutto": 2004.9
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 45cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "45cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 50cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-50cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-50cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 50cm do maszyn 1-1.5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 850,
+    "priceOlx": 918,
+    "basePrice": 850,
+    "toothCost": 200,
+    "toothQty": 4,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 50,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1045.5,
+      "teethTotalNetto": 800,
+      "teethTotalBrutto": 984.0,
+      "totalBrutto": 2029.5
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 50cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "50cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 60cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-60cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-60cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 60cm do maszyn 1-1.5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 900,
+    "priceOlx": 972,
+    "basePrice": 900,
+    "toothCost": 240,
+    "toothQty": 5,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 60,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1107.0,
+      "teethTotalNetto": 1200,
+      "teethTotalBrutto": 1476.0,
+      "totalBrutto": 2583.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 60cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "60cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 70cm (1-1.5t)",
+    "slug": "lyzka-kopiaca-70cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-70cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 70cm do maszyn 1-1.5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 940,
+    "priceOlx": 1015,
+    "basePrice": 940,
+    "toothCost": 240,
+    "toothQty": 5,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 70,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1156.2,
+      "teethTotalNetto": 1200,
+      "teethTotalBrutto": 1476.0,
+      "totalBrutto": 2632.2
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 70cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "70cm-1-1.5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 80cm (1-1.5t)",
+    "slug": "lyzka-skarpowa-80cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-skarpowa-80cm-01.webp"
+      }
+    ],
+    "description": "Łyżka skarpowa 80cm do maszyn 1-1.5t. Lemiesz tnący 110×16mm Hardox HB500. Typ skarpowy.",
+    "price": 970,
+    "priceOlx": 1048,
+    "basePrice": 970,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 80,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1193.1,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 1193.1
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 80cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "80cm-1-1.5t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 90cm (1-1.5t)",
+    "slug": "lyzka-skarpowa-90cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-skarpowa-90cm-01.webp"
+      }
+    ],
+    "description": "Łyżka skarpowa 90cm do maszyn 1-1.5t. Lemiesz tnący 110×16mm Hardox HB500. Typ skarpowy.",
+    "price": 1000,
+    "priceOlx": 1080,
+    "basePrice": 1000,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 90,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1230.0,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 1230.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 90cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "90cm-1-1.5t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 100cm (1-1.5t)",
+    "slug": "lyzka-skarpowa-100cm-1-1.5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-skarpowa-100cm-01.webp"
+      }
+    ],
+    "description": "Łyżka skarpowa 100cm do maszyn 1-1.5t. Lemiesz tnący 110×16mm Hardox HB500. Typ skarpowy.",
+    "price": 1040,
+    "priceOlx": 1123,
+    "basePrice": 1040,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "1-1.5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 100,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1279.2,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 1279.2
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 100cm (1-1.5t)",
+      "type": "png"
+    },
+    "externalId": "100cm-1-1.5t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 25cm (1.5-2.3t)",
+    "slug": "lyzka-kopiaca-25cm-1.5-2.3t",
+    "images": [
+      {
+        "url": "/images/main/excavator.svg"
+      }
+    ],
+    "description": "Łyżka kopiąca 25cm do maszyn 1.5-2.3t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 960,
+    "priceOlx": 1037,
+    "basePrice": 960,
+    "toothCost": 120,
+    "toothQty": 2,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 25,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1180.8,
+      "teethTotalNetto": 240,
+      "teethTotalBrutto": 295.2,
+      "totalBrutto": 1476.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 25cm (1.5-2.3t)",
+      "type": "png"
+    },
+    "externalId": "25cm-1.5-2.3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 30cm (1.5-2.3t)",
+    "slug": "lyzka-kopiaca-30cm-1.5-2.3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-30cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 30cm do maszyn 1.5-2.3t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 980,
+    "priceOlx": 1058,
+    "basePrice": 980,
+    "toothCost": 160,
+    "toothQty": 3,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 30,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1205.4,
+      "teethTotalNetto": 480,
+      "teethTotalBrutto": 590.4,
+      "totalBrutto": 1795.8
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 30cm (1.5-2.3t)",
+      "type": "png"
+    },
+    "externalId": "30cm-1.5-2.3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 40cm (1.5-2.3t)",
+    "slug": "lyzka-kopiaca-40cm-1.5-2.3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-40cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 40cm do maszyn 1.5-2.3t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1080,
+    "priceOlx": 1166,
+    "basePrice": 1080,
+    "toothCost": 160,
+    "toothQty": 3,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 40,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1328.4,
+      "teethTotalNetto": 480,
+      "teethTotalBrutto": 590.4,
+      "totalBrutto": 1918.8
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 40cm (1.5-2.3t)",
+      "type": "png"
+    },
+    "externalId": "40cm-1.5-2.3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 45cm (1.5-2.3t)",
+    "slug": "lyzka-kopiaca-45cm-1.5-2.3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-45cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 45cm do maszyn 1.5-2.3t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1120,
+    "priceOlx": 1210,
+    "basePrice": 1120,
+    "toothCost": 200,
+    "toothQty": 4,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 45,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1377.6,
+      "teethTotalNetto": 800,
+      "teethTotalBrutto": 984.0,
+      "totalBrutto": 2361.6
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 45cm (1.5-2.3t)",
+      "type": "png"
+    },
+    "externalId": "45cm-1.5-2.3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 50cm (1.5-2.3t)",
+    "slug": "lyzka-kopiaca-50cm-1.5-2.3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-50cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 50cm do maszyn 1.5-2.3t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1160,
+    "priceOlx": 1253,
+    "basePrice": 1160,
+    "toothCost": 200,
+    "toothQty": 4,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 50,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1426.8,
+      "teethTotalNetto": 800,
+      "teethTotalBrutto": 984.0,
+      "totalBrutto": 2410.8
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 50cm (1.5-2.3t)",
+      "type": "png"
+    },
+    "externalId": "50cm-1.5-2.3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 60cm (1.5-2.3t)",
+    "slug": "lyzka-kopiaca-60cm-1.5-2.3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-60cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 60cm do maszyn 1.5-2.3t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1200,
+    "priceOlx": 1296,
+    "basePrice": 1200,
+    "toothCost": 240,
+    "toothQty": 5,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 60,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1476.0,
+      "teethTotalNetto": 1200,
+      "teethTotalBrutto": 1476.0,
+      "totalBrutto": 2952.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 60cm (1.5-2.3t)",
+      "type": "png"
+    },
+    "externalId": "60cm-1.5-2.3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 120cm (1.5-2.3t)",
+    "slug": "lyzka-skarpowa-120cm-1.5-2.3t",
+    "images": [
+      {
+        "url": "/images/rys_techniczne/lyzka_skarpowa.png"
+      }
+    ],
+    "description": "Łyżka skarpowa 120cm do maszyn 1.5-2.3t. Lemiesz tnący 150×16mm Hardox HB500. Typ skarpowy.",
+    "price": 1550,
+    "priceOlx": 1674,
+    "basePrice": 1550,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 120,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1906.5,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 1906.5
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 120cm (1.5-2.3t)",
+      "type": "png"
+    },
+    "externalId": "120cm-1.5-2.3t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 130cm (1.5-2.3t)",
+    "slug": "lyzka-skarpowa-130cm-1.5-2.3t",
+    "images": [
+      {
+        "url": "/images/rys_techniczne/lyzka_skarpowa_2.png"
+      }
+    ],
+    "description": "Łyżka skarpowa 130cm do maszyn 1.5-2.3t. Lemiesz tnący 150×16mm Hardox HB500. Typ skarpowy.",
+    "price": 1680,
+    "priceOlx": 1814,
+    "basePrice": 1680,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 130,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2066.4,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 2066.4
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 130cm (1.5-2.3t)",
+      "type": "png"
+    },
+    "externalId": "130cm-1.5-2.3t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 120cm (1.5-2.3t)",
+    "slug": "lyzka-skarpowa-120cm-1.5-2.3t",
+    "images": [
+      {
+        "url": "/images/rys_techniczne/lyzka_skarpowa.png"
+      }
+    ],
+    "description": "Łyżka skarpowa 120cm do maszyn 1.5-2.3t. Lemiesz tnący 150×16mm Hardox HB500. Typ skarpowy.",
+    "price": 3200,
+    "priceOlx": 3456,
+    "basePrice": 3200,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "1.5-2.3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 120,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 3936.0,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 3936.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 120cm (1.5-2.3t)",
+      "type": "png"
+    },
+    "externalId": "120cm-1.5-2.3t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 25cm (2.3-3t)",
+    "slug": "lyzka-kopiaca-25cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/main/excavator.svg"
+      }
+    ],
+    "description": "Łyżka kopiąca 25cm do maszyn 2.3-3t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1060,
+    "priceOlx": 1145,
+    "basePrice": 1060,
+    "toothCost": 120,
+    "toothQty": 2,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 25,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1303.8,
+      "teethTotalNetto": 240,
+      "teethTotalBrutto": 295.2,
+      "totalBrutto": 1599.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 25cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "25cm-2.3-3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 30cm (2.3-3t)",
+    "slug": "lyzka-kopiaca-30cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-30cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 30cm do maszyn 2.3-3t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1080,
+    "priceOlx": 1166,
+    "basePrice": 1080,
+    "toothCost": 160,
+    "toothQty": 3,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 30,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1328.4,
+      "teethTotalNetto": 480,
+      "teethTotalBrutto": 590.4,
+      "totalBrutto": 1918.8
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 30cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "30cm-2.3-3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 40cm (2.3-3t)",
+    "slug": "lyzka-kopiaca-40cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-40cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 40cm do maszyn 2.3-3t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1090,
+    "priceOlx": 1177,
+    "basePrice": 1090,
+    "toothCost": 160,
+    "toothQty": 3,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 40,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1340.7,
+      "teethTotalNetto": 480,
+      "teethTotalBrutto": 590.4,
+      "totalBrutto": 1931.1
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 40cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "40cm-2.3-3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 45cm (2.3-3t)",
+    "slug": "lyzka-kopiaca-45cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-45cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 45cm do maszyn 2.3-3t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1220,
+    "priceOlx": 1318,
+    "basePrice": 1220,
+    "toothCost": 200,
+    "toothQty": 4,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 45,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1500.6,
+      "teethTotalNetto": 800,
+      "teethTotalBrutto": 984.0,
+      "totalBrutto": 2484.6
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 45cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "45cm-2.3-3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 50cm (2.3-3t)",
+    "slug": "lyzka-kopiaca-50cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-50cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 50cm do maszyn 2.3-3t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1260,
+    "priceOlx": 1361,
+    "basePrice": 1260,
+    "toothCost": 200,
+    "toothQty": 4,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 50,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1549.8,
+      "teethTotalNetto": 800,
+      "teethTotalBrutto": 984.0,
+      "totalBrutto": 2533.8
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 50cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "50cm-2.3-3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 60cm (2.3-3t)",
+    "slug": "lyzka-kopiaca-60cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-60cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 60cm do maszyn 2.3-3t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1300,
+    "priceOlx": 1404,
+    "basePrice": 1300,
+    "toothCost": 240,
+    "toothQty": 5,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 60,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1599.0,
+      "teethTotalNetto": 1200,
+      "teethTotalBrutto": 1476.0,
+      "totalBrutto": 3075.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 60cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "60cm-2.3-3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 80cm (2.3-3t)",
+    "slug": "lyzka-kopiaca-80cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/lyzki/lyzka_80cm.png"
+      }
+    ],
+    "description": "Łyżka kopiąca 80cm do maszyn 2.3-3t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1390,
+    "priceOlx": 1501,
+    "basePrice": 1390,
+    "toothCost": 270,
+    "toothQty": 6,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-2-3t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 80,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1709.7,
+      "teethTotalNetto": 1620,
+      "teethTotalBrutto": 1992.6,
+      "totalBrutto": 3702.3
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 80cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "80cm-2.3-3t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 120cm (2.3-3t)",
+    "slug": "lyzka-skarpowa-120cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/rys_techniczne/lyzka_skarpowa.png"
+      }
+    ],
+    "description": "Łyżka skarpowa 120cm do maszyn 2.3-3t. Lemiesz tnący 150×16mm Hardox HB500. Typ skarpowy.",
+    "price": 1550,
+    "priceOlx": 1674,
+    "basePrice": 1550,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 120,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1906.5,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 1906.5
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 120cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "120cm-2.3-3t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 130cm (2.3-3t)",
+    "slug": "lyzka-skarpowa-130cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/rys_techniczne/lyzka_skarpowa_2.png"
+      }
+    ],
+    "description": "Łyżka skarpowa 130cm do maszyn 2.3-3t. Lemiesz tnący 150×16mm Hardox HB500. Typ skarpowy.",
+    "price": 1680,
+    "priceOlx": 1814,
+    "basePrice": 1680,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 130,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2066.4,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 2066.4
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 130cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "130cm-2.3-3t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 120cm (2.3-3t)",
+    "slug": "lyzka-skarpowa-120cm-2.3-3t",
+    "images": [
+      {
+        "url": "/images/rys_techniczne/lyzka_skarpowa.png"
+      }
+    ],
+    "description": "Łyżka skarpowa 120cm do maszyn 2.3-3t. Lemiesz tnący 150×16mm Hardox HB500. Typ skarpowy.",
+    "price": 3200,
+    "priceOlx": 3456,
+    "basePrice": 3200,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "2.3-3t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 120,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 3936.0,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 3936.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 120cm (2.3-3t)",
+      "type": "png"
+    },
+    "externalId": "120cm-2.3-3t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 25cm (3-5t)",
+    "slug": "lyzka-kopiaca-25cm-3-5t",
+    "images": [
+      {
+        "url": "/images/main/excavator.svg"
+      }
+    ],
+    "description": "Łyżka kopiąca 25cm do maszyn 3-5t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1550,
+    "priceOlx": 1674,
+    "basePrice": 1550,
+    "toothCost": 130,
+    "toothQty": 2,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 25,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1906.5,
+      "teethTotalNetto": 260,
+      "teethTotalBrutto": 319.8,
+      "totalBrutto": 2226.3
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 25cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "25cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 30cm (3-5t)",
+    "slug": "lyzka-kopiaca-30cm-3-5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-30cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 30cm do maszyn 3-5t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1590,
+    "priceOlx": 1717,
+    "basePrice": 1590,
+    "toothCost": 165,
+    "toothQty": 3,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 30,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1955.7,
+      "teethTotalNetto": 495,
+      "teethTotalBrutto": 608.85,
+      "totalBrutto": 2564.55
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 30cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "30cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 35cm (3-5t)",
+    "slug": "lyzka-kopiaca-35cm-3-5t",
+    "images": [
+      {
+        "url": "/images/main/excavator.svg"
+      }
+    ],
+    "description": "Łyżka kopiąca 35cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1620,
+    "priceOlx": 1750,
+    "basePrice": 1620,
+    "toothCost": 165,
+    "toothQty": 3,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 35,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 1992.6,
+      "teethTotalNetto": 495,
+      "teethTotalBrutto": 608.85,
+      "totalBrutto": 2601.45
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 35cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "35cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 40cm (3-5t)",
+    "slug": "lyzka-kopiaca-40cm-3-5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-40cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 40cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1670,
+    "priceOlx": 1804,
+    "basePrice": 1670,
+    "toothCost": 165,
+    "toothQty": 3,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 40,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2054.1,
+      "teethTotalNetto": 495,
+      "teethTotalBrutto": 608.85,
+      "totalBrutto": 2662.95
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 40cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "40cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 45cm (3-5t)",
+    "slug": "lyzka-kopiaca-45cm-3-5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-45cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 45cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1730,
+    "priceOlx": 1868,
+    "basePrice": 1730,
+    "toothCost": 165,
+    "toothQty": 3,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 45,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2127.9,
+      "teethTotalNetto": 495,
+      "teethTotalBrutto": 608.85,
+      "totalBrutto": 2736.75
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 45cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "45cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 50cm (3-5t)",
+    "slug": "lyzka-kopiaca-50cm-3-5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-50cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 50cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1790,
+    "priceOlx": 1933,
+    "basePrice": 1790,
+    "toothCost": 200,
+    "toothQty": 4,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 50,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2201.7,
+      "teethTotalNetto": 800,
+      "teethTotalBrutto": 984.0,
+      "totalBrutto": 3185.7
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 50cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "50cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 60cm (3-5t)",
+    "slug": "lyzka-kopiaca-60cm-3-5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-60cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 60cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1920,
+    "priceOlx": 2074,
+    "basePrice": 1920,
+    "toothCost": 200,
+    "toothQty": 4,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 60,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2361.6,
+      "teethTotalNetto": 800,
+      "teethTotalBrutto": 984.0,
+      "totalBrutto": 3345.6
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 60cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "60cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 70cm (3-5t)",
+    "slug": "lyzka-kopiaca-70cm-3-5t",
+    "images": [
+      {
+        "url": "/images/lyzki_kopiace/lyzka-kopiaca-70cm-01.webp"
+      }
+    ],
+    "description": "Łyżka kopiąca 70cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 1980,
+    "priceOlx": 2138,
+    "basePrice": 1980,
+    "toothCost": 235,
+    "toothQty": 4,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 70,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2435.4,
+      "teethTotalNetto": 940,
+      "teethTotalBrutto": 1156.2,
+      "totalBrutto": 3591.6
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 70cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "70cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 80cm (3-5t)",
+    "slug": "lyzka-kopiaca-80cm-3-5t",
+    "images": [
+      {
+        "url": "/images/lyzki/lyzka_80cm.png"
+      }
+    ],
+    "description": "Łyżka kopiąca 80cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 2080,
+    "priceOlx": 2246,
+    "basePrice": 2080,
+    "toothCost": 235,
+    "toothQty": 4,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 80,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2558.4,
+      "teethTotalNetto": 940,
+      "teethTotalBrutto": 1156.2,
+      "totalBrutto": 3714.6
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 80cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "80cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 90cm (3-5t)",
+    "slug": "lyzka-kopiaca-90cm-3-5t",
+    "images": [
+      {
+        "url": "/images/lyzki/lyzka_90cm.png"
+      }
+    ],
+    "description": "Łyżka kopiąca 90cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 2270,
+    "priceOlx": 2452,
+    "basePrice": 2270,
+    "toothCost": 270,
+    "toothQty": 5,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 90,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2792.1,
+      "teethTotalNetto": 1350,
+      "teethTotalBrutto": 1660.5,
+      "totalBrutto": 4452.6
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 90cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "90cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka kopiąca 100cm (3-5t)",
+    "slug": "lyzka-kopiaca-100cm-3-5t",
+    "images": [
+      {
+        "url": "/images/lyzki/lyzka_100cm.png"
+      }
+    ],
+    "description": "Łyżka kopiąca 100cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "price": 2400,
+    "priceOlx": 2592,
+    "basePrice": 2400,
+    "toothCost": 270,
+    "toothQty": 5,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-3-4-5t-kopiace"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 100,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2952.0,
+      "teethTotalNetto": 1350,
+      "teethTotalBrutto": 1660.5,
+      "totalBrutto": 4612.5
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_hydr_2.3_3.png",
+      "title": "Rysunek techniczny – Łyżka kopiąca 100cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "100cm-3-5t-kopiąca",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 120cm (3-5t)",
+    "slug": "lyzka-skarpowa-120cm-3-5t",
+    "images": [
+      {
+        "url": "/images/rys_techniczne/lyzka_skarpowa.png"
+      }
+    ],
+    "description": "Łyżka skarpowa 120cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Typ skarpowy.",
+    "price": 2090,
+    "priceOlx": 2257,
+    "basePrice": 2090,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 120,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2570.7,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 2570.7
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 120cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "120cm-3-5t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  },
+  {
+    "name": "Łyżka skarpowa 150cm (3-5t)",
+    "slug": "lyzka-skarpowa-150cm-3-5t",
+    "images": [
+      {
+        "url": "/images/rys_techniczne/lyzka_skarpowa_2.png"
+      }
+    ],
+    "description": "Łyżka skarpowa 150cm do maszyn 3-5t. Lemiesz tnący 150×16mm Hardox HB500. Typ skarpowy.",
+    "price": 2200,
+    "priceOlx": 2376,
+    "basePrice": 2200,
+    "toothCost": 0,
+    "toothQty": 0,
+    "priceTier": "3-5t",
+    "discount": 0,
+    "categories": [
+      {
+        "_ref": "category-1-2t-skarpowe"
+      }
+    ],
+    "stock": 5,
+    "brand": {
+      "_ref": "brand-MTT"
+    },
+    "status": "new",
+    "specifications": {
+      "widthCm": 150,
+      "pinDiameterMm": 0,
+      "volumeM3": 0,
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05"
+    },
+    "pricingExtras": {
+      "priceBrutto": 2706.0,
+      "teethTotalNetto": 0,
+      "teethTotalBrutto": 0.0,
+      "totalBrutto": 2706.0
+    },
+    "technicalDrawing": {
+      "url": "/images/rys_techniczne/lyzka_skarpowa.png",
+      "title": "Rysunek techniczny – Łyżka skarpowa 150cm (3-5t)",
+      "type": "png"
+    },
+    "externalId": "150cm-3-5t-skarpowa",
+    "location": "Cieszków",
+    "viewsCount": 0,
+    "featuredRank": 0,
+    "isFeatured": false
+  }
+]

@@ -30,8 +30,10 @@ const ProductCard = ({ product }: { product: Product }) => {
   const priceValue = ((): number | string | undefined => {
     const rawPrice = (product as unknown as { price?: number | string | undefined }).price;
     const basePrice = (product as unknown as { basePrice?: number | undefined }).basePrice;
-    // Prefer string price (e.g., "Zamówienia telefoniczne"). If numeric, prefer positive basePrice, else numeric price
+    const priceNet = (product as any)?.pricing?.priceNet ?? (product as any)?.priceNet;
+    // Prefer explicit string (phone order). Otherwise prefer net price, then legacy base/price
     if (typeof rawPrice === "string") return rawPrice;
+    if (typeof priceNet === 'number') return priceNet;
     if (typeof basePrice === "number" && basePrice > 0) return basePrice;
     return typeof rawPrice === "number" ? rawPrice : basePrice;
   })();

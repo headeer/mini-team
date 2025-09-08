@@ -9,12 +9,13 @@ import AddToCartButton from "@/components/AddToCartButton";
 import FavoriteButton from "@/components/FavoriteButton";
 
 async function getBest(limit = 4) {
-  const query = `*[_type == "product" && (isFeatured == true || defined(featuredRank))] | order(featuredRank asc)[0...$limit]{
+  const query = `*[_type == "product" && (isFeatured == true || defined(featuredRank)) && coalesce(hidden, false) != true && coalesce(phoneOrderOnly, false) != true] | order(featuredRank asc)[0...$limit]{
     _id,
     name,
     price,
     basePrice,
     discount,
+    phoneOrderOnly,
     "cover": coalesce(images[0].asset->url, images[0].url),
     "slug": slug.current
   }`;

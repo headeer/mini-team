@@ -13,7 +13,7 @@ interface Props {
 const QuantityButtons = ({ product, className }: Props) => {
   const { addItem, removeItem, getItemCount } = useStore();
   const itemCount = getItemCount(product?._id);
-  const isOutOfStock = product?.stock === 0;
+  const isOutOfStock = typeof product?.stock === 'number' && product.stock === 0;
 
   const handleRemoveProduct = () => {
     removeItem(product?._id);
@@ -25,7 +25,8 @@ const QuantityButtons = ({ product, className }: Props) => {
   };
 
   const handleAddToCart = () => {
-    if ((product?.stock as number) > itemCount) {
+    const stock = typeof product?.stock === 'number' ? product.stock : Infinity; // If no stock limit, allow unlimited
+    if (stock > itemCount) {
       addItem(product);
       toast.success("Zwiększono ilość");
     } else {

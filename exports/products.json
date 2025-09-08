@@ -1,0 +1,4148 @@
+[
+  {
+    "_createdAt": "2025-08-15T07:00:21Z",
+    "_id": "product-grabie-100cm-12mm",
+    "_updatedAt": "2025-09-03T09:49:05Z",
+    "basePrice": 1500,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "kVW44PlqniRTsCLqJPF3XH",
+        "slug": "grabie",
+        "title": "Grabie"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Grabie 100cm z 20 zębami grubość 12mm. Lemiesz tnący Hardox HB500. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "grabie-100cm-12mm",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "5c5b264c9e18",
+        "_type": "image",
+        "asset": {
+          "_id": "image-5e983e8d8dac6726a80e2fd9a0b09ecf738d4a2a-578x432-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/5e983e8d8dac6726a80e2fd9a0b09ecf738d4a2a-578x432.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Grabie 100cm grubość zęba 12mm",
+    "phoneOrderOnly": null,
+    "price": 1500,
+    "priceGross": 1845,
+    "priceNet": 1500,
+    "priceOlx": 1620,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "grabie-100cm-12mm",
+    "specifications": {
+      "features": [
+        "20 zęby grubość 12mm",
+        "Lemiesz Hardox HB500",
+        "Kompatybilne mocowania"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "toothCount": 20,
+      "toothThickness": 12,
+      "volumeM3": 0,
+      "widthCm": 100
+    },
+    "status": "new",
+    "stock": 4,
+    "subcategory": "grabie-100-12",
+    "technicalDrawing": {
+      "title": "Rysunek techniczny - Grabie 100cm grubość zęba 12mm",
+      "type": "pdf",
+      "url": "/images/techniczne/grabie_100cm_grubosc_zeba_12mm.pdf"
+    },
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-7a895d3f6b0afddddd4b7f567fc896e54e4ce66d-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/7a895d3f6b0afddddd4b7f567fc896e54e4ce66d.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-f9e42137c038d694a067df7faa44c512f222bc69-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/f9e42137c038d694a067df7faa44c512f222bc69-3309x2339.png"
+          }
+        },
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 0,
+    "toothQty": 20,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-15T07:00:21Z",
+    "_id": "product-grabie-100cm-15mm",
+    "_updatedAt": "2025-09-03T09:46:40Z",
+    "basePrice": 1580,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "kVW44PlqniRTsCLqJPF3XH",
+        "slug": "grabie",
+        "title": "Grabie"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Grabie 100cm z 20 zębami grubość 15mm. Lemiesz tnący Hardox HB500. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "grabie-100cm-15mm",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "23af2d99de46",
+        "_type": "image",
+        "asset": {
+          "_id": "image-5e983e8d8dac6726a80e2fd9a0b09ecf738d4a2a-578x432-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/5e983e8d8dac6726a80e2fd9a0b09ecf738d4a2a-578x432.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Grabie 100cm grubość zęba 15mm",
+    "phoneOrderOnly": null,
+    "price": 1580,
+    "priceGross": 1943.4,
+    "priceNet": 1580,
+    "priceOlx": 1707,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "grabie-100cm-15mm",
+    "specifications": {
+      "features": [
+        "20 zęby grubość 15mm",
+        "Lemiesz Hardox HB500",
+        "Kompatybilne mocowania"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "toothCount": 20,
+      "toothThickness": 15,
+      "volumeM3": 0,
+      "widthCm": 100
+    },
+    "status": "new",
+    "stock": 3,
+    "subcategory": "grabie-100-15",
+    "technicalDrawing": {
+      "title": "Rysunek techniczny - Grabie 100cm grubość zęba 15mm",
+      "type": "pdf",
+      "url": "/images/techniczne/grabie_100cm_grubosc_zeba_15mm.pdf"
+    },
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-6018612441230551c6b1b623ec8a9a36f100f6c4-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/6018612441230551c6b1b623ec8a9a36f100f6c4.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-889aae8a6804803d62de0c4105ee9888dcd41e3a-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/889aae8a6804803d62de0c4105ee9888dcd41e3a-3309x2339.png"
+          }
+        },
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 0,
+    "toothQty": 20,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-15T07:00:21Z",
+    "_id": "product-grabie-120cm-standard",
+    "_updatedAt": "2025-09-07T15:10:13Z",
+    "basePrice": 1700,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "kVW44PlqniRTsCLqJPF3XH",
+        "slug": "grabie",
+        "title": "Grabie"
+      },
+      {
+        "_id": "category-grabie-120cm-12mm",
+        "slug": "grabie-120cm-grubosc-zeba-12mm",
+        "title": "Grabie 120cm • 12mm zęby"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Grabie 120cm z 22 zębami grubość 12mm - wersja standardowa. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "grabie-120cm-glowna",
+    "featuredRank": 4,
+    "images": [
+      {
+        "_key": "239f83c5d183",
+        "_type": "image",
+        "asset": {
+          "_id": "image-9ffb026d3afed7ca420f6fe11abe76153561c279-654x381-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/9ffb026d3afed7ca420f6fe11abe76153561c279-654x381.png"
+        }
+      }
+    ],
+    "isFeatured": true,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Grabie 120cm (Standard)",
+    "phoneOrderOnly": false,
+    "price": 2090,
+    "priceGross": 2570.7,
+    "priceNet": 2090,
+    "priceOlx": 2258,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "grabie-120cm-standard",
+    "specifications": {
+      "features": [
+        "22 zęby grubość 12mm",
+        "Kompatybilne mocowania"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "toothCount": 22,
+      "toothThickness": 12,
+      "volumeM3": 0,
+      "widthCm": 120
+    },
+    "status": "hot",
+    "stock": 3,
+    "subcategory": "lyzki-skarpowe",
+    "technicalDrawing": {
+      "title": "Rysunek techniczny - Grabie 120cm (Standard)",
+      "type": "pdf",
+      "url": "/images/techniczne/grabie_120cm_12mm.pdf"
+    },
+    "technicalDrawings": [
+      {
+        "code": "lyzka_skarpowa_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 0,
+    "toothQty": 22,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-15T07:00:21Z",
+    "_id": "product-grabie-120cm-12mm",
+    "_updatedAt": "2025-09-03T09:45:12Z",
+    "basePrice": 1650,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "kVW44PlqniRTsCLqJPF3XH",
+        "slug": "grabie",
+        "title": "Grabie"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Grabie 120cm z 22 zęby grubość 12mm. Lemiesz tnący Hardox HB500. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "grabie-120cm-12mm",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "bde96618bda1",
+        "_type": "image",
+        "asset": {
+          "_id": "image-9ffb026d3afed7ca420f6fe11abe76153561c279-654x381-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/9ffb026d3afed7ca420f6fe11abe76153561c279-654x381.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Grabie 120cm grubość zęba 12mm",
+    "phoneOrderOnly": null,
+    "price": 1650,
+    "priceGross": 2029.5,
+    "priceNet": 1650,
+    "priceOlx": 1783,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": "1-1.5t",
+    "similarProducts": null,
+    "slug": "grabie-120cm-12mm",
+    "specifications": {
+      "features": [
+        "22 zęby grubość 12mm",
+        "Lemiesz Hardox HB500",
+        "Kompatybilne mocowania"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "toothCount": 22,
+      "toothThickness": 12,
+      "volumeM3": 0,
+      "widthCm": 120
+    },
+    "status": "new",
+    "stock": 2,
+    "subcategory": "grabie-120-12",
+    "technicalDrawing": {
+      "title": "Rysunek techniczny - Grabie 120cm grubość zęba 12mm",
+      "type": "pdf",
+      "url": "/images/techniczne/grabie_120cm_12mm.pdf"
+    },
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-62b9423f9409a3dec42fbfd7d0dd677e22fbebf2-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/62b9423f9409a3dec42fbfd7d0dd677e22fbebf2.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-992d2a2eadf05c266ec4787fb21b4afc8bda696e-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/992d2a2eadf05c266ec4787fb21b4afc8bda696e-3309x2339.png"
+          }
+        },
+        "title": "Rysunek techniczny Grabie 120cm"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 0,
+    "toothQty": null,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-15T07:00:21Z",
+    "_id": "product-grabie-120cm-15mm",
+    "_updatedAt": "2025-09-07T15:10:12Z",
+    "basePrice": 1750,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "kVW44PlqniRTsCLqJPF3XH",
+        "slug": "grabie",
+        "title": "Grabie"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Grabie 120cm z 22 zęby grubość 15mm. Lemiesz tnący Hardox HB500. Kompatybilne z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi. Szybkozłącza: MS01, MS03, CW05.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "grabie-120cm-15mm",
+    "featuredRank": 5,
+    "images": [
+      {
+        "_key": "86e83483d8b7",
+        "_type": "image",
+        "asset": {
+          "_id": "image-9ffb026d3afed7ca420f6fe11abe76153561c279-654x381-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/9ffb026d3afed7ca420f6fe11abe76153561c279-654x381.png"
+        }
+      }
+    ],
+    "isFeatured": true,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Grabie 120cm grubość zęba 15mm",
+    "phoneOrderOnly": null,
+    "price": 1720,
+    "priceGross": 2115.6,
+    "priceNet": 1720,
+    "priceOlx": 1890,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "grabie-120cm-15mm",
+    "specifications": {
+      "features": [
+        "22 zęby grubość 15mm",
+        "Lemiesz Hardox HB500",
+        "Kompatybilne mocowania"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS01, MS03, Verachtert CW05",
+      "toothCount": 22,
+      "toothThickness": 15,
+      "volumeM3": 0,
+      "widthCm": 120
+    },
+    "status": "hot",
+    "stock": 3,
+    "subcategory": "grabie-120-15",
+    "technicalDrawing": {
+      "title": "Rysunek techniczny - Grabie 120cm grubość zęba 15mm",
+      "type": "pdf",
+      "url": "/images/techniczne/grabie_120cm_15mm.pdf"
+    },
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-3af0a71817cf11f96efdf31b5dd3c046c78bb529-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/3af0a71817cf11f96efdf31b5dd3c046c78bb529.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-79fb1d497e91885cf286281b86de6ee3313ca3fb-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/79fb1d497e91885cf286281b86de6ee3313ca3fb-3309x2339.png"
+          }
+        },
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 0,
+    "toothQty": 22,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-23T13:35:42Z",
+    "_id": "Nn6Sc6MF3u71woMpYmQGzB",
+    "_updatedAt": "2025-09-07T14:55:51Z",
+    "basePrice": 2460,
+    "brand": null,
+    "categories": [
+      {
+        "_id": "category-wiertnice",
+        "slug": "wiertnice",
+        "title": "Wiertnice"
+      }
+    ],
+    "dateUpdated": null,
+    "description": "Napęd wiertnicy + możliwość doboru systemu mocowania (Wahacz gięty, Wahacz kostka, Premium) oraz wiertła (Fi 250 / 300 / 400).",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": [
+      {
+        "price": 950,
+        "productRef": null,
+        "title": "Fi 250"
+      },
+      {
+        "price": 1050,
+        "productRef": null,
+        "title": "Fi 300"
+      },
+      {
+        "price": 1400,
+        "productRef": null,
+        "title": "Fi 400"
+      }
+    ],
+    "externalId": null,
+    "featuredRank": null,
+    "images": [
+      {
+        "_key": "5b9bab3b4e70",
+        "_type": "image",
+        "asset": {
+          "_id": "image-5a4595dcb6d9b81f1bea5cc9480a1f9d65dc956a-331x741-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/5a4595dcb6d9b81f1bea5cc9480a1f9d65dc956a-331x741.png"
+        }
+      }
+    ],
+    "isFeatured": true,
+    "location": null,
+    "mountSystems": [
+      {
+        "code": null,
+        "drawingFile": "rysunek_techniczny_wahacza_gietego.pdf",
+        "drawingFileAsset": null,
+        "drawingImage": null,
+        "price": 290,
+        "productRef": null,
+        "title": "Wahacz gięty"
+      },
+      {
+        "code": null,
+        "drawingFile": "rysunek_techniczny_wahacz_kostka.pdf",
+        "drawingFileAsset": null,
+        "drawingImage": null,
+        "price": 490,
+        "productRef": null,
+        "title": "Wahacz kostka"
+      },
+      {
+        "code": null,
+        "drawingFile": "rysunek_techniczny_premium.pdf",
+        "drawingFileAsset": null,
+        "drawingImage": null,
+        "price": 1090,
+        "productRef": null,
+        "title": "Premium"
+      }
+    ],
+    "name": "Wiertnica glebowa – napęd",
+    "phoneOrderOnly": null,
+    "price": 2460,
+    "priceGross": 3025.8,
+    "priceNet": 2460,
+    "priceOlx": 2657,
+    "priceText": null,
+    "priceTier": null,
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "wiertnica-glebowa",
+    "specifications": null,
+    "status": null,
+    "stock": 5,
+    "subcategory": null,
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-130878a7874ceea1836c8841d78a3da9fac002c5-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/130878a7874ceea1836c8841d78a3da9fac002c5.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-6cb74c2ee692d39e9ce5969847b0c239db738a8a-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/6cb74c2ee692d39e9ce5969847b0c239db738a8a-3309x2339.png"
+          }
+        },
+        "title": "rysunek techniczny wahacz kostka"
+      },
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-65b71f1fdfacfeffa647c65d4a39f3cc2b1d6590-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/65b71f1fdfacfeffa647c65d4a39f3cc2b1d6590.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-48c9a4ae5c5a92373565185b644f7c6b8cf8a1f1-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/48c9a4ae5c5a92373565185b644f7c6b8cf8a1f1-3309x2339.png"
+          }
+        },
+        "title": "rysunek techniczny wahacza gietego"
+      },
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-0d2a4e358bf2e47c4402f7ecdf85e2c49d71c85f-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/0d2a4e358bf2e47c4402f7ecdf85e2c49d71c85f.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-23f06ee7d37cc6ba912829084f5909e24e3061fe-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/23f06ee7d37cc6ba912829084f5909e24e3061fe-3309x2339.png"
+          }
+        },
+        "title": "rysunek techniczny premium"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": null,
+    "toothQty": null,
+    "viewsCount": null,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-zrywak-korzeni-1-2t",
+    "_updatedAt": "2025-09-03T12:05:12Z",
+    "basePrice": 940,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlISUO",
+        "slug": "rippery",
+        "title": "Rippery"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Zrywak korzeni do maszyn 1-2 t. Grubość zęba 20mm. Końcówka zęba Hardox HB500. Szybkozłącza MS01/CW05.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "zrywak-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "752477f66f21",
+        "_type": "image",
+        "asset": {
+          "_id": "image-42f46de039127aa4ef0b86744610f40d699c4bfd-415x601-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/42f46de039127aa4ef0b86744610f40d699c4bfd-415x601.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Zrywak korzeni 1-2t",
+    "phoneOrderOnly": null,
+    "price": 940,
+    "priceGross": 1156.2,
+    "priceNet": 940,
+    "priceOlx": 1016,
+    "priceText": null,
+    "priceTier": "1-1.5t",
+    "recommendationSettings": null,
+    "ripperTier": "1-1.5t",
+    "similarProducts": null,
+    "slug": "zrywak-korzeni-1-2t",
+    "specifications": {
+      "features": [
+        "Zęba pojedyncza",
+        "Końcówka Hardox HB500"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "toothThickness": 20,
+      "volumeM3": 0,
+      "widthCm": 0
+    },
+    "status": "new",
+    "stock": 4,
+    "subcategory": null,
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-c8564bdf1efe0515772c979bd59abc321f8a7504-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/c8564bdf1efe0515772c979bd59abc321f8a7504.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-4f394b298193b3f95279889f6b60ba974a54b054-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/4f394b298193b3f95279889f6b60ba974a54b054-3309x2339.png"
+          }
+        },
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 0,
+    "toothQty": 1,
+    "viewsCount": 0,
+    "weightRange": "1-2t"
+  },
+  {
+    "_createdAt": "2025-08-26T15:56:16Z",
+    "_id": "P35xrz3wr8X9APC4thRF4U",
+    "_updatedAt": "2025-09-07T14:55:52Z",
+    "basePrice": 0,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-zrywarki",
+        "slug": "zrywaki-korzeni",
+        "title": "Zrywaki korzeni"
+      }
+    ],
+    "dateUpdated": null,
+    "description": "Zrywak do koparki – stal HARDOX HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": null,
+    "featuredRank": null,
+    "images": [
+      {
+        "_key": "7cd98e79b01e3d620773dce00924ff68",
+        "_type": "image",
+        "asset": {
+          "_id": "image-ef5b33ba65f65a3ccccbdc6f94d42711cca7fdab-415x602-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/ef5b33ba65f65a3ccccbdc6f94d42711cca7fdab-415x602.png"
+        }
+      }
+    ],
+    "isFeatured": null,
+    "location": null,
+    "mountSystems": null,
+    "name": "Zrywak podwójny 2–4T",
+    "phoneOrderOnly": true,
+    "price": 0,
+    "priceGross": 0,
+    "priceNet": 0,
+    "priceOlx": 0,
+    "priceText": "Na zapytanie",
+    "priceTier": null,
+    "recommendationSettings": null,
+    "ripperTier": "2-4t",
+    "similarProducts": null,
+    "slug": "zrywak-podwojny-2-4t",
+    "specifications": {
+      "_type": "product.specifications",
+      "features": []
+    },
+    "status": null,
+    "stock": 10,
+    "subcategory": null,
+    "technicalDrawing": {
+      "title": "Rysunek techniczny",
+      "type": "pdf",
+      "url": "/images/techniczne/rysunek_techniczniczny_zrywak_podwojny_2-4_tony.pdf"
+    },
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": "/images/techniczne/rysunek_techniczniczny_zrywak_podwojny_2-4_tony.pdf",
+        "file": null,
+        "image": null,
+        "title": "Rysunek techniczny"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": null,
+    "toothQty": null,
+    "viewsCount": null,
+    "weightRange": "2-4t"
+  },
+  {
+    "_createdAt": "2025-08-26T15:56:23Z",
+    "_id": "6ikzkGDHjpOxlSHaz8eMj6",
+    "_updatedAt": "2025-09-07T14:55:50Z",
+    "basePrice": 0,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-zrywarki",
+        "slug": "zrywaki-korzeni",
+        "title": "Zrywaki korzeni"
+      }
+    ],
+    "dateUpdated": null,
+    "description": "Zrywak do koparki – stal HARDOX HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": null,
+    "featuredRank": null,
+    "images": [
+      {
+        "_key": "7af1958ae45bbab02a6962339874fd5c",
+        "_type": "image",
+        "asset": {
+          "_id": "image-46f0b61c8f9a6d296a1387f710be815106624e86-421x593-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/46f0b61c8f9a6d296a1387f710be815106624e86-421x593.png"
+        }
+      }
+    ],
+    "isFeatured": null,
+    "location": null,
+    "mountSystems": null,
+    "name": "Zrywak podwójny 4–8T",
+    "phoneOrderOnly": true,
+    "price": 0,
+    "priceGross": 0,
+    "priceNet": 0,
+    "priceOlx": 0,
+    "priceText": "Na zapytanie",
+    "priceTier": null,
+    "recommendationSettings": null,
+    "ripperTier": "4-8t",
+    "similarProducts": null,
+    "slug": "zrywak-podwojny-4-8t",
+    "specifications": {
+      "_type": "product.specifications",
+      "features": []
+    },
+    "status": null,
+    "stock": 10,
+    "subcategory": null,
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-2129d54fc3d5c4c9de3b823d62d98dbbe58cd357-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/2129d54fc3d5c4c9de3b823d62d98dbbe58cd357.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-a7982bece9bece9915ecee6d23a6703fc4b67293-3312x1628-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/a7982bece9bece9915ecee6d23a6703fc4b67293-3312x1628.png"
+          }
+        },
+        "title": "Rysunek techniczny Zrywak podwójny 4-8 Tony"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": null,
+    "toothQty": null,
+    "viewsCount": null,
+    "weightRange": "4-8t"
+  },
+  {
+    "_createdAt": "2025-08-26T15:56:12Z",
+    "_id": "TntyzZU7UfT50Z01rGQ9rb",
+    "_updatedAt": "2025-09-07T14:55:54Z",
+    "basePrice": 0,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-zrywarki",
+        "slug": "zrywaki-korzeni",
+        "title": "Zrywaki korzeni"
+      }
+    ],
+    "dateUpdated": null,
+    "description": "Zrywak do koparki – stal HARDOX HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": null,
+    "featuredRank": null,
+    "images": [
+      {
+        "_key": "047c087eb89653c462e552a348ae81bf",
+        "_type": "image",
+        "asset": {
+          "_id": "image-dc5e9b63df7bbf693e44e9e7a751305327162877-426x586-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/dc5e9b63df7bbf693e44e9e7a751305327162877-426x586.png"
+        }
+      }
+    ],
+    "isFeatured": null,
+    "location": null,
+    "mountSystems": null,
+    "name": "Zrywak pojedynczy 2–4T",
+    "phoneOrderOnly": true,
+    "price": 0,
+    "priceGross": 0,
+    "priceNet": 0,
+    "priceOlx": 0,
+    "priceText": "Na zapytanie",
+    "priceTier": null,
+    "recommendationSettings": null,
+    "ripperTier": "2-4t",
+    "similarProducts": null,
+    "slug": "zrywak-pojedynczy-2-4t",
+    "specifications": {
+      "_type": "product.specifications",
+      "features": [
+        ""
+      ],
+      "machineCompatibility": [
+        ""
+      ]
+    },
+    "status": null,
+    "stock": 10,
+    "subcategory": null,
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-c8564bdf1efe0515772c979bd59abc321f8a7504-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/c8564bdf1efe0515772c979bd59abc321f8a7504.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-4f394b298193b3f95279889f6b60ba974a54b054-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/4f394b298193b3f95279889f6b60ba974a54b054-3309x2339.png"
+          }
+        },
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": null,
+    "toothQty": null,
+    "viewsCount": null,
+    "weightRange": "2-4t"
+  },
+  {
+    "_createdAt": "2025-08-26T15:56:19Z",
+    "_id": "P35xrz3wr8X9APC4thRFXx",
+    "_updatedAt": "2025-09-07T14:55:53Z",
+    "basePrice": 0,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-zrywarki",
+        "slug": "zrywaki-korzeni",
+        "title": "Zrywaki korzeni"
+      }
+    ],
+    "dateUpdated": null,
+    "description": "Zrywak do koparki – stal HARDOX HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": null,
+    "featuredRank": null,
+    "images": [
+      {
+        "_key": "49b4e00d127f56444ecb7fecd51abe49",
+        "_type": "image",
+        "asset": {
+          "_id": "image-7fe001415fc96a576adca031afdce7c60050a90a-413x604-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/7fe001415fc96a576adca031afdce7c60050a90a-413x604.png"
+        }
+      }
+    ],
+    "isFeatured": null,
+    "location": null,
+    "mountSystems": null,
+    "name": "Zrywak pojedynczy 4–8T",
+    "phoneOrderOnly": true,
+    "price": 0,
+    "priceGross": 0,
+    "priceNet": 0,
+    "priceOlx": 0,
+    "priceText": "Na zapytanie",
+    "priceTier": null,
+    "recommendationSettings": null,
+    "ripperTier": "4-8t",
+    "similarProducts": null,
+    "slug": "zrywak-pojedynczy-4-8t",
+    "specifications": {
+      "_type": "product.specifications",
+      "features": []
+    },
+    "status": null,
+    "stock": 10,
+    "subcategory": null,
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-089fc8dd495f6023e92760167c91e7cdeb286fa0-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/089fc8dd495f6023e92760167c91e7cdeb286fa0.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-d916f7628236c3bf7bc61b1d5dbaeb4388f153b7-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/d916f7628236c3bf7bc61b1d5dbaeb4388f153b7-3309x2339.png"
+          }
+        },
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": null,
+    "toothQty": null,
+    "viewsCount": null,
+    "weightRange": "4-8t"
+  },
+  {
+    "_createdAt": "2025-09-07T15:07:58Z",
+    "_id": "Ph6oaCobpA5RE5BIFxhZ9v",
+    "_updatedAt": "2025-09-07T15:10:04Z",
+    "basePrice": 2400,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": null,
+    "dateUpdated": "2025-09-07T15:07:58.203Z",
+    "description": "Łyżka kopiąca 100cm do maszyn 3-5 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": null,
+    "drillBits": null,
+    "externalId": null,
+    "featuredRank": null,
+    "images": null,
+    "isFeatured": null,
+    "location": null,
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 100cm (3-5t)",
+    "phoneOrderOnly": null,
+    "price": 2400,
+    "priceGross": null,
+    "priceNet": 2400,
+    "priceOlx": null,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-100cm-3-5t",
+    "specifications": {
+      "widthCm": 100
+    },
+    "status": "hot",
+    "stock": 0,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 270,
+    "toothQty": 5,
+    "viewsCount": null,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-120cm-2-3t",
+    "_updatedAt": "2025-09-07T15:10:14Z",
+    "basePrice": 1500,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      },
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 120cm do maszyn 2-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "120cm-2-3t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "a1da94eb8671",
+        "_type": "image",
+        "asset": {
+          "_id": "image-4b3a424d411478882e6cfdcb933bfab4b176ec14-1024x1024-jpg",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/4b3a424d411478882e6cfdcb933bfab4b176ec14-1024x1024.jpg"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 120cm (2-3t)",
+    "phoneOrderOnly": false,
+    "price": 700,
+    "priceGross": 861,
+    "priceNet": 700,
+    "priceOlx": 1620,
+    "priceText": null,
+    "priceTier": "1-1.5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-120cm-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.125,
+      "widthCm": 20
+    },
+    "status": "new",
+    "stock": 1,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v1",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 120,
+    "toothQty": 2,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-130cm-2-3t",
+    "_updatedAt": "2025-09-07T15:10:15Z",
+    "basePrice": 1560,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      },
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 130cm do maszyn 2-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "130cm-2-3t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "9cae342d1722",
+        "_type": "image",
+        "asset": {
+          "_id": "image-ae71f381b0531585afcde9f9f32daae675e524bf-1024x1024-jpg",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/ae71f381b0531585afcde9f9f32daae675e524bf-1024x1024.jpg"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 130cm (2-3t)",
+    "phoneOrderOnly": false,
+    "price": 1590,
+    "priceGross": 1955.7,
+    "priceNet": 1590,
+    "priceOlx": 1685,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-130cm-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.135,
+      "widthCm": 30
+    },
+    "status": "new",
+    "stock": 1,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 165,
+    "toothQty": 3,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-08-09T17:37:32Z",
+    "_id": "product-lyzka-kopiaca-18cm",
+    "_updatedAt": "2025-09-07T14:05:59Z",
+    "basePrice": 680,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-1-2t-kopiace",
+        "slug": "lyzki-kopiace-1-2t",
+        "title": "Łyżki kopiące 1-2t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 18cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Kompatybilna z JCB, CAT, Yanmar, Volvo, Bobcat, Hitachi, Atlas, Hyundai, Case, John Deere, Mecalac, Kubota, Liebherr, Taeuchi, Wacker Neuson. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "18cm-1-2t",
+    "featuredRank": 1,
+    "images": [
+      {
+        "_key": "0158ba44f6e8",
+        "_type": "image",
+        "asset": {
+          "_id": "image-6f9901036eb7b06ec9aa0c15bd3b9d67dcefb672-1484x1001-jpg",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/6f9901036eb7b06ec9aa0c15bd3b9d67dcefb672-1484x1001.jpg"
+        }
+      }
+    ],
+    "isFeatured": true,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 18cm",
+    "phoneOrderOnly": false,
+    "price": 680,
+    "priceGross": 836.4,
+    "priceNet": 680,
+    "priceOlx": 735,
+    "priceText": null,
+    "priceTier": "1-1.5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-18cm",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby",
+        "Spód Hardox"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi",
+        "Wacker Neuson"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.015,
+      "widthCm": 18
+    },
+    "status": "new",
+    "stock": 10,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v1",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 120,
+    "toothQty": 2,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-09T17:37:32Z",
+    "_id": "product-lyzka-kopiaca-23cm",
+    "_updatedAt": "2025-09-07T15:10:17Z",
+    "basePrice": 700,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-1-2t-kopiace",
+        "slug": "lyzki-kopiace-1-2t",
+        "title": "Łyżki kopiące 1-2t"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 23cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "23cm-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "e0ca34018817",
+        "_type": "image",
+        "asset": {
+          "_id": "image-4947c3b1b008e7d9d1c4940795da1703daebc41c-3515x1628-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/4947c3b1b008e7d9d1c4940795da1703daebc41c-3515x1628.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 23cm",
+    "phoneOrderOnly": false,
+    "price": 710,
+    "priceGross": 873.3,
+    "priceNet": 710,
+    "priceOlx": 756,
+    "priceText": null,
+    "priceTier": "1-1.5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-23cm",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.018,
+      "widthCm": 23
+    },
+    "status": "new",
+    "stock": 8,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v1",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 120,
+    "toothQty": 2,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-09-08T10:00:09Z",
+    "_id": "19669a7b-566d-4b79-814c-53f8236f8eca",
+    "_updatedAt": "2025-09-08T10:21:39Z",
+    "basePrice": 960,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 25cm do maszyn 1.5-2.3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "25cm-1.5-2.3t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "974710479ec3",
+        "_type": "image",
+        "asset": {
+          "_id": "image-207696739caa408b6d9252e16b3424fbc83d69d8-1230x1320-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/207696739caa408b6d9252e16b3424fbc83d69d8-1230x1320.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 25cm (1.5-2.3t)",
+    "phoneOrderOnly": false,
+    "price": 1550,
+    "priceGross": 1180.8,
+    "priceNet": 960,
+    "priceOlx": 1050,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-25cm-1-5-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.03,
+      "widthCm": 25
+    },
+    "status": "new",
+    "stock": 5,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": null,
+    "teethEnabled": true,
+    "toothCost": 240,
+    "toothQty": 2,
+    "viewsCount": 0,
+    "weightRange": "1-2t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-25cm-2-3t",
+    "_updatedAt": "2025-09-08T10:27:52Z",
+    "basePrice": 960,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      },
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 25cm do maszyn 2.3-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "25cm-2-3t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "974710479ec3",
+        "_type": "image",
+        "asset": {
+          "_id": "image-207696739caa408b6d9252e16b3424fbc83d69d8-1230x1320-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/207696739caa408b6d9252e16b3424fbc83d69d8-1230x1320.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 25cm (2.3-3t)",
+    "phoneOrderOnly": false,
+    "price": 1550,
+    "priceGross": 1303.8,
+    "priceNet": 1060,
+    "priceOlx": 1174,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-25cm-2-3-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.03,
+      "widthCm": 25
+    },
+    "status": "new",
+    "stock": 5,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 240,
+    "toothQty": 2,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-27cm",
+    "_updatedAt": "2025-09-07T14:06:03Z",
+    "basePrice": 740,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-1-2t-kopiace",
+        "slug": "lyzki-kopiace-1-2t",
+        "title": "Łyżki kopiące 1-2t"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 27cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "27cm-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "e1372a098e34",
+        "_type": "image",
+        "asset": {
+          "_id": "image-4947c3b1b008e7d9d1c4940795da1703daebc41c-3515x1628-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/4947c3b1b008e7d9d1c4940795da1703daebc41c-3515x1628.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 27cm",
+    "phoneOrderOnly": false,
+    "price": 740,
+    "priceGross": 910.2,
+    "priceNet": 740,
+    "priceOlx": 800,
+    "priceText": null,
+    "priceTier": "1-1.5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-27cm",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.022,
+      "widthCm": 27
+    },
+    "status": "new",
+    "stock": 7,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v1",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 120,
+    "toothQty": 3,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-30cm-1-2t",
+    "_updatedAt": "2025-09-07T15:10:20Z",
+    "basePrice": 750,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRDH",
+        "slug": "łyżki-kat.-1-1.5-tony",
+        "title": "Łyżki kat. 1-1.5 Tony"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 30cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "30cm-1-2t",
+    "featuredRank": 2,
+    "images": [
+      {
+        "_key": "56cb01c654fd",
+        "_type": "image",
+        "asset": {
+          "_id": "image-7b2ff088993646758ce4d3379bab5affb3e88b7a-1261x1343-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/7b2ff088993646758ce4d3379bab5affb3e88b7a-1261x1343.png"
+        }
+      }
+    ],
+    "isFeatured": true,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 30cm (1-2t)",
+    "phoneOrderOnly": null,
+    "price": 760,
+    "priceGross": 934.8,
+    "priceNet": 760,
+    "priceOlx": 810,
+    "priceText": null,
+    "priceTier": "1-1.5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-30cm-1-2t",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.025,
+      "widthCm": 30
+    },
+    "status": "hot",
+    "stock": 10,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2 (alt)"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 160,
+    "toothQty": 3,
+    "viewsCount": 0,
+    "weightRange": "1-2t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-30cm-2-3t",
+    "_updatedAt": "2025-09-07T15:10:21Z",
+    "basePrice": 970,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      },
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 30cm do maszyn 2-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "30cm-2-3t",
+    "featuredRank": 2,
+    "images": [
+      {
+        "_key": "e4e178a4aee7",
+        "_type": "image",
+        "asset": {
+          "_id": "image-7b2ff088993646758ce4d3379bab5affb3e88b7a-1261x1343-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/7b2ff088993646758ce4d3379bab5affb3e88b7a-1261x1343.png"
+        }
+      }
+    ],
+    "isFeatured": true,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 30cm (2-3t)",
+    "phoneOrderOnly": null,
+    "price": 980,
+    "priceGross": 1205.4,
+    "priceNet": 980,
+    "priceOlx": 1048,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-30cm-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.035,
+      "widthCm": 30
+    },
+    "status": "hot",
+    "stock": 6,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-90f8558f0e56c3892ca097039796792faeb768d9-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/90f8558f0e56c3892ca097039796792faeb768d9.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339.png"
+          }
+        },
+        "title": "Łyżka kopiąca 2.3-3T"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 160,
+    "toothQty": 3,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-30cm-3-4-5t",
+    "_updatedAt": "2025-09-07T15:10:22Z",
+    "basePrice": 1080,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-3-4-5t-kopiace",
+        "slug": "lyzki-kopiace-3-4-5t",
+        "title": "Łyżki kopiące 3-4.5t"
+      },
+      {
+        "_id": "UhrFXXaebw9Cm7yUMInxF6",
+        "slug": "łyżki-kat.-3-5-tony",
+        "title": "Łyżki kat. 3-5 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 30cm do maszyn 3-4.5 t. Kod: S3-30.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "30cm-3-4-5t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "75b1f1e9ff2c",
+        "_type": "image",
+        "asset": {
+          "_id": "image-7b2ff088993646758ce4d3379bab5affb3e88b7a-1261x1343-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/7b2ff088993646758ce4d3379bab5affb3e88b7a-1261x1343.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 30cm (3-4.5t)",
+    "phoneOrderOnly": null,
+    "price": 1590,
+    "priceGross": 1955.7,
+    "priceNet": 1590,
+    "priceOlx": 1718,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-30cm-3-4-5t",
+    "specifications": {
+      "features": [
+        "Kod S3-30"
+      ],
+      "machineCompatibility": [
+        "Uniwersalne mocowania"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Standardowe mocowania",
+      "volumeM3": 0.04,
+      "widthCm": 30
+    },
+    "status": "new",
+    "stock": 2,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": null
+        },
+        "image": {
+          "asset": {
+            "_id": "image-7565a8c2ce1138e137d19647f563e80a1e26ebc6-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/7565a8c2ce1138e137d19647f563e80a1e26ebc6-3309x2339.png"
+          }
+        },
+        "title": "Łyżka kopiąca 3-5T"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 165,
+    "toothQty": 3,
+    "viewsCount": 0,
+    "weightRange": "3-4.5t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-35cm-2-3t",
+    "_updatedAt": "2025-09-07T15:10:23Z",
+    "basePrice": 1050,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 35cm do maszyn 2-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "35cm-2-3t",
+    "featuredRank": 5,
+    "images": [
+      {
+        "_key": "7edf5ec14754",
+        "_type": "image",
+        "asset": {
+          "_id": "image-7b2ff088993646758ce4d3379bab5affb3e88b7a-1261x1343-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/7b2ff088993646758ce4d3379bab5affb3e88b7a-1261x1343.png"
+        }
+      }
+    ],
+    "isFeatured": true,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 35cm (2-3t)",
+    "phoneOrderOnly": false,
+    "price": 1620,
+    "priceGross": 1992.6,
+    "priceNet": 1620,
+    "priceOlx": 1750,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-35cm-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.04,
+      "widthCm": 35
+    },
+    "status": "hot",
+    "stock": 5,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 165,
+    "toothQty": 3,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-40cm-1-2t",
+    "_updatedAt": "2025-09-07T15:10:24Z",
+    "basePrice": 810,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRDH",
+        "slug": "łyżki-kat.-1-1.5-tony",
+        "title": "Łyżki kat. 1-1.5 Tony"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 40cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "40cm-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "0c63bd70d8f2",
+        "_type": "image",
+        "asset": {
+          "_id": "image-cf7740836cd148802108215c33c541b6b6b66419-1297x1302-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/cf7740836cd148802108215c33c541b6b6b66419-1297x1302.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 40cm (1-2t)",
+    "phoneOrderOnly": false,
+    "price": 1670,
+    "priceGross": 2054.1,
+    "priceNet": 1670,
+    "priceOlx": 1804,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-40cm-1-2t",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.035,
+      "widthCm": 40
+    },
+    "status": "new",
+    "stock": 6,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 165,
+    "toothQty": 3,
+    "viewsCount": 0,
+    "weightRange": "1-2t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-40cm-2-3t",
+    "_updatedAt": "2025-09-07T14:34:55Z",
+    "basePrice": 1080,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      },
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 40cm do maszyn 2-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "40cm-2-3t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "5eadbb3fae4c",
+        "_type": "image",
+        "asset": {
+          "_id": "image-cf7740836cd148802108215c33c541b6b6b66419-1297x1302-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/cf7740836cd148802108215c33c541b6b6b66419-1297x1302.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 40cm (2-3t)",
+    "phoneOrderOnly": null,
+    "price": 1080,
+    "priceGross": 1328.4,
+    "priceNet": 1080,
+    "priceOlx": 1167,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-40cm-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.045,
+      "widthCm": 40
+    },
+    "status": "new",
+    "stock": 4,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-90f8558f0e56c3892ca097039796792faeb768d9-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/90f8558f0e56c3892ca097039796792faeb768d9.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339.png"
+          }
+        },
+        "title": "Łyżka kopiąca 2.3-3T"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 160,
+    "toothQty": 3,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-45cm-1-2t",
+    "_updatedAt": "2025-09-07T15:10:26Z",
+    "basePrice": 820,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRDH",
+        "slug": "łyżki-kat.-1-1.5-tony",
+        "title": "Łyżki kat. 1-1.5 Tony"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 45cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "45cm-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "fb64a350f6ff",
+        "_type": "image",
+        "asset": {
+          "_id": "image-4d2f95d78da7340aa7d6db84324e35ebc19ab0cd-1345x1289-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/4d2f95d78da7340aa7d6db84324e35ebc19ab0cd-1345x1289.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 45cm (1-2t)",
+    "phoneOrderOnly": false,
+    "price": 1730,
+    "priceGross": 2127.9,
+    "priceNet": 1730,
+    "priceOlx": 1869,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-45cm-1-2t",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.04,
+      "widthCm": 45
+    },
+    "status": "new",
+    "stock": 4,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 165,
+    "toothQty": 3,
+    "viewsCount": 0,
+    "weightRange": "1-2t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-45cm-2-3t",
+    "_updatedAt": "2025-09-07T15:10:27Z",
+    "basePrice": 1070,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      },
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 45cm do maszyn 2-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "45cm-2-3t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "eb5dcf7bb66e",
+        "_type": "image",
+        "asset": {
+          "_id": "image-4d2f95d78da7340aa7d6db84324e35ebc19ab0cd-1345x1289-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/4d2f95d78da7340aa7d6db84324e35ebc19ab0cd-1345x1289.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 45cm (2-3t)",
+    "phoneOrderOnly": null,
+    "price": 1120,
+    "priceGross": 1377.6,
+    "priceNet": 1120,
+    "priceOlx": 1156,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-45cm-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.05,
+      "widthCm": 45
+    },
+    "status": "new",
+    "stock": 3,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-90f8558f0e56c3892ca097039796792faeb768d9-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/90f8558f0e56c3892ca097039796792faeb768d9.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339.png"
+          }
+        },
+        "title": "Łyżka kopiąca 2.3-3T"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 200,
+    "toothQty": 4,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-50cm-1-2t",
+    "_updatedAt": "2025-09-07T15:10:28Z",
+    "basePrice": 850,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRDH",
+        "slug": "łyżki-kat.-1-1.5-tony",
+        "title": "Łyżki kat. 1-1.5 Tony"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 50cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "50cm-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "761a98cf1ab4",
+        "_type": "image",
+        "asset": {
+          "_id": "image-fb823598dc907410bc209f08600dcd64a153e537-1456x1347-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/fb823598dc907410bc209f08600dcd64a153e537-1456x1347.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 50cm (1-2t)",
+    "phoneOrderOnly": false,
+    "price": 1790,
+    "priceGross": 2201.7,
+    "priceNet": 1790,
+    "priceOlx": 1934,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-50cm-1-2t",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.045,
+      "widthCm": 50
+    },
+    "status": "new",
+    "stock": 5,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 200,
+    "toothQty": 4,
+    "viewsCount": 0,
+    "weightRange": "1-2t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-50cm-2-3t",
+    "_updatedAt": "2025-09-07T15:10:29Z",
+    "basePrice": 1150,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      },
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 50cm do maszyn 2-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "50cm-2-3t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "37de06648ea6",
+        "_type": "image",
+        "asset": {
+          "_id": "image-fb823598dc907410bc209f08600dcd64a153e537-1456x1347-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/fb823598dc907410bc209f08600dcd64a153e537-1456x1347.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 50cm (2-3t)",
+    "phoneOrderOnly": null,
+    "price": 1160,
+    "priceGross": 1426.8,
+    "priceNet": 1160,
+    "priceOlx": 1242,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-50cm-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.055,
+      "widthCm": 50
+    },
+    "status": "new",
+    "stock": 4,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-90f8558f0e56c3892ca097039796792faeb768d9-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/90f8558f0e56c3892ca097039796792faeb768d9.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339.png"
+          }
+        },
+        "title": "Łyżka kopiąca 2.3-3T"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 200,
+    "toothQty": 4,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-60cm-1-2t",
+    "_updatedAt": "2025-09-07T15:10:30Z",
+    "basePrice": 900,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRDH",
+        "slug": "łyżki-kat.-1-1.5-tony",
+        "title": "Łyżki kat. 1-1.5 Tony"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 60cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "60cm-1-2t",
+    "featuredRank": 3,
+    "images": [
+      {
+        "_key": "ead2d8c9edb6",
+        "_type": "image",
+        "asset": {
+          "_id": "image-f2c84a7feffbf98aee177fdf9f7d02a916779bb0-1426x1262-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/f2c84a7feffbf98aee177fdf9f7d02a916779bb0-1426x1262.png"
+        }
+      }
+    ],
+    "isFeatured": true,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 60cm (1-2t)",
+    "phoneOrderOnly": false,
+    "price": 1300,
+    "priceGross": 1599,
+    "priceNet": 1300,
+    "priceOlx": 1404,
+    "priceText": null,
+    "priceTier": "2.3-3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-60cm-1-2t",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.055,
+      "widthCm": 60
+    },
+    "status": "hot",
+    "stock": 3,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 240,
+    "toothQty": 5,
+    "viewsCount": 0,
+    "weightRange": "1-2t"
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-60cm-2-3t",
+    "_updatedAt": "2025-09-07T15:10:31Z",
+    "basePrice": 1100,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      },
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 60cm do maszyn 2-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "60cm-2-3t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "e5299e9925dd",
+        "_type": "image",
+        "asset": {
+          "_id": "image-f2c84a7feffbf98aee177fdf9f7d02a916779bb0-1426x1262-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/f2c84a7feffbf98aee177fdf9f7d02a916779bb0-1426x1262.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 60cm (2-3t)",
+    "phoneOrderOnly": null,
+    "price": 1200,
+    "priceGross": 1476,
+    "priceNet": 1200,
+    "priceOlx": 1296,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-60cm-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.065,
+      "widthCm": 60
+    },
+    "status": "new",
+    "stock": 2,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyzka_1_5-2_3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 1 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": "/images/rys_techniczne/lyska_1.5_2.3_2.png",
+        "file": null,
+        "image": null,
+        "title": "Łyżka kopiąca – rysunek 2 (alt)"
+      },
+      {
+        "code": null,
+        "externalUrl": null,
+        "file": {
+          "asset": {
+            "_id": "file-90f8558f0e56c3892ca097039796792faeb768d9-pdf",
+            "url": "https://cdn.sanity.io/files/3a7q0xhj/production/90f8558f0e56c3892ca097039796792faeb768d9.pdf"
+          }
+        },
+        "image": {
+          "asset": {
+            "_id": "image-e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339-png",
+            "url": "https://cdn.sanity.io/images/3a7q0xhj/production/e347ae409c9f080c6078bf12ff630831d1002fa5-3309x2339.png"
+          }
+        },
+        "title": "Łyżka kopiąca 2.3-3T"
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 240,
+    "toothQty": 5,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-09-07T14:48:15Z",
+    "_id": "product-lyzka-kopiaca-60cm-3-5t",
+    "_updatedAt": "2025-09-07T15:10:32Z",
+    "basePrice": 1920,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": null,
+    "dateUpdated": "2025-09-07T14:48:15.418Z",
+    "description": "Łyżka kopiąca 60cm do maszyn 3–5 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": null,
+    "featuredRank": null,
+    "images": null,
+    "isFeatured": null,
+    "location": null,
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 60cm (3-5t)",
+    "phoneOrderOnly": false,
+    "price": 1920,
+    "priceGross": 2361.6,
+    "priceNet": 1920,
+    "priceOlx": 2074,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-60cm-3-5t",
+    "specifications": {
+      "widthCm": 60
+    },
+    "status": "hot",
+    "stock": 0,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 200,
+    "toothQty": 4,
+    "viewsCount": null,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-70cm",
+    "_updatedAt": "2025-09-07T15:10:33Z",
+    "basePrice": 930,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-1-2t-kopiace",
+        "slug": "lyzki-kopiace-1-2t",
+        "title": "Łyżki kopiące 1-2t"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 70cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "70cm-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "96995cdef46c",
+        "_type": "image",
+        "asset": {
+          "_id": "image-c3a3028b4ca999c80d2aad4bd495166147995355-1503x1221-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/c3a3028b4ca999c80d2aad4bd495166147995355-1503x1221.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 70cm",
+    "phoneOrderOnly": false,
+    "price": 1980,
+    "priceGross": 2435.4,
+    "priceNet": 1980,
+    "priceOlx": 2139,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-70cm",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.065,
+      "widthCm": 70
+    },
+    "status": "new",
+    "stock": 2,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 235,
+    "toothQty": 4,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-kopiaca-80cm-2-3t",
+    "_updatedAt": "2025-09-07T15:10:34Z",
+    "basePrice": 1290,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-szybkozlacza",
+        "slug": "szybkozlacza",
+        "title": "Szybkozłącza"
+      },
+      {
+        "_id": "TFq394igozlHjZYkEIPevQ",
+        "slug": "lyzki-2.3-3t",
+        "title": "Łyżki kat. 2.3-3 Tony"
+      },
+      {
+        "_id": "category-2-3t-kopiace",
+        "slug": "lyzki-kopiace-2-3t",
+        "title": "Łyżki kopiące 2-3t"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka kopiąca 80cm do maszyn 2-3 t. Lemiesz tnący 150×16mm Hardox HB500. Szybkozłącza MS03/CW05. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "80cm-2-3t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "a226703a0ffb",
+        "_type": "image",
+        "asset": {
+          "_id": "image-c3a3028b4ca999c80d2aad4bd495166147995355-1503x1221-png",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/c3a3028b4ca999c80d2aad4bd495166147995355-1503x1221.png"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 80cm (2-3t)",
+    "phoneOrderOnly": false,
+    "price": 2080,
+    "priceGross": 2558.4,
+    "priceNet": 2080,
+    "priceOlx": 2247,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-80cm-2-3t",
+    "specifications": {
+      "cuttingEdge": "150×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Opcjonalne zęby"
+      ],
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 0,
+      "quickCoupler": "Lehnhoff MS03, Verachtert CW05",
+      "volumeM3": 0.085,
+      "widthCm": 80
+    },
+    "status": "new",
+    "stock": 2,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 235,
+    "toothQty": 4,
+    "viewsCount": 0,
+    "weightRange": "2-3t"
+  },
+  {
+    "_createdAt": "2025-09-07T15:07:57Z",
+    "_id": "TFq394igozlHjZYkEhjR2g",
+    "_updatedAt": "2025-09-07T15:10:06Z",
+    "basePrice": 2270,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": null,
+    "dateUpdated": "2025-09-07T15:07:57.075Z",
+    "description": "Łyżka kopiąca 90cm do maszyn 3-5 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": null,
+    "drillBits": null,
+    "externalId": null,
+    "featuredRank": null,
+    "images": null,
+    "isFeatured": null,
+    "location": null,
+    "mountSystems": null,
+    "name": "Łyżka kopiąca 90cm (3-5t)",
+    "phoneOrderOnly": null,
+    "price": 2270,
+    "priceGross": null,
+    "priceNet": 2270,
+    "priceOlx": null,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-kopiaca-90cm-3-5t",
+    "specifications": {
+      "widthCm": 90
+    },
+    "status": "hot",
+    "stock": 0,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 270,
+    "toothQty": 5,
+    "viewsCount": null,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-skarpowa-100cm",
+    "_updatedAt": "2025-09-07T15:10:35Z",
+    "basePrice": 940,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRDH",
+        "slug": "łyżki-kat.-1-1.5-tony",
+        "title": "Łyżki kat. 1-1.5 Tony"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka skarpowa 100cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Typ skarpowy. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "100cm-skarpowa-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "27003b4a30eb",
+        "_type": "image",
+        "asset": {
+          "_id": "image-0ef5295afb9d9c6c6cfb43d71d0e3a317e52b1e4-1484x980-jpg",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/0ef5295afb9d9c6c6cfb43d71d0e3a317e52b1e4-1484x980.jpg"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka skarpowa 100cm",
+    "phoneOrderOnly": false,
+    "price": 2400,
+    "priceGross": 2952,
+    "priceNet": 2400,
+    "priceOlx": 2592,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-skarpowa-100cm",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.095,
+      "widthCm": 100
+    },
+    "status": "new",
+    "stock": 2,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 270,
+    "toothQty": 5,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-09-07T15:07:52Z",
+    "_id": "Ph6oaCobpA5RE5BIFxhYmP",
+    "_updatedAt": "2025-09-07T15:10:03Z",
+    "basePrice": 1550,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": null,
+    "dateUpdated": "2025-09-07T15:07:52.494Z",
+    "description": "Łyżka skarpowa 120cm do maszyn 1,5-2.3 t.",
+    "dimensions": null,
+    "discount": null,
+    "drillBits": null,
+    "externalId": null,
+    "featuredRank": null,
+    "images": null,
+    "isFeatured": null,
+    "location": null,
+    "mountSystems": null,
+    "name": "Łyżka skarpowa 120cm",
+    "phoneOrderOnly": null,
+    "price": 1550,
+    "priceGross": null,
+    "priceNet": 1550,
+    "priceOlx": null,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-skarpowa-120cm-1.5-2.3t",
+    "specifications": {
+      "widthCm": 120
+    },
+    "status": "hot",
+    "stock": 0,
+    "subcategory": "lyzki-skarpowe",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_skarpowa_v1",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": null,
+    "toothQty": null,
+    "viewsCount": null,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-09-07T15:07:53Z",
+    "_id": "TFq394igozlHjZYkEhjQRQ",
+    "_updatedAt": "2025-09-07T15:10:05Z",
+    "basePrice": 1680,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": null,
+    "dateUpdated": "2025-09-07T15:07:53.715Z",
+    "description": "Łyżka skarpowa 130cm do maszyn 1,5-2.3 t.",
+    "dimensions": null,
+    "discount": null,
+    "drillBits": null,
+    "externalId": null,
+    "featuredRank": null,
+    "images": null,
+    "isFeatured": null,
+    "location": null,
+    "mountSystems": null,
+    "name": "Łyżka skarpowa 130cm",
+    "phoneOrderOnly": null,
+    "price": 1680,
+    "priceGross": null,
+    "priceNet": 1680,
+    "priceOlx": null,
+    "priceText": null,
+    "priceTier": "1.5-2.3t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-skarpowa-130cm-1.5-2.3t",
+    "specifications": {
+      "widthCm": 130
+    },
+    "status": "hot",
+    "stock": 0,
+    "subcategory": "lyzki-skarpowe",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_skarpowa_v1",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": null,
+    "toothQty": null,
+    "viewsCount": null,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-09-07T14:10:10Z",
+    "_id": "product-lyzka-skarpowa-150cm-3-5t",
+    "_updatedAt": "2025-09-07T15:10:36Z",
+    "basePrice": 2200,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": null,
+    "dateUpdated": "2025-09-07T14:10:10.041Z",
+    "description": "Łyżka skarpowa 150cm do maszyn 3-5 t. Lemiesz tnący 110×16mm Hardox HB500. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "150cm-3-5t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "0692648ed10c",
+        "_type": "image",
+        "asset": {
+          "_id": "image-0ef5295afb9d9c6c6cfb43d71d0e3a317e52b1e4-1484x980-jpg",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/0ef5295afb9d9c6c6cfb43d71d0e3a317e52b1e4-1484x980.jpg"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka skarpowa 150cm",
+    "phoneOrderOnly": false,
+    "price": 2200,
+    "priceGross": 2706,
+    "priceNet": 2200,
+    "priceOlx": 2400,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-skarpowa-150cm-3-5t",
+    "specifications": {
+      "features": [
+        "Lemiesz Hardox HB500"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Takeuchi"
+      ],
+      "ramie": 96,
+      "widthCm": 150
+    },
+    "status": "hot",
+    "stock": 0,
+    "subcategory": "lyzki-skarpowe",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_skarpowa_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": false,
+    "toothCost": null,
+    "toothQty": null,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-skarpowa-80cm",
+    "_updatedAt": "2025-09-07T14:02:39Z",
+    "basePrice": 970,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "category-1-2t-skarpowe",
+        "slug": "lyzki-skarpowe-1-2t",
+        "title": "Łyżki skarpowe 1-2t"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka skarpowa 80cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Typ skarpowy. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "80cm-skarpowa-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "f7109709d79a",
+        "_type": "image",
+        "asset": {
+          "_id": "image-0ef5295afb9d9c6c6cfb43d71d0e3a317e52b1e4-1484x980-jpg",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/0ef5295afb9d9c6c6cfb43d71d0e3a317e52b1e4-1484x980.jpg"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka skarpowa 80cm",
+    "phoneOrderOnly": false,
+    "price": 970,
+    "priceGross": 1193.1,
+    "priceNet": 970,
+    "priceOlx": 1048,
+    "priceText": null,
+    "priceTier": "1-1.5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-skarpowa-80cm",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.075,
+      "widthCm": 80
+    },
+    "status": "new",
+    "stock": 4,
+    "subcategory": "lyzki-skarpowe",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_skarpowa_v1",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": null,
+    "toothCost": 240,
+    "toothQty": 8,
+    "viewsCount": 0,
+    "weightRange": null
+  },
+  {
+    "_createdAt": "2025-08-09T19:32:13Z",
+    "_id": "product-lyzka-skarpowa-90cm",
+    "_updatedAt": "2025-09-07T15:10:38Z",
+    "basePrice": 900,
+    "brand": {
+      "_id": "brand-MTT",
+      "slug": "miniteamproject",
+      "title": "MiniTeamProject"
+    },
+    "categories": [
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRDH",
+        "slug": "łyżki-kat.-1-1.5-tony",
+        "title": "Łyżki kat. 1-1.5 Tony"
+      },
+      {
+        "_id": "Nn6Sc6MF3u71woMpYlIRde",
+        "slug": "łyżki-kat.-1.5-2.3-tony",
+        "title": "Łyżki kat. 1.5-2.3 Tony"
+      }
+    ],
+    "dateUpdated": "2025-08-09T16:00:00Z",
+    "description": "Łyżka skarpowa 90cm do maszyn 1-2 t. Lemiesz tnący 110×16mm Hardox HB500. Typ skarpowy. Opcjonalnie: zęby, spód Hardox HB500.",
+    "dimensions": null,
+    "discount": 0,
+    "drillBits": null,
+    "externalId": "90cm-skarpowa-1-2t",
+    "featuredRank": 0,
+    "images": [
+      {
+        "_key": "5ee4b87a45d5",
+        "_type": "image",
+        "asset": {
+          "_id": "image-2ede9dbf174730473b4df7e47092d41b834ad68c-1484x980-jpg",
+          "url": "https://cdn.sanity.io/images/3a7q0xhj/production/2ede9dbf174730473b4df7e47092d41b834ad68c-1484x980.jpg"
+        }
+      }
+    ],
+    "isFeatured": false,
+    "location": "Cieszków",
+    "mountSystems": null,
+    "name": "Łyżka skarpowa 90cm",
+    "phoneOrderOnly": false,
+    "price": 2270,
+    "priceGross": 2792.1,
+    "priceNet": 2270,
+    "priceOlx": 2452,
+    "priceText": null,
+    "priceTier": "3-5t",
+    "recommendationSettings": null,
+    "ripperTier": null,
+    "similarProducts": null,
+    "slug": "lyzka-skarpowa-90cm",
+    "specifications": {
+      "cuttingEdge": "110×16mm Hardox HB500",
+      "features": [
+        "Lemiesz Hardox HB500",
+        "Typ skarpowy",
+        "Opcjonalne zęby"
+      ],
+      "kinetyka": 90,
+      "machineCompatibility": [
+        "JCB",
+        "CAT",
+        "Yanmar",
+        "Volvo",
+        "Bobcat",
+        "Hitachi",
+        "Atlas",
+        "Hyundai",
+        "Case",
+        "John Deere",
+        "Mecalac",
+        "Kubota",
+        "Liebherr",
+        "Taeuchi"
+      ],
+      "pinDiameterMm": 25,
+      "quickCoupler": "Lehnhoff MS01, Verachtert CW05",
+      "ramie": 96,
+      "volumeM3": 0.085,
+      "widthCm": 90
+    },
+    "status": "new",
+    "stock": 3,
+    "subcategory": "lyzki-kopiace",
+    "technicalDrawing": null,
+    "technicalDrawings": [
+      {
+        "code": "lyzka_kopiaca_v2",
+        "externalUrl": null,
+        "file": null,
+        "image": null,
+        "title": null
+      }
+    ],
+    "teethEnabled": true,
+    "toothCost": 270,
+    "toothQty": 5,
+    "viewsCount": 0,
+    "weightRange": null
+  }
+]

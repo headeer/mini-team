@@ -155,7 +155,7 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
       <div className="pt-2">
         <AddToCartButton 
           product={product}
-          extraConfiguration={{ dimensions: dims, photoAssetId }}
+          extraConfiguration={{ dimensions: dims, photoAssetId, teeth: addTeeth ? { enabled: true, price: product?.toothCost } : undefined }}
           className="w-full"
           disabled={!dims.A || !dims.B || !dims.C || !dims.D}
         />

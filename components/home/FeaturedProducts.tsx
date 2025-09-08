@@ -10,13 +10,14 @@ import FeaturedProductActions from "./FeaturedProductActions";
 // const localImages: string[] = [];
 
 async function getFeatured(limit = 8) {
-  const query = `*[_type == "product"] | order(dateUpdated desc)[0...$limit]{
+  const query = `*[_type == "product" && coalesce(hidden, false) != true] | order(dateUpdated desc)[0...$limit]{
     _id,
     name,
     description,
     price,
     basePrice,
     discount,
+    phoneOrderOnly,
     "cover": coalesce(images[0].asset->url, images[0].url),
     "slug": slug.current,
   }`;
@@ -24,13 +25,13 @@ async function getFeatured(limit = 8) {
 }
 
 const FeaturedProducts = async () => {
-  const products: { _id: string; name: string; description?: string; price?: number; basePrice?: number; discount?: number; cover?: string | null; slug: string }[] = await getFeatured(8);
+  const products: { _id: string; name: string; description?: string; price?: number; basePrice?: number; discount?: number; cover?: string | null; slug: string; phoneOrderOnly?: boolean }[] = await getFeatured(8);
   return (
     <section>
       <div className="flex items-center justify-between mb-4">
         <div>
           <p className="uppercase tracking-widest text-[var(--color-brand-orange)] text-xs font-semibold mb-1">Hardox HB500</p>
-          <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">Wybrane modele – gotowe do wysyłki</h2>
+          <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">Wybrane modele Hardox</h2>
         </div>
         <Link href="/shop" className="hidden sm:inline text-sm font-semibold text-shop_dark_green hover:underline underline-offset-4">Zobacz wszystkie</Link>
       </div>
@@ -57,7 +58,7 @@ const FeaturedProducts = async () => {
                       <Link href={`/product/${p.slug}`}>{p.name}</Link>
                     </h3>
                     <p className="text-xs text-gray-600 line-clamp-2">{p.description}</p>
-                    <FeaturedProductActions productId={p._id} name={p.name} price={price} slug={p.slug} />
+                    <FeaturedProductActions productId={p._id} name={p.name} price={price} slug={p.slug} phoneOrderOnly={p.phoneOrderOnly} />
                   </div>
                 </div>
               </CarouselItem>
