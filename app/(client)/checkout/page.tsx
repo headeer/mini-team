@@ -12,11 +12,12 @@ import { useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { createCheckoutSession, Metadata, GroupedCartItems } from "@/actions/createCheckoutSession";
-import { useUser } from "@clerk/nextjs";
+// import { useUser } from "@clerk/nextjs";
 
 export default function CheckoutPage() {
   const groupedItems = useStore((s) => s.getGroupedItems());
-  const { user } = useUser();
+  // const { user } = useUser();
+  const user = null; // Temporarily disabled
   const [payMethod, setPayMethod] = useState<"stripe" | "transfer">("stripe");
   const [loading, setLoading] = useState(false);
 
