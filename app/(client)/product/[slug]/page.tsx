@@ -22,6 +22,8 @@ import { urlFor } from "@/sanity/lib/image";
 import ProductConfigurator from "@/components/ProductConfigurator";
 import ABCDGuide from "@/components/ABCDGuide";
 import BucketConfigurator from "@/components/BucketConfigurator";
+import ProminentTeethOption from "@/components/ProminentTeethOption";
+import ProductPageClient from "@/components/ProductPageClient";
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
@@ -63,6 +65,22 @@ const SingleProductPage = async ({
   if (!product) {
     return notFound();
   }
+
+  // Define variables for the component
+  const hasKeyParams = Boolean(
+    product?.specifications?.widthCm ||
+    product?.specifications?.pinDiameterMm ||
+    product?.specifications?.volumeM3 ||
+    (product as any)?.toothQty ||
+    product?.specifications?.toothThickness ||
+    (product as any)?.priceTier
+  );
+  const hasCompat = Boolean(
+    product?.specifications?.quickCoupler ||
+    (product?.specifications?.machineCompatibility?.length || 0) > 0
+  );
+  const hasFeatures = (product?.specifications?.features?.length || 0) > 0;
+  const isPhoneOnly = Boolean((product as any)?.phoneOrderOnly);
   // AI-powered podobne produkty - inteligentne rekomendacje
   const getCurrentProductData = (product: any) => {
     const categories = product?.categories?.map((cat: any) => cat?.title || cat?._ref || '').filter(Boolean) || [];
@@ -174,10 +192,6 @@ const SingleProductPage = async ({
       })
       .slice(0, 6); // Show up to 6 similar products
   }
-  const isPhoneOnly =
-    typeof (product as any)?.price === "string" ||
-    typeof (product as any)?.priceText === "string" ||
-    (typeof (product as any)?.basePrice === "number" && (product as any)?.basePrice === 0);
   const toSrc = (img: any): string | null => {
     if (!img) return null;
     if (typeof img === "string") return img || null;
@@ -319,63 +333,35 @@ const SingleProductPage = async ({
                 <span>• 3D Secure • Szyfrowanie TLS • Apple Pay / Google Pay</span>
               </div>
             </div>
-            {(/łyżk|lyzk/i.test(String((product as any)?.name || ""))) ? (
-              <div className="my-4">
-                <BucketConfigurator product={product as any} />
-              </div>
-            ) : (
-              <div className="flex items-center gap-3 my-4">
-                <AddToCartButton product={product} />
-                <FavoriteButton showProduct={true} product={product} />
-                {isPhoneOnly && (
-                  <a href="tel:+48782851962" className="ml-auto inline-flex items-center gap-2 text-sm px-3 py-2 rounded-md border hover:bg-gray-50">
-                    <Phone className="h-4 w-4" /> Zamów telefonicznie
-                  </a>
-                )}
+            
+            {/* Product Description - Moved below price */}
+            {product?.description && (
+              <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">Opis produktu</h3>
+                <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+                  {product.description}
+                </p>
               </div>
             )}
-
-            {/* ABCD helper placed early in right column for bucket products */}
-            {/* ABCD helper moved into BucketConfigurator for buckets (to keep single Add to cart) */}
-
-            {/* Configurator for mount systems and drill bits */}
-            {((product as any)?.mountSystems?.length || (product as any)?.drillBits?.length) ? (
-              <ProductConfigurator product={product as any} />
-            ) : null}
-
-            {/* Specyfikacja przeniesiona niżej nad podobne produkty */}
-
-            {/* Zamów w 60 sekund */}
-            <Card className="bg-white border border-gray-200 rounded-2xl shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-xl text-gray-900">Zamów w 60 sekund</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Input suppressHydrationWarning placeholder="Imię i nazwisko" />
-                <Input suppressHydrationWarning placeholder="Numer telefonu" />
-                <Input suppressHydrationWarning placeholder="Adres email" />
-                <Button className="w-full bg-[var(--color-brand-red)] hover:bg-[var(--color-brand-orange)] text-white">ZAMAWIAM - DOSTAWA 48H</Button>
-                <div className="text-xs text-gray-600 flex items-center gap-2"><Shield className="h-4 w-4" />🔒 Bezpieczne zamówienie | 📋 Faktura VAT</div>
-              </CardContent>
-            </Card>
+            
+            {/* Spacing between opis and Doposażenie w zęby */}
+            <div className="mt-6"></div>
+            
+            <ProductPageClient 
+              product={product}
+              isPhoneOnly={isPhoneOnly}
+              hasCompat={hasCompat}
+              hasFeatures={hasFeatures}
+              hasKeyParams={hasKeyParams}
+              similar={similar}
+            >
+              <div></div>
+            </ProductPageClient>
           </div>
         </div>
 
         {/* Specyfikacja techniczna – pełna szerokość */}
         {(() => {
-          const hasKeyParams = Boolean(
-            product?.specifications?.widthCm ||
-            product?.specifications?.pinDiameterMm ||
-            product?.specifications?.volumeM3 ||
-            (product as any)?.toothQty ||
-            product?.specifications?.toothThickness ||
-            (product as any)?.priceTier
-          );
-          const hasCompat = Boolean(
-            product?.specifications?.quickCoupler ||
-            (product?.specifications?.machineCompatibility?.length || 0) > 0
-          );
-          const hasFeatures = (product?.specifications?.features?.length || 0) > 0;
           const hasAnySpecs = hasKeyParams || hasCompat || hasFeatures;
           if (!hasAnySpecs) return null;
           return (
@@ -483,6 +469,30 @@ const SingleProductPage = async ({
         </div>
           );
         })()}
+
+        {/* Zamów w 60 sekund - Moved below technical specifications */}
+        <div className="mt-10">
+          <Card className="bg-white border border-gray-200 rounded-2xl shadow-sm">
+            <CardHeader>
+              <CardTitle className="text-xl text-gray-900">Zamów w 60 sekund</CardTitle>
+              <div className="text-sm text-gray-600 mt-2">
+                🚚 <strong>Szybka dostawa:</strong> Produkty dostępne na magazynie - wysyłka w ciągu 24h od potwierdzenia zamówienia
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <Input suppressHydrationWarning placeholder="Imię i nazwisko" />
+              <Input suppressHydrationWarning placeholder="Numer telefonu" />
+              <Input suppressHydrationWarning placeholder="Adres email" />
+              <Button className="w-full bg-[var(--color-brand-red)] hover:bg-[var(--color-brand-orange)] text-white">
+                ZAMAWIAM - DOSTAWA W 24H
+              </Button>
+              <div className="text-xs text-gray-600 flex items-center gap-2">
+                <Shield className="h-4 w-4" />
+                🔒 Bezpieczne zamówienie | 📋 Faktura VAT | ⚡ Natychmiastowa realizacja
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Sticky CTA mobile - Enhanced with better positioning */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-50">

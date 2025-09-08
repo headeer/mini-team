@@ -8,7 +8,7 @@ const TopBenefitsBar = () => {
       <div className="sm:hidden space-y-1">
         <div className="flex items-center justify-center gap-2 text-xs font-semibold">
           <span>🚚</span>
-          <span>DOSTAWA 48H</span>
+          <span>DOSTAWA W 24H</span>
           <span className="opacity-60">•</span>
           <span>🛡️</span>
           <span>2 LATA GWARANCJI</span>
@@ -23,7 +23,7 @@ const TopBenefitsBar = () => {
       <div className="hidden sm:flex items-center justify-center gap-4 lg:gap-6 text-sm font-semibold tracking-wide">
         <div className="flex items-center gap-2">
           <span>🚚</span>
-          <span className="uppercase">EKSPRESOWA DOSTAWA 48H</span>
+          <span className="uppercase">EKSPRESOWA DOSTAWA W 24H</span>
         </div>
         <span className="opacity-60">|</span>
         <div className="flex items-center gap-2">

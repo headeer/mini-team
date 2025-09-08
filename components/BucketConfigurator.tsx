@@ -10,18 +10,37 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import AddToCartButton from "./AddToCartButton";
 import ABCDGuide from "./ABCDGuide";
 
-type WithTeeth = Product & { toothCost?: number; teethEnabled?: boolean };
+type WithTeeth = Product & { 
+  toothCost?: number; 
+  teethEnabled?: boolean;
+  addTeeth?: boolean;
+  onTeethChange?: (enabled: boolean) => void;
+};
 
 export default function BucketConfigurator({ product }: { product: WithTeeth }) {
   const [dims, setDims] = React.useState<{ A?: number; B?: number; C?: number; D?: number }>({});
   const [hasQuickCouplerChoice, setHasQuickCouplerChoice] = React.useState<'yes'|'no'>('yes');
   const [fixedPins, setFixedPins] = React.useState<boolean>(false);
   // Usuwamy pola kinetyka/ramię/sworzeń (A/B/C/D zastępują te wielkości)
-  const [addTeeth, setAddTeeth] = React.useState<boolean>(false);
+  const [addTeeth, setAddTeeth] = React.useState<boolean>(product.addTeeth || false);
   const [photoFile, setPhotoFile] = React.useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = React.useState<string | null>(null);
   const [photoAssetId, setPhotoAssetId] = React.useState<string | undefined>(undefined);
   const [isUploading, setIsUploading] = React.useState<boolean>(false);
+
+  // Sync with parent teeth state
+  React.useEffect(() => {
+    if (product.addTeeth !== undefined && product.addTeeth !== addTeeth) {
+      setAddTeeth(product.addTeeth);
+    }
+  }, [product.addTeeth, addTeeth]);
+
+  // Notify parent of teeth state changes
+  React.useEffect(() => {
+    if (product.onTeethChange) {
+      product.onTeethChange(addTeeth);
+    }
+  }, [addTeeth, product.onTeethChange]);
 
   const totalExtras = React.useMemo(() => (addTeeth ? (product?.toothCost || 0) : 0), [addTeeth, product?.toothCost]);
   const standardCouplerCodes = React.useMemo(() => {
@@ -74,19 +93,23 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
             </TooltipProvider>
           </div>
           <RadioGroup value={hasQuickCouplerChoice} onValueChange={(v) => setHasQuickCouplerChoice((v as any) || 'yes')} className="flex items-center gap-4 text-sm">
-            <label className="inline-flex items-center gap-2 cursor-pointer">
-              <RadioGroupItem value="yes" id="qc-yes" />
+            <label className="inline-flex items-center gap-3 cursor-pointer">
+              <RadioGroupItem value="yes" id="qc-yes" className="w-6 h-6 sm:w-5 sm:h-5" />
               Tak
             </label>
-            <label className="inline-flex items-center gap-2 cursor-pointer">
-              <RadioGroupItem value="no" id="qc-no" />
+            <label className="inline-flex items-center gap-3 cursor-pointer">
+              <RadioGroupItem value="no" id="qc-no" className="w-6 h-6 sm:w-5 sm:h-5" />
               Nie
             </label>
           </RadioGroup>
           {hasQuickCouplerChoice === 'yes' ? (
             <div className="mt-2 text-sm">
-              <label className="inline-flex items-center gap-2 cursor-pointer">
-                <Checkbox checked={fixedPins} onCheckedChange={(v) => setFixedPins(Boolean(v))} />
+              <label className="inline-flex items-center gap-3 cursor-pointer">
+                <Checkbox 
+                  checked={fixedPins} 
+                  onCheckedChange={(v) => setFixedPins(Boolean(v))} 
+                  className="w-6 h-6 sm:w-5 sm:h-5"
+                />
                 Zastosuj sworznie na stałe (opcjonalnie)
               </label>
             </div>

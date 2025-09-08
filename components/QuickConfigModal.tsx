@@ -108,23 +108,24 @@ export default function QuickConfigModal({ isOpen, onClose, product }: QuickConf
               Wypełnij dane, abyśmy dobrali właściwe mocowanie.
             </Label>
             <RadioGroup value={hasQuickCouplerChoice} onValueChange={(value: 'yes'|'no') => setHasQuickCouplerChoice(value)}>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="yes" id="yes" />
+              <div className="flex items-center space-x-3">
+                <RadioGroupItem value="yes" id="yes" className="w-6 h-6 sm:w-5 sm:h-5" />
                 <Label htmlFor="yes">Tak</Label>
               </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="no" id="no" />
+              <div className="flex items-center space-x-3">
+                <RadioGroupItem value="no" id="no" className="w-6 h-6 sm:w-5 sm:h-5" />
                 <Label htmlFor="no">Nie</Label>
               </div>
             </RadioGroup>
           </div>
 
           {/* Fixed Pins */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <Checkbox 
               id="fixedPins" 
               checked={fixedPins} 
               onCheckedChange={(checked) => setFixedPins(!!checked)} 
+              className="w-6 h-6 sm:w-5 sm:h-5"
             />
             <Label htmlFor="fixedPins">Zastosuj sworznie na stałe (opcjonalnie)</Label>
           </div>

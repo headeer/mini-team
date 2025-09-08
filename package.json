@@ -36,7 +36,11 @@
     "fix:technical-structure": "ts-node scripts/fix-technical-drawings-structure.ts",
     "add:wiertnica-drawings": "ts-node scripts/add-wiertnica-drawings.ts",
     "add:skarpowa-drawings": "ts-node scripts/add-skarpowa-drawings.ts",
-    "add:1-5-2-3t-drawings": "ts-node scripts/add-1-5-2-3t-drawings.ts"
+    "add:1-5-2-3t-drawings": "ts-node scripts/add-1-5-2-3t-drawings.ts",
+    "update:all-lyzki-drawings": "ts-node scripts/update-all-lyzki-drawings.ts",
+    "update:1-1-5t-images": "ts-node scripts/update-1-1-5t-images.ts",
+    "update:1-5-2-3t-and-2-3-3t-images": "ts-node scripts/update-1-5-2-3t-and-2-3-3t-images.ts",
+    "update:1-1-5t-correct-images": "ts-node scripts/update-1-1-5t-correct-images.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.29.0",
