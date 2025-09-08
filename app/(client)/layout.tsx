@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-// import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
 import FloatingMachineSelector from "@/components/FloatingMachineSelector";
@@ -59,7 +59,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      appearance={{
+        elements: {
+          formButtonPrimary: "bg-[var(--color-brand-orange)] hover:bg-[var(--color-brand-red)] text-white",
+          card: "bg-white shadow-lg",
+          headerTitle: "text-gray-900",
+          headerSubtitle: "text-gray-600",
+          socialButtonsBlockButton: "border border-gray-300 hover:bg-gray-50",
+          formFieldInput: "border border-gray-300 focus:border-[var(--color-brand-orange)]",
+        }
+      }}
+    >
+      <div className="flex flex-col min-h-screen">
         <AccessibilityPanel />
         <TopBenefitsBar />
         <Header />
@@ -89,5 +102,6 @@ export default function RootLayout({
           `}
         </Script>
       </div>
+    </ClerkProvider>
   );
 }

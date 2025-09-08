@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getMyOrders } from "@/sanity/queries";
-// import { currentUser } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 import { FileX } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -13,13 +13,11 @@ import React from "react";
 export const dynamic = 'force-dynamic';
 
 const OrdersPage = async () => {
-  // const user = await currentUser();
-  // const userId = user?.id;
-  // if (!userId) {
-  //   return redirect("/");
-  // }
-  const user = null; // Temporarily disabled
-  const userId = null; // Temporarily disabled
+  const user = await currentUser();
+  const userId = user?.id;
+  if (!userId) {
+    return redirect("/");
+  }
 
   const orders = await getMyOrders(userId);
 

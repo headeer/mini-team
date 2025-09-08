@@ -1,9 +1,6 @@
-// import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
-// Temporarily disable Clerk middleware
-export default function middleware() {
-  // No-op middleware
-}
+export default clerkMiddleware();
 
 export const config = {
   matcher: [
