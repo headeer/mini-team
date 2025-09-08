@@ -53,7 +53,7 @@ export default function QuickConfigModal({ isOpen, onClose, product }: QuickConf
         setPhotoPreview(data.url);
         toast.success("Zdjęcie przesłane");
       }
-    } catch (error) {
+    } catch (_error) {
       toast.error("Błąd podczas przesyłania zdjęcia");
     } finally {
       setIsUploading(false);

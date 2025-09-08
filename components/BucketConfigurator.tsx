@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Product } from "@/sanity.types";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -40,7 +40,7 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
     if (product.onTeethChange) {
       product.onTeethChange(addTeeth);
     }
-  }, [addTeeth, product.onTeethChange]);
+  }, [addTeeth, product]);
 
   const totalExtras = React.useMemo(() => (addTeeth ? (product?.toothCost || 0) : 0), [addTeeth, product?.toothCost]);
   const standardCouplerCodes = React.useMemo(() => {

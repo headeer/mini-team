@@ -6,7 +6,7 @@ import Head from "next/head";
 import WhyHardox from "@/components/home/WhyHardox";
 import LatestBlog from "@/components/LatestBlog";
 import SevenReasons from "@/components/home/SevenReasons";
-import RealizacjeCarousel from "@/components/home/RealizacjeCarousel";
+// import RealizacjeCarousel from "@/components/home/RealizacjeCarousel";
 import FAQ from "@/components/home/FAQ";
 import FinalCTA from "@/components/home/FinalCTA";
 import HomeShowcase from "@/components/home/HomeShowcase";

@@ -1,6 +1,6 @@
 import AddToCartButton from "@/components/AddToCartButton";
 import Container from "@/components/Container";
-import FavoriteButton from "@/components/FavoriteButton";
+// import FavoriteButton from "@/components/FavoriteButton";
 import ImageView from "@/components/ImageView";
 import MediaTabs from "@/components/MediaTabs";
 import PriceView from "@/components/PriceView";
@@ -19,10 +19,10 @@ import React from "react";
 import type { Metadata } from "next";
 import { urlFor } from "@/sanity/lib/image";
 // JSON-LD scripts will use plain <script> to avoid hydration issues
-import ProductConfigurator from "@/components/ProductConfigurator";
-import ABCDGuide from "@/components/ABCDGuide";
-import BucketConfigurator from "@/components/BucketConfigurator";
-import ProminentTeethOption from "@/components/ProminentTeethOption";
+// import ProductConfigurator from "@/components/ProductConfigurator";
+// import ABCDGuide from "@/components/ABCDGuide";
+// import BucketConfigurator from "@/components/BucketConfigurator";
+// import ProminentTeethOption from "@/components/ProminentTeethOption";
 import ProductPageClient from "@/components/ProductPageClient";
 
 export async function generateMetadata(

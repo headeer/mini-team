@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { sanityFetch } from "@/sanity/lib/live";
-import { MY_ORDERS_QUERY } from "@/sanity/queries/query";
+// import { sanityFetch } from "@/sanity/lib/live";
+// import { MY_ORDERS_QUERY } from "@/sanity/queries/query";
 // import { currentUser } from "@clerk/nextjs/server";
 
 export async function GET() {
