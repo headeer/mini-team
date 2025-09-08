@@ -1,6 +1,6 @@
 import Shop from "@/components/Shop";
 import { getCategories } from "@/sanity/queries";
-import React from "react";
+import React, { Suspense } from "react";
 import Container from "@/components/Container";
 
 const ShopPage = async () => {
@@ -8,7 +8,9 @@ const ShopPage = async () => {
   return (
     <div className="bg-white">
       <Container>
-        <Shop categories={categories} brands={[]} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Shop categories={categories} brands={[]} />
+        </Suspense>
       </Container>
     </div>
   );
