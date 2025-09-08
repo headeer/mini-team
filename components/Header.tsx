@@ -5,23 +5,25 @@ import HeaderMenu from "./HeaderMenu";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
 import FavoriteButton from "./FavoriteButton";
-// import SignIn from "./SignIn";
 import MobileMenu from "./MobileMenu";
-// import { currentUser } from "@clerk/nextjs/server";
-// import { ClerkLoaded, SignedIn, UserButton } from "@clerk/nextjs";
-// import Link from "next/link";
-// import { Logs } from "lucide-react";
-// import { getMyOrders } from "@/sanity/queries";
 import HeaderHelpersMenu from "./HeaderHelpersMenu";
+import { currentUser } from "@clerk/nextjs/server";
+import Link from "next/link";
+import { Logs } from "lucide-react";
+import { getMyOrders } from "@/sanity/queries";
+import HeaderAuth from "./HeaderAuth";
 
 const Header = async () => {
-  // Temporarily disable Clerk authentication
-  // const user = null;
-  // const userId = null;
-  // const orders = null;
-  // if (userId) {
-  //   orders = await getMyOrders(userId);
-  // }
+  const user = await currentUser();
+  const userId = user?.id ?? null;
+  let orders: any[] | null = null;
+  if (userId) {
+    try {
+      orders = await getMyOrders(userId);
+    } catch (_) {
+      orders = null;
+    }
+  }
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-200">
@@ -47,8 +49,7 @@ const Header = async () => {
             <FavoriteButton />
           </div>
           <HeaderHelpersMenu />
-          {/* Temporarily disabled Clerk authentication */}
-          {/* {user && (
+          {user && (
             <Link href={"/orders"} className="group relative text-gray-700 hover:text-orange-500 hidden sm:inline-flex">
               <Logs className="w-5 h-5" />
               <span className="absolute -top-1 -right-1 bg-shop_btn_dark_green text-white h-3.5 w-3.5 rounded-full text-xs font-semibold flex items-center justify-center">
@@ -56,12 +57,7 @@ const Header = async () => {
               </span>
             </Link>
           )}
-          <ClerkLoaded>
-            <SignedIn>
-              <UserButton appearance={{ elements: { avatarBox: "w-7 h-7" } }} />
-            </SignedIn>
-            {!user && <SignIn />}
-          </ClerkLoaded> */}
+          <HeaderAuth />
         </div>
       </Container>
     </header>
