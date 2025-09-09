@@ -348,8 +348,8 @@ const CartPage = () => {
                           <PriceFormatter amount={getSubTotalPrice() * 1.23} />
                         </div>
                         <div className="flex items-center justify-between">
-                          <span>Koszt wysyłki</span>
-                          <span className="text-sm text-gray-600">Obliczany przy kasie</span>
+                          <span>Wysyłka paletowa (netto)</span>
+                          <PriceFormatter amount={160} />
                         </div>
                         <Separator />
                         <div className="flex items-center justify-between font-semibold text-lg">
@@ -487,8 +487,8 @@ const CartPage = () => {
                           <PriceFormatter amount={getSubTotalPrice() * 1.23} />
                         </div>
                         <div className="flex items-center justify-between">
-                          <span>Koszt wysyłki</span>
-                          <span className="text-sm text-gray-600">Obliczany przy kasie</span>
+                          <span>Wysyłka paletowa (netto)</span>
+                          <PriceFormatter amount={160} />
                         </div>
                         <Separator />
                         <div className="flex items-center justify-between font-semibold text-lg">

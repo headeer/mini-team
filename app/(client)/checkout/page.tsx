@@ -38,7 +38,7 @@ export default function CheckoutPage() {
   }, []);
 
   const subtotal = useMemo(() => groupedItems.reduce((sum, it) => sum + computeUnitFullPrice(it.product) * it.quantity, 0), [groupedItems, computeUnitFullPrice]);
-  const shipping = subtotal >= 1000 ? 0 : 39;
+  const shipping = 160; // wysyłka paletowa (netto)
   const total = subtotal + shipping;
 
   const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -201,8 +201,8 @@ export default function CheckoutPage() {
                   <PriceFormatter amount={subtotal} />
                 </div>
                 <div className="flex items-center justify-between">
-                  <span>Koszt wysyłki</span>
-                  {shipping === 0 ? <span className="text-green-600 font-medium">Darmowa dostawa</span> : <PriceFormatter amount={shipping} />}
+                  <span>Wysyłka paletowa (netto)</span>
+                  <PriceFormatter amount={shipping} />
                 </div>
                 <div className="flex items-center justify-between font-semibold">
                   <span>RAZEM do zapłaty</span>

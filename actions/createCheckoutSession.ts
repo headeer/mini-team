@@ -50,39 +50,53 @@ export async function createCheckoutSession(
         process.env.NEXT_PUBLIC_SUCCESS_URL || `${process.env.NEXT_PUBLIC_BASE_URL}/success`
       }?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
       cancel_url: `${process.env.NEXT_PUBLIC_CANCEL_URL || `${process.env.NEXT_PUBLIC_BASE_URL}/cart`}`,
-      line_items: items?.map((item) => ({
-        price_data: {
-          currency: "PLN",
-          unit_amount: Math.round((
-            typeof (item?.product as any)?.basePrice === "number"
-              ? (item?.product as any).basePrice
-              : typeof item?.product?.price === "number"
-              ? (item?.product?.price as number)
-              : 0
-          ) * 100),
-          product_data: {
-            name: item?.product?.name || "Unknown Product",
-            description: item?.product?.description,
-            metadata: { id: item?.product?._id },
-            images: (() => {
-              const toSrc = (img: any): string | null => {
-                if (!img) return null;
-                if (typeof img === "string") return img || null;
-                if (typeof img === "object" && img.url) return img.url || null;
-                if (typeof img === "object" && img.asset?._ref) {
-                  try { return urlFor(img).url(); } catch { return null; }
-                }
-                return null;
-              };
-              const direct = (item?.product as any)?.cover || (item?.product as any)?.imageUrls?.[0]?.url;
-              const fallback = item?.product?.images && item?.product?.images?.length > 0 ? toSrc(item?.product?.images[0]) : null;
-              const resolved = direct || fallback;
-              return resolved ? [resolved] : undefined;
-            })(),
+      line_items: [
+        ...items?.map((item) => ({
+          price_data: {
+            currency: "PLN",
+            unit_amount: Math.round((
+              typeof (item?.product as any)?.basePrice === "number"
+                ? (item?.product as any).basePrice
+                : typeof item?.product?.price === "number"
+                ? (item?.product?.price as number)
+                : 0
+            ) * 100),
+            product_data: {
+              name: item?.product?.name || "Unknown Product",
+              description: item?.product?.description,
+              metadata: { id: item?.product?._id },
+              images: (() => {
+                const toSrc = (img: any): string | null => {
+                  if (!img) return null;
+                  if (typeof img === "string") return img || null;
+                  if (typeof img === "object" && img.url) return img.url || null;
+                  if (typeof img === "object" && img.asset?._ref) {
+                    try { return urlFor(img).url(); } catch { return null; }
+                  }
+                  return null;
+                };
+                const direct = (item?.product as any)?.cover || (item?.product as any)?.imageUrls?.[0]?.url;
+                const fallback = item?.product?.images && item?.product?.images?.length > 0 ? toSrc(item?.product?.images[0]) : null;
+                const resolved = direct || fallback;
+                return resolved ? [resolved] : undefined;
+              })(),
+            },
           },
+          quantity: item?.quantity,
+        })),
+        // Flat pallet shipping (net)
+        {
+          price_data: {
+            currency: "PLN",
+            unit_amount: 16000, // 160 PLN
+            product_data: {
+              name: "Wysyłka paletowa (netto)",
+              description: "Stała stawka wysyłki paletowej",
+            },
+          },
+          quantity: 1,
         },
-        quantity: item?.quantity,
-      })),
+      ],
     };
     if (customerId) {
       sessionPayload.customer = customerId;
