@@ -37,7 +37,8 @@ const ProductCard = ({ product }: { product: Product }) => {
     if (typeof basePrice === "number" && basePrice > 0) return basePrice;
     return typeof rawPrice === "number" ? rawPrice : basePrice;
   })();
-  const derivedPhoneOrderOnly = Boolean((product as any)?.phoneOrderOnly) || typeof ((product as any)?.price) === "string" || ((product as any)?.basePrice === 0 && isRipper);
+  // Only respect explicit flag; do NOT infer from price/base values
+  const derivedPhoneOrderOnly = Boolean((product as any)?.phoneOrderOnly);
 
   return (
     <div className="group relative h-full overflow-hidden">

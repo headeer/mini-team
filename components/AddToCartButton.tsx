@@ -33,11 +33,9 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
   const computedItemCount = getItemCount(product?._id);
   const itemCount = isHydrated ? computedItemCount : 0;
   const isOutOfStock = typeof product?.stock === 'number' && product.stock === 0;
-  const priceAsUnknown = typeof (product as unknown as { price?: unknown }).price === "string";
-  const hasPriceText = typeof (product as unknown as { priceText?: unknown }).priceText === "string";
-  const baseIsZero = (product as unknown as { basePrice?: number })?.basePrice === 0;
   const explicitPhoneOnly = Boolean((product as unknown as { phoneOrderOnly?: boolean })?.phoneOrderOnly);
-  const isPhoneOnly = priceAsUnknown || hasPriceText || baseIsZero || explicitPhoneOnly;
+  // Only treat as phone order when explicit flag is set
+  const isPhoneOnly = explicitPhoneOnly;
 
   const handleAddToCart = () => {
     if (disabled) return;
