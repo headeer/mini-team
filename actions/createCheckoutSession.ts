@@ -1,6 +1,6 @@
 "use server";
 
-import stripe from "@/lib/stripe";
+import getStripe from "@/lib/stripe";
 import { Address } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 import { CartItem } from "@/store";
@@ -17,6 +17,7 @@ export interface Metadata {
 export interface GroupedCartItems {
   product: CartItem["product"];
   quantity: number;
+  configuration?: CartItem["configuration"]; // include selected extras
 }
 
 export async function createCheckoutSession(
@@ -24,13 +25,52 @@ export async function createCheckoutSession(
   metadata: Metadata
 ) {
   try {
+    const baseUrl =
+      process.env.NEXT_PUBLIC_BASE_URL ||
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
     // Retrieve existing customer or create a new one
-    if (!stripe) throw new Error("Stripe not configured");
+    const stripe = getStripe();
+    if (!stripe) {
+      console.error("Stripe not configured – missing STRIPE_SECRET_KEY env. Returning fallback URL.");
+      return process.env.NEXT_PUBLIC_CANCEL_URL || `${baseUrl}/checkout`;
+    }
     const customers = await stripe.customers.list({
       email: metadata.customerEmail,
       limit: 1,
     });
     const customerId = customers?.data?.length > 0 ? customers.data[0].id : "";
+
+    const computeUnitNet = (product: any, configuration?: GroupedCartItems["configuration"]): number => {
+      const baseCandidate = product?.pricing?.priceNet ?? product?.priceNet ?? product?.basePrice ?? product?.price ?? 0;
+      const baseNet = typeof baseCandidate === "string" ? parseFloat(baseCandidate) : (Number(baseCandidate) || 0);
+      const mount = configuration?.mount?.price ?? 0;
+      const drill = configuration?.drill?.price ?? 0;
+      const teeth = configuration?.teeth?.enabled ? (configuration?.teeth?.price ?? 0) : 0;
+      return baseNet + (Number(mount) || 0) + (Number(drill) || 0) + (Number(teeth) || 0);
+    };
+
+    const formatName = (item: GroupedCartItems): string => {
+      const p: any = item.product || {};
+      const base = p?.title || p?.name || "Produkt";
+      const width = p?.specifications?.widthCm ? `${p.specifications.widthCm}cm` : "";
+      const tier = p?.priceTier ? `(${p.priceTier})` : "";
+      const mount = item.configuration?.mount?.title ? `, ${item.configuration.mount.title}` : (p?.specifications?.quickCoupler ? `, ${p.specifications.quickCoupler}` : "");
+      const teeth = item.configuration?.teeth?.enabled ? ", zęby" : "";
+      const parts = [base, width, tier].filter(Boolean).join(" ");
+      return `${parts}${mount}${teeth}`.trim();
+    };
+
+    const formatDescription = (item: GroupedCartItems): string | undefined => {
+      const p: any = item.product || {};
+      const desc: string | undefined = p?.description;
+      const extras: string[] = [];
+      if (item.configuration?.mount?.title) extras.push(`Mocowanie: ${item.configuration.mount.title}`);
+      if (item.configuration?.drill?.title) extras.push(`Wiertło: ${item.configuration.drill.title}`);
+      if (item.configuration?.teeth?.enabled) extras.push(`Zęby: tak`);
+      const suffix = extras.length ? `\n${extras.join(" | ")}` : "";
+      const trimmed = typeof desc === 'string' ? desc.slice(0, 280) : undefined;
+      return (trimmed ? trimmed : undefined)?.concat(suffix) || (extras.length ? extras.join(" | ") : undefined);
+    };
 
     const sessionPayload: Stripe.Checkout.SessionCreateParams = {
       metadata: {
@@ -40,6 +80,7 @@ export async function createCheckoutSession(
         clerkUserId: metadata.clerkUserId!,
         address: JSON.stringify(metadata.address),
       },
+      locale: 'pl',
       mode: "payment",
       allow_promotion_codes: true,
       payment_method_types: ["card"],
@@ -47,24 +88,18 @@ export async function createCheckoutSession(
         enabled: true,
       },
       success_url: `${
-        process.env.NEXT_PUBLIC_SUCCESS_URL || `${process.env.NEXT_PUBLIC_BASE_URL}/success`
+        process.env.NEXT_PUBLIC_SUCCESS_URL || `${baseUrl}/success`
       }?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_CANCEL_URL || `${process.env.NEXT_PUBLIC_BASE_URL}/cart`}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_CANCEL_URL || `${baseUrl}/cart`}`,
       line_items: [
         ...items?.map((item) => ({
           price_data: {
-            currency: "PLN",
-            unit_amount: Math.round((
-              typeof (item?.product as any)?.basePrice === "number"
-                ? (item?.product as any).basePrice
-                : typeof item?.product?.price === "number"
-                ? (item?.product?.price as number)
-                : 0
-            ) * 100),
+            currency: "pln",
+            unit_amount: Math.round(computeUnitNet(item.product, item.configuration) * 100),
             product_data: {
-              name: item?.product?.name || "Unknown Product",
-              description: item?.product?.description,
-              metadata: { id: item?.product?._id },
+              name: formatName(item),
+              description: formatDescription(item),
+              metadata: { id: (item?.product as any)?._id },
               images: (() => {
                 const toSrc = (img: any): string | null => {
                   if (!img) return null;
@@ -76,7 +111,7 @@ export async function createCheckoutSession(
                   return null;
                 };
                 const direct = (item?.product as any)?.cover || (item?.product as any)?.imageUrls?.[0]?.url;
-                const fallback = item?.product?.images && item?.product?.images?.length > 0 ? toSrc(item?.product?.images[0]) : null;
+                const fallback = (item?.product as any)?.images && (item?.product as any)?.images?.length > 0 ? toSrc((item?.product as any)?.images[0]) : null;
                 const resolved = direct || fallback;
                 return resolved ? [resolved] : undefined;
               })(),
@@ -87,7 +122,7 @@ export async function createCheckoutSession(
         // Flat pallet shipping (net)
         {
           price_data: {
-            currency: "PLN",
+            currency: "pln",
             unit_amount: 16000, // 160 PLN
             product_data: {
               name: "Wysyłka paletowa (netto)",

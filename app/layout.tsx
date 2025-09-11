@@ -2,8 +2,8 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="pl">
-      <body className="font-poppins antialiased overflow-x-hidden">
+    <html lang="pl" suppressHydrationWarning>
+      <body className="font-poppins antialiased overflow-x-hidden" suppressHydrationWarning>
         {children}
         <Toaster
           position="bottom-right"

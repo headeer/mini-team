@@ -12,12 +12,12 @@ import techMap from "@/public/images/techniczne/map.json";
 export const metadata: Metadata = {
   metadataBase: new URL("https://example.com"),
   title: {
-    template: "%s – MTT Osprzęt do koparek",
-    default: "MTT Osprzęt do koparek – Łyżki, zrywaki, osprzęt",
+    template: "%s – Mini Team Project",
+    default: "Mini Team Project – Osprzęt do koparek, łyżki, zrywak",
   },
-  description: "Osprzęt do koparek: łyżki, zrywaki, szybkozłącza. Hardox HB500, dostawa 48h, polska produkcja.",
-  applicationName: "MTT Sklep",
-  authors: [{ name: "MTT" }],
+  description: "Mini Team Project – osprzęt do koparek: łyżki, zrywaki, szybkozłącza. Hardox HB500, dostawa 48h, polska produkcja.",
+  applicationName: "Mini Team Project",
+  authors: [{ name: "Mini Team Project" }],
   keywords: [
     "osprzęt do koparek",
     "łyżki kopiące",
@@ -30,16 +30,16 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    siteName: "MTT Osprzęt do koparek",
+    siteName: "Mini Team Project",
     type: "website",
-    title: "MTT Osprzęt do koparek – Łyżki, zrywaki, osprzęt",
-    description: "Osprzęt do koparek: łyżki, zrywaki, szybkozłącza. Hardox HB500, dostawa 48h, polska produkcja.",
+    title: "Mini Team Project – Osprzęt do koparek, łyżki, zrywak",
+    description: "Mini Team Project – osprzęt do koparek: łyżki, zrywaki, szybkozłącza. Hardox HB500, dostawa 48h, polska produkcja.",
     images: [{ url: "/images/main/excavator-2025-03-15-06-31-29-utc.webp" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MTT Osprzęt do koparek",
-    description: "Osprzęt do koparek: łyżki, zrywak, szybkozłącza.",
+    title: "Mini Team Project",
+    description: "Mini Team Project – osprzęt do koparek: łyżki, zrywak, szybkozłącza.",
     images: ["/images/main/excavator-2025-03-15-06-31-29-utc.webp"],
   },
   icons: {

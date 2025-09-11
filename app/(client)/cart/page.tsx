@@ -126,6 +126,16 @@ const CartPage = () => {
       setLoading(false);
     }
   };
+
+  const computeUnitNet = (product: any, configuration?: any): number => {
+    const baseCandidate = (product?.pricing?.priceNet ?? product?.priceNet ?? product?.price ?? 0);
+    const baseNet = typeof baseCandidate === 'string' ? parseFloat(baseCandidate) : (Number(baseCandidate) || 0);
+    const mount = configuration?.mount?.price ?? 0;
+    const drill = configuration?.drill?.price ?? 0;
+    const teeth = configuration?.teeth?.enabled ? (configuration?.teeth?.price ?? 0) : 0;
+    return baseNet + (Number(mount) || 0) + (Number(drill) || 0) + (Number(teeth) || 0);
+  };
+
   return (
     <div className="bg-gray-50 pb-52 md:pb-10">
       {isSignedIn ? (
@@ -148,6 +158,7 @@ const CartPage = () => {
                   <div className="border bg-white rounded-md">
                     {groupedItems?.map(({ product, configuration }) => {
                       const itemCount = getItemCount(product?._id);
+                      const unitNet = computeUnitNet(product, configuration);
                       return (
                         <div
                           key={product?._id}
@@ -265,12 +276,12 @@ const CartPage = () => {
                             <div className="text-right">
                               <div className="text-sm text-gray-600">netto</div>
                               <PriceFormatter
-                                amount={(product?.price as number) * itemCount}
+                                amount={unitNet * itemCount}
                                 className="font-bold text-lg"
                               />
                               <div className="text-sm text-gray-600">brutto</div>
                               <PriceFormatter
-                                amount={(product?.price as number) * itemCount * 1.23}
+                                amount={unitNet * itemCount * 1.23}
                                 className="font-semibold text-base text-gray-700"
                               />
                             </div>

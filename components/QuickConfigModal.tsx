@@ -21,6 +21,8 @@ interface QuickConfigModalProps {
 export default function QuickConfigModal({ isOpen, onClose, product }: QuickConfigModalProps) {
   const { addConfiguredItem } = useStore();
   const [dims, setDims] = useState<{ A?: number; B?: number; C?: number; D?: number }>({});
+  const [brandModel, setBrandModel] = useState<string>("");
+  const [machineWeight, setMachineWeight] = useState<string>("");
   const [hasQuickCouplerChoice, setHasQuickCouplerChoice] = useState<'yes'|'no'>('yes');
   const [fixedPins, setFixedPins] = useState<boolean>(false);
   const [addTeeth, setAddTeeth] = useState<boolean>(false);
@@ -71,6 +73,10 @@ export default function QuickConfigModal({ isOpen, onClose, product }: QuickConf
 
     addConfiguredItem(product, {
       dimensions: dims,
+      machine: {
+        brandModel: brandModel || undefined,
+        weight: machineWeight ? Number(machineWeight) : undefined,
+      },
       photoAssetId: photoPreview || undefined,
       teeth: addTeeth ? { enabled: true, price: product?.toothCost } : undefined,
     });
@@ -80,6 +86,8 @@ export default function QuickConfigModal({ isOpen, onClose, product }: QuickConf
     
     // Reset form
     setDims({});
+    setBrandModel("");
+    setMachineWeight("");
     setHasQuickCouplerChoice('yes');
     setFixedPins(false);
     setAddTeeth(false);
@@ -160,9 +168,33 @@ export default function QuickConfigModal({ isOpen, onClose, product }: QuickConf
             <p className="text-sm text-gray-600 mb-3">
               Jak zmierzyć mocowanie: A/B/C/D
             </p>
+            {/* Machine brand/model & weight */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <Label htmlFor="brandModel">Marka maszyny – Model</Label>
+                <Input
+                  id="brandModel"
+                  type="text"
+                  placeholder="np. JCB 3CX / Kubota KX057"
+                  value={brandModel}
+                  onChange={(e) => setBrandModel(e.target.value)}
+                />
+              </div>
+              <div>
+                <Label htmlFor="machineWeight">Waga maszyny (t)</Label>
+                <Input
+                  id="machineWeight"
+                  type="number"
+                  step="0.1"
+                  placeholder="np. 5.7"
+                  value={machineWeight}
+                  onChange={(e) => setMachineWeight(e.target.value)}
+                />
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="dimA">A (cm)</Label>
+                <Label htmlFor="dimA">Ramię A</Label>
                 <Input
                   id="dimA"
                   type="number"
@@ -173,7 +205,7 @@ export default function QuickConfigModal({ isOpen, onClose, product }: QuickConf
                 />
               </div>
               <div>
-                <Label htmlFor="dimB">B (cm)</Label>
+                <Label htmlFor="dimB">Ramię B</Label>
                 <Input
                   id="dimB"
                   type="number"
@@ -184,7 +216,7 @@ export default function QuickConfigModal({ isOpen, onClose, product }: QuickConf
                 />
               </div>
               <div>
-                <Label htmlFor="dimC">C (cm)</Label>
+                <Label htmlFor="dimC">Sworzeń A</Label>
                 <Input
                   id="dimC"
                   type="number"
@@ -195,7 +227,7 @@ export default function QuickConfigModal({ isOpen, onClose, product }: QuickConf
                 />
               </div>
               <div>
-                <Label htmlFor="dimD">D (cm)</Label>
+                <Label htmlFor="dimD">Sworzeń B</Label>
                 <Input
                   id="dimD"
                   type="number"

@@ -2,8 +2,8 @@ import Container from "@/components/Container";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata = {
-  title: "Polityka Prywatności - ShopCartYT",
-  description: "Polityka prywatności i ochrony danych osobowych w sklepie ShopCartYT. Informacje o przetwarzaniu danych zgodnie z RODO.",
+  title: "Polityka Prywatności - Mini Team Project",
+  description: "Polityka prywatności i ochrony danych osobowych w sklepie Mini Team Project. Informacje o przetwarzaniu danych zgodnie z RODO.",
 };
 
 export default function PolitykaPrywatnosciPage() {
@@ -28,13 +28,13 @@ export default function PolitykaPrywatnosciPage() {
               <div className="space-y-3 text-gray-700">
                 <p>Administratorem Twoich danych osobowych jest:</p>
                 <div className="ml-6 bg-gray-50 p-4 rounded-lg">
-                  <p><strong>ShopCartYT</strong><br />
-                  Adres: [Adres firmy]<br />
-                  NIP: [NIP]<br />
-                  E-mail: kontakt@shopcartyt.pl<br />
-                  Telefon: +48 782 851 962</p>
+                  <p><strong>MiniTeamProject Teodorczyk Piotr</strong><br />
+                  Adres: Ujazd 11, 56-330 Ujazd, Dolnośląskie<br />
+                  NIP: 9161401364<br />
+                  E-mail: teodorczykpt@gmail.com<br />
+                  Telefon: 782-851-962</p>
                 </div>
-                <p>W sprawach związanych z ochroną danych osobowych możesz skontaktować się z nami pod adresem: <strong>rodo@shopcartyt.pl</strong></p>
+                <p>W sprawach związanych z ochroną danych osobowych możesz skontaktować się z nami pod adresem: <strong>teodorczykpt@gmail.com</strong></p>
               </div>
             </section>
 
@@ -118,7 +118,7 @@ export default function PolitykaPrywatnosciPage() {
                 <p>Twoje dane możemy udostępnić następującym kategoriom odbiorców:</p>
                 <ul className="list-disc ml-6 space-y-2">
                   <li><strong>Kurierzy i firmy logistyczne</strong> - w celu realizacji dostaw</li>
-                  <li><strong>Operatorzy płatności</strong> - PayU, Stripe, banki</li>
+                  <li><strong>Operatorzy płatności</strong> - Stripe, banki</li>
                   <li><strong>Dostawcy usług IT</strong> - hosting, wsparcie techniczne</li>
                   <li><strong>Firmy księgowe</strong> - w celu prowadzenia księgowości</li>
                   <li><strong>Organy publiczne</strong> - gdy wymaga tego prawo</li>
@@ -168,7 +168,7 @@ export default function PolitykaPrywatnosciPage() {
                     <p className="text-sm">Możesz wnieść sprzeciw wobec przetwarzania</p>
                   </div>
                 </div>
-                <p>Aby skorzystać z swoich praw, skontaktuj się z nami pod adresem: <strong>rodo@shopcartyt.pl</strong></p>
+                <p>Aby skorzystać z swoich praw, skontaktuj się z nami pod adresem: <strong>teodorczykpt@gmail.com</strong></p>
               </div>
             </section>
 
@@ -230,9 +230,9 @@ export default function PolitykaPrywatnosciPage() {
               <h3 className="text-lg font-bold text-gray-900 mb-2">Kontakt w sprawach RODO</h3>
               <p className="text-gray-700">
                 W przypadku pytań dotyczących ochrony danych osobowych:<br />
-                📧 <strong>rodo@shopcartyt.pl</strong><br />
-                📞 <strong>+48 782 851 962</strong><br />
-                📍 <strong>[Adres firmy]</strong>
+                📧 <strong>teodorczykpt@gmail.com</strong><br />
+                📞 <strong>782-851-962</strong><br />
+                📍 <strong>Ujazd 11, 56-330 Ujazd</strong>
               </p>
               <p className="text-sm text-gray-600 mt-2">
                 Polityka obowiązuje od: {new Date().toLocaleDateString('pl-PL')}

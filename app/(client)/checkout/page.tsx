@@ -8,10 +8,17 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import PriceFormatter from "@/components/PriceFormatter";
 import useStore from "@/store";
-import { useState, useMemo, useCallback } from "react";
+import { useEffect, useMemo, useCallback, useState } from "react";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import { createCheckoutSession, Metadata, GroupedCartItems } from "@/actions/createCheckoutSession";
+import { fetchStripeClientSecret } from "@/actions/fetchStripeClientSecret";
+import { EmbeddedCheckout, EmbeddedCheckoutProvider } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+// Initialize Stripe.js once at module scope (avoids multiple instances)
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
 import { useUser } from "@clerk/nextjs";
 
 export default function CheckoutPage() {
@@ -19,6 +26,7 @@ export default function CheckoutPage() {
   const { user } = useUser();
   const [payMethod, setPayMethod] = useState<"stripe" | "transfer">("stripe");
   const [loading, setLoading] = useState(false);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   type CartProduct = {
     basePrice?: number;
@@ -46,7 +54,7 @@ export default function CheckoutPage() {
     if (payMethod === "stripe") {
       try {
         setLoading(true);
-         const enriched: GroupedCartItems[] = groupedItems.map((it) => ({
+        const enriched: GroupedCartItems[] = groupedItems.map((it) => ({
           ...it,
           product: {
             ...it.product,
@@ -54,13 +62,12 @@ export default function CheckoutPage() {
             name: it.product?.title || it.product?.name,
           },
          }));
-        const metadata: Metadata = {
-          orderNumber: crypto.randomUUID(),
-          customerName: user?.fullName ?? "Unknown",
-          customerEmail: user?.emailAddresses[0]?.emailAddress ?? "Unknown",
-        };
-        const url = await createCheckoutSession(enriched, metadata);
-        if (url) window.location.href = url;
+        const secret = await fetchStripeClientSecret(enriched);
+        if (!secret) {
+          alert("Nie udało się zainicjować płatności. Spróbuj ponownie lub wybierz przelew.");
+          return;
+        }
+        setClientSecret(secret);
       } finally {
         setLoading(false);
       }
@@ -85,11 +92,11 @@ export default function CheckoutPage() {
               <CardContent className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Imię i nazwisko*</label>
-                  <input required className="mt-1 w-full border rounded-md px-3 py-2" defaultValue={user?.fullName ?? ""} />
+                  <input required className="mt-1 w-full border rounded-md px-3 py-2" defaultValue={user?.fullName ?? undefined} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">E-mail*</label>
-                  <input required type="email" className="mt-1 w-full border rounded-md px-3 py-2" defaultValue={user?.emailAddresses[0]?.emailAddress ?? ""} />
+                  <input required type="email" className="mt-1 w-full border rounded-md px-3 py-2" defaultValue={user?.emailAddresses[0]?.emailAddress ?? undefined} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Telefon*</label>
@@ -158,7 +165,7 @@ export default function CheckoutPage() {
                 </label>
                 <label className="flex items-start gap-2 text-sm">
                   <input type="checkbox" required className="mt-1" />
-                  <span>Oświadczam, że zapoznałem się z <Link href="/privacy" className="text-[var(--color-brand-orange)] hover:underline">Polityką Prywatności</Link></span>
+                  <span>Oświadczam, że zapoznałem się z <Link href="/polityka-prywatnosci" className="text-[var(--color-brand-orange)] hover:underline">Polityką Prywatności</Link></span>
                 </label>
                 <div className="flex gap-3">
                   <Button type="submit" disabled={loading} className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">
@@ -183,9 +190,24 @@ export default function CheckoutPage() {
                 <div className="space-y-3">
                   {groupedItems.map(({ product, quantity }) => (
                     <div key={product._id} className="flex items-center gap-3">
-                      {product?.images?.[0] && (
-                        <Image src={product.images[0].asset?._ref ? "" : ""} alt="" width={48} height={48} className="w-12 h-12 object-cover rounded" />
-                      )}
+                      {(() => {
+                        const toSrc = (img: any): string | null => {
+                          if (!img) return null;
+                          if (typeof img === "string") return img || null;
+                          if (typeof img === "object" && img.url) return img.url || null;
+                          if (typeof img === "object" && img.asset?._ref) {
+                            try { return urlFor(img).width(96).height(96).fit("crop").url(); } catch { return null; }
+                          }
+                          return null;
+                        };
+                        const img = Array.isArray(product?.images) ? product.images[0] : null;
+                        const src = toSrc(img);
+                        return src ? (
+                          <Image src={src} alt={product?.name || ""} width={48} height={48} className="w-12 h-12 object-cover rounded" />
+                        ) : (
+                          <div className="w-12 h-12 rounded bg-gray-100" />
+                        );
+                      })()}
                       <div className="flex-1">
                         <p className="text-sm font-medium line-clamp-1">{product?.title || product?.name}</p>
                         <p className="text-xs text-gray-600">Ilość: {quantity}</p>
@@ -208,6 +230,14 @@ export default function CheckoutPage() {
                   <span>RAZEM do zapłaty</span>
                   <PriceFormatter amount={total} />
                 </div>
+                {/* Embedded Stripe Checkout mounts here when clientSecret exists */}
+                {clientSecret && (
+                  <div className="mt-4 border rounded-xl p-3">
+                    <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
+                      <EmbeddedCheckout />
+                    </EmbeddedCheckoutProvider>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>

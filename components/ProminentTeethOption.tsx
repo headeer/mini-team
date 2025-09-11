@@ -53,25 +53,15 @@ export default function ProminentTeethOption({
               <h3 className="text-base sm:text-lg font-bold text-gray-900">
                 Doposażenie w zęby
               </h3>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <button 
-                      type="button"
-                      className="p-1 -m-1 rounded-full hover:bg-gray-100 transition-colors"
-                      aria-label="Informacje o zębach"
-                    >
-                      <Info className="w-4 h-4 text-gray-500 hover:text-gray-700" />
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent side="top" className="max-w-xs">
-                    <p className="text-sm">
-                      Zęby zwiększają efektywność kopania i chronią łyżkę przed zużyciem. 
-                      Wykonane z wysokiej jakości stali Hardox HB500.
-                    </p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <div className="relative">
+                <button 
+                  type="button"
+                  className="p-1 -m-1 rounded-full hover:bg-gray-100 transition-colors"
+                  aria-label="Informacje o zębach"
+                >
+                  <Info className="w-4 h-4 text-gray-500 hover:text-gray-700" />
+                </button>
+              </div>
             </div>
             {addTeeth && (
               <CheckCircle className="w-5 h-5 text-green-600 self-start sm:self-center" />

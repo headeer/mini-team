@@ -8,12 +8,12 @@ import { Product } from "@/sanity.types";
 import AddToCartButton from "./AddToCartButton";
 import abcd_guide from "@/images/abcdGuide.jpeg";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-export default function ABCDGuide({ product, onChange }: { product?: Product; onChange?: (d: { A?: number; B?: number; C?: number; D?: number }) => void }) {
+export default function ABCDGuide({ product, onChange }: { product?: Product; onChange?: (d: { A?: number; B?: number; C?: number; D?: number; Center?: number }) => void }) {
   const [fallback, setFallback] = React.useState(false);
-  const [dims, setDims] = React.useState<{ A?: number; B?: number; C?: number; D?: number }>({});
+  const [dims, setDims] = React.useState<{ A?: number; B?: number; C?: number; D?: number; Center?: number }>({});
   const { addConfiguredItem } = useStore();
 
-  const update = (key: 'A'|'B'|'C'|'D', value: string) => {
+  const update = (key: 'A'|'B'|'C'|'D'|'Center', value: string) => {
     const num = value ? Number(value.replace(',', '.')) : undefined;
     const next = { ...dims, [key]: isNaN(Number(num)) ? undefined : num };
     setDims(next);
@@ -49,10 +49,16 @@ export default function ABCDGuide({ product, onChange }: { product?: Product; on
         )}
       </button>
       <div className="grid grid-cols-2 gap-2 sm:gap-3 content-start">
-        {(['A','B','C','D'] as const).map((k) => (
-          <div key={k} className="space-y-1">
-            <div className="text-xs sm:text-sm font-medium text-gray-700">{k} (cm)</div>
-            <Input inputMode="decimal" placeholder="np. 12.5" value={typeof dims[k] === 'number' ? String(dims[k]) : ''} onChange={(e) => update(k, e.target.value)} className="h-10 rounded-xl text-sm" />
+        {([
+          { key: 'A', label: 'Ramię A' },
+          { key: 'B', label: 'Ramię B' },
+          { key: 'C', label: 'Sworzeń A' },
+          { key: 'D', label: 'Sworzeń B' },
+          { key: 'Center', label: 'Center' },
+        ] as const).map(({ key, label }) => (
+          <div key={key} className="space-y-1">
+            <div className="text-xs sm:text-sm font-medium text-gray-700">{label}</div>
+            <Input inputMode="decimal" placeholder="np. 12.5" value={typeof dims[key] === 'number' ? String(dims[key]) : ''} onChange={(e) => update(key as 'A'|'B'|'C'|'D'|'Center', e.target.value)} className="h-10 rounded-xl text-sm" />
           </div>
         ))}
         <div className="col-span-2 text-[11px] sm:text-xs text-gray-600">Podaj wymiary wg grafiki. Zapiszemy je przy pozycji w koszyku.</div>

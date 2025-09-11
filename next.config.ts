@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
@@ -30,6 +32,9 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   async headers() {
+    if (!isProd) {
+      return [];
+    }
     return [
       {
         source: '/(.*)',
@@ -38,21 +43,22 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              // Allow Clerk JS and related assets
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://embed.tawk.to https://cdn.sanity.io",
-              // Some browsers use script-src-elem as a separate check
-              "script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://embed.tawk.to https://cdn.sanity.io",
-              // Clerk requires connecting to its APIs; Sanity used on client in some places
-              "connect-src 'self' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev wss://*.clerk.com wss://*.clerkstage.dev wss://*.clerk.accounts.dev https://cdn.sanity.io https://*.sanity.io https://*.apicdn.sanity.io https://embed.tawk.to https://va.tawk.to",
-              // Clerk widgets may render in iframes
-              "frame-src 'self' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://embed.tawk.to",
-              // Allow web workers (Clerk uses blob workers for polling)
+              // Allow scripts from Clerk, Sanity, Tawk, and Stripe
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://cdn.sanity.io https://embed.tawk.to https://js.stripe.com",
+              "script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://cdn.sanity.io https://embed.tawk.to https://js.stripe.com",
+              // API/websocket connections
+              "connect-src 'self' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev wss://*.clerk.com wss://*.clerkstage.dev wss://*.clerk.accounts.dev https://cdn.sanity.io https://*.sanity.io https://*.apicdn.sanity.io https://embed.tawk.to https://va.tawk.to https://*.tawk.to wss://*.tawk.to https://api.stripe.com",
+              // Frames for Clerk/Tawk widgets
+              "frame-src 'self' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://embed.tawk.to https://*.tawk.to https://js.stripe.com https://hooks.stripe.com",
+              // Workers
               "worker-src 'self' blob:",
-              // Images from Clerk and Sanity
-              "img-src 'self' data: blob: https://img.clerk.com https://*.clerk.com https://cdn.sanity.io https://embed.tawk.to",
-              // Allow inline styles used by Clerk UI theming
-              "style-src 'self' 'unsafe-inline'",
-              "font-src 'self' data:",
+              // Images
+              "img-src 'self' data: blob: https://img.clerk.com https://*.clerk.com https://cdn.sanity.io https://embed.tawk.to https://*.tawk.to",
+              // Styles (allow inline + common CDNs)
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://embed.tawk.to https://*.tawk.to",
+              "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://embed.tawk.to https://*.tawk.to",
+              // Fonts
+              "font-src 'self' data: https://fonts.gstatic.com https://js.stripe.com",
               "object-src 'none'",
               "base-uri 'self'"
             ].join('; '),

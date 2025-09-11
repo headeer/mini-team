@@ -2,8 +2,8 @@ import Container from "@/components/Container";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata = {
-  title: "Regulamin Sklepu - ShopCartYT",
-  description: "Regulamin świadczenia usług elektronicznych i sprzedaży produktów w sklepie ShopCartYT. Zasady korzystania z platformy.",
+  title: "Regulamin Sklepu - Mini Team Project",
+  description: "Regulamin świadczenia usług elektronicznych i sprzedaży produktów w sklepie Mini Team Project. Zasady korzystania z platformy.",
 };
 
 export default function RegulaminPage() {
@@ -26,15 +26,14 @@ export default function RegulaminPage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">§ 1. Postanowienia ogólne</h2>
               <div className="space-y-3 text-gray-700">
-                <p>1. Niniejszy Regulamin określa zasady korzystania ze sklepu internetowego dostępnego pod adresem shopcartyt.pl</p>
+                <p>1. Niniejszy Regulamin określa zasady korzystania ze sklepu internetowego Mini Team Project.</p>
                 <p>2. Właścicielem sklepu internetowego jest:</p>
                 <div className="ml-6 bg-gray-50 p-4 rounded-lg">
-                  <p><strong>ShopCartYT</strong><br />
-                  Adres: [Adres firmy]<br />
-                  NIP: [NIP]<br />
-                  REGON: [REGON]<br />
-                  Telefon: +48 782 851 962<br />
-                  E-mail: kontakt@shopcartyt.pl</p>
+                  <p><strong>MiniTeamProject Teodorczyk Piotr</strong><br />
+                  Adres: Ujazd 11, 56-330 Ujazd, Dolnośląskie<br />
+                  NIP: 9161401364<br />
+                  Telefon: 782-851-962<br />
+                  E-mail: teodorczykpt@gmail.com</p>
                 </div>
                 <p>3. Regulamin określa zasady zawierania umów sprzedaży oraz świadczenia usług elektronicznych przez Sklep.</p>
                 <p>4. Każdy Klient zobowiązuje się do przestrzegania postanowień niniejszego Regulaminu.</p>
@@ -44,7 +43,7 @@ export default function RegulaminPage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">§ 2. Definicje</h2>
               <div className="space-y-3 text-gray-700">
-                <p>1. <strong>Sklep</strong> – sklep internetowy dostępny pod adresem shopcartyt.pl</p>
+                <p>1. <strong>Sklep</strong> – sklep internetowy prowadzony przez Mini Team Project</p>
                 <p>2. <strong>Klient</strong> – osoba fizyczna, prawna lub jednostka organizacyjna nieposiadająca osobowości prawnej, która korzysta ze Sklepu</p>
                 <p>3. <strong>Konsument</strong> – Klient będący osobą fizyczną, który zawiera umowę niezwiązaną bezpośrednio z jej działalnością gospodarczą lub zawodową</p>
                 <p>4. <strong>Produkt</strong> – osprzęt budowlany, maszyn budowlanych oraz usługi obróbki blach oferowane w Sklepie</p>
@@ -92,10 +91,8 @@ export default function RegulaminPage() {
                 <p>2. Ceny nie zawierają kosztów dostawy, które są doliczane podczas składania zamówienia.</p>
                 <p>3. Dostępne formy płatności:</p>
                 <ul className="list-disc ml-6 space-y-1">
-                  <li>Płatności elektroniczne (PayU, Stripe)</li>
+                  <li>Płatności elektroniczne (Stripe)</li>
                   <li>Przelew bankowy tradycyjny</li>
-                  <li>Płatność za pobraniem</li>
-                  <li>Płatność gotówką przy odbiorze osobistym</li>
                 </ul>
                 <p>4. W przypadku produktów wymagających kalkulacji indywidualnej, cena zostanie podana po kontakcie telefonicznym.</p>
               </div>
@@ -109,10 +106,8 @@ export default function RegulaminPage() {
                 <p>3. Produkty wykonywane na zamówienie: czas realizacji podawany indywidualnie.</p>
                 <p>4. Dostępne sposoby dostawy:</p>
                 <ul className="list-disc ml-6 space-y-1">
-                  <li>Kurier DPD/DHL</li>
-                  <li>Paczkomaty InPost</li>
-                  <li>Odbior osobisty (po umówieniu)</li>
-                  <li>Transport dedykowany (dla dużych gabarytów)</li>
+                  <li>Wysyłka paletowa – stała stawka 160 zł netto</li>
+                  <li>Odbiór osobisty (po umówieniu)</li>
                 </ul>
                 <p>5. Ryzyko przejścia na Klienta przechodzi z chwilą wydania przesyłki przewoźnikowi.</p>
               </div>
@@ -139,9 +134,8 @@ export default function RegulaminPage() {
                 <p>1. Wszystkie produkty objęte są 24-miesięczną gwarancją producenta.</p>
                 <p>2. Klient może zgłosić reklamację:</p>
                 <ul className="list-disc ml-6 space-y-1">
-                  <li>Telefonicznie: +48 782 851 962</li>
-                  <li>E-mail: reklamacje@shopcartyt.pl</li>
-                  <li>Formularz na stronie internetowej</li>
+                  <li>Telefonicznie: 782-851-962</li>
+                  <li>E-mail: teodorczykpt@gmail.com</li>
                 </ul>
                 <p>3. Reklamacja powinna zawierać opis wady oraz żądanie Klienta.</p>
                 <p>4. Odpowiedź na reklamację zostanie udzielona w terminie 14 dni roboczych.</p>
@@ -152,7 +146,7 @@ export default function RegulaminPage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">§ 9. Ochrona danych osobowych</h2>
               <div className="space-y-3 text-gray-700">
-                <p>1. Administratorem danych osobowych jest ShopCartYT.</p>
+                <p>1. Administratorem danych osobowych jest MiniTeamProject Teodorczyk Piotr.</p>
                 <p>2. Szczegółowe informacje o przetwarzaniu danych znajdują się w Polityce Prywatności.</p>
                 <p>3. Dane są przetwarzane zgodnie z RODO.</p>
                 <p>4. Klient ma prawo dostępu, sprostowania, usunięcia i przenoszenia swoich danych.</p>
@@ -174,8 +168,8 @@ export default function RegulaminPage() {
               <h3 className="text-lg font-bold text-gray-900 mb-2">Kontakt w sprawach Regulaminu</h3>
               <p className="text-gray-700">
                 W przypadku pytań dotyczących Regulaminu prosimy o kontakt:<br />
-                📞 <strong>+48 782 851 962</strong><br />
-                📧 <strong>kontakt@shopcartyt.pl</strong>
+                📞 <strong>782-851-962</strong><br />
+                📧 <strong>teodorczykpt@gmail.com</strong>
               </p>
               <p className="text-sm text-gray-600 mt-2">
                 Regulamin obowiązuje od: {new Date().toLocaleDateString('pl-PL')}

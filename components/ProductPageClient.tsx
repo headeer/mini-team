@@ -58,7 +58,7 @@ export default function ProductPageClient({
             product={{
               ...product as any,
               addTeeth: addTeeth,
-              onTeethChange: setAddTeeth
+              // remove onTeethChange to avoid loops
             }} 
           />
         </div>
@@ -66,7 +66,9 @@ export default function ProductPageClient({
         <div className="flex items-center gap-3 my-4">
           <AddToCartButton 
             product={product} 
-            extraConfiguration={addTeeth ? { teeth: { enabled: true, price: (product as any)?.toothCost } } : undefined}
+            extraConfiguration={{
+              ...(addTeeth ? { teeth: { enabled: true, price: (product as any)?.toothCost } } : {}),
+            }}
           />
           <FavoriteButton showProduct={true} product={product} />
           {isPhoneOnly && (

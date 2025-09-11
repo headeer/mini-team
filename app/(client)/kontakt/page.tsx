@@ -260,7 +260,7 @@ export default function KontaktPage() {
             <Link href="/faq" className="hover:underline">
               FAQ
             </Link>
-            <Link href="/privacy" className="hover:underline">
+            <Link href="/polityka-prywatnosci" className="hover:underline">
               Polityka prywatności
             </Link>
           </div>
