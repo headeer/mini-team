@@ -185,8 +185,8 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
           <div className="sm:col-span-2 p-3 border rounded-lg bg-gray-50 space-y-3">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <div className="text-xs font-medium text-gray-700">Standardowe mocowania</div>
-                <div className="text-[11px] text-gray-500">Wybierz kod mocowania. W razie wątpliwości kliknij „Inne” i podaj wymiary.</div>
+                <div className="text-xs font-medium text-gray-700">Standardowe mocowania – pasujące do szybkozłączy</div>
+                <div className="text-[11px] text-gray-500">Nazwy systemów szybkozłączy (np. CW, HS, MS, S) użyte wyłącznie w celach identyfikacyjnych. Wybierz kod mocowania; w razie wątpliwości kliknij „Inne” i podaj wymiary.</div>
               </div>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">

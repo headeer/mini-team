@@ -166,36 +166,50 @@ const CartPage = () => {
                         >
                           <div className="flex flex-1 items-start gap-2 h-36 md:h-44">
                             {product?.images && (
-                              <Link
-                                href={`/product/${product?.slug?.current}`}
-                                className="border p-0.5 md:p-1 mr-2 rounded-md
-                                 overflow-hidden group"
-                              >
-                                {(() => { 
-                                  const toSrc = (img: any): string | null => {
-                                    if (!img) return null;
-                                    if (typeof img === "string") return img || null;
-                                    if (typeof img === "object" && img.url) return img.url || null;
-                                    if (typeof img === "object" && img.asset?._ref) {
-                                      try { return urlFor(img).url(); } catch { return null; }
-                                    }
-                                    return null;
-                                  };
-                                  const src = toSrc(product?.images?.[0]);
-                                  return src ? (
-                                    <Image
-                                      src={src}
-                                      alt="productImage"
-                                      width={500}
-                                      height={500}
-                                      loading="lazy"
-                                      className="w-32 md:w-40 h-32 md:h-40 object-cover group-hover:scale-105 hoverEffect"
-                                    />
+                              (() => {
+                                const slug = product?.slug?.current;
+                                const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) =>
+                                  slug ? (
+                                    <Link
+                                      href={`/product/${slug}`}
+                                      className="border p-0.5 md:p-1 mr-2 rounded-md overflow-hidden group"
+                                    >
+                                      {children}
+                                    </Link>
                                   ) : (
-                                    <div className="w-32 md:w-40 h-32 md:h-40 bg-gray-100" />
+                                    <div className="border p-0.5 md:p-1 mr-2 rounded-md overflow-hidden group cursor-default">
+                                      {children}
+                                    </div>
                                   );
-                                })()}
-                              </Link>
+                                return (
+                                  <Wrapper>
+                                    {(() => { 
+                                      const toSrc = (img: any): string | null => {
+                                        if (!img) return null;
+                                        if (typeof img === "string") return img || null;
+                                        if (typeof img === "object" && img.url) return img.url || null;
+                                        if (typeof img === "object" && img.asset?._ref) {
+                                          try { return urlFor(img).url(); } catch { return null; }
+                                        }
+                                        return null;
+                                      };
+                                      const src = toSrc(product?.images?.[0]);
+                                      return src ? (
+                                        <Image
+                                          src={src}
+                                          alt="productImage"
+                                          width={500}
+                                          height={500}
+                                          loading="lazy"
+                                          className="w-32 md:w-40 h-32 md:h-40 object-contain bg-white"
+                                        />
+                                      ) : (
+                                        <div className="w-32 md:w-40 h-32 md:h-40 bg-gray-100" />
+                                      );
+                                    })()}
+                                  </Wrapper>
+                                );
+                              })()
                             )}
                             <div className="h-full flex flex-1 flex-col justify-between py-1">
                               <div className="flex flex-col gap-0.5 md:gap-1.5">
