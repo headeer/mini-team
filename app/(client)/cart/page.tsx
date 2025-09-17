@@ -109,6 +109,22 @@ const CartPage = () => {
   const handleCheckout = async () => {
     setLoading(true);
     try {
+      // Validate required parameters before continuing
+      for (const { product, configuration } of groupedItems) {
+        const hasMountSystems = Array.isArray((product as any)?.mountSystems) && (product as any).mountSystems.length > 0;
+        if (hasMountSystems && !configuration?.mount) {
+          toast.error(`Wybierz mocowanie dla produktu: ${product?.name || product?.title}`);
+          return;
+        }
+        if (configuration?.mount === 'INNE') {
+          const dims = configuration?.dimensions || {} as any;
+          const allDims = ['A','B','C','D'].every((k) => typeof dims[k] === 'number' && !Number.isNaN(dims[k] as number));
+          if (!allDims) {
+            toast.error(`Uzupełnij wymiary A/B/C/D dla opcji INNE: ${product?.name || product?.title}`);
+            return;
+          }
+        }
+      }
       const metadata: Metadata = {
         orderNumber: crypto.randomUUID(),
         customerName: user?.fullName ?? "Unknown",
@@ -128,7 +144,7 @@ const CartPage = () => {
   };
 
   const computeUnitNet = (product: any, configuration?: any): number => {
-    const baseCandidate = (product?.pricing?.priceNet ?? product?.priceNet ?? product?.price ?? 0);
+    const baseCandidate = (product?.pricing?.priceNet ?? product?.priceNet ?? product?.basePrice ?? product?.price ?? 0);
     const baseNet = typeof baseCandidate === 'string' ? parseFloat(baseCandidate) : (Number(baseCandidate) || 0);
     const mount = configuration?.mount?.price ?? 0;
     const drill = configuration?.drill?.price ?? 0;
@@ -380,9 +396,9 @@ const CartPage = () => {
                         </div>
                         <Separator />
                         <div className="flex items-center justify-between font-semibold text-lg">
-                          <span>RAZEM</span>
+                          <span>Razem do zapłaty (brutto)</span>
                           <PriceFormatter
-                            amount={getTotalPrice()}
+                            amount={(getSubTotalPrice() * 1.23) + 160}
                             className="text-lg font-bold text-black"
                           />
                         </div>

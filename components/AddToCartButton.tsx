@@ -47,7 +47,9 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
 
   const getNetPrice = React.useCallback((p: Product) => {
     const anyP = p as any;
-    return (anyP?.pricing?.priceNet ?? anyP?.priceNet ?? anyP?.price ?? 0) as number;
+    const candidate = anyP?.pricing?.priceNet ?? anyP?.priceNet ?? anyP?.basePrice ?? anyP?.price ?? 0;
+    const num = typeof candidate === 'string' ? parseFloat(candidate) : Number(candidate);
+    return Number.isFinite(num) ? num : 0;
   }, []);
 
   const handleAddToCart = () => {

@@ -124,14 +124,16 @@ const useStore = create<StoreState>()(
       resetCart: () => set({ items: [] }),
       getTotalPrice: () => {
         return get().items.reduce((total, item) => {
-          const priceNet = (item.product as any)?.pricing?.priceNet ?? (item.product as any)?.priceNet ?? item.product.price ?? 0;
+          const priceNetCandidate = (item.product as any)?.pricing?.priceNet ?? (item.product as any)?.priceNet ?? (item.product as any)?.basePrice ?? item.product.price ?? 0;
+          const priceNet = typeof priceNetCandidate === 'string' ? parseFloat(priceNetCandidate) : Number(priceNetCandidate) || 0;
           const extras = (item.configuration?.mount?.price ?? 0) + (item.configuration?.drill?.price ?? 0) + (item.configuration?.teeth?.enabled ? (item.configuration?.teeth?.price ?? 0) : 0);
           return total + (Number(priceNet) + extras) * item.quantity;
         }, 0);
       },
       getSubTotalPrice: () => {
         return get().items.reduce((total, item) => {
-          const baseNet = (item.product as any)?.pricing?.priceNet ?? (item.product as any)?.priceNet ?? item.product.price ?? 0;
+          const baseCandidate = (item.product as any)?.pricing?.priceNet ?? (item.product as any)?.priceNet ?? (item.product as any)?.basePrice ?? item.product.price ?? 0;
+          const baseNet = typeof baseCandidate === 'string' ? parseFloat(baseCandidate) : Number(baseCandidate) || 0;
           const discountPct = (item.product.discount ?? 0);
           const discountedPrice = Number(baseNet) + (discountPct * Number(baseNet)) / 100;
           const extras = (item.configuration?.mount?.price ?? 0) + (item.configuration?.drill?.price ?? 0) + (item.configuration?.teeth?.enabled ? (item.configuration?.teeth?.price ?? 0) : 0);

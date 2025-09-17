@@ -78,29 +78,29 @@ export default function CheckoutPage() {
 
   return (
     <div className="bg-white">
-      <Container className="py-8">
-        <div className="mb-6">
+      <Container className="py-4 sm:py-8">
+        <div className="mb-4 sm:mb-6">
           <Title>Finalizacja zamówienia</Title>
         </div>
 
-        <form className="grid lg:grid-cols-3 gap-8" onSubmit={handlePlaceOrder}>
-          <div className="lg:col-span-2 space-y-6">
+        <form className="grid lg:grid-cols-3 gap-4 sm:gap-8" onSubmit={handlePlaceOrder}>
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle>Dane zamawiającego</CardTitle>
               </CardHeader>
-              <CardContent className="grid md:grid-cols-2 gap-4">
+              <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Imię i nazwisko*</label>
-                  <input required className="mt-1 w-full border rounded-md px-3 py-2" defaultValue={user?.fullName ?? undefined} />
+                  <input required className="mt-1 w-full border rounded-md px-3 py-2 text-base" defaultValue={user?.fullName ?? undefined} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">E-mail*</label>
-                  <input required type="email" className="mt-1 w-full border rounded-md px-3 py-2" defaultValue={user?.emailAddresses[0]?.emailAddress ?? undefined} />
+                  <input required type="email" className="mt-1 w-full border rounded-md px-3 py-2 text-base" defaultValue={user?.emailAddresses[0]?.emailAddress ?? undefined} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Telefon*</label>
-                  <input required className="mt-1 w-full border rounded-md px-3 py-2" placeholder="+48 600 000 000" />
+                  <input required className="mt-1 w-full border rounded-md px-3 py-2 text-base" placeholder="+48 600 000 000" />
                 </div>
               </CardContent>
             </Card>
@@ -109,22 +109,22 @@ export default function CheckoutPage() {
               <CardHeader>
                 <CardTitle>Adres dostawy</CardTitle>
               </CardHeader>
-              <CardContent className="grid md:grid-cols-2 gap-4">
-                <div className="md:col-span-2">
+              <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700">Ulica i numer*</label>
-                  <input required className="mt-1 w-full border rounded-md px-3 py-2" />
+                  <input required className="mt-1 w-full border rounded-md px-3 py-2 text-base" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Kod pocztowy*</label>
-                  <input required className="mt-1 w-full border rounded-md px-3 py-2" placeholder="00-000" />
+                  <input required className="mt-1 w-full border rounded-md px-3 py-2 text-base" placeholder="00-000" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Miasto*</label>
-                  <input required className="mt-1 w-full border rounded-md px-3 py-2" />
+                  <input required className="mt-1 w-full border rounded-md px-3 py-2 text-base" />
                 </div>
-                <div className="md:col-span-2">
+                <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700">Województwo*</label>
-                  <select required className="mt-1 w-full border rounded-md px-3 py-2 bg-white">
+                  <select required className="mt-1 w-full border rounded-md px-3 py-2 text-base bg-white">
                     <option value="">Wybierz</option>
                     {[
                       "dolnośląskie","kujawsko-pomorskie","lubelskie","lubuskie","łódzkie","małopolskie","mazowieckie","opolskie","podkarpackie","podlaskie","pomorskie","śląskie","świętokrzyskie","warmińsko-mazurskie","wielkopolskie","zachodniopomorskie",
@@ -142,13 +142,13 @@ export default function CheckoutPage() {
               </CardHeader>
               <CardContent>
                 <RadioGroup defaultValue={payMethod} onValueChange={(v: "stripe" | "transfer") => setPayMethod(v)}>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-start gap-2">
                     <RadioGroupItem value="stripe" id="pm-stripe" />
-                    <Label htmlFor="pm-stripe">Stripe (karta, BLIK) – Bezpieczne płatności kartą lub BLIKiem</Label>
+                    <Label htmlFor="pm-stripe" className="text-sm">Stripe (karta, BLIK) – Bezpieczne płatności kartą lub BLIKiem</Label>
                   </div>
-                  <div className="flex items-center space-x-2 mt-2">
+                  <div className="flex items-start gap-2 mt-2">
                     <RadioGroupItem value="transfer" id="pm-transfer" />
-                    <Label htmlFor="pm-transfer">Przelew tradycyjny – przelew na konto: 51 1140 2004 0000 3602 7800 1733</Label>
+                    <Label htmlFor="pm-transfer" className="text-sm">Przelew tradycyjny – przelew na konto: 51 1140 2004 0000 3602 7800 1733</Label>
                   </div>
                 </RadioGroup>
               </CardContent>
@@ -167,7 +167,7 @@ export default function CheckoutPage() {
                   <input type="checkbox" required className="mt-1" />
                   <span>Oświadczam, że zapoznałem się z <Link href="/polityka-prywatnosci" className="text-[var(--color-brand-orange)] hover:underline">Polityką Prywatności</Link></span>
                 </label>
-                <div className="flex gap-3">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                   <Button type="submit" disabled={loading} className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">
                     {loading ? "Proszę czekać..." : "Zapłać i Złóż zamówienie"}
                   </Button>
@@ -181,7 +181,7 @@ export default function CheckoutPage() {
           </div>
 
           {/* Sidebar podsumowania */}
-          <div>
+          <div className="lg:sticky lg:top-6">
             <Card>
               <CardHeader>
                 <CardTitle>Podsumowanie zamówienia</CardTitle>
@@ -208,7 +208,7 @@ export default function CheckoutPage() {
                           <div className="w-12 h-12 rounded bg-gray-100" />
                         );
                       })()}
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium line-clamp-1">{product?.title || product?.name}</p>
                         <p className="text-xs text-gray-600">Ilość: {quantity}</p>
                       </div>
