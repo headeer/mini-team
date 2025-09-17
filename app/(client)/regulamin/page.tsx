@@ -4,6 +4,14 @@ import { Badge } from "@/components/ui/badge";
 export const metadata = {
   title: "Regulamin Sklepu - Mini Team Project",
   description: "Regulamin świadczenia usług elektronicznych i sprzedaży produktów w sklepie Mini Team Project. Zasady korzystania z platformy.",
+  alternates: { canonical: "/regulamin" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Regulamin Sklepu - Mini Team Project",
+    description: "Zasady świadczenia usług i sprzedaży. Informacje prawne dla klientów.",
+    url: "/regulamin",
+    type: "article",
+  },
 };
 
 export default function RegulaminPage() {
@@ -11,6 +19,35 @@ export default function RegulaminPage() {
     <div className="bg-white">
       <Container className="py-12">
         <div className="max-w-4xl mx-auto">
+          {/* SEO JSON-LD: WebPage + BreadcrumbList */}
+          {(() => {
+            const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+            const now = new Date().toISOString();
+            const webpage = {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              name: "Regulamin Sklepu - Mini Team Project",
+              description: "Regulamin świadczenia usług elektronicznych i sprzedaży produktów.",
+              url: `${base}/regulamin`,
+              inLanguage: "pl-PL",
+              datePublished: now,
+              dateModified: now,
+            };
+            const breadcrumb = {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Start", item: base },
+                { "@type": "ListItem", position: 2, name: "Regulamin", item: `${base}/regulamin` },
+              ],
+            };
+            return (
+              <>
+                <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webpage) }} />
+                <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+              </>
+            );
+          })()}
           <div className="text-center mb-12">
             <Badge variant="outline" className="text-[var(--color-brand-orange)] border-[var(--color-brand-orange)] mb-4">
               Dokumenty Prawne

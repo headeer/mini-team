@@ -4,6 +4,14 @@ import { Badge } from "@/components/ui/badge";
 export const metadata = {
   title: "Polityka Prywatności - Mini Team Project",
   description: "Polityka prywatności i ochrony danych osobowych w sklepie Mini Team Project. Informacje o przetwarzaniu danych zgodnie z RODO.",
+  alternates: { canonical: "/polityka-prywatnosci" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Polityka Prywatności - Mini Team Project",
+    description: "Informacje o przetwarzaniu danych osobowych zgodnie z RODO.",
+    url: "/polityka-prywatnosci",
+    type: "article",
+  },
 };
 
 export default function PolitykaPrywatnosciPage() {
@@ -11,6 +19,35 @@ export default function PolitykaPrywatnosciPage() {
     <div className="bg-white">
       <Container className="py-12">
         <div className="max-w-4xl mx-auto">
+          {/* SEO JSON-LD: WebPage + BreadcrumbList */}
+          {(() => {
+            const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+            const now = new Date().toISOString();
+            const webpage = {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              name: "Polityka Prywatności - Mini Team Project",
+              description: "Polityka prywatności i ochrony danych osobowych w Mini Team Project.",
+              url: `${base}/polityka-prywatnosci`,
+              inLanguage: "pl-PL",
+              datePublished: now,
+              dateModified: now,
+            };
+            const breadcrumb = {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Start", item: base },
+                { "@type": "ListItem", position: 2, name: "Polityka prywatności", item: `${base}/polityka-prywatnosci` },
+              ],
+            };
+            return (
+              <>
+                <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webpage) }} />
+                <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+              </>
+            );
+          })()}
           <div className="text-center mb-12">
             <Badge variant="outline" className="text-[var(--color-brand-orange)] border-[var(--color-brand-orange)] mb-4">
               Ochrona Danych

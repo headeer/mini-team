@@ -4,6 +4,14 @@ import { Badge } from "@/components/ui/badge";
 export const metadata = {
   title: "Polityka Zwrotów - Mini Team Project",
   description: "Polityka zwrotów i reklamacji w Mini Team Project. Zasady zwracania produktów, gwarancja i obsługa reklamacji.",
+  alternates: { canonical: "/polityka-zwrotow" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Polityka Zwrotów - Mini Team Project",
+    description: "Zasady zwrotów, reklamacji i gwarancji. Jak odstąpić od umowy, warunki i terminy.",
+    url: "/polityka-zwrotow",
+    type: "article",
+  },
 };
 
 export default function PolitykaNwrotowPage() {
@@ -11,6 +19,63 @@ export default function PolitykaNwrotowPage() {
     <div className="bg-white">
       <Container className="py-12">
         <div className="max-w-4xl mx-auto">
+          {/* SEO: JSON-LD (WebPage + BreadcrumbList + FAQPage + Organization ContactPoint) */}
+          {(() => {
+            const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+            const now = new Date().toISOString();
+            const webpage = {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              name: "Polityka Zwrotów - Mini Team Project",
+              description: "Polityka zwrotów i reklamacji: jak odstąpić od umowy, terminy, koszty, wyjątki, gwarancja.",
+              url: `${base}/polityka-zwrotow`,
+              inLanguage: "pl-PL",
+              datePublished: now,
+              dateModified: now,
+              isPartOf: { "@type": "WebSite", name: "Mini Team Project", url: base },
+            };
+            const breadcrumb = {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Start", item: base },
+                { "@type": "ListItem", position: 2, name: "Polityka zwrotów", item: `${base}/polityka-zwrotow` },
+              ],
+            };
+            const faq = {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                { "@type": "Question", name: "Czy mogę zwrócić produkt bez podania przyczyny?", acceptedAnswer: { "@type": "Answer", text: "Tak. Konsument ma 14 dni na odstąpienie od umowy bez podania przyczyny i bez kosztów po stronie sprzedawcy (z wyjątkami opisanymi poniżej)." } },
+                { "@type": "Question", name: "Jak złożyć zwrot?", acceptedAnswer: { "@type": "Answer", text: "Wyślij oświadczenie w ciągu 14 dni, odeślij towar w stanie nienaruszonym i zachowaj potwierdzenie nadania. Zwrot środków nastąpi do 14 dni od otrzymania produktu." } },
+                { "@type": "Question", name: "Kto ponosi koszt przesyłki zwrotnej?", acceptedAnswer: { "@type": "Answer", text: "Zwroty są bezpłatne dla zamówień powyżej 200 zł, produktów wadliwych, błędów w realizacji i uszkodzeń w transporcie. W innych przypadkach koszt zwrotu ponosi klient." } },
+                { "@type": "Question", name: "Jakie są wyjątki od prawa odstąpienia?", acceptedAnswer: { "@type": "Answer", text: "Produkty wykonywane na zamówienie według specyfikacji klienta, produkty w zapieczętowanych opakowaniach po otwarciu oraz usługi obróbki blach wykonane przed odstąpieniem." } },
+                { "@type": "Question", name: "Jak zgłosić reklamację i ile to trwa?", acceptedAnswer: { "@type": "Answer", text: "Reklamację zgłoś mailowo lub telefonicznie, dołącz opis i zdjęcia. Odpowiadamy do 14 dni roboczych. Wymiana do 7 dni, zwrot środków do 14 dni od uznania reklamacji." } },
+              ],
+            };
+            const org = {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Mini Team Project",
+              url: base,
+              contactPoint: [{
+                "@type": "ContactPoint",
+                contactType: "customer support",
+                email: "teodorczykpt@gmail.com",
+                telephone: "+48 782 851 962",
+                areaServed: "PL",
+                availableLanguage: ["pl-PL"],
+              }],
+            };
+            return (
+              <>
+                <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webpage) }} />
+                <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+                <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
+                <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(org) }} />
+              </>
+            );
+          })()}
           <div className="text-center mb-12">
             <Badge variant="outline" className="text-[var(--color-brand-orange)] border-[var(--color-brand-orange)] mb-4">
               Zwroty i Reklamacje

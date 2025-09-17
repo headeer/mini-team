@@ -9,6 +9,14 @@ export const metadata = {
   title: "Kontakt – MiniTeamProject",
   description:
     "Skontaktuj się z MiniTeamProject: telefon, e‑mail, formularz zapytania i lokalizacja. Dostępny także chat AI.",
+  alternates: { canonical: "/kontakt" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Kontakt – MiniTeamProject",
+    description: "Dane kontaktowe: telefon, e‑mail, formularz, godziny pracy i mapa dojazdu.",
+    url: "/kontakt",
+    type: "website",
+  },
 };
 
 export default function KontaktPage() {
