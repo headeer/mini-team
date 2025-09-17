@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
 import AIWidgetStub from "@/components/home/AIWidgetStub";
+import TawkChat from "@/components/TawkChat";
 import Script from "next/script";
 import techMap from "@/public/images/techniczne/map.json";
 
@@ -80,6 +81,7 @@ export default function RootLayout({
         <Footer />
         {/* Fit Check modal mounted globally to open from header */}
         <AIWidgetStub />
+        <TawkChat />
         {/* Global SEO JSON-LD */}
         {(() => {
           const base = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
@@ -156,21 +158,7 @@ export default function RootLayout({
         <Script id="tech-map" strategy="beforeInteractive">
           {`window.__TECH_MAP__ = ${JSON.stringify(techMap)};`}
         </Script>
-        {/* Tawk.to chat - simplified to avoid null references; position adjusted on load */}
-        <Script id="tawk-chat" strategy="afterInteractive">
-          {`
-            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-            
-            (function(){
-              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-              s1.async=true;
-              s1.src='https://embed.tawk.to/6899b3aa3df3eb1928b7d199/1j2c6bkn1';
-              s1.charset='UTF-8';
-              s1.setAttribute('crossorigin','*');
-              s0.parentNode.insertBefore(s1,s0);
-            })();
-          `}
-        </Script>
+        {/* Tawk chat moved to conditional client component */}
       </div>
     </ClerkProvider>
   );
