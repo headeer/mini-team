@@ -13,7 +13,6 @@ import HomeShowcase from "@/components/home/HomeShowcase";
 import AllCategories from "@/components/home/AllCategories";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import BestSellers from "@/components/home/BestSellers";
-import ProjectsInAction from "@/components/home/ProjectsInAction";
 import BrandStory from "@/components/home/BrandStory";
 
 import React from "react";
@@ -101,10 +100,41 @@ const Home = async () => {
             "query-input": "required name=search_term_string",
           },
         };
+        const faq = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Jak dobrać łyżkę do maszyn 2–3 t?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Wybierz kategorię „Łyżki kopiące” → zakres 2.3–3 t → preferowany rozmiar.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Jaki jest czas realizacji zamówienia?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Standardowo 48 h od potwierdzenia płatności.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Czy oferujecie montaż zębów?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Tak, koszt +120–270 zł w zależności od modelu.",
+              },
+            },
+          ],
+        };
         return (
           <>
             <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(org) }} />
             <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }} />
+            <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
           </>
         );
       })()}
@@ -129,11 +159,7 @@ const Home = async () => {
         <AppSection>
           <BrandStory />
         </AppSection>
-        <AppSection>
-        <AppHeading eyebrow="Realizacje" title="Nasze realizacje" subtitle="Prawdziwe wdrożenia, realne efekty – sprawdź jak pracuje nasz osprzęt" />
-
-          <ProjectsInAction />
-        </AppSection>
+        {/* Realizacje section hidden for now */}
         <BestSellers />
         {/* AllCategories przeniesione wyżej */}
         

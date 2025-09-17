@@ -28,7 +28,7 @@ const tiles = [
   {
     image: imgD,
     label: "Mocny sprzęt do ciężkiej pracy",
-    href: "/realizacje",
+    href: "/shop",
   },
 ];
 

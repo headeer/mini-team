@@ -262,9 +262,6 @@ export default function KontaktPage() {
             <Link href="/shop" className="hover:underline">
               Oferta
             </Link>
-            <Link href="/realizacje" className="hover:underline">
-              Nasze Realizacje
-            </Link>
             <Link href="/faq" className="hover:underline">
               FAQ
             </Link>

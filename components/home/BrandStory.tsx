@@ -42,7 +42,7 @@ const BrandStory = () => {
 
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Button asChild className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">
-              <Link href="/realizacje">Zobacz w akcji</Link>
+              <Link href="/shop">Zobacz ofertę</Link>
             </Button>
             <Button asChild variant="outline" className="border-white/50 text-amber-700 hover:text-gray-900">
               <Link href="#fit-check">Sprawdź dopasowanie</Link>

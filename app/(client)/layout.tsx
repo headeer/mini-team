@@ -100,8 +100,8 @@ export default function RootLayout({
           const nav = {
             '@context': 'https://schema.org',
             '@type': 'SiteNavigationElement',
-            name: ['Oferta', 'Blog', 'Kontakt', 'Realizacje'],
-            url: [`${base}/shop`, `${base}/blog`, `${base}/kontakt`, `${base}/realizacje`],
+            name: ['Oferta', 'Blog', 'Kontakt'],
+            url: [`${base}/shop`, `${base}/blog`, `${base}/kontakt`],
           }
           const website = {
             '@context': 'https://schema.org',
