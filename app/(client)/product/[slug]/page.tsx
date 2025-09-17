@@ -207,8 +207,9 @@ const SingleProductPage = async ({
   };
   return (
     <div className="bg-white">
-      {/* JSON-LD Product + FAQ */}
+      {/* JSON-LD Product + Breadcrumb + FAQ */}
       {(() => {
+        const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
         const ld: any = {
           "@context": "https://schema.org",
           "@type": "Product",
@@ -223,6 +224,15 @@ const SingleProductPage = async ({
           },
           brand: product?.brand ? { "@type": "Brand", name: "MTT" } : undefined,
         };
+        const breadcrumb = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Start", item: base },
+            { "@type": "ListItem", position: 2, name: "Oferta", item: `${base}/shop` },
+            { "@type": "ListItem", position: 3, name: String(product?.name || ''), item: `${base}/product/${String((product as any)?.slug?.current || '')}` },
+          ]
+        };
         const faq = {
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -235,6 +245,7 @@ const SingleProductPage = async ({
         return (
           <>
             <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+            <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
             <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
           </>
         );
@@ -805,3 +816,10 @@ const SingleProductPage = async ({
 };
 
 export default SingleProductPage;
+
+export async function generateStaticParams() {
+  const slugs: string[] = await client.fetch(
+    `*[_type == "product" && defined(slug.current)].slug.current`
+  );
+  return (slugs || []).map((slug) => ({ slug }));
+}

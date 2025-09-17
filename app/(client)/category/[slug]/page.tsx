@@ -1,5 +1,6 @@
 // no-op
 import { redirect } from "next/navigation";
+import { client } from "@/sanity/lib/client";
 
 const CategoryPage = async ({
   params,
@@ -11,3 +12,10 @@ const CategoryPage = async ({
 };
 
 export default CategoryPage;
+
+export async function generateStaticParams() {
+  const slugs: string[] = await client.fetch(
+    `*[_type == "category" && defined(slug.current)].slug.current`
+  );
+  return (slugs || []).map((slug) => ({ slug }));
+}

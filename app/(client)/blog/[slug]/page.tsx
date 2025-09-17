@@ -14,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
+import { client } from "@/sanity/lib/client";
 
 const SingleBlogPage = async ({
   params,
@@ -26,6 +27,23 @@ const SingleBlogPage = async ({
 
   return (
     <div className="py-10">
+      {/* BlogPosting JSON-LD */}
+      {(() => {
+        const base = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+        const cover = blog?.mainImage ? urlFor(blog.mainImage).url() : undefined
+        const json = {
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: blog?.title,
+          image: cover ? [cover] : undefined,
+          author: blog?.author?.name ? { '@type': 'Person', name: blog.author.name } : undefined,
+          datePublished: blog?.publishedAt,
+          mainEntityOfPage: `${base}/blog/${blog?.slug?.current || ''}`,
+          publisher: { '@type': 'Organization', name: 'Mini Team Project' },
+          description: blog?.excerpt || '',
+        }
+        return <script suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }} />
+      })()}
       <Container className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         <div className="md:col-span-3">
           {blog?.mainImage && (
@@ -190,6 +208,13 @@ const SingleBlogPage = async ({
     </div>
   );
 };
+
+export async function generateStaticParams() {
+  const slugs: string[] = await client.fetch(
+    `*[_type == "blog" && defined(slug.current)].slug.current`
+  );
+  return (slugs || []).map((slug) => ({ slug }));
+}
 
 const BlogLeft = async ({ slug }: { slug: string }) => {
   const categories = await getBlogCategories();

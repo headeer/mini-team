@@ -2,8 +2,8 @@ import Container from "@/components/Container";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata = {
-  title: "Polityka Zwrotów - ShopCartYT",
-  description: "Polityka zwrotów i reklamacji w sklepie ShopCartYT. Zasady zwracania produktów, gwarancja i obsługa reklamacji.",
+  title: "Polityka Zwrotów - Mini Team Project",
+  description: "Polityka zwrotów i reklamacji w Mini Team Project. Zasady zwracania produktów, gwarancja i obsługa reklamacji.",
 };
 
 export default function PolitykaNwrotowPage() {
@@ -43,8 +43,8 @@ export default function PolitykaNwrotowPage() {
                 <div className="bg-blue-50 p-4 rounded-lg">
                   <h4 className="font-semibold text-blue-800 mb-2">💡 Sposoby zgłoszenia zwrotu:</h4>
                   <ul className="list-disc ml-6 space-y-1 text-blue-700">
-                    <li>📧 E-mail: <strong>zwroty@shopcartyt.pl</strong></li>
-                    <li>📞 Telefon: <strong>+48 782 851 962</strong></li>
+                    <li>📧 E-mail: <a href="mailto:teodorczykpt@gmail.com" className="underline"><strong>teodorczykpt@gmail.com</strong></a></li>
+                    <li>📞 Telefon: <a href="tel:+48782851962" className="underline"><strong>782-851-962</strong></a></li>
                     <li>📝 Formularz na stronie internetowej</li>
                     <li>📬 List polecony na adres firmy</li>
                   </ul>
@@ -204,8 +204,8 @@ export default function PolitykaNwrotowPage() {
                 <div className="bg-[var(--color-brand-orange)]/10 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">📞 Sposoby zgłoszenia reklamacji:</h3>
                   <ul className="list-disc ml-6 space-y-1">
-                    <li>📧 E-mail: <strong>reklamacje@shopcartyt.pl</strong></li>
-                    <li>📞 Telefon: <strong>+48 782 851 962</strong></li>
+                    <li>📧 E-mail: <a href="mailto:teodorczykpt@gmail.com" className="underline"><strong>teodorczykpt@gmail.com</strong></a></li>
+                    <li>📞 Telefon: <a href="tel:+48782851962" className="underline"><strong>782-851-962</strong></a></li>
                     <li>📝 Formularz reklamacyjny na stronie</li>
                     <li>📬 Korespondencja na adres firmy</li>
                   </ul>
@@ -256,11 +256,19 @@ export default function PolitykaNwrotowPage() {
               <div className="grid md:grid-cols-2 gap-4 text-gray-700">
                 <div>
                   <h4 className="font-semibold mb-1">📦 Zwroty:</h4>
-                  <p>📧 zwroty@shopcartyt.pl<br />📞 +48 782 851 962</p>
+                  <p>
+                    📧 <a href="mailto:teodorczykpt@gmail.com" className="underline">teodorczykpt@gmail.com</a>
+                    <br />
+                    📞 <a href="tel:+48782851962" className="underline">782-851-962</a>
+                  </p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">🛠️ Reklamacje:</h4>
-                  <p>📧 reklamacje@shopcartyt.pl<br />📞 +48 782 851 962</p>
+                  <p>
+                    📧 <a href="mailto:teodorczykpt@gmail.com" className="underline">teodorczykpt@gmail.com</a>
+                    <br />
+                    📞 <a href="tel:+48782851962" className="underline">782-851-962</a>
+                  </p>
                 </div>
               </div>
               <p className="text-sm text-gray-600 mt-4">

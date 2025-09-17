@@ -1,5 +1,5 @@
 {
-  "name": "shopcartyt",
+  "name": "miniteamproject",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -39,9 +39,12 @@
     "add:1-5-2-3t-drawings": "ts-node scripts/add-1-5-2-3t-drawings.ts",
     "update:all-lyzki-drawings": "ts-node scripts/update-all-lyzki-drawings.ts",
     "update:1-1-5t-images": "ts-node scripts/update-1-1-5t-images.ts",
-    "update:1-5-2-3t-and-2-3-3t-images": "ts-node scripts/update-1-5-2-3t-and-2-3-3t-images.ts",
+    "update:1-5-2-3t-and-2-3-3t-images": "ts-node scripts/update-1-5-2-3-3t-images.ts",
     "update:1-1-5t-correct-images": "ts-node scripts/update-1-1-5t-correct-images.ts",
-    "update:specific-prices": "ts-node scripts/update-specific-prices.ts"
+    "update:specific-prices": "ts-node scripts/update-specific-prices.ts",
+    "export:baselinker:csv": "ts-node scripts/export-baselinker-csv.ts",
+    "push:baselinker": "ts-node scripts/push-to-baselinker.ts",
+    "export:static": "next build && next export"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.29.0",

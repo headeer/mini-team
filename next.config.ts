@@ -5,6 +5,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
+    // SSR build, keep Next Image optimization
     remotePatterns: [
       {
         protocol: "https",

@@ -10,7 +10,7 @@ import Script from "next/script";
 import techMap from "@/public/images/techniczne/map.json";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
     template: "%s – Mini Team Project",
     default: "Mini Team Project – Osprzęt do koparek, łyżki, zrywak",
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 
@@ -58,6 +58,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || 'G-X20Y10HXVL'
   return (
     <ClerkProvider
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
@@ -82,6 +83,65 @@ export default function RootLayout({
         <FloatingMachineSelector />
         {/* Fit Check modal mounted globally to open from header */}
         <AIWidgetStub />
+        {/* Global SEO JSON-LD */}
+        {(() => {
+          const base = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+          const org = {
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'Mini Team Project',
+            url: base,
+            logo: `${base}/favicon.ico`,
+            sameAs: [
+              'https://www.facebook.com/',
+              'https://www.instagram.com/',
+            ],
+          }
+          const nav = {
+            '@context': 'https://schema.org',
+            '@type': 'SiteNavigationElement',
+            name: ['Oferta', 'Blog', 'Kontakt', 'Realizacje'],
+            url: [`${base}/shop`, `${base}/blog`, `${base}/kontakt`, `${base}/realizacje`],
+          }
+          const website = {
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Mini Team Project',
+            url: base,
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: `${base}/shop?q={search_term_string}`,
+              'query-input': 'required name=search_term_string',
+            },
+          }
+          return (
+            <>
+              <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive">{JSON.stringify(org)}</Script>
+              <Script id="nav-jsonld" type="application/ld+json" strategy="afterInteractive">{JSON.stringify(nav)}</Script>
+              <Script id="website-jsonld" type="application/ld+json" strategy="afterInteractive">{JSON.stringify(website)}</Script>
+            </>
+          )
+        })()}
+        {/* Google Analytics */}
+        {gaId ? (
+          <>
+            <Script
+              id="ga-loader"
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            />
+            <Script id="ga-config" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} 
+                gtag('js', new Date());
+                gtag('config', '${gaId}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        ) : null}
         {/* Technical drawing map (client) */}
         <Script id="tech-map" strategy="beforeInteractive">
           {`window.__TECH_MAP__ = ${JSON.stringify(techMap)};`}
