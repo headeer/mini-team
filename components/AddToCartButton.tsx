@@ -130,6 +130,9 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
                 </div>
               </div>
             </div>
+            <div className="mt-2 flex items-center justify-end">
+              <Link href="/cart" className="text-[11px] font-medium text-gray-700 underline underline-offset-2">Przejdź do koszyka</Link>
+            </div>
           </div>
         ) : (
           <div className="w-full bg-white border border-gray-200 rounded-xl p-3 shadow-sm">

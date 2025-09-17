@@ -6,6 +6,7 @@ import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
 import AIWidgetStub from "@/components/home/AIWidgetStub";
 import TawkChat from "@/components/TawkChat";
+import MobileCartBar from "@/components/MobileCartBar";
 import Script from "next/script";
 import techMap from "@/public/images/techniczne/map.json";
 
@@ -79,6 +80,7 @@ export default function RootLayout({
         <Header />
         <main id="content" className="flex-1">{children}</main>
         <Footer />
+        <MobileCartBar />
         {/* Fit Check modal mounted globally to open from header */}
         <AIWidgetStub />
         <TawkChat />
