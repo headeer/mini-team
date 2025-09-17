@@ -14,6 +14,7 @@ import AllCategories from "@/components/home/AllCategories";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import BestSellers from "@/components/home/BestSellers";
 import BrandStory from "@/components/home/BrandStory";
+import FloatingMachineSelector from "@/components/FloatingMachineSelector";
 
 import React from "react";
 
@@ -139,6 +140,8 @@ const Home = async () => {
         );
       })()}
       <HomeHero />
+      {/* Machine selector only on homepage */}
+      <FloatingMachineSelector />
       <Container>
         <AppSection>
           <div id="products" className="mt-4 scroll-mt-28 sm:scroll-mt-32">

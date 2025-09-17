@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
-import FloatingMachineSelector from "@/components/FloatingMachineSelector";
 import AIWidgetStub from "@/components/home/AIWidgetStub";
 import Script from "next/script";
 import techMap from "@/public/images/techniczne/map.json";
@@ -79,8 +78,6 @@ export default function RootLayout({
         <Header />
         <main id="content" className="flex-1">{children}</main>
         <Footer />
-        {/* Machine selector mounted globally so header shortcut works everywhere */}
-        <FloatingMachineSelector />
         {/* Fit Check modal mounted globally to open from header */}
         <AIWidgetStub />
         {/* Global SEO JSON-LD */}

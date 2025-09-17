@@ -201,10 +201,10 @@ const CartPage = () => {
                                           width={500}
                                           height={500}
                                           loading="lazy"
-                                          className="w-32 md:w-40 h-32 md:h-40 object-contain bg-white"
+                                          className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain bg-white rounded-md"
                                         />
                                       ) : (
-                                        <div className="w-32 md:w-40 h-32 md:h-40 bg-gray-100" />
+                                        <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-gray-100 rounded-md" />
                                       );
                                     })()}
                                   </Wrapper>
@@ -257,10 +257,12 @@ const CartPage = () => {
                                 <TooltipProvider>
                                   <Tooltip>
                                     <TooltipTrigger>
-                                      <ProductSideMenu
-                                        product={product}
-                                        className="relative top-0 right-0"
-                                      />
+                                      <div className="hidden md:block">
+                                        <ProductSideMenu
+                                          product={product}
+                                          className="relative top-0 right-0"
+                                        />
+                                      </div>
                                     </TooltipTrigger>
                                     <TooltipContent className="font-bold">
                                       Dodaj do ulubionych
