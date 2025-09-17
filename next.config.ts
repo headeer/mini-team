@@ -45,16 +45,16 @@ const nextConfig: NextConfig = {
             value: [
               "default-src 'self'",
               // Allow scripts from Clerk, Sanity, Tawk, and Stripe
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://cdn.sanity.io https://embed.tawk.to https://js.stripe.com",
-              "script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://cdn.sanity.io https://embed.tawk.to https://js.stripe.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://cdn.sanity.io https://embed.tawk.to https://js.stripe.com https://static.hotjar.com https://script.hotjar.com",
+              "script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://cdn.sanity.io https://embed.tawk.to https://js.stripe.com https://static.hotjar.com https://script.hotjar.com",
               // API/websocket connections
-              "connect-src 'self' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev wss://*.clerk.com wss://*.clerkstage.dev wss://*.clerk.accounts.dev https://cdn.sanity.io https://*.sanity.io https://*.apicdn.sanity.io https://embed.tawk.to https://va.tawk.to https://*.tawk.to wss://*.tawk.to https://api.stripe.com",
+              "connect-src 'self' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev wss://*.clerk.com wss://*.clerkstage.dev wss://*.clerk.accounts.dev https://cdn.sanity.io https://*.sanity.io https://*.apicdn.sanity.io https://embed.tawk.to https://va.tawk.to https://*.tawk.to wss://*.tawk.to https://api.stripe.com https://*.hotjar.com https://*.hotjar.io wss://*.hotjar.com",
               // Frames for Clerk/Tawk widgets
               "frame-src 'self' https://*.clerk.com https://*.clerkstage.dev https://*.clerk.accounts.dev https://embed.tawk.to https://*.tawk.to https://js.stripe.com https://hooks.stripe.com",
               // Workers
               "worker-src 'self' blob:",
               // Images
-              "img-src 'self' data: blob: https://img.clerk.com https://*.clerk.com https://cdn.sanity.io https://embed.tawk.to https://*.tawk.to",
+              "img-src 'self' data: blob: https://img.clerk.com https://*.clerk.com https://cdn.sanity.io https://embed.tawk.to https://*.tawk.to https://*.hotjar.com https://*.hotjar.io",
               // Styles (allow inline + common CDNs)
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://embed.tawk.to https://*.tawk.to",
               "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://embed.tawk.to https://*.tawk.to",
