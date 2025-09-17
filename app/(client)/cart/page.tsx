@@ -30,7 +30,7 @@ import { useAuth, useUser } from "@clerk/nextjs";
 import { ShoppingBag, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { backendClient } from "@/sanity/lib/backendClient";
 import toast from "react-hot-toast";
 
