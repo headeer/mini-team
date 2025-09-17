@@ -37,7 +37,9 @@ export default function FeaturedProductActions({ productId, name, price, slug, p
         </>
       ) : (
         <>
-          <AddToCartButton product={{ _id: productId, name, price } as any} className="flex-1 rounded-md" />
+          <Link href={`/product/${slug}`} className="flex-1 text-center text-xs px-3 py-2 rounded-lg bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold shadow-sm hover:shadow-md">
+            Dodaj do koszyka
+          </Link>
           <FavoriteButton showProduct={false} product={{ _id: productId, name } as any} />
         </>
       )}

@@ -58,7 +58,7 @@ const BestSellers = async () => {
                     <FavoriteButton showProduct={false} product={{ _id: p._id, name: p.name } as any} />
                   </div>
                 </div>
-                <AddToCartButton product={{ _id: p._id, name: p.name, price: price } as any} className="w-full rounded-md" />
+                <Link href={`/product/${p.slug}`} className="w-full text-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold">Dodaj do koszyka</Link>
               </div>
               </div>
             </CarouselItem>

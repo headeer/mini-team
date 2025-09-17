@@ -16,6 +16,8 @@ async function getFeatured(limit = 8) {
     description,
     price,
     basePrice,
+    pricing,
+    "priceNet": coalesce(pricing.priceNet, priceNet, basePrice, price),
     discount,
     phoneOrderOnly,
     "cover": coalesce(images[0].asset->url, images[0].url),
@@ -25,7 +27,7 @@ async function getFeatured(limit = 8) {
 }
 
 const FeaturedProducts = async () => {
-  const products: { _id: string; name: string; description?: string; price?: number; basePrice?: number; discount?: number; cover?: string | null; slug: string; phoneOrderOnly?: boolean }[] = await getFeatured(8);
+  const products: { _id: string; name: string; description?: string; price?: number; basePrice?: number; pricing?: { priceNet?: number | string }; priceNet?: number | string; discount?: number; cover?: string | null; slug: string; phoneOrderOnly?: boolean }[] = await getFeatured(8);
   return (
     <section>
       <div className="flex items-center justify-between mb-4">
@@ -39,7 +41,10 @@ const FeaturedProducts = async () => {
         <CarouselContent>
           {products.map((p) => {
             const cover = p.cover || null;
-            const price = typeof p.basePrice === "number" ? p.basePrice : p.price;
+            const candidate = (typeof p.priceNet === 'number' ? p.priceNet : (typeof p.priceNet === 'string' ? parseFloat(p.priceNet) : undefined))
+              ?? (typeof p.basePrice === 'number' ? p.basePrice : undefined)
+              ?? (typeof p.price === 'number' ? p.price : 0);
+            const price = Number.isFinite(candidate as number) ? (candidate as number) : 0;
             return (
               <CarouselItem key={p._id} className="basis-full xs:basis-1/2 md:basis-1/4">
                 <div className="group rounded-2xl border bg-white hover:shadow-xl hover:border-[var(--color-brand-orange)]/30 transition overflow-hidden flex flex-col h-full">

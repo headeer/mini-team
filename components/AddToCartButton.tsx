@@ -123,9 +123,9 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
       {shouldShowSummary ? (
         compact ? (
           <div className="w-full bg-white border border-gray-200 rounded-xl p-2 shadow-sm">
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2">
               <QuantityButtons product={product} />
-              <div className="text-right">
+              <div className="text-right w-full xs:w-auto">
                 <div className="text-[11px] text-gray-600 leading-none">Razem</div>
                 <div className="text-base font-bold text-[var(--color-brand-red)]">
                   <PriceFormatter amount={getNetPrice(product) * itemCount} />
@@ -138,12 +138,12 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
           </div>
         ) : (
           <div className="w-full bg-white border border-gray-200 rounded-xl p-3 shadow-sm">
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
               <div className="flex items-center gap-3">
                 <QuantityButtons product={product} />
                 <span className="text-sm text-gray-700">W koszyku</span>
               </div>
-              <div className="text-right">
+              <div className="text-right w-full sm:w-auto">
                 <div className="text-[11px] text-gray-600 leading-none">Razem</div>
                 <div className="text-lg font-bold text-[var(--color-brand-red)]">
                   <PriceFormatter amount={getNetPrice(product) * itemCount} />
