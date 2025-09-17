@@ -265,11 +265,27 @@ const CartPage = () => {
                                 <h2 className="text-base font-semibold line-clamp-1">
                                   {product?.title || product?.name}
                                 </h2>
-                                <p className="text-sm text-gray-600">
-                                  Parametry: {product?.priceTier || "—"}
-                                  {product?.specifications?.widthCm ? `, ${product.specifications.widthCm} cm` : ""}
-                                  {product?.specifications?.quickCoupler ? `, ${product.specifications.quickCoupler}` : ""}
-                                </p>
+                                {(() => {
+                                  const hasMountSystems = Array.isArray((product as any)?.mountSystems) && (product as any).mountSystems.length > 0;
+                                  const needsFill = hasMountSystems && !configuration?.mount;
+                                  if (needsFill) {
+                                    const slugVal = product?.slug?.current;
+                                    return (
+                                      <div className="mt-0.5">
+                                        <Link href={slugVal ? `/product/${slugVal}#konfigurator` : '#'} className="inline-flex items-center px-3 py-1.5 rounded-md text-xs font-semibold border-2 border-[var(--color-brand-orange)] text-[var(--color-brand-orange)] hover:bg-[var(--color-brand-orange)] hover:text-white transition-colors">
+                                          Uzupełnij parametry
+                                        </Link>
+                                      </div>
+                                    );
+                                  }
+                                  return (
+                                    <p className="text-sm text-gray-600">
+                                      Parametry: {product?.priceTier || "—"}
+                                      {product?.specifications?.widthCm ? `, ${product.specifications.widthCm} cm` : ""}
+                                      {product?.specifications?.quickCoupler ? `, ${product.specifications.quickCoupler}` : ""}
+                                    </p>
+                                  );
+                                })()}
                                 {configuration ? (
                                   <div className="text-sm text-gray-700 space-y-1">
                                     {configuration.mount?.title ? (
