@@ -5,6 +5,7 @@ import { Address } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 import { CartItem } from "@/store";
 import Stripe from "stripe";
+import { headers } from "next/headers";
 
 export interface Metadata {
   orderNumber: string;
@@ -25,8 +26,14 @@ export async function createCheckoutSession(
   metadata: Metadata
 ) {
   try {
+    // Determine base URL from env or current request (prevents redirecting to preview domains)
+    const hdrs = headers();
+    const host = hdrs.get('x-forwarded-host') || hdrs.get('host');
+    const proto = hdrs.get('x-forwarded-proto') || (host && host.includes('localhost') ? 'http' : 'https');
+    const runtimeBase = host ? `${proto}://${host}` : undefined;
     const baseUrl =
       process.env.NEXT_PUBLIC_BASE_URL ||
+      runtimeBase ||
       (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
     // Retrieve existing customer or create a new one
     const stripe = getStripe();

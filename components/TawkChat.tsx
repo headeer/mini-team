@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 export default function TawkChat() {
   const pathname = usePathname() || "";
-  const isBlocked = pathname === "/shop" || pathname.startsWith("/product/") || pathname.startsWith("/checkout");
+  const isBlocked = pathname === "/shop" || pathname.startsWith("/product/") || pathname.startsWith("/checkout") || pathname.startsWith("/cart");
   if (isBlocked) return null;
 
   return (

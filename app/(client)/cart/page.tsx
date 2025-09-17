@@ -152,12 +152,45 @@ const CartPage = () => {
     return baseNet + (Number(mount) || 0) + (Number(drill) || 0) + (Number(teeth) || 0);
   };
 
+  // Detect invalid items (missing required parameters)
+  const invalidItems = useMemo(() => {
+    const out: Array<{ id?: string; title: string; reason: string; slug?: string }> = [];
+    const mustMountRegex = /zrywak|łyżk|lyzk|grabie|wiertnic|szybkozlacz|szybkozłącze/i;
+    for (const { product, configuration } of groupedItems) {
+      const nameStr = String((product as any)?.name || (product as any)?.title || "");
+      const hasMountSystems = Array.isArray((product as any)?.mountSystems) && (product as any).mountSystems.length > 0;
+      const needsMount = hasMountSystems || mustMountRegex.test(nameStr);
+      if (needsMount && !configuration?.mount) {
+        out.push({ id: (product as any)?._id, title: nameStr, reason: "Brak wybranego mocowania", slug: (product as any)?.slug?.current });
+        continue;
+      }
+      if (configuration?.mount === 'INNE') {
+        const dims = (configuration?.dimensions || {}) as any;
+        const ok = ['A','B','C','D'].every((k) => typeof dims[k] === 'number' && !Number.isNaN(dims[k] as number));
+        if (!ok) out.push({ id: (product as any)?._id, title: nameStr, reason: "Uzupełnij wymiary A/B/C/D", slug: (product as any)?.slug?.current });
+      }
+    }
+    return out;
+  }, [groupedItems]);
+
   return (
     <div className="bg-gray-50 pb-52 md:pb-10">
       {isSignedIn ? (
         <Container>
           {groupedItems?.length ? (
             <>
+              {invalidItems.length > 0 && (
+                <div className="mb-4 rounded-md border border-amber-300 bg-amber-50 p-3 text-amber-900">
+                  <div className="font-semibold">Uzupełnij parametry przed płatnością:</div>
+                  <ul className="list-disc pl-5 text-sm mt-1 space-y-1">
+                    {invalidItems.map((it, idx) => (
+                      <li key={`${it.id || idx}`}> 
+                        {it.title} — {it.reason} {it.slug ? (<Link href={`/product/${it.slug}#konfigurator`} className="underline text-[var(--color-brand-orange)] ml-1">Zmień konfigurację</Link>) : null}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div className="flex items-center justify-between py-5">
                 <div className="flex items-center gap-2">
                   <ShoppingBag className="text-darkColor" />
@@ -402,13 +435,13 @@ const CartPage = () => {
                             className="text-lg font-bold text-black"
                           />
                         </div>
-                        <Button
+                      <Button
                           className="w-full rounded-full font-semibold tracking-wide hoverEffect"
                           size="lg"
-                          disabled={loading}
+                        disabled={loading || invalidItems.length > 0}
                           onClick={handleCheckout}
                         >
-                          {loading ? "Proszę czekać..." : "Przejdź do płatności"}
+                        {loading ? "Proszę czekać..." : (invalidItems.length > 0 ? "Uzupełnij parametry" : "Przejdź do płatności")}
                         </Button>
                       </div>
                     </div>
