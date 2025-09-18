@@ -339,10 +339,38 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
       </div>
 
       {product?.teethEnabled ? (
-        <label className="inline-flex items-center gap-2 text-sm">
-          <Checkbox checked={addTeeth} onCheckedChange={(v) => setAddTeeth(Boolean(v))} />
-          Doposażenie w zęby {typeof product.toothCost === 'number' ? `(+${product.toothCost} zł netto)` : ''}
-        </label>
+        <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-xl p-4 mb-4">
+          <label className="flex items-start gap-3 cursor-pointer group">
+            <div className="flex-shrink-0 mt-0.5">
+              <Checkbox 
+                checked={addTeeth} 
+                onCheckedChange={(v) => setAddTeeth(Boolean(v))}
+                className="w-5 h-5 border-2 border-orange-400 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+              />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors">
+                  Doposażenie w zęby
+                </span>
+                {typeof product.toothCost === 'number' && (
+                  <span className="bg-orange-100 text-orange-800 text-sm font-semibold px-2 py-1 rounded-full">
+                    +{product.toothCost} zł netto
+                  </span>
+                )}
+              </div>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Dodaj wytrzymałe zęby do łyżki dla lepszej wydajności kopania i dłuższej żywotności.
+              </p>
+              {addTeeth && (
+                <div className="mt-2 flex items-center gap-2 text-sm text-green-700">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="font-medium">Zęby zostaną dodane do zamówienia</span>
+                </div>
+              )}
+            </div>
+          </label>
+        </div>
       ) : null}
 
       <div className="pt-2">
@@ -367,7 +395,12 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
           className="w-full"
         />
         {product?.toothCost && addTeeth ? (
-          <div className="text-xs text-gray-600 mt-1">Cena + dopłaty: +{product.toothCost} zł netto (zęby)</div>
+          <div className="mt-2 p-2 bg-green-50 border border-green-200 rounded-lg">
+            <div className="flex items-center gap-2 text-sm text-green-800">
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+              <span className="font-medium">Dodano zęby: +{product.toothCost} zł netto</span>
+            </div>
+          </div>
         ) : null}
       </div>
     </div>
