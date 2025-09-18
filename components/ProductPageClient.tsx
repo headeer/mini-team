@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Product } from "@/sanity.types";
-import ProminentTeethOption from "./ProminentTeethOption";
 import BucketConfigurator from "./BucketConfigurator";
 import AddToCartButton from "./AddToCartButton";
 import FavoriteButton from "./FavoriteButton";
@@ -28,36 +27,16 @@ export default function ProductPageClient({
   similar, 
   children 
 }: ProductPageClientProps) {
-  const [addTeeth, setAddTeeth] = React.useState<boolean>(false);
-
-  // Check if product has teeth data
-  const hasTeethData = Boolean(
-    (product as any)?.teethEnabled && 
-    (product as any)?.toothQty
-  );
 
   return (
     <>
       {children}
       
-      {/* Prominent Teeth Option - Show for ALL products with teeth data */}
-      {hasTeethData && (
-        <div className="mb-6">
-          <ProminentTeethOption 
-            product={product as any}
-            addTeeth={addTeeth}
-            onTeethChange={setAddTeeth}
-          />
-        </div>
-      )}
 
       {/* Configuration Section - Show for ALL products */}
       <div className="my-4">
         <BucketConfigurator 
-          product={{
-            ...(product as any),
-            addTeeth: addTeeth,
-          }} 
+          product={product as any}
         />
       </div>
 
