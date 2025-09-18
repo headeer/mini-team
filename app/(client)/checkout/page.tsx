@@ -99,7 +99,8 @@ export default function CheckoutPage() {
           ...it,
           product: {
             ...it.product,
-            price: computeUnitFullPrice(it.product),
+            // pass computed net with extras as price for stripe client secret calc path
+            price: computeUnitNet(it.product as any, it.configuration),
             name: it.product?.title || it.product?.name,
           },
          }));
