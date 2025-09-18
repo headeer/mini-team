@@ -588,9 +588,9 @@ const CartPage = () => {
                         </div>
                         <Separator />
                         <div className="flex items-center justify-between font-semibold text-lg">
-                          <span>RAZEM</span>
+                          <span>Razem do zapłaty (brutto)</span>
                           <PriceFormatter
-                            amount={getTotalPrice()}
+                            amount={(getSubTotalPrice() * 1.23) + 160}
                             className="text-lg font-bold text-black"
                           />
                         </div>
@@ -599,10 +599,10 @@ const CartPage = () => {
                     <Button
                       className="mt-3 w-full rounded-full font-semibold tracking-wide hoverEffect"
                       size="lg"
-                      disabled={loading}
+                      disabled={loading || invalidItems.length > 0}
                       onClick={handleCheckout}
                     >
-                      {loading ? "Proszę czekać..." : "Przejdź do płatności"}
+                      {loading ? "Proszę czekać..." : (invalidItems.length > 0 ? "Uzupełnij parametry" : "Przejdź do płatności")}
                     </Button>
                   </div>
                 </div>

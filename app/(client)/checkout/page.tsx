@@ -30,7 +30,8 @@ export default function CheckoutPage() {
 
   type CartProduct = {
     basePrice?: number;
-    price?: number;
+    price?: number | string;
+    pricing?: { priceNet?: number | string };
     toothCost?: number;
     toothQty?: number;
     title?: string;
@@ -39,15 +40,19 @@ export default function CheckoutPage() {
     images?: Array<{ asset?: { _ref?: string } } | string>;
   };
   const computeUnitFullPrice = useCallback((product: CartProduct) => {
-    const base = typeof product?.basePrice === "number" ? product.basePrice : (product?.price ?? 0);
+    const candidate =
+      (typeof product?.pricing?.priceNet === 'number' ? product.pricing.priceNet : (typeof product?.pricing?.priceNet === 'string' ? parseFloat(product.pricing.priceNet) : undefined)) ??
+      (typeof product?.basePrice === 'number' ? product.basePrice : undefined) ??
+      (typeof product?.price === 'string' ? parseFloat(product.price) : (typeof product?.price === 'number' ? product.price : 0));
+    const base = Number.isFinite(candidate as number) ? (candidate as number) : 0;
     const toothCost = typeof product?.toothCost === "number" ? product.toothCost : 0;
     const toothQty = typeof product?.toothQty === "number" ? product.toothQty : 0;
     return base + toothCost * toothQty;
   }, []);
 
-  const subtotal = useMemo(() => groupedItems.reduce((sum, it) => sum + computeUnitFullPrice(it.product) * it.quantity, 0), [groupedItems, computeUnitFullPrice]);
-  const shipping = 160; // wysyłka paletowa (netto)
-  const total = subtotal + shipping;
+  const subtotalNet = useMemo(() => groupedItems.reduce((sum, it) => sum + computeUnitFullPrice(it.product) * it.quantity, 0), [groupedItems, computeUnitFullPrice]);
+  const shippingNet = 160; // wysyłka paletowa (netto)
+  const totalGross = subtotalNet * 1.23 + shippingNet;
 
   const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -219,16 +224,24 @@ export default function CheckoutPage() {
                   ))}
                 </div>
                 <div className="flex items-center justify-between">
-                  <span>Suma częściowa</span>
-                  <PriceFormatter amount={subtotal} />
+                  <span>Suma częściowa (netto)</span>
+                  <PriceFormatter amount={subtotalNet} />
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>VAT (23%)</span>
+                  <PriceFormatter amount={subtotalNet * 0.23} />
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>Suma częściowa (brutto)</span>
+                  <PriceFormatter amount={subtotalNet * 1.23} />
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Wysyłka paletowa (netto)</span>
-                  <PriceFormatter amount={shipping} />
+                  <PriceFormatter amount={shippingNet} />
                 </div>
                 <div className="flex items-center justify-between font-semibold">
-                  <span>RAZEM do zapłaty</span>
-                  <PriceFormatter amount={total} />
+                  <span>RAZEM do zapłaty (brutto)</span>
+                  <PriceFormatter amount={totalGross} />
                 </div>
                 {/* Embedded Stripe Checkout mounts here when clientSecret exists */}
                 {clientSecret && (
