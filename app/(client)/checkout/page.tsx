@@ -13,6 +13,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import { createCheckoutSession, Metadata, GroupedCartItems } from "@/actions/createCheckoutSession";
+import { client } from "@/sanity/lib/client";
 import { fetchStripeClientSecret } from "@/actions/fetchStripeClientSecret";
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -53,6 +54,39 @@ export default function CheckoutPage() {
     () => groupedItems.reduce((sum, it) => sum + computeUnitNet(it.product as any, it.configuration) * it.quantity, 0),
     [groupedItems, computeUnitNet]
   );
+
+  // Fallback price map for items that resolve to 0 (e.g., legacy items in cart)
+  const [priceMap, setPriceMap] = useState<Record<string, number>>({});
+  useEffect(() => {
+    const missing = groupedItems
+      .filter((it) => (computeUnitNet(it.product as any, it.configuration) || 0) <= 0)
+      .map((it) => (it.product as any)?._id)
+      .filter(Boolean) as string[];
+    const toFetch = [...new Set(missing)].filter((id) => !priceMap[id]);
+    if (toFetch.length === 0) return;
+    (async () => {
+      try {
+        const docs: Array<{ _id: string; pricing?: { priceNet?: number | string }; priceNet?: number | string; basePrice?: number; price?: number | string }> = await client.fetch(
+          `*[_type=="product" && _id in $ids]{ _id, pricing, priceNet, basePrice, price }`,
+          { ids: toFetch }
+        );
+        const next: Record<string, number> = { ...priceMap };
+        docs.forEach((d) => {
+          const cand =
+            (typeof d?.pricing?.priceNet === 'number' ? d.pricing!.priceNet : (typeof d?.pricing?.priceNet === 'string' ? parseFloat(d.pricing!.priceNet as string) : undefined)) ??
+            (typeof d?.priceNet === 'number' ? (d.priceNet as number) : (typeof d?.priceNet === 'string' ? parseFloat(d.priceNet as string) : undefined)) ??
+            (typeof d?.basePrice === 'number' ? d.basePrice : undefined) ??
+            (typeof d?.price === 'number' ? (d.price as number) : (typeof d?.price === 'string' ? parseFloat(d.price as string) : 0));
+          next[d._id] = Number.isFinite(cand as number) ? (cand as number) : 0;
+        });
+        setPriceMap(next);
+      } catch {}
+    })();
+  }, [groupedItems, priceMap, computeUnitNet]);
+
+  const computeExtras = (cfg?: GroupedCartItems["configuration"]) => {
+    return (cfg?.mount?.price ?? 0) + (cfg?.drill?.price ?? 0) + (cfg?.teeth?.enabled ? (cfg?.teeth?.price ?? 0) : 0);
+  };
   const shippingNet = 160; // wysyłka paletowa (netto)
   const totalGross = subtotalNet * 1.23 + shippingNet;
 
@@ -220,7 +254,7 @@ export default function CheckoutPage() {
                         <p className="text-xs text-gray-600">Ilość: {quantity}</p>
                       </div>
                       <div className="text-sm font-semibold">
-                        <PriceFormatter amount={computeUnitNet(product as any, configuration) * quantity} />
+                        <PriceFormatter amount={(computeUnitNet(product as any, configuration) || priceMap[(product as any)?._id] || 0) * quantity} />
                       </div>
                     </div>
                   ))}
