@@ -25,7 +25,7 @@ import { useUser } from "@clerk/nextjs";
 export default function CheckoutPage() {
   const groupedItems = useStore((s) => s.getGroupedItems());
   const { user } = useUser();
-  const [payMethod, setPayMethod] = useState<"stripe" | "transfer">("stripe");
+  const [payMethod] = useState<"stripe">("stripe");
   const [loading, setLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
@@ -182,17 +182,17 @@ export default function CheckoutPage() {
               <CardHeader>
                 <CardTitle>Metoda płatności</CardTitle>
               </CardHeader>
-              <CardContent>
-                <RadioGroup defaultValue={payMethod} onValueChange={(v: "stripe" | "transfer") => setPayMethod(v)}>
-                  <div className="flex items-start gap-2">
-                    <RadioGroupItem value="stripe" id="pm-stripe" />
-                    <Label htmlFor="pm-stripe" className="text-sm">Stripe (karta, BLIK) – Bezpieczne płatności kartą lub BLIKiem</Label>
+              <CardContent className="space-y-3">
+                <div className="flex items-start gap-2 p-3 rounded-xl border bg-white">
+                  <input type="radio" checked readOnly className="mt-1 h-4 w-4 accent-[var(--color-brand-orange)]" aria-label="Stripe (karta, BLIK)" />
+                  <div className="text-sm">
+                    <div className="font-medium">Stripe (karta, BLIK)</div>
+                    <div className="text-gray-600">Bezpieczne płatności kartą / BLIK / Apple Pay / Google Pay</div>
                   </div>
-                  <div className="flex items-start gap-2 mt-2">
-                    <RadioGroupItem value="transfer" id="pm-transfer" />
-                    <Label htmlFor="pm-transfer" className="text-sm">Przelew tradycyjny – przelew na konto: 51 1140 2004 0000 3602 7800 1733</Label>
-                  </div>
-                </RadioGroup>
+                </div>
+                <div className="text-xs text-gray-600 bg-gray-50 border border-gray-200 rounded-lg p-3">
+                  Przelew tradycyjny – przelew na konto: <span className="font-semibold">51 1140 2004 0000 3602 7800 1733</span>. Jeśli wolisz przelew, skontaktuj się z nami – przygotujemy proformę.
+                </div>
               </CardContent>
             </Card>
 
