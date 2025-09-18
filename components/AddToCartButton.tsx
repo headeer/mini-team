@@ -41,7 +41,7 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
   const computedItemCount = getItemCount(product?._id);
   const itemCount = isHydrated ? computedItemCount : 0;
   const isOutOfStock = typeof product?.stock === 'number' && product.stock === 0;
-  const explicitPhoneOnly = Boolean((product as unknown as { phoneOrderOnly?: boolean })?.phoneOrderOnly);
+  const explicitPhoneOnly = ((product as unknown as { phoneOrderOnly?: boolean | string })?.phoneOrderOnly === true);
   // Only treat as phone order when explicit flag is set
   const isPhoneOnly = explicitPhoneOnly;
 

@@ -32,25 +32,27 @@ export default function CheckoutPage() {
     basePrice?: number;
     price?: number | string;
     pricing?: { priceNet?: number | string };
-    toothCost?: number;
-    toothQty?: number;
     title?: string;
     name?: string;
     _id?: string;
     images?: Array<{ asset?: { _ref?: string } } | string>;
   };
-  const computeUnitFullPrice = useCallback((product: CartProduct) => {
-    const candidate =
+  const computeUnitNet = useCallback((product: CartProduct, configuration?: GroupedCartItems["configuration"]) => {
+    const priceCandidate =
       (typeof product?.pricing?.priceNet === 'number' ? product.pricing.priceNet : (typeof product?.pricing?.priceNet === 'string' ? parseFloat(product.pricing.priceNet) : undefined)) ??
       (typeof product?.basePrice === 'number' ? product.basePrice : undefined) ??
       (typeof product?.price === 'string' ? parseFloat(product.price) : (typeof product?.price === 'number' ? product.price : 0));
-    const base = Number.isFinite(candidate as number) ? (candidate as number) : 0;
-    const toothCost = typeof product?.toothCost === "number" ? product.toothCost : 0;
-    const toothQty = typeof product?.toothQty === "number" ? product.toothQty : 0;
-    return base + toothCost * toothQty;
+    const baseNet = Number.isFinite(priceCandidate as number) ? (priceCandidate as number) : 0;
+    const mount = configuration?.mount?.price ?? 0;
+    const drill = configuration?.drill?.price ?? 0;
+    const teeth = configuration?.teeth?.enabled ? (configuration?.teeth?.price ?? 0) : 0;
+    return baseNet + (Number(mount) || 0) + (Number(drill) || 0) + (Number(teeth) || 0);
   }, []);
 
-  const subtotalNet = useMemo(() => groupedItems.reduce((sum, it) => sum + computeUnitFullPrice(it.product) * it.quantity, 0), [groupedItems, computeUnitFullPrice]);
+  const subtotalNet = useMemo(
+    () => groupedItems.reduce((sum, it) => sum + computeUnitNet(it.product as any, it.configuration) * it.quantity, 0),
+    [groupedItems, computeUnitNet]
+  );
   const shippingNet = 160; // wysyłka paletowa (netto)
   const totalGross = subtotalNet * 1.23 + shippingNet;
 
@@ -193,7 +195,7 @@ export default function CheckoutPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
-                  {groupedItems.map(({ product, quantity }) => (
+                  {groupedItems.map(({ product, quantity, configuration }) => (
                     <div key={product._id} className="flex items-center gap-3">
                       {(() => {
                         const toSrc = (img: any): string | null => {
@@ -218,7 +220,7 @@ export default function CheckoutPage() {
                         <p className="text-xs text-gray-600">Ilość: {quantity}</p>
                       </div>
                       <div className="text-sm font-semibold">
-                        {computeUnitFullPrice(product) * quantity}
+                        <PriceFormatter amount={computeUnitNet(product as any, configuration) * quantity} />
                       </div>
                     </div>
                   ))}
