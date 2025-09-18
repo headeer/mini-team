@@ -95,10 +95,19 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
     }
     
     const stock = typeof product?.stock === 'number' ? product.stock : Infinity; // If no stock limit, allow unlimited
+    // Normalize product to always include numeric pricing.priceNet for downstream consumers (cart/checkout)
+    const baseNet = getNetPrice(product);
+    const enrichedProduct = {
+      ...(product as any),
+      pricing: {
+        ...((product as any)?.pricing || {}),
+        priceNet: baseNet,
+      },
+    } as any;
     if (stock > itemCount) {
       const hasDims = !!extraConfiguration?.dimensions && Object.values(extraConfiguration.dimensions || {}).some((v) => typeof v === 'number' && !Number.isNaN(v as number));
       if (hasDims || extraConfiguration?.photoAssetId || extraConfiguration?.teeth?.enabled || extraConfiguration?.mount || extraConfiguration?.machine) {
-        addConfiguredItem(product, { 
+        addConfiguredItem(enrichedProduct, { 
           dimensions: extraConfiguration?.dimensions, 
           photoAssetId: extraConfiguration?.photoAssetId, 
           teeth: extraConfiguration?.teeth,
@@ -106,7 +115,7 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
           machine: extraConfiguration?.machine,
         } as any);
       } else {
-        addItem(product);
+        addItem(enrichedProduct);
       }
       toast.success(`${product?.name?.substring(0, 12)}... dodano do koszyka`);
     } else {
