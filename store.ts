@@ -71,12 +71,16 @@ const useStore = create<StoreState>()(
             dimensions?: { A?: number; B?: number; C?: number; D?: number };
             photoAssetId?: string;
             teeth?: { enabled: boolean; price?: number };
+            machine?: { brandModel?: string; weight?: number | string };
+            hasQuickCoupler?: boolean;
           }) => ({
             mount: cfg?.mount ? { title: cfg.mount.title, price: cfg.mount.price } : undefined,
             drill: cfg?.drill ? { title: cfg.drill.title, price: cfg.drill.price } : undefined,
             dimensions: cfg?.dimensions ? { ...cfg.dimensions } : undefined,
             photoAssetId: cfg?.photoAssetId,
             teeth: cfg?.teeth ? { enabled: !!cfg.teeth.enabled, price: cfg.teeth.price } : undefined,
+            machine: cfg?.machine ? { brandModel: cfg.machine.brandModel, weight: cfg.machine.weight } : undefined,
+            hasQuickCoupler: typeof cfg?.hasQuickCoupler === 'boolean' ? cfg?.hasQuickCoupler : undefined,
           });
           const normalized = normalize(configuration);
           const existingItem = state.items.find(

@@ -334,25 +334,45 @@ const CartPage = () => {
                                   <div className="text-sm text-gray-700 space-y-1">
                                     {configuration.mount?.title ? (
                                       <div>
-                                        <span className="font-medium">{configuration.mount.title}</span>
+                                        <span className="font-medium">Mocowanie:</span>
+                                        <span className="ml-1">{configuration.mount.title}</span>
                                         {typeof configuration.mount.price === "number" ? (
-                                          <span className="text-gray-600 ml-2">{configuration.mount.price} zł netto</span>
+                                          <span className="text-gray-600 ml-2">(+{configuration.mount.price} zł netto)</span>
                                         ) : null}
+                                      </div>
+                                    ) : null}
+                                    {typeof configuration.hasQuickCoupler === 'boolean' ? (
+                                      <div>
+                                        <span className="font-medium">Szybkozłącze:</span>
+                                        <span className="ml-1">{configuration.hasQuickCoupler ? 'Tak' : 'Nie'}</span>
+                                      </div>
+                                    ) : null}
+                                    {configuration.machine?.brandModel ? (
+                                      <div>
+                                        <span className="font-medium">Marka/Model:</span>
+                                        <span className="ml-1">{configuration.machine.brandModel}</span>
+                                      </div>
+                                    ) : null}
+                                    {configuration.machine?.weight ? (
+                                      <div>
+                                        <span className="font-medium">Waga maszyny:</span>
+                                        <span className="ml-1">{configuration.machine.weight} t</span>
                                       </div>
                                     ) : null}
                                     {configuration.drill?.title ? (
                                       <div>
-                                        <span className="font-medium">{configuration.drill.title}</span>
+                                        <span className="font-medium">Wiertło:</span>
+                                        <span className="ml-1">{configuration.drill.title}</span>
                                         {typeof configuration.drill.price === "number" ? (
-                                          <span className="text-gray-600 ml-2">{configuration.drill.price} zł netto</span>
+                                          <span className="text-gray-600 ml-2">(+{configuration.drill.price} zł netto)</span>
                                         ) : null}
                                       </div>
                                     ) : null}
                                     {configuration.teeth?.enabled ? (
                                       <div>
-                                        <span className="font-medium">Zęby</span>
+                                        <span className="font-medium">Zęby:</span>
                                         {typeof configuration.teeth.price === "number" ? (
-                                          <span className="text-gray-600 ml-2">{configuration.teeth.price} zł netto</span>
+                                          <span className="text-gray-600 ml-2">(+{configuration.teeth.price} zł netto)</span>
                                         ) : null}
                                       </div>
                                     ) : null}
