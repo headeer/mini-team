@@ -48,6 +48,13 @@ const useStore = create<StoreState>()(
       favoriteProduct: [],
       addItem: (product) =>
         set((state) => {
+          const anyP = product as any;
+          const candidate = anyP?.pricing?.priceNet ?? anyP?.priceNet ?? anyP?.basePrice ?? anyP?.price ?? 0;
+          const numeric = typeof candidate === 'string' ? parseFloat(candidate) : Number(candidate) || 0;
+          const p = {
+            ...anyP,
+            pricing: { ...(anyP?.pricing || {}), priceNet: numeric },
+          } as any;
           const existingItem = state.items.find(
             (item) => item.product._id === product._id
           );
@@ -60,11 +67,18 @@ const useStore = create<StoreState>()(
               ),
             };
           } else {
-            return { items: [...state.items, { product, quantity: 1 }] };
+            return { items: [...state.items, { product: p, quantity: 1 }] };
           }
         }),
       addConfiguredItem: (product, configuration) =>
         set((state) => {
+          const anyP = product as any;
+          const candidate = anyP?.pricing?.priceNet ?? anyP?.priceNet ?? anyP?.basePrice ?? anyP?.price ?? 0;
+          const numeric = typeof candidate === 'string' ? parseFloat(candidate) : Number(candidate) || 0;
+          const p = {
+            ...anyP,
+            pricing: { ...(anyP?.pricing || {}), priceNet: numeric },
+          } as any;
           const normalize = (cfg?: {
             mount?: { title?: string; price?: number };
             drill?: { title?: string; price?: number };
@@ -85,13 +99,13 @@ const useStore = create<StoreState>()(
           const normalized = normalize(configuration);
           const existingItem = state.items.find(
             (item) =>
-              item.product._id === product._id &&
+              item.product._id === p._id &&
               JSON.stringify(normalize(item.configuration)) === JSON.stringify(normalized)
           );
           if (existingItem) {
             return {
               items: state.items.map((item) =>
-                item.product._id === product._id &&
+                item.product._id === p._id &&
                 JSON.stringify(normalize(item.configuration)) === JSON.stringify(normalized)
                   ? { ...item, quantity: item.quantity + 1 }
                   : item
@@ -101,7 +115,7 @@ const useStore = create<StoreState>()(
             return {
               items: [
                 ...state.items,
-                { product, quantity: 1, configuration: normalized },
+                { product: p, quantity: 1, configuration: normalized },
               ],
             };
           }
