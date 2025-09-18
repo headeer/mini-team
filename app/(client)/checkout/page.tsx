@@ -14,12 +14,9 @@ import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import { createCheckoutSession, Metadata, GroupedCartItems } from "@/actions/createCheckoutSession";
 import { client } from "@/sanity/lib/client";
-import { fetchStripeClientSecret } from "@/actions/fetchStripeClientSecret";
-import { EmbeddedCheckout, EmbeddedCheckoutProvider } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+// hosted checkout (new tab)
 
-// Initialize Stripe.js once at module scope (avoids multiple instances)
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
+// removed embedded checkout; using hosted redirect
 import { useUser } from "@clerk/nextjs";
 
 export default function CheckoutPage() {
@@ -27,7 +24,7 @@ export default function CheckoutPage() {
   const { user } = useUser();
   const [payMethod] = useState<"stripe">("stripe");
   const [loading, setLoading] = useState(false);
-  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  // no embedded client secret
 
   type CartProduct = {
     basePrice?: number;
@@ -92,29 +89,30 @@ export default function CheckoutPage() {
 
   const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (payMethod === "stripe") {
-      try {
-        setLoading(true);
-        const enriched: GroupedCartItems[] = groupedItems.map((it) => ({
-          ...it,
-          product: {
-            ...it.product,
-            // pass computed net with extras as price for stripe client secret calc path
-            price: computeUnitNet(it.product as any, it.configuration),
-            name: it.product?.title || it.product?.name,
-          },
-         }));
-        const secret = await fetchStripeClientSecret(enriched);
-        if (!secret) {
-          alert("Nie udało się zainicjować płatności. Spróbuj ponownie lub wybierz przelew.");
-          return;
-        }
-        setClientSecret(secret);
-      } finally {
-        setLoading(false);
+    try {
+      setLoading(true);
+      const enriched: GroupedCartItems[] = groupedItems.map((it) => ({
+        ...it,
+        product: {
+          ...it.product,
+          price: computeUnitNet(it.product as any, it.configuration),
+          name: it.product?.title || it.product?.name,
+        },
+       }));
+      const hostedUrl = await createCheckoutSession(enriched as any, {
+        orderNumber: crypto.randomUUID(),
+        customerName: user?.fullName ?? 'Unknown',
+        customerEmail: user?.emailAddresses[0]?.emailAddress ?? 'Unknown',
+        clerkUserId: user?.id,
+        address: null,
+      })
+      if (!hostedUrl) {
+        alert('Nie udało się zainicjować płatności. Spróbuj ponownie.');
+        return;
       }
-    } else {
-      alert("Dane do przelewu: 51 1140 2004 0000 3602 7800 1733, tytuł: ZAMÓWIENIE #" + Math.floor(Math.random()*100000));
+      window.open(hostedUrl, '_blank', 'noopener');
+    } finally {
+      setLoading(false);
     }
   };
 

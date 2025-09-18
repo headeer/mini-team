@@ -56,6 +56,11 @@ export async function createCheckoutSession(
       return baseNet + (Number(mount) || 0) + (Number(drill) || 0) + (Number(teeth) || 0);
     };
 
+    const computeUnitGross = (product: any, configuration?: GroupedCartItems["configuration"]): number => {
+      const netPrice = computeUnitNet(product, configuration);
+      return netPrice * 1.23; // Add 23% VAT to get gross price
+    };
+
     const formatName = (item: GroupedCartItems): string => {
       const p: any = item.product || {};
       const base = p?.title || p?.name || "Produkt";
@@ -102,7 +107,7 @@ export async function createCheckoutSession(
         ...items?.map((item) => ({
           price_data: {
             currency: "pln",
-            unit_amount: Math.round(computeUnitNet(item.product, item.configuration) * 100),
+            unit_amount: Math.round(computeUnitGross(item.product, item.configuration) * 100),
             product_data: {
               name: formatName(item),
               description: formatDescription(item),
@@ -126,13 +131,13 @@ export async function createCheckoutSession(
           },
           quantity: item?.quantity,
         })),
-        // Flat pallet shipping (net)
+        // Flat pallet shipping (gross)
         {
           price_data: {
             currency: "pln",
-            unit_amount: 16000, // 160 PLN
+            unit_amount: 19680, // 160 PLN net * 1.23 = 196.80 PLN gross
             product_data: {
-              name: "Wysyłka paletowa (netto)",
+              name: "Wysyłka paletowa (brutto)",
               description: "Stała stawka wysyłki paletowej",
             },
           },
