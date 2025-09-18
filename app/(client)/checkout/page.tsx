@@ -201,14 +201,40 @@ export default function CheckoutPage() {
                 <CardTitle>Zgody i regulaminy</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <label className="flex items-start gap-2 text-sm">
-                  <input type="checkbox" required className="mt-1" />
-                  <span>Akceptuję <Link href="/regulamin" className="text-[var(--color-brand-orange)] hover:underline">Regulamin sklepu</Link></span>
-                </label>
-                <label className="flex items-start gap-2 text-sm">
-                  <input type="checkbox" required className="mt-1" />
-                  <span>Oświadczam, że zapoznałem się z <Link href="/polityka-prywatnosci" className="text-[var(--color-brand-orange)] hover:underline">Polityką Prywatności</Link></span>
-                </label>
+                <div className="space-y-2">
+                  <label className="flex items-start gap-3 p-3 rounded-xl border bg-white hover:bg-gray-50 transition-colors cursor-pointer text-sm">
+                    <input
+                      type="checkbox"
+                      required
+                      className="mt-1 h-4 w-4 shrink-0 accent-[var(--color-brand-orange)]"
+                      aria-describedby="consent-terms-help"
+                    />
+                    <span className="leading-5">
+                      Akceptuję
+                      {' '}
+                      <Link href="/regulamin" className="text-[var(--color-brand-orange)] hover:underline font-medium">Regulamin sklepu</Link>
+                      {' '}
+                      <span className="ml-2 text-[10px] uppercase tracking-wide text-gray-500">Wymagane</span>
+                    </span>
+                  </label>
+                  <label className="flex items-start gap-3 p-3 rounded-xl border bg-white hover:bg-gray-50 transition-colors cursor-pointer text-sm">
+                    <input
+                      type="checkbox"
+                      required
+                      className="mt-1 h-4 w-4 shrink-0 accent-[var(--color-brand-orange)]"
+                      aria-describedby="consent-privacy-help"
+                    />
+                    <span className="leading-5">
+                      Oświadczam, że zapoznałem się z
+                      {' '}
+                      <Link href="/polityka-prywatnosci" className="text-[var(--color-brand-orange)] hover:underline font-medium">Polityką Prywatności</Link>
+                      {' '}
+                      <span className="ml-2 text-[10px] uppercase tracking-wide text-gray-500">Wymagane</span>
+                    </span>
+                  </label>
+                  <p id="consent-terms-help" className="sr-only">Zaznacz, aby zaakceptować regulamin sklepu.</p>
+                  <p id="consent-privacy-help" className="sr-only">Zaznacz, aby potwierdzić zapoznanie się z Polityką Prywatności.</p>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                   <Button type="submit" disabled={loading} className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">
                     {loading ? "Proszę czekać..." : "Zapłać i Złóż zamówienie"}
