@@ -13,6 +13,8 @@ export interface Metadata {
   customerEmail: string;
   clerkUserId?: string;
   address?: Address | null;
+  promoCode?: string;
+  discount?: number;
 }
 
 export interface GroupedCartItems {
@@ -91,6 +93,8 @@ export async function createCheckoutSession(
         customerEmail: metadata.customerEmail,
         clerkUserId: metadata.clerkUserId!,
         address: JSON.stringify(metadata.address),
+        promoCode: metadata.promoCode || '',
+        discount: String(metadata.discount || 0),
       },
       locale: 'pl',
       mode: "payment",
@@ -107,7 +111,7 @@ export async function createCheckoutSession(
         ...items?.map((item) => ({
           price_data: {
             currency: "pln",
-            unit_amount: Math.round(computeUnitGross(item.product, item.configuration) * 100),
+            unit_amount: Math.round(computeUnitGross(item.product, item.configuration) * (1 - (metadata.discount || 0)) * 100),
             product_data: {
               name: formatName(item),
               description: formatDescription(item),
@@ -131,8 +135,8 @@ export async function createCheckoutSession(
           },
           quantity: item?.quantity,
         })),
-        // Flat pallet shipping (gross)
-        {
+        // Flat pallet shipping (gross) - free with promo
+        ...(metadata.discount && metadata.discount >= 1 ? [] : [{
           price_data: {
             currency: "pln",
             unit_amount: 19680, // 160 PLN net * 1.23 = 196.80 PLN gross
@@ -142,7 +146,7 @@ export async function createCheckoutSession(
             },
           },
           quantity: 1,
-        },
+        }]),
       ],
     };
     if (customerId) {

@@ -21,6 +21,9 @@ export default function CheckoutPage() {
   const groupedItems = useStore((s) => s.getGroupedItems());
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
+  const [promoApplied, setPromoApplied] = useState(false);
+  const [promoError, setPromoError] = useState("");
   // no embedded client secret
 
   type CartProduct = {
@@ -79,7 +82,22 @@ export default function CheckoutPage() {
   }, [groupedItems, priceMap, computeUnitNet]);
 
   const shippingNet = 160; // wysyłka paletowa (netto)
-  const totalGross = subtotalNet * 1.23 + shippingNet;
+  const discount = promoApplied ? 1 : 0; // 100% discount when promo applied
+  const discountedSubtotal = subtotalNet * (1 - discount);
+  const totalGross = discountedSubtotal * 1.23 + (promoApplied ? 0 : shippingNet); // Free shipping with promo
+
+  // Complex promo code for testing (100% discount)
+  const VALID_PROMO_CODE = "MT2024X7K9Q2R8P5N3V6W1Z4A7B9C2D5E8F1G4H7J0K3L6M9N2O5P8Q1R4S7T0U3V6W9X2Y5Z8";
+  
+  const applyPromoCode = () => {
+    if (promoCode.trim() === VALID_PROMO_CODE) {
+      setPromoApplied(true);
+      setPromoError("");
+    } else {
+      setPromoError("Nieprawidłowy kod promocyjny");
+      setPromoApplied(false);
+    }
+  };
 
   const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -99,6 +117,8 @@ export default function CheckoutPage() {
         customerEmail: user?.emailAddresses[0]?.emailAddress ?? 'Unknown',
         clerkUserId: user?.id,
         address: null,
+        promoCode: promoApplied ? promoCode : undefined,
+        discount: promoApplied ? 1 : 0,
       })
       if (!hostedUrl) {
         alert('Nie udało się zainicjować płatności. Spróbuj ponownie.');
@@ -185,6 +205,41 @@ export default function CheckoutPage() {
                 <div className="text-xs text-gray-600 bg-gray-50 border border-gray-200 rounded-lg p-3">
                   Przelew tradycyjny – przelew na konto: <span className="font-semibold">51 1140 2004 0000 3602 7800 1733</span>. Jeśli wolisz przelew, skontaktuj się z nami – przygotujemy proformę.
                 </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Kod promocyjny</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    placeholder="Wprowadź kod promocyjny"
+                    className="flex-1 border rounded-md px-3 py-2 text-base"
+                    value={promoCode}
+                    onChange={(e) => setPromoCode(e.target.value)}
+                  />
+                  <Button
+                    type="button"
+                    onClick={applyPromoCode}
+                    disabled={!promoCode.trim() || promoApplied}
+                    className="bg-[var(--color-brand-orange)] hover:bg-[var(--color-brand-red)] text-white"
+                  >
+                    {promoApplied ? 'Zastosowano' : 'Zastosuj'}
+                  </Button>
+                </div>
+                {promoError && (
+                  <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-2">
+                    {promoError}
+                  </div>
+                )}
+                {promoApplied && (
+                  <div className="text-sm text-green-600 bg-green-50 border border-green-200 rounded-lg p-2">
+                    ✅ Kod promocyjny zastosowany! Zniżka: 100%
+                  </div>
+                )}
               </CardContent>
             </Card>
 
@@ -282,19 +337,31 @@ export default function CheckoutPage() {
                   <span>Suma częściowa (netto)</span>
                   <PriceFormatter amount={subtotalNet} />
                 </div>
+                {promoApplied && (
+                  <div className="flex items-center justify-between text-green-600">
+                    <span>Zniżka promocyjna (100%)</span>
+                    <span className="font-semibold">-<PriceFormatter amount={subtotalNet} /></span>
+                  </div>
+                )}
                 <div className="flex items-center justify-between">
                   <span>VAT (23%)</span>
-                  <PriceFormatter amount={subtotalNet * 0.23} />
+                  <PriceFormatter amount={discountedSubtotal * 0.23} />
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Suma częściowa (brutto)</span>
-                  <PriceFormatter amount={subtotalNet * 1.23} />
+                  <PriceFormatter amount={discountedSubtotal * 1.23} />
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Wysyłka paletowa (netto)</span>
-                  <PriceFormatter amount={shippingNet} />
+                  <PriceFormatter amount={promoApplied ? 0 : shippingNet} />
                 </div>
-                <div className="flex items-center justify-between font-semibold">
+                {promoApplied && (
+                  <div className="flex items-center justify-between text-green-600">
+                    <span>Wysyłka GRATIS</span>
+                    <span className="font-semibold">-<PriceFormatter amount={shippingNet} /></span>
+                  </div>
+                )}
+                <div className="flex items-center justify-between font-semibold text-lg">
                   <span>RAZEM do zapłaty (brutto)</span>
                   <PriceFormatter amount={totalGross} />
                 </div>
