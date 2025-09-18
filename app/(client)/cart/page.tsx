@@ -214,60 +214,64 @@ const CartPage = () => {
                           className="border-b p-2.5 last:border-b-0 flex items-center justify-between gap-5"
                         >
                           <div className="flex flex-1 items-start gap-2 h-36 md:h-44">
-                            {product?.images && (
-                              (() => {
-                                const slug = product?.slug?.current;
-                                const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) =>
-                                  slug ? (
-                                    <Link
-                                      href={`/product/${slug}`}
-                                      className="border p-0.5 md:p-1 mr-2 rounded-md overflow-hidden group"
-                                    >
-                                      {children}
-                                    </Link>
-                                  ) : (
-                                    <div className="border p-0.5 md:p-1 mr-2 rounded-md overflow-hidden group cursor-default">
-                                      {children}
-                                    </div>
-                                  );
-                                return (
-                                  <Wrapper>
-                                    {(() => { 
-                                      const toSrc = (img: any): string | null => {
-                                        if (!img) return null;
-                                        if (typeof img === "string") return img || null;
-                                        if (typeof img === "object" && img.url) return img.url || null;
-                                        if (typeof img === "object" && img.asset?._ref) {
-                                          try { return urlFor(img).url(); } catch { return null; }
-                                        }
-                                        return null;
-                                      };
-                                      const src = toSrc(product?.images?.[0]);
-                                      return src ? (
-                                        <Image
-                                          src={src}
-                                          alt="productImage"
-                                          width={500}
-                                          height={500}
-                                          loading="lazy"
-                                          className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain bg-white rounded-md"
-                                        />
-                                      ) : (
-                                        <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-gray-100 rounded-md" />
-                                      );
-                                    })()}
-                                  </Wrapper>
+                            {(() => {
+                              const slug = product?.slug?.current;
+                              const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) =>
+                                slug ? (
+                                  <Link
+                                    href={`/product/${slug}`}
+                                    className="border p-0.5 md:p-1 mr-2 rounded-md overflow-hidden group"
+                                  >
+                                    {children}
+                                  </Link>
+                                ) : (
+                                  <div className="border p-0.5 md:p-1 mr-2 rounded-md overflow-hidden group cursor-default">
+                                    {children}
+                                  </div>
                                 );
-                              })()
-                            )}
+                              const toSrc = (img: any): string | null => {
+                                if (!img) return null;
+                                if (typeof img === "string") return img || null;
+                                if (typeof img === "object" && img.url) return img.url || null;
+                                if (typeof img === "object" && img.asset?._ref) {
+                                  try { return urlFor(img).url(); } catch { return null; }
+                                }
+                                return null;
+                              };
+                              const direct = (product as any)?.cover || (product as any)?.imageUrls?.[0]?.url;
+                              const imagesArr: any[] = Array.isArray((product as any)?.images) ? (product as any)?.images : [];
+                              const src = direct || toSrc(imagesArr[0]);
+                              return (
+                                <Wrapper>
+                                  {src ? (
+                                    <Image
+                                      src={src}
+                                      alt="productImage"
+                                      width={500}
+                                      height={500}
+                                      loading="lazy"
+                                      className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain bg-white rounded-md"
+                                    />
+                                  ) : (
+                                    <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-gray-100 rounded-md" />
+                                  )}
+                                </Wrapper>
+                              );
+                            })()}
                             <div className="h-full flex flex-1 flex-col justify-between py-1">
                               <div className="flex flex-col gap-0.5 md:gap-1.5">
                                 <h2 className="text-base font-semibold line-clamp-1">
-                                  {product?.title || product?.name}
+                                  {product?.slug?.current ? (
+                                    <Link href={`/product/${product.slug.current}`}>{product?.title || product?.name}</Link>
+                                  ) : (
+                                    <>{product?.title || product?.name}</>
+                                  )}
                                 </h2>
                                 {(() => {
                                   const hasMountSystems = Array.isArray((product as any)?.mountSystems) && (product as any).mountSystems.length > 0;
-                                  const needsFill = hasMountSystems && !configuration?.mount;
+                                  const mustMountRegex = /zrywak|łyżk|lyzk|grabie|wiertnic|szybkozlacz|szybkozłącze/i;
+                                  const nameStr = String((product as any)?.name || (product as any)?.title || "");
+                                  const needsFill = (hasMountSystems || mustMountRegex.test(nameStr)) && !configuration?.mount;
                                   if (needsFill) {
                                     const slugVal = product?.slug?.current;
                                     return (
