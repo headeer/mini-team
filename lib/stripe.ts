@@ -20,7 +20,6 @@ export function getStripe(): Stripe | null {
     const key = readStripeKey();
     if (!key) {
       stripeSingleton = null;
-      // eslint-disable-next-line no-console
       console.warn("[Stripe] Secret key missing or invalid. Ensure STRIPE_SECRET_KEY=sk_test_... is set.");
       return stripeSingleton;
     }
@@ -28,7 +27,6 @@ export function getStripe(): Stripe | null {
     return stripeSingleton;
   } catch (e) {
     stripeSingleton = null;
-    // eslint-disable-next-line no-console
     console.error("[Stripe] Failed to initialize Stripe:", e);
     return stripeSingleton;
   }

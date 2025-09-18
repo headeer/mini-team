@@ -32,7 +32,7 @@ export default function ProductPageClient({
 
   // Check if product has teeth data
   const hasTeethData = Boolean(
-    (product as any)?.toothCost && 
+    (product as any)?.teethEnabled && 
     (product as any)?.toothQty
   );
 

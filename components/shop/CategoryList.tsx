@@ -1,7 +1,5 @@
 import { Category } from "@/sanity.types";
 import React, { useMemo, useState } from "react";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Label } from "../ui/label";
 import FancySearchInput from "../ui/FancySearchInput";
 
 interface Props {

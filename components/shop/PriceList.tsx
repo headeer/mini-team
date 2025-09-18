@@ -1,5 +1,4 @@
 import React from "react";
-import { Label } from "../ui/label";
 
 const priceArray = [
   { title: "Do 1 000 zł", value: "0-1000" },

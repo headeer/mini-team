@@ -3,8 +3,6 @@
 import Container from "@/components/Container";
 import Title from "@/components/Title";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import PriceFormatter from "@/components/PriceFormatter";
 import useStore from "@/store";
@@ -12,7 +10,7 @@ import { useEffect, useMemo, useCallback, useState } from "react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
-import { createCheckoutSession, Metadata, GroupedCartItems } from "@/actions/createCheckoutSession";
+import { createCheckoutSession, GroupedCartItems } from "@/actions/createCheckoutSession";
 import { client } from "@/sanity/lib/client";
 // hosted checkout (new tab)
 
@@ -22,7 +20,6 @@ import { useUser } from "@clerk/nextjs";
 export default function CheckoutPage() {
   const groupedItems = useStore((s) => s.getGroupedItems());
   const { user } = useUser();
-  const [payMethod] = useState<"stripe">("stripe");
   const [loading, setLoading] = useState(false);
   // no embedded client secret
 
@@ -81,9 +78,6 @@ export default function CheckoutPage() {
     })();
   }, [groupedItems, priceMap, computeUnitNet]);
 
-  const computeExtras = (cfg?: GroupedCartItems["configuration"]) => {
-    return (cfg?.mount?.price ?? 0) + (cfg?.drill?.price ?? 0) + (cfg?.teeth?.enabled ? (cfg?.teeth?.price ?? 0) : 0);
-  };
   const shippingNet = 160; // wysyłka paletowa (netto)
   const totalGross = subtotalNet * 1.23 + shippingNet;
 
@@ -304,14 +298,7 @@ export default function CheckoutPage() {
                   <span>RAZEM do zapłaty (brutto)</span>
                   <PriceFormatter amount={totalGross} />
                 </div>
-                {/* Embedded Stripe Checkout mounts here when clientSecret exists */}
-                {clientSecret && (
-                  <div className="mt-4 border rounded-xl p-3">
-                    <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
-                      <EmbeddedCheckout />
-                    </EmbeddedCheckoutProvider>
-                  </div>
-                )}
+                {/* Hosted checkout opens in new tab */}
               </CardContent>
             </Card>
           </div>

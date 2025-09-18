@@ -352,7 +352,10 @@ export default function BucketConfigurator({ product }: { product: WithTeeth }) 
             dimensions: dims,
             photoAssetId,
             teeth: addTeeth ? { enabled: true, price: product?.toothCost } : undefined,
-            mount: selectedMount || undefined,
+            mount: selectedMount ? {
+              title: (product as any)?.mountSystems?.find((m: any) => m.code === selectedMount)?.title || selectedMount,
+              price: (product as any)?.mountSystems?.find((m: any) => m.code === selectedMount)?.price || 0
+            } : undefined,
             // save machine info alongside configuration
             machine: {
               brandModel: brandModel || undefined,
