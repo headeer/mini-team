@@ -120,7 +120,23 @@ const AddToCartButton = ({ product, className, compact = false, extraConfigurati
 
   return (
     <div className="w-full flex items-center">
-      {shouldShowSummary ? (
+      {isPhoneOnly ? (
+        <Button
+          asChild
+          disabled
+          className={cn(
+            "w-full",
+            "bg-gray-300 text-gray-600 cursor-not-allowed",
+            "text-white font-bold border-0 h-auto rounded-2xl",
+            size === 'sm' ? "min-h-10 px-4 py-2 text-sm" : "min-h-12 px-6 py-3",
+            className
+          )}
+        >
+          <a href={`tel:+48782851962`}>
+            Zamów telefonicznie: 782-851-962
+          </a>
+        </Button>
+      ) : shouldShowSummary ? (
         compact ? (
           <div className="w-full bg-white border border-gray-200 rounded-xl p-2 shadow-sm">
             <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2">
