@@ -28,11 +28,10 @@ export async function fetchStripeClientSecret(items: GroupedCartItems[]) {
     price_data: {
       currency: "PLN",
       unit_amount: Math.round((
-        typeof (item?.product as any)?.basePrice === "number"
-          ? (item?.product as any).basePrice
-          : typeof item?.product?.price === "number"
-          ? (item?.product?.price as number)
-          : 0
+        // prefer normalized pricing.priceNet set in cart/store, then other fallbacks
+        typeof (item?.product as any)?.pricing?.priceNet === 'number' ? (item?.product as any).pricing.priceNet :
+        (typeof (item?.product as any)?.basePrice === 'number' ? (item?.product as any).basePrice :
+        (typeof item?.product?.price === 'number' ? (item?.product?.price as number) : 0))
       ) * 100),
       product_data: {
         name: item?.product?.name || "Produkt",
