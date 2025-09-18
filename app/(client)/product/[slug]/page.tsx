@@ -517,13 +517,11 @@ const SingleProductPage = async ({
                   <Phone className="h-4 w-4" />
                   <span>Zadzwoń</span>
                 </a>
-              ) : (/łyżk|lyzk/i.test(String((product as any)?.name || "")) ? (
-                <a href="#konfigurator" className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-gray-900 text-white font-semibold shadow transition-all duration-200 text-sm">
-                  <span>A/B/C/D</span>
-                </a>
               ) : (
-                <div className="min-w-[96px] max-w-[44vw] overflow-hidden"><AddToCartButton product={product} size="sm" alwaysButton /></div>
-              ))}
+                <div className="min-w-[120px] max-w-[50vw] overflow-hidden">
+                  <AddToCartButton product={product} size="sm" alwaysButton />
+                </div>
+              )}
             </div>
           </div>
           <div className="h-safe-area-inset-bottom"></div>

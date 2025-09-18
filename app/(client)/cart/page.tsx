@@ -50,6 +50,7 @@ const CartPage = () => {
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
   const [addingAddress, setAddingAddress] = useState(false);
   const [newAddress, setNewAddress] = useState<Partial<Address>>({});
+  const [slugMap, setSlugMap] = useState<Record<string, string>>({});
 
   const fetchAddresses = async () => {
     setLoading(true);
@@ -72,6 +73,35 @@ const CartPage = () => {
   useEffect(() => {
     fetchAddresses();
   }, []);
+
+  // Resolve missing product slugs for cart items
+  useEffect(() => {
+    const missingIds = (groupedItems || [])
+      .map((it) => (it?.product as any)?._id as string)
+      .filter((id): id is string => Boolean(id))
+      .filter((id) => {
+        const p: any = groupedItems.find((it) => (it?.product as any)?._id === id)?.product;
+        const hasSlug = Boolean(p?.slug?.current);
+        return !hasSlug && !slugMap[id];
+      });
+    if (missingIds.length === 0) return;
+    (async () => {
+      try {
+        const res: Array<{ _id: string; slug?: { current?: string } }> = await client.fetch(
+          `*[_type == 'product' && _id in $ids]{ _id, slug }`,
+          { ids: missingIds }
+        );
+        const next: Record<string, string> = { ...slugMap };
+        res.forEach((r) => {
+          const s = r?.slug?.current;
+          if (r?._id && s) next[r._id] = s;
+        });
+        setSlugMap(next);
+      } catch {
+        // ignore
+      }
+    })();
+  }, [groupedItems, slugMap]);
 
   const handleCreateAddress = async () => {
     if (!user) return toast.error("Zaloguj się, aby dodać adres");
@@ -215,7 +245,7 @@ const CartPage = () => {
                         >
                           <div className="flex flex-1 items-start gap-2 h-36 md:h-44">
                             {(() => {
-                              const slug = product?.slug?.current;
+                              const slug = product?.slug?.current || (product?._id ? slugMap[product._id as string] : undefined);
                               const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                                 slug ? (
                                   <Link
@@ -261,11 +291,15 @@ const CartPage = () => {
                             <div className="h-full flex flex-1 flex-col justify-between py-1">
                               <div className="flex flex-col gap-0.5 md:gap-1.5">
                                 <h2 className="text-base font-semibold line-clamp-1">
-                                  {product?.slug?.current ? (
-                                    <Link href={`/product/${product.slug.current}`}>{product?.title || product?.name}</Link>
-                                  ) : (
-                                    <>{product?.title || product?.name}</>
-                                  )}
+                                  {(() => {
+                                    const resolvedSlug = product?.slug?.current || (product?._id ? slugMap[product._id as string] : undefined);
+                                    const text = product?.title || product?.name;
+                                    return resolvedSlug ? (
+                                      <Link href={`/product/${resolvedSlug}`}>{text}</Link>
+                                    ) : (
+                                      <>{text}</>
+                                    );
+                                  })()}
                                 </h2>
                                 {(() => {
                                   const hasMountSystems = Array.isArray((product as any)?.mountSystems) && (product as any).mountSystems.length > 0;
@@ -273,12 +307,18 @@ const CartPage = () => {
                                   const nameStr = String((product as any)?.name || (product as any)?.title || "");
                                   const needsFill = (hasMountSystems || mustMountRegex.test(nameStr)) && !configuration?.mount;
                                   if (needsFill) {
-                                    const slugVal = product?.slug?.current;
+                                    const slugVal = product?.slug?.current || (product?._id ? slugMap[product._id as string] : undefined);
                                     return (
                                       <div className="mt-0.5">
-                                        <Link href={slugVal ? `/product/${slugVal}#konfigurator` : '#'} className="inline-flex items-center px-3 py-1.5 rounded-md text-xs font-semibold border-2 border-[var(--color-brand-orange)] text-[var(--color-brand-orange)] hover:bg-[var(--color-brand-orange)] hover:text-white transition-colors">
-                                          Uzupełnij parametry
-                                        </Link>
+                                        {slugVal ? (
+                                          <Link href={`/product/${slugVal}#konfigurator`} className="inline-flex items-center px-3 py-1.5 rounded-md text-xs font-semibold border-2 border-[var(--color-brand-orange)] text-[var(--color-brand-orange)] hover:bg-[var(--color-brand-orange)] hover:text-white transition-colors">
+                                            Uzupełnij parametry
+                                          </Link>
+                                        ) : (
+                                          <button type="button" onClick={() => toast.error('Brak strony produktu dla tego elementu. Skontaktuj się z nami lub wybierz produkt ponownie.')} className="inline-flex items-center px-3 py-1.5 rounded-md text-xs font-semibold border-2 border-[var(--color-brand-orange)] text-[var(--color-brand-orange)] hover:bg-[var(--color-brand-orange)] hover:text-white transition-colors">
+                                            Uzupełnij parametry
+                                          </button>
+                                        )}
                                       </div>
                                     );
                                   }
