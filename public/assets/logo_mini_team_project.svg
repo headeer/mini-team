@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0" stop-color="#1a1a1a"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <linearGradient id="stroke" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffb703"/>
+      <stop offset="1" stop-color="#fb8500"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="100" cy="60" rx="98" ry="58" fill="url(#bg)" stroke="url(#stroke)" stroke-width="6"/>
+  <g fill="#d62828" stroke="#ffcb77" stroke-width="3" font-family="Impact, Arial Black, sans-serif" font-weight="700">
+    <text x="32" y="80" font-size="66">MTP</text>
+  </g>
+</svg>
+

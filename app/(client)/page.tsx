@@ -78,13 +78,13 @@ const Home = async () => {
     <div className="bg-white">
       {/* SEO via metadata API + JSON-LD */}
       {(() => {
-        const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+        const base = process.env.NEXT_PUBLIC_SITE_URL || "https://miniteamproject.pl";
         const org = {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Mini Team Project",
           url: base,
-          logo: `${base}/favicon.ico`,
+          logo: `${base}/assets/logo_mini_team_project.png`,
           sameAs: [
             "https://www.facebook.com/",
             "https://www.instagram.com/",

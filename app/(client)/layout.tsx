@@ -11,7 +11,7 @@ import Script from "next/script";
 import techMap from "@/public/images/techniczne/map.json";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://miniteamproject.pl"),
   title: {
     template: "%s – Mini Team Project",
     default: "Mini Team Project – Osprzęt do koparek, łyżki, zrywak",
@@ -27,9 +27,7 @@ export const metadata: Metadata = {
     "szybkozłącza",
     "Hardox HB500",
   ],
-  alternates: {
-    canonical: "/",
-  },
+  // Do not set a global canonical to root; let pages define specific canonicals
   openGraph: {
     siteName: "Mini Team Project",
     type: "website",
@@ -44,8 +42,12 @@ export const metadata: Metadata = {
     images: ["/images/main/excavator-2025-03-15-06-31-29-utc.webp"],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: [
+      { url: "/assets/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/assets/logo_mini_team_project.png", type: "image/png" },
+    ],
+    shortcut: "/assets/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   robots: {
@@ -86,13 +88,13 @@ export default function RootLayout({
         <TawkChat />
         {/* Global SEO JSON-LD */}
         {(() => {
-          const base = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+          const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://miniteamproject.pl'
           const org = {
             '@context': 'https://schema.org',
             '@type': 'Organization',
             name: 'Mini Team Project',
             url: base,
-            logo: `${base}/favicon.ico`,
+            logo: `${base}/assets/logo_mini_team_project.png`,
             sameAs: [
               'https://www.facebook.com/',
               'https://www.instagram.com/',
@@ -128,7 +130,7 @@ export default function RootLayout({
           {`
             (function(h,o,t,j,a,r){
               h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:6522239,hjsv:6};
+              h._hjSettings={hjid:6527223,hjsv:6};
               a=o.getElementsByTagName('head')[0];
               r=o.createElement('script');r.async=1;
               r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
