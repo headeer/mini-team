@@ -1,23 +1,16 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-// Enforce canonical host and HTTPS in production
 const CANONICAL_HOST = process.env.NEXT_PUBLIC_CANONICAL_HOST || "miniteamproject.pl";
 
+// Minimal, safe redirect: only www -> bare domain. No protocol enforcement here.
 export default clerkMiddleware((auth, req) => {
   const url = req.nextUrl;
   const currentHostHeader = req.headers.get("x-forwarded-host") || req.headers.get("host") || url.hostname;
-  const currentHost = currentHostHeader.split(",")[0].trim();
-  const isLocalhost = currentHost === "localhost" || currentHost.endsWith(".local");
+  const host = currentHostHeader.split(",")[0].trim();
 
-  // Skip redirects on localhost/dev
-  if (isLocalhost) {
-    return NextResponse.next();
-  }
-
-  // Only handle explicit www -> bare-domain redirect to avoid proxy loops
   const WWW_HOST = `www.${CANONICAL_HOST}`;
-  if (currentHost === WWW_HOST) {
+  if (host === WWW_HOST) {
     const target = new URL(url);
     target.hostname = CANONICAL_HOST;
     return NextResponse.redirect(target, 308);
