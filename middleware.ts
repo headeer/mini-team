@@ -6,7 +6,8 @@ const CANONICAL_HOST = process.env.NEXT_PUBLIC_CANONICAL_HOST || "miniteamprojec
 
 export default clerkMiddleware((auth, req) => {
   const url = req.nextUrl;
-  const currentHost = url.hostname;
+  const currentHostHeader = req.headers.get("x-forwarded-host") || req.headers.get("host") || url.hostname;
+  const currentHost = currentHostHeader.split(",")[0].trim();
   const isLocalhost = currentHost === "localhost" || currentHost.endsWith(".local");
 
   // Skip redirects on localhost/dev
@@ -14,17 +15,11 @@ export default clerkMiddleware((auth, req) => {
     return NextResponse.next();
   }
 
-  // Force HTTPS based on forwarded proto/header (reliable behind proxies)
-  const proto = req.headers.get("x-forwarded-proto");
-  if (proto === "http") {
-    url.protocol = "https:";
-    return NextResponse.redirect(url, 308);
-  }
-
-  // Normalize host to canonical (e.g., remove www)
+  // Canonicalize host only (avoid protocol redirects to prevent proxy loops)
   if (currentHost !== CANONICAL_HOST) {
-    url.hostname = CANONICAL_HOST;
-    return NextResponse.redirect(url, 308);
+    const target = new URL(url);
+    target.hostname = CANONICAL_HOST;
+    return NextResponse.redirect(target, 308);
   }
 
   return NextResponse.next();
