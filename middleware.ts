@@ -15,8 +15,9 @@ export default clerkMiddleware((auth, req) => {
     return NextResponse.next();
   }
 
-  // Canonicalize host only (avoid protocol redirects to prevent proxy loops)
-  if (currentHost !== CANONICAL_HOST) {
+  // Only handle explicit www -> bare-domain redirect to avoid proxy loops
+  const WWW_HOST = `www.${CANONICAL_HOST}`;
+  if (currentHost === WWW_HOST) {
     const target = new URL(url);
     target.hostname = CANONICAL_HOST;
     return NextResponse.redirect(target, 308);
