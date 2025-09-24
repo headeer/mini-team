@@ -43,11 +43,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/assets/favicon.ico" },
+      { url: "/favicon.ico" },
       { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/assets/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/assets/favicon-192x192.png", type: "image/png", sizes: "192x192" },
       { url: "/assets/logo_mini_team_project.png", type: "image/png" },
     ],
-    shortcut: "/assets/favicon.ico",
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   robots: {

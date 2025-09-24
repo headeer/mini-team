@@ -58,14 +58,24 @@ const Shop = ({ categories }: Props) => {
       // Use server API then filter client-side to avoid client token/CORS issues
       const res = await fetch('/api/products', { cache: 'no-store' });
       const body = await res.json();
-      type ApiProduct = { _id: string; name?: string; description?: string; price?: number | string; basePrice?: number; priceTier?: string; categories?: { slug?: string }[]; brand?: { slug?: string; _ref?: string }; featuredRank?: number };
+      type ApiProduct = { _id: string; name?: string; description?: string; price?: number | string; basePrice?: number | string; priceNet?: number | string; pricing?: { priceNet?: number | string }; priceTier?: string; categories?: { slug?: string }[]; brand?: { slug?: string; _ref?: string }; featuredRank?: number };
       const all: ApiProduct[] = Array.isArray(body?.data) ? body.data : [];
+      const toNumber = (v: unknown): number => {
+        if (typeof v === 'number') return v;
+        if (typeof v === 'string') {
+          const n = parseFloat(v.replace(/[^0-9.,-]/g, '').replace(',', '.'));
+          return Number.isFinite(n) ? n : 0;
+        }
+        return 0;
+      };
+      const getNet = (p: ApiProduct): number => {
+        return toNumber(p?.pricing?.priceNet) || toNumber(p?.priceNet) || toNumber(p?.basePrice) || toNumber(p?.price);
+      };
       // Build a list for counters that ignores selectedCategory but respects other filters
-      const [min, max] = selectedPrice ? selectedPrice.split('-').map(Number) : [undefined, undefined];
-      const numeric = (v: unknown) => (typeof v === 'number' ? v : 0);
+      const [min, max] = selectedPrice ? selectedPrice.split('-').map((x) => Number(x)) : [undefined, undefined];
       let listForCounters: ApiProduct[] = [...all];
-      if (typeof min === 'number') listForCounters = listForCounters.filter((p) => (p.basePrice ?? numeric(p.price)) >= min);
-      if (typeof max === 'number') listForCounters = listForCounters.filter((p) => (p.basePrice ?? numeric(p.price)) <= max);
+      if (typeof min === 'number' && !Number.isNaN(min)) listForCounters = listForCounters.filter((p) => getNet(p) >= min);
+      if (typeof max === 'number' && !Number.isNaN(max)) listForCounters = listForCounters.filter((p) => getNet(p) <= max);
       if (q) {
         const needle = q.toLowerCase();
         listForCounters = listForCounters.filter((p) => String(p.name ?? '').toLowerCase().includes(needle) || String(p.description ?? '').toLowerCase().includes(needle) || String(p.priceTier ?? '').toLowerCase().includes(needle));
@@ -78,9 +88,8 @@ const Shop = ({ categories }: Props) => {
       let list: ApiProduct[] = [...listForCounters];
       if (selectedCategory) list = list.filter((p) => p?.categories?.some((c) => c?.slug === selectedCategory));
       // sort
-      const toNum = (v: unknown): number => (typeof v === 'number' ? v : 0);
-      if (sort === 'price-asc') list.sort((a, b) => toNum(a.basePrice ?? a.price) - toNum(b.basePrice ?? b.price));
-      if (sort === 'price-desc') list.sort((a, b) => toNum(b.basePrice ?? b.price) - toNum(a.basePrice ?? a.price));
+      if (sort === 'price-asc') list.sort((a, b) => getNet(a) - getNet(b));
+      if (sort === 'price-desc') list.sort((a, b) => getNet(b) - getNet(a));
       if (sort === 'featured') list.sort((a, b) => (Number(a.featuredRank) || 9999) - (Number(b.featuredRank) || 9999));
       setProducts(list as Product[]);
       try {

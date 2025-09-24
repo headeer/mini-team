@@ -87,7 +87,7 @@ const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
                 </TableRow>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Click to see order details</p>
+                <p>Kliknij, aby zobaczyć szczegóły zamówienia</p>
               </TooltipContent>
             </Tooltip>
           ))}

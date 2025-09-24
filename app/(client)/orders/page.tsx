@@ -27,7 +27,7 @@ const OrdersPage = async () => {
         {orders?.length ? (
           <Card className="w-full">
             <CardHeader>
-              <CardTitle>Order List</CardTitle>
+              <CardTitle>Lista zamówień</CardTitle>
             </CardHeader>
             <CardContent>
               <ScrollArea>
@@ -35,21 +35,21 @@ const OrdersPage = async () => {
                   <TableHeader>
                     <TableRow>
                       <TableHead className="w-[100px] md:w-auto">
-                        Order Number
+                        Numer zamówienia
                       </TableHead>
                       <TableHead className="hidden md:table-cell">
-                        Date
+                        Data
                       </TableHead>
-                      <TableHead>Customer</TableHead>
+                      <TableHead>Klient</TableHead>
                       <TableHead className="hidden sm:table-cell">
-                        Email
+                        E‑mail
                       </TableHead>
-                      <TableHead>Total</TableHead>
+                      <TableHead>Suma</TableHead>
                       <TableHead>Status</TableHead>
                       <TableHead className="hidden sm:table-cell">
-                        Invoice Number
+                        Numer faktury
                       </TableHead>
-                      <TableHead className="text-center">Action</TableHead>
+                      <TableHead className="text-center">Akcja</TableHead>
                     </TableRow>
                   </TableHeader>
                   <OrdersComponent orders={orders} />
@@ -62,14 +62,13 @@ const OrdersPage = async () => {
           <div className="flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <FileX className="h-24 w-24 text-gray-400 mb-4" />
             <h2 className="text-2xl font-semibold text-gray-900">
-              No orders found
+              Brak zamówień
             </h2>
             <p className="mt-2 text-sm text-gray-600 text-center max-w-md">
-              It looks like you haven&apos;t placed any orders yet. Start
-              shopping to see your orders here!
+              Wygląda na to, że nie złożyłeś jeszcze żadnego zamówienia. Rozpocznij zakupy, aby zobaczyć je w tym miejscu!
             </p>
             <Button asChild className="mt-6">
-              <Link href="/">Browse Products</Link>
+              <Link href="/shop">Przejdź do sklepu</Link>
             </Button>
           </div>
         )}

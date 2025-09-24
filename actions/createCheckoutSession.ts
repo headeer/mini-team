@@ -41,7 +41,7 @@ export async function createCheckoutSession(
     const stripe = getStripe();
     if (!stripe) {
       console.error("Stripe not configured – missing STRIPE_SECRET_KEY env. Returning fallback URL.");
-      return process.env.NEXT_PUBLIC_CANCEL_URL || `${baseUrl}/checkout`;
+      return process.env.NEXT_PUBLIC_CANCEL_URL || `${baseUrl}/cart`;
     }
     const customers = await stripe.customers.list({
       email: metadata.customerEmail,
