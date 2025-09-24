@@ -35,13 +35,13 @@ const SuccessPageContent = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white rounded-2xl flex flex-col gap-8 shadow-2xl p-6 max-w-xl w-full text-center"
+        className="bg-white rounded-2xl flex flex-col gap-8 shadow-2xl p-6 max-w-xl w-full text-center border border-gray-200"
       >
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-          className="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
+          className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]"
         >
           <Check className="text-white w-10 h-10" />
         </motion.div>
@@ -62,21 +62,21 @@ const SuccessPageContent = () => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Link
             href="/"
-            className="flex items-center justify-center px-4 py-3 font-semibold bg-black text-white rounded-lg hover:bg-gray-800 transition-all duration-300 shadow-md"
+            className="flex items-center justify-center px-4 py-3 font-semibold rounded-full text-white bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] hover:opacity-95 transition-all duration-300 shadow-md"
           >
             <Home className="w-5 h-5 mr-2" />
             Strona główna
           </Link>
           <Link
             href="/orders"
-            className="flex items-center justify-center px-4 py-3 font-semibold bg-lightGreen text-black border border-lightGreen rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-md"
+            className="flex items-center justify-center px-4 py-3 font-semibold rounded-full border border-[var(--color-brand-orange)] text-[var(--color-brand-orange)] bg-white hover:bg-orange-50 transition-all duration-300 shadow-md"
           >
             <Package className="w-5 h-5 mr-2" />
             Zamówienia
           </Link>
           <Link
             href="/shop"
-            className="flex items-center justify-center px-4 py-3 font-semibold bg-black text-white rounded-lg hover:bg-gray-800 transition-all duration-300 shadow-md"
+            className="flex items-center justify-center px-4 py-3 font-semibold rounded-full text-white bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] hover:opacity-95 transition-all duration-300 shadow-md"
           >
             <ShoppingBag className="w-5 h-5 mr-2" />
             Sklep

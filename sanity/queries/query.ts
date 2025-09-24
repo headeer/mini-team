@@ -82,7 +82,7 @@ const BRAND_QUERY = defineQuery(`*[_type == "product" && slug.current == $slug &
   }`);
 
 const MY_ORDERS_QUERY =
-  defineQuery(`*[_type == 'order' && clerkUserId == $userId] | order(orderDate desc){
+  defineQuery(`*[_type == 'order' && defined(clerkUserId) && clerkUserId == $userId] | order(orderDate desc){
 ...,products[]{
   ...,product->
 }
