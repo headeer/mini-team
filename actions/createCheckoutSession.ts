@@ -88,6 +88,23 @@ export async function createCheckoutSession(
 
     const freeShip = Boolean(metadata.freeShipping);
 
+    // Prepare optional Stripe promotion code for free shipping (works in Stripe UI)
+    let promoCodeId: string | undefined;
+    if (metadata.promoCode && typeof metadata.promoCode === 'string') {
+      try {
+        const existing = await (getStripe() as Stripe).promotionCodes.list({ code: metadata.promoCode, limit: 1 });
+        if (existing?.data?.length) {
+          promoCodeId = existing.data[0].id;
+        } else {
+          const coupon = await (getStripe() as Stripe).coupons.create({ free_shipping: { }, duration: 'once' });
+          const created = await (getStripe() as Stripe).promotionCodes.create({ coupon: coupon.id, code: metadata.promoCode, active: true });
+          promoCodeId = created.id;
+        }
+      } catch {
+        // Ignore promo code provisioning failures; checkout will still proceed
+      }
+    }
+
     const sessionPayload: Stripe.Checkout.SessionCreateParams = {
       metadata: {
         orderNumber: metadata.orderNumber,
@@ -137,20 +154,28 @@ export async function createCheckoutSession(
           },
           quantity: item?.quantity,
         })),
-        // Flat pallet shipping (gross) - omitted when freeShipping flag set
-        ...(freeShip ? [] : [{
-          price_data: {
-            currency: "pln",
-            unit_amount: 19680,
-            product_data: {
-              name: "Wysyłka paletowa (brutto)",
-              description: "Stała stawka wysyłki paletowej",
+      ],
+      // Use Stripe shipping rates instead of a line item so promo codes can zero shipping
+      shipping_address_collection: { allowed_countries: ['PL'] },
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            display_name: 'Wysyłka paletowa',
+            type: 'fixed_amount',
+            fixed_amount: { amount: 19680, currency: 'pln' },
+            delivery_estimate: {
+              minimum: { unit: 'business_day', value: 1 },
+              maximum: { unit: 'business_day', value: 3 },
             },
           },
-          quantity: 1,
-        }]),
+        },
       ],
     };
+
+    // Pre-apply promotion code if we flagged free shipping
+    if (freeShip && promoCodeId) {
+      (sessionPayload as any).discounts = [{ promotion_code: promoCodeId }];
+    }
     if (customerId) {
       sessionPayload.customer = customerId;
     } else {
