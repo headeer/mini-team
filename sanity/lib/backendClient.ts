@@ -12,5 +12,9 @@ export const backendClient = createClient({
   token:
     process.env.SANITY_TOKEN ||
     process.env.SANITY_WRITE_TOKEN ||
-    process.env.SANITY_API_TOKEN,
+    process.env.SANITY_API_WRITE_TOKEN ||
+    process.env.SANITY_API_CREATE_TOKEN ||
+    process.env.SANITY_API_TOKEN ||
+    // Some setups use a single API token env; ensure it's write-enabled (Editor/Server)
+    process.env.SANITY_API_READ_TOKEN,
 });
