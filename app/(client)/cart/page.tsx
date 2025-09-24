@@ -31,6 +31,7 @@ import { ShoppingBag, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { backendClient } from "@/sanity/lib/backendClient";
 import toast from "react-hot-toast";
 
@@ -42,6 +43,7 @@ const CartPage = () => {
     getSubTotalPrice,
     resetCart,
   } = useStore();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const groupedItems = useStore((state) => state.getGroupedItems());
   const { isSignedIn } = useAuth();
@@ -520,7 +522,7 @@ const CartPage = () => {
                           className="w-full rounded-full font-semibold tracking-wide hoverEffect"
                           size="lg"
                         disabled={loading || invalidItems.length > 0}
-                          onClick={handleCheckout}
+                          onClick={() => router.push('/checkout')}
                         >
                         {loading ? "Proszę czekać..." : (invalidItems.length > 0 ? "Uzupełnij parametry" : "Przejdź do płatności")}
                         </Button>
@@ -661,7 +663,7 @@ const CartPage = () => {
                       className="mt-3 w-full rounded-full font-semibold tracking-wide hoverEffect"
                       size="lg"
                       disabled={loading || invalidItems.length > 0}
-                      onClick={handleCheckout}
+                      onClick={() => router.push('/checkout')}
                     >
                       {loading ? "Proszę czekać..." : (invalidItems.length > 0 ? "Uzupełnij parametry" : "Przejdź do płatności")}
                     </Button>
