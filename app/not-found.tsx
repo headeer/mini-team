@@ -1,6 +1,7 @@
 import Logo from "@/components/Logo";
 import Link from "next/link";
 import React from "react";
+import { Home, ShoppingBag, Search } from "lucide-react";
 
 const NotFoundPage = () => {
   return (
@@ -8,48 +9,25 @@ const NotFoundPage = () => {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <Logo />
-
-          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-            Looking for something?
-          </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            We&apos;re sorry. The Web address you entered is not a functioning
-            page on our site.
-          </p>
+          <div className="h-2 w-full rounded-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] mt-6" />
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Nie znaleziono strony</h2>
+          <p className="mt-2 text-sm text-gray-600">Wygląda na to, że ten adres nie istnieje lub został przeniesiony.</p>
         </div>
         <div className="mt-8 space-y-6">
-          <div className="rounded-md shadow-sm space-y-4">
-            <Link
-              href="/"
-              className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md text-white bg-shop_dark_green/80 hover:bg-shop_dark_green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amazonOrangeDark hoverEffect"
-            >
-              Go to miniteamproject&apos;s home page
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Link href="/" className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] hover:opacity-95">
+              <Home className="w-5 h-5" /> Start
             </Link>
-            <Link
-              href="/help"
-              className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-semibold rounded-md text-amazonBlue bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amazonBlue"
-            >
-              Help
+            <Link href="/shop" className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full border border-[var(--color-brand-orange)] text-[var(--color-brand-orange)] bg-white hover:bg-orange-50 font-semibold">
+              <ShoppingBag className="w-5 h-5" /> Sklep
+            </Link>
+            <Link href="/shop" className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full border border-gray-300 text-gray-800 bg-white hover:bg-gray-50 font-semibold">
+              <Search className="w-5 h-5" /> Szukaj
             </Link>
           </div>
         </div>
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-600">
-            Need help? Visit the{" "}
-            <Link
-              href="/help"
-              className="font-medium text-amazon-blue hover:text-amazon-blue-dark"
-            >
-              Help section
-            </Link>{" "}
-            or{" "}
-            <Link
-              href="/contact"
-              className="font-medium text-amazon-blue hover:text-amazon-blue-dark"
-            >
-              contact us
-            </Link>
-          </p>
+          <p className="text-sm text-gray-600">Potrzebujesz pomocy? Napisz: <a href="mailto:teodorczykpt@gmail.com" className="underline">teodorczykpt@gmail.com</a> lub zadzwoń: <a href="tel:+48782851962" className="underline">782‑851‑962</a>.</p>
         </div>
       </div>
     </div>
