@@ -343,21 +343,9 @@ const SingleProductPage = async ({
                 <span className="text-gray-900 font-medium">Stripe</span>
                 <span>• 3D Secure • Szyfrowanie TLS • Apple Pay / Google Pay</span>
               </div>
-              {/* Visible go-to-cart CTA */}
-              <div className="mt-3 flex flex-wrap gap-2">
-                <Link
-                  href="/cart"
-                  className="btn-shine inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-semibold bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white shadow hover:shadow-lg transition-all hover:scale-[1.02]"
-                >
-                  🛒 Przejdź do koszyka
-                </Link>
-                <Link
-                  href="/shop"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-semibold border border-gray-300 text-gray-800 bg-white hover:bg-gray-50"
-                >
-                  Zobacz inne produkty
-                </Link>
-              </div>
+              <p className="mt-2">
+                <Link href="/cart" className="text-xs font-medium text-gray-700 underline underline-offset-2">Przejdź do koszyka</Link>
+              </p>
             </div>
             
             {/* Product Description - Moved below price */}
@@ -533,16 +521,8 @@ const SingleProductPage = async ({
                   <span>Zadzwoń</span>
                 </a>
               ) : (
-                <div className="flex items-center gap-2 min-w-[120px] max-w-full overflow-hidden">
-                  <div className="min-w-[120px] max-w-[50vw] overflow-hidden">
-                    <AddToCartButton product={product} size="sm" alwaysButton />
-                  </div>
-                  <Link
-                    href="/cart"
-                    className="shrink-0 px-3 py-2 rounded-xl border border-gray-300 bg-white text-gray-800 text-sm font-semibold hover:bg-gray-50"
-                  >
-                    Koszyk
-                  </Link>
+                <div className="min-w-[120px] max-w-[50vw] overflow-hidden">
+                  <AddToCartButton product={product} size="sm" alwaysButton />
                 </div>
               )}
             </div>

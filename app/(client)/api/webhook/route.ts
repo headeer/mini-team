@@ -1,13 +1,16 @@
 import { Metadata } from "@/actions/createCheckoutSession";
-import stripe from "@/lib/stripe";
+import getStripe from "@/lib/stripe";
 import { backendClient } from "@/sanity/lib/backendClient";
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
 export async function POST(req: NextRequest) {
   const body = await req.text();
-  const headersList = await headers();
+  const headersList = headers();
   const sig = headersList.get("stripe-signature");
 
   if (!sig) {
@@ -26,6 +29,7 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
+  const stripe = getStripe();
   if (!stripe) {
     return NextResponse.json({ error: "Stripe not configured" }, { status: 500 });
   }
@@ -49,8 +53,8 @@ export async function POST(req: NextRequest) {
       : null;
 
     try {
-      await createOrderInSanity(session, invoice);
-      await sendOrderEmails(session, invoice).catch(() => {});
+      await createOrderInSanity(stripe, session, invoice);
+      await sendOrderEmails(stripe, session, invoice).catch(() => {});
     } catch (error) {
       console.error("Error creating order in sanity:", error);
       return NextResponse.json(
@@ -65,6 +69,7 @@ export async function POST(req: NextRequest) {
 }
 
 async function createOrderInSanity(
+  stripe: Stripe,
   session: Stripe.Checkout.Session,
   invoice: Stripe.Invoice | null
 ) {
@@ -177,6 +182,7 @@ async function updateStockLevels(
 
 // Email sending via Resend API (no extra deps)
 async function sendOrderEmails(
+  stripe: Stripe,
   session: Stripe.Checkout.Session,
   invoice: Stripe.Invoice | null
 ) {
