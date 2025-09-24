@@ -201,9 +201,7 @@ export default function CheckoutPage() {
                     <div className="text-gray-600">Bezpieczne płatności kartą / BLIK / Apple Pay / Google Pay</div>
                   </div>
                 </div>
-                <div className="text-xs text-gray-600 bg-gray-50 border border-gray-200 rounded-lg p-3">
-                  Przelew tradycyjny – przelew na konto: <span className="font-semibold">51 1140 2004 0000 3602 7800 1733</span>. Jeśli wolisz przelew, skontaktuj się z nami – przygotujemy proformę.
-                </div>
+                
               </CardContent>
             </Card>
 

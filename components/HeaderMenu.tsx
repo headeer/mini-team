@@ -1,5 +1,6 @@
 "use client";
 import { headerData, categoriesData } from "@/constants/data";
+import { Package } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -90,7 +91,9 @@ const HeaderMenu = () => {
               pathname === item?.href ? "text-gray-900 bg-gray-50" : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             }`}
           >
-            {item?.title}
+            {item?.href === '/orders' ? (
+              <span className="inline-flex items-center gap-2"><Package className="w-4 h-4" /> {item?.title}</span>
+            ) : item?.title}
           </Link>
         ))}
       </div>
