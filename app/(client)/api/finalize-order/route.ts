@@ -35,18 +35,20 @@ export async function POST(req: Request) {
       amountDiscount,
       status: 'paid',
       orderDate: new Date().toISOString(),
-      address: session.customer_details ? {
+    }
+    if (session.customer_details) {
+      orderDoc.address = {
         state: session.customer_details.address?.state || '',
         zip: session.customer_details.address?.postal_code || '',
         city: session.customer_details.address?.city || '',
         address: [session.customer_details.address?.line1, session.customer_details.address?.line2].filter(Boolean).join(' '),
         name: session.customer_details.name || name || '',
-      } : null,
-      invoice: session.invoice ? {
+      }
+    }
+    if (session.invoice && typeof session.invoice === 'string') {
+      orderDoc.invoice = {
         id: String(session.invoice),
-        number: undefined,
-        hosted_invoice_url: undefined,
-      } : null,
+      }
     }
 
     await backendClient.create(orderDoc)

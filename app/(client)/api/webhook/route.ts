@@ -112,7 +112,7 @@ async function createOrderInSanity(
   }
   //   Create order in Sanity
 
-  const order = await backendClient.create({
+  const baseDoc: any = {
     _type: "order",
     orderNumber,
     stripeCheckoutSessionId: id,
@@ -125,28 +125,28 @@ async function createOrderInSanity(
     amountDiscount: total_details?.amount_discount
       ? total_details.amount_discount / 100
       : 0,
-
     products: sanityProducts,
     totalPrice: amount_total ? amount_total / 100 : 0,
     status: "paid",
     orderDate: new Date().toISOString(),
-    invoice: invoice
-      ? {
-          id: invoice.id,
-          number: invoice.number,
-          hosted_invoice_url: invoice.hosted_invoice_url,
-        }
-      : null,
-    address: parsedAddress
-      ? {
-          state: parsedAddress.state,
-          zip: parsedAddress.zip,
-          city: parsedAddress.city,
-          address: parsedAddress.address,
-          name: parsedAddress.name,
-        }
-      : null,
-  });
+  };
+  if (invoice) {
+    baseDoc.invoice = {
+      id: invoice.id,
+      number: invoice.number,
+      hosted_invoice_url: invoice.hosted_invoice_url,
+    };
+  }
+  if (parsedAddress) {
+    baseDoc.address = {
+      state: parsedAddress.state,
+      zip: parsedAddress.zip,
+      city: parsedAddress.city,
+      address: parsedAddress.address,
+      name: parsedAddress.name,
+    };
+  }
+  const order = await backendClient.create(baseDoc);
 
   // Update stock levels in Sanity
 
