@@ -107,8 +107,7 @@ const CartPage = () => {
     if (!user) return toast.error("Zaloguj się, aby dodać adres");
     try {
       setAddingAddress(true);
-      const doc = {
-        _type: "address",
+      const payload = {
         name: newAddress.name || user.fullName || "",
         email: user.emailAddresses[0]?.emailAddress || "",
         address: newAddress.address || "",
@@ -117,13 +116,15 @@ const CartPage = () => {
         zip: newAddress.zip || "",
         default: !addresses || addresses.length === 0,
       } as any;
-      const created = await backendClient.create(doc);
+      const res = await fetch('/api/address', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+      const json = await res.json()
+      if (!res.ok || !json?.ok) throw new Error(json?.error || 'create failed')
       toast.success("Adres dodany");
       setAddingAddress(false);
       setNewAddress({});
       await fetchAddresses();
-      setSelectedAddress(created as Address);
-    } catch {
+      setSelectedAddress(json.address as Address);
+    } catch (e) {
       setAddingAddress(false);
       toast.error("Nie udało się dodać adresu");
     }

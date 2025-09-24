@@ -82,12 +82,11 @@ export default function CheckoutPage() {
   }, [groupedItems, priceMap, computeUnitNet]);
 
   const shippingNet = 160; // wysyłka paletowa (netto)
-  const discount = promoApplied ? 1 : 0; // 100% discount when promo applied
-  const discountedSubtotal = subtotalNet * (1 - discount);
+  const discountedSubtotal = subtotalNet; // prices unchanged; only shipping toggles
   const totalGross = discountedSubtotal * 1.23 + (promoApplied ? 0 : shippingNet); // Free shipping with promo
 
   // Complex promo code for testing (100% discount)
-  const VALID_PROMO_CODE = "MT2024X7K9Q2R8P5N3V6W1Z4A7B9C2D5E8F1G4H7J0K3L6M9N2O5P8Q1R4S7T0U3V6W9X2Y5Z8";
+  const VALID_PROMO_CODE = "FREESHIP-TEST-2025";
   
   const applyPromoCode = () => {
     if (promoCode.trim() === VALID_PROMO_CODE) {
@@ -118,7 +117,7 @@ export default function CheckoutPage() {
         clerkUserId: user?.id,
         address: null,
         promoCode: promoApplied ? promoCode : undefined,
-        discount: promoApplied ? 1 : 0,
+        freeShipping: promoApplied,
       })
       if (!hostedUrl) {
         alert('Nie udało się zainicjować płatności. Spróbuj ponownie.');

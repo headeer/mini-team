@@ -14,7 +14,7 @@ export interface Metadata {
   clerkUserId?: string;
   address?: Address | null;
   promoCode?: string;
-  discount?: number;
+  freeShipping?: boolean;
 }
 
 export interface GroupedCartItems {
@@ -29,7 +29,7 @@ export async function createCheckoutSession(
 ) {
   try {
     // Determine base URL from env or current request (prevents redirecting to preview domains)
-    const hdrs = headers();
+    const hdrs = await headers();
     const host = hdrs.get('x-forwarded-host') || hdrs.get('host');
     const proto = hdrs.get('x-forwarded-proto') || (host && host.includes('localhost') ? 'http' : 'https');
     const runtimeBase = host ? `${proto}://${host}` : undefined;
@@ -86,6 +86,8 @@ export async function createCheckoutSession(
       return (trimmed ? trimmed : undefined)?.concat(suffix) || (extras.length ? extras.join(" | ") : undefined);
     };
 
+    const freeShip = Boolean(metadata.freeShipping);
+
     const sessionPayload: Stripe.Checkout.SessionCreateParams = {
       metadata: {
         orderNumber: metadata.orderNumber,
@@ -94,7 +96,7 @@ export async function createCheckoutSession(
         clerkUserId: metadata.clerkUserId!,
         address: JSON.stringify(metadata.address),
         promoCode: metadata.promoCode || '',
-        discount: String(metadata.discount || 0),
+        freeShipping: String(freeShip),
       },
       locale: 'pl',
       mode: "payment",
@@ -111,7 +113,7 @@ export async function createCheckoutSession(
         ...items?.map((item) => ({
           price_data: {
             currency: "pln",
-            unit_amount: Math.round(computeUnitGross(item.product, item.configuration) * (1 - (metadata.discount || 0)) * 100),
+            unit_amount: Math.round(computeUnitGross(item.product, item.configuration) * 100),
             product_data: {
               name: formatName(item),
               description: formatDescription(item),
@@ -135,11 +137,11 @@ export async function createCheckoutSession(
           },
           quantity: item?.quantity,
         })),
-        // Flat pallet shipping (gross) - free with promo
-        ...(metadata.discount && metadata.discount >= 1 ? [] : [{
+        // Flat pallet shipping (gross) - omitted when freeShipping flag set
+        ...(freeShip ? [] : [{
           price_data: {
             currency: "pln",
-            unit_amount: 19680, // 160 PLN net * 1.23 = 196.80 PLN gross
+            unit_amount: 19680,
             product_data: {
               name: "Wysyłka paletowa (brutto)",
               description: "Stała stawka wysyłki paletowej",
