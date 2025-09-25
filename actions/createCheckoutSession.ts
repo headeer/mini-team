@@ -13,8 +13,7 @@ export interface Metadata {
   customerEmail: string;
   clerkUserId?: string;
   address?: Address | null;
-  promoCode?: string;
-  freeShipping?: boolean;
+  
 }
 
 export interface GroupedCartItems {
@@ -86,7 +85,7 @@ export async function createCheckoutSession(
       return (trimmed ? trimmed : undefined)?.concat(suffix) || (extras.length ? extras.join(" | ") : undefined);
     };
 
-    const freeShip = Boolean(metadata.freeShipping);
+    const freeShip = false;
 
     const sessionPayload: Stripe.Checkout.SessionCreateParams = {
       metadata: {
@@ -95,8 +94,7 @@ export async function createCheckoutSession(
         customerEmail: metadata.customerEmail,
         clerkUserId: metadata.clerkUserId!,
         address: JSON.stringify(metadata.address),
-        promoCode: metadata.promoCode || '',
-        freeShipping: String(freeShip),
+        
       },
       locale: 'pl',
       mode: "payment",

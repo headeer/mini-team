@@ -21,9 +21,7 @@ export default function CheckoutPage() {
   const groupedItems = useStore((s) => s.getGroupedItems());
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
-  const [promoCode, setPromoCode] = useState("");
-  const [promoApplied, setPromoApplied] = useState(false);
-  const [promoError, setPromoError] = useState("");
+  // Promo codes disabled
   // no embedded client secret
 
   type CartProduct = {
@@ -82,21 +80,10 @@ export default function CheckoutPage() {
   }, [groupedItems, priceMap, computeUnitNet]);
 
   const shippingNet = 160; // wysyłka paletowa (netto)
-  const discountedSubtotal = subtotalNet; // prices unchanged; only shipping toggles
-  const totalGross = discountedSubtotal * 1.23 + (promoApplied ? 0 : shippingNet); // Free shipping with promo
+  const totalGross = subtotalNet * 1.23 + shippingNet;
 
   // Complex promo code for testing (100% discount)
-  const VALID_PROMO_CODE = "FREESHIP-TEST-2025";
-  
-  const applyPromoCode = () => {
-    if (promoCode.trim() === VALID_PROMO_CODE) {
-      setPromoApplied(true);
-      setPromoError("");
-    } else {
-      setPromoError("Nieprawidłowy kod promocyjny");
-      setPromoApplied(false);
-    }
-  };
+  // Promo codes removed
 
   const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -116,8 +103,7 @@ export default function CheckoutPage() {
         customerEmail: user?.emailAddresses[0]?.emailAddress ?? 'Unknown',
         clerkUserId: user?.id,
         address: null,
-        promoCode: promoApplied ? promoCode : undefined,
-        freeShipping: promoApplied,
+        
       })
       if (!hostedUrl) {
         alert('Nie udało się zainicjować płatności. Spróbuj ponownie.');

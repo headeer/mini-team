@@ -5,7 +5,6 @@ import { ClerkProvider } from "@clerk/nextjs";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
 import AIWidgetStub from "@/components/home/AIWidgetStub";
-import TawkChat from "@/components/TawkChat";
 import MobileCartBar from "@/components/MobileCartBar";
 import Script from "next/script";
 import techMap from "@/public/images/techniczne/map.json";
@@ -87,7 +86,6 @@ export default function RootLayout({
         <MobileCartBar />
         {/* Fit Check modal mounted globally to open from header */}
         <AIWidgetStub />
-        <TawkChat />
         {/* Global SEO JSON-LD */}
         {(() => {
           const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://miniteamproject.pl'
