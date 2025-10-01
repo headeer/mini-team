@@ -41,7 +41,7 @@ const FAQ = () => {
         <div className="text-center mb-6">
           <Badge className="bg-[var(--color-brand-orange)]">FAQ</Badge>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-3">Najczęściej zadawane pytania</h2>
-          <p className="text-gray-600">Masz inne pytanie? Skorzystaj z chatu AI lub skontaktuj się z nami.</p>
+          <p className="text-gray-600">Masz inne pytanie? Skontaktuj się z nami.</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -75,7 +75,7 @@ const FAQ = () => {
               </CardHeader>
               <CardContent className="space-y-3 text-sm text-gray-700">
                 <p>
-                  Zapytaj naszego <Link href="#chat" className="text-[var(--color-brand-orange)] hover:underline">AI‑asystenta</Link> lub skontaktuj się bezpośrednio – odpowiemy w 24 h.
+                  Skontaktuj się z nami bezpośrednio – odpowiemy w 24 h.
                 </p>
                 <div>
                   <p><strong>Telefon:</strong> <a href="tel:+48782851962" className="hover:underline">782-851-962</a></p>

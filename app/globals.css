@@ -409,45 +409,6 @@ body {
 }
 .a11y-row { margin: 10px 0; display: flex; align-items: center; gap: 8px; }
 
-/* Force Tawk.to chat repositioning to avoid conflicts */
-div[id*="tawk"], 
-iframe[src*="tawk"],
-div[class*="tawk"] {
-  bottom: 120px !important;
-  right: 24px !important;
-  z-index: 9999 !important;
-}
-
-@media (max-width: 768px) {
-  div[id*="tawk"], 
-  iframe[src*="tawk"],
-  div[class*="tawk"] {
-    bottom: 280px !important;
-    right: 16px !important;
-    z-index: 9999 !important;
-  }
-}
-
-/* Alternative approach - target common Tawk.to element patterns */
-#tawk-widget,
-.tawk-widget,
-[id^="tawk-"],
-[class^="tawk-"] {
-  bottom: 120px !important;
-  right: 24px !important;
-  z-index: 9999 !important;
-}
-
-@media (max-width: 768px) {
-  #tawk-widget,
-  .tawk-widget,
-  [id^="tawk-"],
-  [class^="tawk-"] {
-    bottom: 280px !important;
-    right: 16px !important;
-    z-index: 9999 !important;
-  }
-}
 .a11y-row label { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #111; }
 .a11y-row input[type="checkbox"] { width: 16px; height: 16px; }
 .a11y-reset { font-size: 12px; color: #111; border: 1px solid #e5e7eb; border-radius: 10px; padding: 8px 10px; background: #f9fafb; }

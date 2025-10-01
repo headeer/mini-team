@@ -7,7 +7,11 @@ import React from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import CategoryIconSprite from "./CategoryIconSprite";
 
-const HeaderMenu = () => {
+interface HeaderMenuProps {
+  user?: any;
+}
+
+const HeaderMenu = ({ user }: HeaderMenuProps) => {
   const pathname = usePathname();
   const [offerOpen, setOfferOpen] = React.useState(false);
   const [obrobkaOpen, setObrobkaOpen] = React.useState(false);
@@ -83,6 +87,7 @@ const HeaderMenu = () => {
       <div className="flex items-center gap-1 ml-1">
         {headerData?.slice(3)
           .filter((item) => item?.href !== "/obrobka-blach")
+          .filter((item) => item?.href !== "/orders" || user) // Hide orders if not logged in
           .map((item) => (
           <Link
             key={item?.title}

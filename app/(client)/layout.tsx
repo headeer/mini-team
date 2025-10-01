@@ -4,10 +4,10 @@ import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
-import AIWidgetStub from "@/components/home/AIWidgetStub";
 import MobileCartBar from "@/components/MobileCartBar";
 import Script from "next/script";
 import techMap from "@/public/images/techniczne/map.json";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://miniteamproject.pl"),
@@ -84,8 +84,6 @@ export default function RootLayout({
         <main id="content" className="flex-1">{children}</main>
         <Footer />
         <MobileCartBar />
-        {/* Fit Check modal mounted globally to open from header */}
-        <AIWidgetStub />
         {/* Global SEO JSON-LD */}
         {(() => {
           const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://miniteamproject.pl'
@@ -162,7 +160,7 @@ export default function RootLayout({
         <Script id="tech-map" strategy="beforeInteractive">
           {`window.__TECH_MAP__ = ${JSON.stringify(techMap)};`}
         </Script>
-        {/* Tawk chat moved to conditional client component */}
+        <Analytics />
       </div>
     </ClerkProvider>
   );

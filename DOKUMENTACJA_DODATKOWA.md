@@ -1,261 +1,248 @@
-# Dokumentacja Dodatkowa - Chat i Stripe
+# Dokumentacja Dodatkowa - Stripe
 
 ## Spis treści
-1. [System czatu Tawk.to](#system-czatu-tawkto)
-2. [Zarządzanie zamówieniami w Stripe](#zarządzanie-zamówieniami-w-stripe)
-3. [Integracja systemów](#integracja-systemów)
-
----
-
-## System czatu Tawk.to
-
-### Co to jest Tawk.to
-**Tawk.to** to system czatu na żywo, który pozwala na komunikację z klientami bezpośrednio na stronie sklepu.
-
-### Gdzie znaleźć chat
-- **Na stronie sklepu:** Chat pojawia się automatycznie w prawym dolnym rogu
-- **Panel administracyjny:** Dostęp przez przeglądarkę na [tawk.to](https://tawk.to)
-
-### Jak uzyskać dostęp do panelu Tawk.to
-
-#### Krok 1: Otrzymanie dostępu
-1. **Skontaktuj się z administratorem** systemu
-2. Administrator wyśle Ci:
-   - Link do panelu Tawk.to
-   - Dane logowania (email + hasło)
-   - Instrukcje dostępu
-
-#### Krok 2: Logowanie
-1. Przejdź do [tawk.to](https://tawk.to)
-2. Kliknij **"Sign In"**
-3. Wprowadź otrzymane dane logowania
-4. Kliknij **"Login"**
-
-### Funkcjonalności czatu
-
-#### Podstawowe funkcje
-- ✅ **Czat na żywo** z klientami
-- ✅ **Historia rozmów** - wszystkie poprzednie konwersacje
-- ✅ **Powiadomienia** - dźwiękowe i wizualne o nowych wiadomościach
-- ✅ **Status online/offline** - możliwość ustawienia dostępności
-- ✅ **Przekierowania** - przekazywanie rozmów między operatorami
-
-#### Zaawansowane funkcje
-- ✅ **Szablony odpowiedzi** - gotowe odpowiedzi na częste pytania
-- ✅ **Statystyki** - liczba rozmów, czas odpowiedzi
-- ✅ **Tagowanie** - kategoryzowanie rozmów
-- ✅ **Eksport rozmów** - pobieranie historii w PDF/CSV
-
-### Jak obsługiwać klientów przez chat
-
-#### 1. Odpowiadanie na wiadomości
-1. Gdy pojawi się nowa wiadomość, usłyszysz dźwięk
-2. Kliknij na okno czatu
-3. Wpisz odpowiedź w polu tekstowym
-4. Naciśnij **Enter** lub kliknij **"Send"**
-
-#### 2. Ustawianie statusu
-- **Online** - jesteś dostępny dla klientów
-- **Away** - jesteś zajęty, ale możesz odpowiadać
-- **Offline** - nie jesteś dostępny
-
-#### 3. Używanie szablonów
-1. Kliknij ikonę **"Templates"** w oknie czatu
-2. Wybierz odpowiedni szablon
-3. Dostosuj treść jeśli potrzeba
-4. Wyślij wiadomość
-
-### Częste pytania klientów i odpowiedzi
-
-#### Pytania o produkty
-**Q:** "Czy ten produkt jest dostępny?"
-**A:** "Sprawdzę dostępność w naszym magazynie. Proszę o chwilę cierpliwości."
-
-**Q:** "Jaka jest cena produktu?"
-**A:** "Cena jest widoczna na stronie produktu. Czy mogę pomóc w czymś jeszcze?"
-
-#### Pytania o zamówienia
-**Q:** "Gdzie mogę sprawdzić status mojego zamówienia?"
-**A:** "Możesz sprawdzić status w sekcji 'Moje zamówienia' po zalogowaniu lub podaj mi numer zamówienia, a sprawdzę to dla Ciebie."
-
-**Q:** "Jak długo trwa dostawa?"
-**A:** "Standardowy czas dostawy to 3-5 dni roboczych. Czy to pilne zamówienie?"
-
-#### Pytania techniczne
-**Q:** "Czy ten produkt pasuje do mojej maszyny?"
-**A:** "Sprawdzę kompatybilność w specyfikacjach produktu. Jaki model maszyny posiadasz?"
-
-### Statystyki i raporty
-
-#### Gdzie znaleźć statystyki
-1. W panelu Tawk.to przejdź do sekcji **"Reports"**
-2. Wybierz okres (dzień/tydzień/miesiąc)
-3. Zobaczysz:
-   - Liczbę rozmów
-   - Średni czas odpowiedzi
-   - Liczbę zadowolonych klientów
-   - Najczęstsze pytania
+1. [Zarządzanie zamówieniami w Stripe](#zarządzanie-zamówieniami-w-stripe)
+2. [Integracja systemów](#integracja-systemów)
 
 ---
 
 ## Zarządzanie zamówieniami w Stripe
 
 ### Co to jest Stripe
-**Stripe** to system płatności, który obsługuje wszystkie transakcje w sklepie. Oprócz płatności, można tam również zarządzać zamówieniami.
+**Stripe** to platforma płatności online, która obsługuje wszystkie transakcje w sklepie internetowym.
 
-### Gdzie znaleźć zamówienia w Stripe
+### Gdzie znaleźć zamówienia
+- **Panel Stripe:** Dostęp przez przeglądarkę na [dashboard.stripe.com](https://dashboard.stripe.com)
+- **Email powiadomienia:** Automatyczne powiadomienia o nowych zamówieniach
 
-#### Krok 1: Logowanie do Stripe
-1. Przejdź do [stripe.com](https://stripe.com)
+### Jak uzyskać dostęp do panelu Stripe
+
+#### Krok 1: Otrzymanie dostępu
+1. **Skontaktuj się z administratorem** systemu
+2. Administrator wyśle Ci:
+   - Link do panelu Stripe
+   - Dane logowania (email + hasło)
+   - Instrukcje dostępu
+
+#### Krok 2: Logowanie
+1. Przejdź do [dashboard.stripe.com](https://dashboard.stripe.com)
 2. Kliknij **"Sign in"**
-3. Wprowadź dane logowania (otrzymasz od administratora)
-4. Kliknij **"Log in"**
+3. Wprowadź otrzymane dane logowania
+4. Kliknij **"Sign in"**
 
-#### Krok 2: Nawigacja do zamówień
-1. W panelu głównym kliknij **"Payments"** w menu po lewej
-2. Zobaczysz listę wszystkich transakcji
-3. Każda transakcja to jedno zamówienie
+### Podstawowe funkcje panelu Stripe
 
-### Funkcjonalności Stripe dla zamówień
+#### 1. Widok główny (Dashboard)
+- **Przegląd sprzedaży:** Dzienne, tygodniowe, miesięczne statystyki
+- **Ostatnie płatności:** Lista najnowszych transakcji
+- **Alerty:** Ważne powiadomienia o problemach z płatnościami
 
-#### Podstawowe informacje o zamówieniu
-- ✅ **Kwota** - ile klient zapłacił
-- ✅ **Status płatności** - czy płatność została zrealizowana
-- ✅ **Data** - kiedy została dokonana płatność
-- ✅ **Klient** - dane klienta (email, nazwa)
-- ✅ **Metoda płatności** - karta, BLIK, przelew
+#### 2. Zarządzanie płatnościami
+- **Lista płatności:** Wszystkie transakcje z filtrami
+- **Szczegóły płatności:** Pełne informacje o każdej transakcji
+- **Zwroty:** Obsługa zwrotów i anulowań
+- **Rozliczenia:** Historia wypłat na konto bankowe
 
-#### Zaawansowane funkcje
-- ✅ **Refundy** - zwroty pieniędzy
-- ✅ **Częściowe zwroty** - zwrot części kwoty
-- ✅ **Faktury** - generowanie faktur
-- ✅ **Eksport danych** - pobieranie raportów
-- ✅ **Webhooks** - automatyczne powiadomienia
+#### 3. Ustawienia
+- **Profil firmy:** Dane firmy i adresy
+- **Integracje:** Połączenia z innymi systemami
+- **Bezpieczeństwo:** Ustawienia dostępu i uwierzytelniania
 
-### Jak obsługiwać zamówienia w Stripe
+### Jak obsługiwać zamówienia
 
-#### 1. Sprawdzanie statusu płatności
-1. Przejdź do **"Payments"**
-2. Znajdź zamówienie po:
-   - Emailu klienta
-   - Kwocie
-   - Dacie
-3. Kliknij na zamówienie, aby zobaczyć szczegóły
+#### 1. Sprawdzanie nowych zamówień
+1. **Sprawdź panel główny** - nowe zamówienia będą widoczne w sekcji "Recent payments"
+2. **Kliknij na płatność** aby zobaczyć szczegóły
+3. **Sprawdź dane klienta** i szczegóły zamówienia
+4. **Zweryfikuj kwotę** i status płatności
 
-#### 2. Wykonywanie zwrotów
-1. Otwórz szczegóły zamówienia
-2. Kliknij **"Refund"**
-3. Wybierz:
-   - **Full refund** - pełny zwrot
-   - **Partial refund** - częściowy zwrot
-4. Wprowadź kwotę (jeśli częściowy)
-5. Kliknij **"Refund"**
+#### 2. Przetwarzanie zamówienia
+1. **Sprawdź czy płatność została zrealizowana** (status: "Succeeded")
+2. **Pobierz dane klienta** z sekcji "Customer details"
+3. **Przekaż zamówienie do realizacji** (email, telefon, adres dostawy)
+4. **Oznacz jako przetworzone** w systemie zarządzania
 
-#### 3. Generowanie faktur
-1. W szczegółach zamówienia kliknij **"Invoice"**
-2. Stripe automatycznie wygeneruje fakturę
-3. Możesz ją pobrać lub wysłać do klienta
+#### 3. Obsługa problemów z płatnościami
+- **Płatność nieudana:** Sprawdź przyczynę w sekcji "Failure reason"
+- **Płatność w toku:** Poczekaj na potwierdzenie lub skontaktuj się z klientem
+- **Podejrzana transakcja:** Sprawdź szczegóły i rozważ anulowanie
 
-### Statusy płatności w Stripe
+### Najczęstsze problemy z płatnościami
 
-| Status | Opis | Co oznacza |
-|--------|------|------------|
-| `succeeded` | Zakończone pomyślnie | Płatność została zrealizowana |
-| `pending` | Oczekujące | Płatność w trakcie realizacji |
-| `failed` | Nieudane | Płatność została odrzucona |
-| `canceled` | Anulowane | Płatność została anulowana |
-| `refunded` | Zwrócone | Pieniądze zostały zwrócone |
+#### Płatności nieudane
+- **Brak środków na karcie:** Klient musi użyć innej karty
+- **Błędne dane karty:** Sprawdź numer, datę ważności, CVV
+- **Karta zablokowana:** Klient musi skontaktować się z bankiem
+- **Przekroczony limit:** Klient musi użyć innej karty lub poczekać
 
-### Raporty i eksport danych
+#### Płatności w toku
+- **3D Secure:** Klient musi potwierdzić płatność w banku
+- **Weryfikacja:** Płatność wymaga dodatkowej weryfikacji
+- **Przetwarzanie:** Płatność jest w trakcie przetwarzania
 
-#### Jak pobrać raporty
-1. Przejdź do **"Reports"** w menu Stripe
-2. Wybierz:
-   - **Payments** - raport płatności
-   - **Refunds** - raport zwrotów
-   - **Disputes** - raport sporów
-3. Ustaw okres (dzień/tydzień/miesiąc)
-4. Kliknij **"Export"**
+#### Podejrzane transakcje
+- **Duże kwoty:** Sprawdź czy klient to prawdziwa osoba
+- **Różne adresy:** Adres karty różni się od adresu dostawy
+- **Wielokrotne próby:** Klient próbował zapłacić wielokrotnie
 
-#### Dostępne formaty
-- **CSV** - do analizy w Excelu
-- **PDF** - do druku
-- **JSON** - do systemów informatycznych
+### Zasady obsługi zamówień
+
+#### 1. Czas przetwarzania
+- **Maksymalnie 2 godziny** na przetworzenie zamówienia
+- **W dni robocze:** 8:00-16:00
+- **W weekendy:** Sprawdź w poniedziałek rano
+
+#### 2. Weryfikacja zamówienia
+- **Sprawdź dane klienta** - imię, nazwisko, adres
+- **Zweryfikuj kwotę** - czy odpowiada cennikowi
+- **Sprawdź dostępność** - czy produkty są na magazynie
+- **Potwierdź adres dostawy** - czy jest kompletny
+
+#### 3. Komunikacja z klientem
+- **Potwierdź zamówienie** emailem w ciągu 2 godzin
+- **Podaj numer zamówienia** i przewidywany czas dostawy
+- **Poinformuj o problemach** jeśli coś nie gra
+- **Zaproponuj rozwiązanie** jeśli zamówienie nie może być zrealizowane
+
+### Raporty i statystyki
+
+#### 1. Jak sprawdzić statystyki
+1. W panelu Stripe przejdź do sekcji **"Analytics"**
+2. Wybierz okres (dzień, tydzień, miesiąc)
+3. Sprawdź kluczowe metryki:
+   - Liczba transakcji
+   - Łączna kwota sprzedaży
+   - Średnia wartość zamówienia
+   - Wskaźnik udanych płatności
+
+#### 2. Kluczowe wskaźniki (KPI)
+- **Wskaźnik udanych płatności:** > 95%
+- **Średnia wartość zamówienia:** Według celów biznesowych
+- **Czas przetwarzania:** < 2 godziny
+- **Liczba zwrotów:** < 5%
+
+### Rozwiązywanie problemów technicznych
+
+#### 1. Panel nie działa
+- **Sprawdź połączenie internetowe**
+- **Odśwież stronę** (F5)
+- **Wyczyść cache przeglądarki**
+- **Spróbuj innej przeglądarki**
+
+#### 2. Nie otrzymujesz powiadomień
+- **Sprawdź ustawienia powiadomień** w przeglądarce
+- **Sprawdź ustawienia w panelu Stripe**
+- **Sprawdź folder spam** w emailu
+
+#### 3. Problemy z logowaniem
+- **Sprawdź dane logowania**
+- **Wyczyść cookies**
+- **Skontaktuj się z administratorem**
 
 ---
 
 ## Integracja systemów
 
-### Jak systemy współpracują
+### Przegląd systemów
+Sklep internetowy składa się z kilku połączonych systemów:
 
-#### Przepływ zamówienia
-```
-1. Klient składa zamówienie → Sklep
-2. Płatność → Stripe
-3. Potwierdzenie płatności → Webhook
-4. Utworzenie zamówienia → Sanity
-5. Powiadomienie → Email + Chat
-```
+#### 1. Frontend (Strona sklepu)
+- **Lokalizacja:** [miniteamproject.pl](https://miniteamproject.pl)
+- **Funkcje:** Katalog produktów, koszyk, proces zakupu
+- **Technologia:** Next.js, React, TypeScript
 
-#### Synchronizacja danych
-- **Stripe** ↔ **Sanity**: Automatyczna synchronizacja przez webhook
-- **Chat** ↔ **Sklep**: Integracja przez Tawk.to widget
-- **Email** ↔ **Wszystkie systemy**: Powiadomienia o statusach
+#### 2. Backend (API)
+- **Lokalizacja:** Serwer aplikacji
+- **Funkcje:** Przetwarzanie zamówień, integracje
+- **Technologia:** Next.js API Routes
 
-### Gdzie szukać informacji o zamówieniu
+#### 3. Baza danych (Sanity)
+- **Lokalizacja:** [sanity.io](https://sanity.io)
+- **Funkcje:** Przechowywanie produktów, kategorii, treści
+- **Dostęp:** Panel administracyjny Sanity
 
-#### 1. Sanity Studio (główne miejsce)
-- **Lokalizacja:** `/studio` → "Zamówienie"
-- **Zawiera:** Pełne dane zamówienia, status, produkty
-- **Użycie:** Codzienne zarządzanie zamówieniami
+#### 4. Płatności (Stripe)
+- **Lokalizacja:** [dashboard.stripe.com](https://dashboard.stripe.com)
+- **Funkcje:** Przetwarzanie płatności, zarządzanie zamówieniami
+- **Dostęp:** Panel administracyjny Stripe
 
-#### 2. Stripe (płatności)
-- **Lokalizacja:** [stripe.com](https://stripe.com) → "Payments"
-- **Zawiera:** Dane płatności, zwroty, faktury
-- **Użycie:** Obsługa płatności i zwrotów
+### Przepływ zamówienia
 
-#### 3. Tawk.to (komunikacja)
-- **Lokalizacja:** [tawk.to](https://tawk.to)
-- **Zawiera:** Historia rozmów z klientami
-- **Użycie:** Obsługa klienta, odpowiedzi na pytania
+#### 1. Klient składa zamówienie
+- **Wybierze produkty** w sklepie
+- **Dodaje do koszyka** i przechodzi do kasy
+- **Wypełnia dane** i wybiera sposób płatności
+- **Potwierdza zamówienie** i płaci
 
-### Najlepsze praktyki
+#### 2. System przetwarza płatność
+- **Stripe otrzymuje** dane płatności
+- **Weryfikuje kartę** i przetwarza płatność
+- **Wysyła potwierdzenie** do systemu sklepu
+- **Tworzy zamówienie** w bazie danych
 
-#### Codzienna obsługa
-1. **Rano:** Sprawdź nowe zamówienia w Sanity
-2. **W ciągu dnia:** Odpowiadaj na chat w Tawk.to
-3. **Wieczorem:** Sprawdź płatności w Stripe
+#### 3. Powiadomienia
+- **Email do klienta:** Potwierdzenie zamówienia
+- **Email do administratora:** Nowe zamówienie do przetworzenia
+- **Powiadomienie w panelu:** Nowa płatność w Stripe
 
-#### W przypadku problemów
-1. **Problem z płatnością:** Sprawdź w Stripe
-2. **Problem z zamówieniem:** Sprawdź w Sanity
-3. **Problem z klientem:** Sprawdź historię w Tawk.to
+#### 4. Realizacja zamówienia
+- **Administrator sprawdza** zamówienie w Stripe
+- **Pobiera dane klienta** i szczegóły zamówienia
+- **Przekazuje do realizacji** (wysyłka, produkcja)
+- **Aktualizuje status** w systemie
 
-#### Backup i bezpieczeństwo
-- Wszystkie dane są automatycznie kopiowane
-- Dostęp do systemów jest zabezpieczony hasłami
-- Regularne eksporty danych są dostępne
+### Zarządzanie dostępem
+
+#### 1. Administrator systemu
+- **Pełny dostęp** do wszystkich systemów
+- **Zarządzanie użytkownikami** i uprawnieniami
+- **Konfiguracja integracji** między systemami
+- **Rozwiązywanie problemów** technicznych
+
+#### 2. Operator sklepu
+- **Dostęp do Stripe** - zarządzanie zamówieniami
+- **Dostęp do Sanity** - edycja produktów i treści
+- **Ograniczony dostęp** do ustawień systemu
+
+#### 3. Pracownik obsługi
+- **Dostęp do Stripe** - tylko przeglądanie zamówień
+- **Brak dostępu** do ustawień systemu
+- **Tylko odczyt** danych
+
+### Bezpieczeństwo
+
+#### 1. Dane klientów
+- **Szyfrowanie:** Wszystkie dane są szyfrowane
+- **RODO:** Zgodność z przepisami o ochronie danych
+- **Dostęp:** Tylko uprawnione osoby mają dostęp
+
+#### 2. Płatności
+- **PCI DSS:** Stripe jest certyfikowane do obsługi kart
+- **Tokenizacja:** Numery kart nie są przechowywane
+- **Audyt:** Wszystkie transakcje są logowane
+
+#### 3. System
+- **HTTPS:** Wszystkie połączenia są szyfrowane
+- **Uwierzytelnianie:** Dwuskładnikowe uwierzytelnianie
+- **Backup:** Regularne kopie zapasowe danych
+
+### Kontakt i wsparcie
+
+#### 1. Problemy techniczne
+- **Email:** [teodorczykpt@gmail.com](mailto:teodorczykpt@gmail.com)
+- **Telefon:** 782-851-962
+- **Godziny:** Pon-Pt 8:00-16:00
+
+#### 2. Problemy z płatnościami
+- **Stripe Support:** [support.stripe.com](https://support.stripe.com)
+- **Dokumentacja:** [stripe.com/docs](https://stripe.com/docs)
+- **Status:** [status.stripe.com](https://status.stripe.com)
+
+#### 3. Problemy z produktami
+- **Sanity Support:** [sanity.io/support](https://sanity.io/support)
+- **Dokumentacja:** [sanity.io/docs](https://sanity.io/docs)
+- **Status:** [status.sanity.io](https://status.sanity.io)
 
 ---
 
-## Kontakt i wsparcie
-
-### Dostęp do systemów
-- **Sanity Studio:** `/studio` (lokalnie) lub domena + `/studio`
-- **Stripe:** [stripe.com](https://stripe.com)
-- **Tawk.to:** [tawk.to](https://tawk.to)
-
-### W przypadku problemów
-1. **Sprawdź logi** w odpowiednim systemie
-2. **Skontaktuj się z administratorem** jeśli problem się powtarza
-3. **Użyj funkcji pomocy** w każdym z systemów
-
-### Regularne zadania
-- **Codziennie:** Sprawdź nowe zamówienia i chat
-- **Tygodniowo:** Sprawdź statystyki w Tawk.to
-- **Miesięcznie:** Pobierz raporty z Stripe
-
----
-
-*Dokumentacja dodatkowa - Styczeń 2024*
-*Systemy: Tawk.to + Stripe + Sanity*
+*Ostatnia aktualizacja: 2024*

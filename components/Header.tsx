@@ -30,13 +30,13 @@ const Header = async () => {
       <Container className="flex items-center justify-between h-14 md:h-16">
         {/* Logo + Mobile */}
         <div className="flex items-center gap-3">
-          <MobileMenu />
+          <MobileMenu user={user} />
           <Logo />
         </div>
 
         {/* Navigation (inspired by MiniTeam MegaMenu) */}
         <div className="hidden lg:flex items-center gap-2">
-          <HeaderMenu />
+          <HeaderMenu user={user} />
         </div>
 
         {/* Actions */}

@@ -267,11 +267,5 @@ stripe listen --forward-to localhost:3000/api/webhook
 - Dodanie nowego pola produktu: dopisz w schemacie `product`, uruchom `npm run typegen`, zaktualizuj GROQ i UI.
 - Zmiana kosztu wysyłki/progu darmowej dostawy: logika w koszyku/checkout (39 zł, próg 1000 zł).
 
-## AI chat – wdrożenie
-
-- Przygotuj endpoint `/api/ai` (OpenAI SDK / RAG pod produkt):
-  - Wejście: pytanie + kontekst produktu/kategorii.
-  - Wyjście: zwięzła odpowiedź i sugestie produktów.
-- Podmień `components/home/AIWidgetStub.tsx` na realny widget, wywołujący `/api/ai`.
 
 

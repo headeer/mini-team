@@ -3,12 +3,12 @@ import AppHeading from "@/components/ui/AppHeading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Phone, Mail, Clock, Bot, MessageCircle } from "lucide-react";
+import { Phone, Mail, Clock, MessageCircle } from "lucide-react";
 
 export const metadata = {
   title: "Kontakt – MiniTeamProject",
   description:
-    "Skontaktuj się z MiniTeamProject: telefon, e‑mail, formularz zapytania i lokalizacja. Dostępny także chat AI.",
+    "Skontaktuj się z MiniTeamProject: telefon, e‑mail, formularz zapytania i lokalizacja.",
   alternates: { canonical: "/kontakt" },
   robots: { index: true, follow: true },
   openGraph: {
@@ -56,9 +56,6 @@ export default function KontaktPage() {
                 <p className="font-medium">Szybki kontakt:</p>
                 <ul className="list-disc pl-5 text-gray-700 space-y-1">
                   <li>Formularz poniżej</li>
-                  <li>
-                    Chat AI (ikona w prawym dolnym rogu)
-                  </li>
                 </ul>
               </div>
             </CardContent>
@@ -225,13 +222,6 @@ export default function KontaktPage() {
         <div className="space-y-6">
           <h2 className="text-2xl font-bold text-gray-900">Inne sposoby kontaktu</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="rounded-lg border p-4 flex items-center gap-3">
-              <Bot className="h-6 w-6 text-[var(--color-brand-orange)]" />
-              <div>
-                <p className="font-medium">Chat AI</p>
-                <p className="text-sm text-gray-600">Dostępny 24/7</p>
-              </div>
-            </div>
             <div className="rounded-lg border p-4 flex items-center gap-3">
               <Phone className="h-6 w-6 text-[var(--color-brand-orange)]" />
               <div>

@@ -9,9 +9,10 @@ import { useOutsideClick } from "@/hooks";
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  user?: any;
 }
 
-const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
+const SideMenu: FC<SidebarProps> = ({ isOpen, onClose, user }) => {
   const pathname = usePathname();
   const sidebarRef = useOutsideClick<HTMLDivElement>(onClose);
   return (
@@ -33,7 +34,8 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
         </div>
 
         <div className="flex flex-col space-y-2 font-semibold tracking-wide">
-          {headerData?.map((item) => (
+          {headerData?.filter((item) => item?.href !== "/orders" || user) // Hide orders if not logged in
+            .map((item) => (
             <Link
               href={item?.href}
               key={item?.title}
@@ -52,7 +54,6 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
           <div className="text-xs text-white/60">Szybkie narzędzia</div>
           <div className="grid grid-cols-2 gap-2">
             <a href="#a11y" onClick={onClose} className="px-3 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10">Dostępność</a>
-            <a href="#chat" onClick={onClose} className="px-3 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10">Chat</a>
             <a href="#fit-check" onClick={onClose} className="px-3 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10">Wyślij zdjęcie</a>
             <a href="#machine-finder" onClick={onClose} className="px-3 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10">Dobierz maszynę</a>
           </div>
