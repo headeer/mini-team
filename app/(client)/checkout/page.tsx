@@ -21,6 +21,20 @@ export default function CheckoutPage() {
   const groupedItems = useStore((s) => s.getGroupedItems());
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
+  const [promoApplied, setPromoApplied] = useState(false);
+  const [promoError, setPromoError] = useState("");
+  
+  const applyPromoCode = useCallback(() => {
+    // Simple promo code logic - you can enhance this
+    setPromoError("");
+    if (promoCode.trim().toLowerCase() === "free100") {
+      setPromoApplied(true);
+    } else {
+      setPromoError("Nieprawidłowy kod promocyjny");
+    }
+  }, [promoCode]);
+  
   // Promo codes disabled
   // no embedded client secret
 
@@ -49,6 +63,10 @@ export default function CheckoutPage() {
     () => groupedItems.reduce((sum, it) => sum + computeUnitNet(it.product as any, it.configuration) * it.quantity, 0),
     [groupedItems, computeUnitNet]
   );
+
+  const discountedSubtotal = useMemo(() => {
+    return promoApplied ? 0 : subtotalNet;
+  }, [subtotalNet, promoApplied]);
 
   // Fallback price map for items that resolve to 0 (e.g., legacy items in cart)
   const [priceMap, setPriceMap] = useState<Record<string, number>>({});
