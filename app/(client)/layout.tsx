@@ -8,6 +8,7 @@ import MobileCartBar from "@/components/MobileCartBar";
 import Script from "next/script";
 import techMap from "@/public/images/techniczne/map.json";
 import { Analytics } from "@vercel/analytics/next";
+import { RecaptchaProvider } from "@/components/RecaptchaProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://miniteamproject.pl"),
@@ -77,7 +78,8 @@ export default function RootLayout({
         }
       }}
     >
-      <div className="flex flex-col min-h-screen">
+      <RecaptchaProvider>
+        <div className="flex flex-col min-h-screen">
         <AccessibilityPanel />
         <TopBenefitsBar />
         <Header />
@@ -161,7 +163,8 @@ export default function RootLayout({
           {`window.__TECH_MAP__ = ${JSON.stringify(techMap)};`}
         </Script>
         <Analytics />
-      </div>
+        </div>
+      </RecaptchaProvider>
     </ClerkProvider>
   );
 }

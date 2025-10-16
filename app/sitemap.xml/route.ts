@@ -6,7 +6,7 @@ export const revalidate = 3600
 
 export async function GET() {
   const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://miniteamproject.pl'
-  const staticUrls = ['/', '/shop', '/kontakt', '/polityka-prywatnosci', '/polityka-zwrotow', '/regulamin']
+  const staticUrls = ['/', '/shop', '/czesci', '/kontakt', '/polityka-prywatnosci', '/polityka-zwrotow', '/regulamin']
   const products: Array<{ slug?: { current?: string }; _updatedAt?: string }> = await client.fetch(
     `*[_type == 'product' && defined(slug.current)]{ slug, _updatedAt }`
   )

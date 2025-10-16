@@ -1,65 +1,92 @@
 import Container from "@/components/Container";
 import AppHeading from "@/components/ui/AppHeading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
   title: "Kontakt – MiniTeamProject",
   description:
     "Skontaktuj się z MiniTeamProject: telefon, e‑mail, formularz zapytania i lokalizacja.",
-  alternates: { canonical: "/kontakt" },
-  robots: { index: true, follow: true },
-  openGraph: {
-    title: "Kontakt – MiniTeamProject",
-    description: "Dane kontaktowe: telefon, e‑mail, formularz, godziny pracy i mapa dojazdu.",
-    url: "/kontakt",
-    type: "website",
-  },
 };
 
 export default function KontaktPage() {
   return (
     <div className="bg-white">
-      <Container className="py-10 space-y-12">
-        <AppHeading title="Skontaktuj się z nami" subtitle="Jesteśmy do Twojej dyspozycji – zadzwoń, napisz lub odwiedź nas osobiście" />
+      <Container className="py-8">
+        <AppHeading
+          title="Kontakt"
+          description="Skontaktuj się z nami – odpowiemy na wszystkie pytania dotyczące naszych produktów."
+        />
 
-        {/* Dane kontaktowe + Formularz */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Lewa kolumna: dane kontaktowe */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Dane kontaktowe</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-5 text-gray-800">
-              <div>
-                <p className="font-semibold">MiniTeamProject Teodorczyk Piotr</p>
-                <p>Ujazd 11, 56-330 Ujazd, woj. dolnośląskie</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <a href="tel:+48782851962" className="hover:underline">782-851-962</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <a href="mailto:teodorczykpt@gmail.com" className="hover:underline">teodorczykpt@gmail.com</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5 text-[var(--color-brand-orange)]" />
-                <p>
-                  <span className="font-medium">Godziny pracy biura:</span> Pon–Pt: 8:00–16:00
+        <div className="grid lg:grid-cols-2 gap-8 mt-8">
+          {/* Lewa kolumna: informacje kontaktowe */}
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Phone className="w-5 h-5" />
+                  Szybki kontakt
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-gray-900">Telefon</h4>
+                  <p className="text-gray-600">
+                    <Link href="tel:+48782851962" className="hover:text-[var(--color-brand-orange)]">
+                      +48 782 851 962
+                    </Link>
+                  </p>
+                  <p className="text-sm text-gray-500">Pon-Pt: 8:00-16:00</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">E-mail</h4>
+                  <p className="text-gray-600">
+                    <Link href="mailto:kontakt@miniteamproject.pl" className="hover:text-[var(--color-brand-orange)]">
+                      kontakt@miniteamproject.pl
+                    </Link>
+                  </p>
+                  <p className="text-sm text-gray-500">Odpowiadamy w ciągu 24h</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Clock className="w-5 h-5" />
+                  Godziny pracy
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span>Poniedziałek - Piątek</span>
+                    <span className="font-medium">8:00 - 16:00</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Sobota - Niedziela</span>
+                    <span className="font-medium text-gray-500">Zamknięte</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Lokalizacja</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  <strong>Mini Team Project</strong><br />
+                  ul. Przykładowa 123<br />
+                  00-000 Warszawa<br />
+                  Polska
                 </p>
-              </div>
-
-              <div className="pt-2">
-                <p className="font-medium">Szybki kontakt:</p>
-                <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                  <li>Formularz poniżej</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Prawa kolumna: formularz */}
           <Card>
@@ -67,202 +94,44 @@ export default function KontaktPage() {
               <CardTitle>Wyślij zapytanie</CardTitle>
             </CardHeader>
             <CardContent>
-              <form method="post" action="/api/contact" className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                      Imię i nazwisko*
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      required
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-orange)]"
-                      placeholder="Jan Kowalski"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                      E-mail*
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-orange)]"
-                      placeholder="jan@firma.pl"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                      Telefon
-                    </label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-orange)]"
-                      placeholder="+48 600 000 000"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="sizeCm" className="block text-sm font-medium text-gray-700">
-                      Rozmiar (cm)
-                    </label>
-                    <input
-                      id="sizeCm"
-                      name="sizeCm"
-                      type="number"
-                      min={0}
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-orange)]"
-                      placeholder="np. 60"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="equipmentType" className="block text-sm font-medium text-gray-700">
-                      Rodzaj osprzętu
-                    </label>
-                    <select
-                      id="equipmentType"
-                      name="equipmentType"
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-orange)]"
-                      defaultValue=""
-                    >
-                      <option value="" disabled>
-                        Wybierz
-                      </option>
-                      <option>Łyżka kopiąca</option>
-                      <option>Łyżka skarpowa</option>
-                      <option>Grabie</option>
-                      <option>Zrywacz korzeni</option>
-                      <option>Szybkozłącze</option>
-                      <option>Inne</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="machineTier" className="block text-sm font-medium text-gray-700">
-                      Zakres maszyn
-                    </label>
-                    <select
-                      id="machineTier"
-                      name="machineTier"
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-orange)]"
-                      defaultValue=""
-                    >
-                      <option value="" disabled>
-                        Wybierz
-                      </option>
-                      <option>1–1.5 t</option>
-                      <option>1.5–2.3 t</option>
-                      <option>2.3–3 t</option>
-                      <option>3–5 t</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                    Wiadomość*
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={5}
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-orange)]"
-                    placeholder="Opisz czego potrzebujesz, model maszyny, mocowanie, itp."
-                  />
-                </div>
-
-                <div className="flex items-start gap-2">
-                  <input id="rodo" name="rodo" type="checkbox" required className="mt-1" />
-                  <label htmlFor="rodo" className="text-sm text-gray-700">
-                    Wyrażam zgodę na przetwarzanie danych osobowych w celu obsługi zapytania.
-                  </label>
-                </div>
-
-                <Button type="submit" className="w-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">
-                  Wyślij zapytanie
-                </Button>
-                <p className="text-xs text-gray-500">Pola oznaczone * są wymagane.</p>
-              </form>
+              <ContactForm />
             </CardContent>
           </Card>
         </div>
 
-        {/* Mapa Google */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900">Gdzie nas znajdziesz</h2>
-          <div className="w-full h-[380px] overflow-hidden rounded-xl border">
-            <iframe
-              title="Mapa – Ujazd 11, 56-330 Ujazd"
-              src="https://www.google.com/maps?q=Ujazd%2011%2C%2056-330%20Ujazd&output=embed"
-              width="100%"
-              height="100%"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-          <Link
-            href="https://www.google.com/maps/search/?api=1&query=Ujazd+11%2C+56-330+Ujazd"
-            className="text-[var(--color-brand-orange)] hover:underline"
-            target="_blank"
-          >
-            Zobacz w Google Maps
-          </Link>
-        </div>
+        {/* Sekcja dodatkowych informacji */}
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <Phone className="w-8 h-8 text-[var(--color-brand-orange)] mx-auto mb-3" />
+              <h3 className="font-semibold mb-2">Telefoniczne doradztwo</h3>
+              <p className="text-sm text-gray-600">
+                Pomożemy dobrać odpowiedni produkt do Twojej maszyny
+              </p>
+            </CardContent>
+          </Card>
 
-        {/* Alternatywne kanały */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900">Inne sposoby kontaktu</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="rounded-lg border p-4 flex items-center gap-3">
-              <Phone className="h-6 w-6 text-[var(--color-brand-orange)]" />
-              <div>
-                <p className="font-medium">Telefon</p>
-                <p className="text-sm text-gray-600">Szybka odpowiedź 8:00–16:00</p>
-              </div>
-            </div>
-            <div className="rounded-lg border p-4 flex items-center gap-3">
-              <Mail className="h-6 w-6 text-[var(--color-brand-orange)]" />
-              <div>
-                <p className="font-medium">E-mail</p>
-                <p className="text-sm text-gray-600">Odpowiedź do 24 h</p>
-              </div>
-            </div>
-            <div className="rounded-lg border p-4 flex items-center gap-3">
-              <MessageCircle className="h-6 w-6 text-[var(--color-brand-orange)]" />
-              <div>
-                <p className="font-medium">Formularz</p>
-                <p className="text-sm text-gray-600">Najlepszy dla szczegółowych zapytań</p>
-              </div>
-            </div>
-          </div>
-        </div>
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <Mail className="w-8 h-8 text-[var(--color-brand-orange)] mx-auto mb-3" />
+              <h3 className="font-semibold mb-2">Szybka odpowiedź</h3>
+              <p className="text-sm text-gray-600">
+                Odpowiadamy na e-maile w ciągu 24 godzin
+              </p>
+            </CardContent>
+          </Card>
 
-        {/* Stopka podstrony */}
-        <div className="flex flex-wrap items-center gap-4 justify-between border-t pt-6">
-          <div className="flex gap-4 text-sm text-gray-700">
-            <Link href="/shop" className="hover:underline">
-              Oferta
-            </Link>
-            <Link href="/faq" className="hover:underline">
-              FAQ
-            </Link>
-            <Link href="/polityka-prywatnosci" className="hover:underline">
-              Polityka prywatności
-            </Link>
-          </div>
-          <p className="text-sm text-gray-600">© 2025 MiniTeamProject Teodorczyk Piotr</p>
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <MessageCircle className="w-8 h-8 text-[var(--color-brand-orange)] mx-auto mb-3" />
+              <h3 className="font-semibold mb-2">Profesjonalne doradztwo</h3>
+              <p className="text-sm text-gray-600">
+                Nasi eksperci pomogą wybrać najlepsze rozwiązanie
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </Container>
     </div>
   );
 }
-

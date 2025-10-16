@@ -4,7 +4,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter, usePathname } from "next/navigation";
-import { Wrench } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const ALL_BRANDS = [
@@ -92,13 +91,7 @@ const FloatingMachineSelector: React.FC = () => {
                   aria-label="Dobierz do maszyny"
                   className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] text-white font-semibold py-3 px-4 rounded-2xl shadow-lg transition-all duration-200 hover:shadow-xl active:scale-98"
                 >
-                  <div className="flex items-center gap-2">
-                    <Wrench className="h-4 w-4" />
-                    <span className="text-sm">Dobierz maszynę</span>
-                  </div>
-                  <div className="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded-full">
-                    ⚡
-                  </div>
+                  <span className="text-sm">Dobierz do maszyny</span>
                 </button>
               </DialogTrigger>
             </div>
@@ -137,8 +130,7 @@ const FloatingMachineSelector: React.FC = () => {
                         {/* Animated background */}
                         <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-brand-orange)] to-[var(--color-brand-red)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         
-                        {/* Icon */}
-                        <Wrench className="relative z-10 h-6 w-6 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
+                        {/* Icon removed */}
                         
                         {/* Floating badge */}
                         <div className="absolute -top-1 -right-1 bg-[var(--color-brand-red)] text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse">
@@ -164,7 +156,6 @@ const FloatingMachineSelector: React.FC = () => {
                 <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-0 h-0 border-y-8 border-y-transparent border-r-8 border-r-white drop-shadow" />
                 
                 <div className="flex items-center gap-2 mb-3">
-                  <Wrench className="h-4 w-4 text-[var(--color-brand-orange)]" />
                   <div className="text-sm font-bold text-gray-800">Szybki wybór marki</div>
                 </div>
                 

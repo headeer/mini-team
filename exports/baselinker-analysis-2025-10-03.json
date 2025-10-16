@@ -1,0 +1,87 @@
+{
+  "inventory_id": 72852,
+  "categories": [
+    {
+      "category_id": 5193706,
+      "name": "Grabie/Grabie 100cm • 12mm zęby",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193707,
+      "name": "Grabie/Grabie 100cm • 15mm zęby",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193708,
+      "name": "Grabie",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193709,
+      "name": "Grabie/Grabie 120cm • 12mm zęby",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193710,
+      "name": "Grabie/Grabie 120cm • 15mm zęby",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193711,
+      "name": "Uncategorized",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193712,
+      "name": "Wiertnice",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193713,
+      "name": "Rippery/Zrywaki korzeni",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193714,
+      "name": "Łyżki kat. 3-5 Tony",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193715,
+      "name": "Łyżki kat. 1-1.5 Tony",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193716,
+      "name": "Łyżki kat. 1.5-2.3 Tony",
+      "parent_id": 0
+    },
+    {
+      "category_id": 5193717,
+      "name": "Łyżki kat. 2.3-3 Tony",
+      "parent_id": 0
+    }
+  ],
+  "priceGroups": [
+    {
+      "price_group_id": 64226,
+      "name": "Domyślna",
+      "description": null,
+      "currency": "PLN",
+      "is_default": true
+    }
+  ],
+  "products": [],
+  "stats": {
+    "totalProducts": 0,
+    "withSku": 0,
+    "withImages": 0,
+    "withFeatures": 0,
+    "withParameters": 0,
+    "withCategories": 0,
+    "withPrices": 0,
+    "withStock": 0,
+    "uniqueFeatures": 0,
+    "uniqueParameters": 0
+  }
+}

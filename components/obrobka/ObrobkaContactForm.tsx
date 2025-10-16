@@ -9,9 +9,13 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { Upload, Send, FileText, Clock } from "lucide-react";
 import { useState } from "react";
+import { useRecaptchaContext } from "@/components/RecaptchaProvider";
 
 const ObrobkaContactForm = ({ service }: { service?: 'laser'|'giecie'|'frezowanie'|'toczenie' }) => {
   const [dragActive, setDragActive] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+  const { executeRecaptcha, isLoaded } = useRecaptchaContext();
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -20,6 +24,47 @@ const ObrobkaContactForm = ({ service }: { service?: 'laser'|'giecie'|'frezowani
       setDragActive(true);
     } else if (e.type === "dragleave") {
       setDragActive(false);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    try {
+      // Execute reCAPTCHA
+      const recaptchaToken = await executeRecaptcha('obrobka_form');
+      
+      if (!recaptchaToken) {
+        setSubmitMessage("Błąd weryfikacji reCAPTCHA. Spróbuj ponownie.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Get form data
+      const formData = new FormData(e.currentTarget);
+      formData.append('recaptchaToken', recaptchaToken);
+
+      // Submit form
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage("Dziękujemy za zapytanie! Odpowiemy w ciągu 2 godzin roboczych.");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setSubmitMessage(result.error || "Wystąpił błąd podczas wysyłania zapytania.");
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitMessage("Wystąpił błąd podczas wysyłania zapytania.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -73,7 +118,7 @@ const ObrobkaContactForm = ({ service }: { service?: 'laser'|'giecie'|'frezowani
         {/* Form */}
         <Card className="lg:col-span-2 border-0 shadow-xl w-full min-w-0">
           <CardContent className="p-4 sm:p-8">
-            <form method="post" action="/api/contact" encType="multipart/form-data" className="space-y-6 w-full">
+            <form onSubmit={handleSubmit} encType="multipart/form-data" className="space-y-6 w-full">
               <input type="hidden" name="service" value={service || ''} />
               {/* Contact Info */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -290,15 +335,45 @@ const ObrobkaContactForm = ({ service }: { service?: 'laser'|'giecie'|'frezowani
                 </label>
               </div>
 
+              {/* Submit Message */}
+              {submitMessage && (
+                <div className={`p-3 rounded-md text-sm ${
+                  submitMessage.includes("Dziękujemy") 
+                    ? "bg-green-50 text-green-700 border border-green-200" 
+                    : "bg-red-50 text-red-700 border border-red-200"
+                }`}>
+                  {submitMessage}
+                </div>
+              )}
+
               {/* Submit */}
               <Button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] hover:scale-105 transition-transform text-lg py-6"
+                disabled={isSubmitting || !isLoaded}
+                className="w-full bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] hover:scale-105 transition-transform text-lg py-6 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5 mr-2" />
-                <span className="hidden sm:inline">WYŚLIJ ZAPYTANIE – WYCENA W 2H</span>
-                <span className="sm:hidden">WYŚLIJ – WYCENA 2H</span>
+                {isSubmitting ? (
+                  <span>WYSYŁANIE...</span>
+                ) : (
+                  <>
+                    <span className="hidden sm:inline">WYŚLIJ ZAPYTANIE – WYCENA W 2H</span>
+                    <span className="sm:hidden">WYŚLIJ – WYCENA 2H</span>
+                  </>
+                )}
               </Button>
+
+              {/* reCAPTCHA Notice */}
+              <div className="text-xs text-gray-500 text-center">
+                Ta strona jest chroniona przez reCAPTCHA Google. Obowiązują{" "}
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">
+                  Polityka prywatności
+                </a>{" "}
+                i{" "}
+                <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline">
+                  Warunki korzystania z usługi
+                </a>.
+              </div>
             </form>
           </CardContent>
         </Card>

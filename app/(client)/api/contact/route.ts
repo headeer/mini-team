@@ -1,11 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { backendClient } from '@/sanity/lib/backendClient';
+import { verifyRecaptcha } from '@/lib/recaptcha';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
+    
+    // Verify reCAPTCHA
+    const recaptchaToken = formData.get('recaptchaToken') as string;
+    const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'contact_form');
+    
+    if (!recaptchaResult.success) {
+      return NextResponse.json({ 
+        ok: false, 
+        error: 'Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.' 
+      }, { status: 400 });
+    }
     const doc: any = {
       _type: 'serviceInquiry',
       service: String(formData.get('service') || ''),

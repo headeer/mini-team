@@ -23,6 +23,13 @@ const HeaderMenu = ({ user }: HeaderMenuProps) => {
         {headerData?.slice(0, 1).map((item) => (
           <Link key={item?.title} href={item?.href} className={`px-3 py-2 rounded-md transition ${pathname === item?.href ? "bg-white text-gray-900 shadow-sm" : "text-gray-700 hover:text-gray-900 hover:bg-white"}`}>{item?.title}</Link>
         ))}
+        {/* Części link */}
+        <Link 
+          href="/czesci" 
+          className={`px-3 py-2 rounded-md transition ${pathname === "/czesci" ? "bg-white text-gray-900 shadow-sm" : "text-gray-700 hover:text-gray-900 hover:bg-white"}`}
+        >
+          Części
+        </Link>
         <Popover open={offerOpen} onOpenChange={setOfferOpen}>
           <PopoverTrigger asChild>
             <Link

@@ -16,10 +16,12 @@ import { client } from "@/sanity/lib/client";
 
 // removed embedded checkout; using hosted redirect
 import { useUser } from "@clerk/nextjs";
+import { useRecaptchaContext } from "@/components/RecaptchaProvider";
 
 export default function CheckoutPage() {
   const groupedItems = useStore((s) => s.getGroupedItems());
   const { user } = useUser();
+  const { executeRecaptcha, isLoaded } = useRecaptchaContext();
   const [loading, setLoading] = useState(false);
   const [promoCode, setPromoCode] = useState("");
   const [promoApplied, setPromoApplied] = useState(false);
@@ -107,6 +109,15 @@ export default function CheckoutPage() {
     e.preventDefault();
     try {
       setLoading(true);
+      
+      // Execute reCAPTCHA
+      const recaptchaToken = await executeRecaptcha('checkout_form');
+      
+      if (!recaptchaToken) {
+        alert("Błąd weryfikacji reCAPTCHA. Spróbuj ponownie.");
+        setLoading(false);
+        return;
+      }
       const enriched: GroupedCartItems[] = groupedItems.map((it) => ({
         ...it,
         product: {
@@ -284,12 +295,24 @@ export default function CheckoutPage() {
                   <p id="consent-privacy-help" className="sr-only">Zaznacz, aby potwierdzić zapoznanie się z Polityką Prywatności.</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                  <Button type="submit" disabled={loading} className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)]">
+                  <Button type="submit" disabled={loading || !isLoaded} className="bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] disabled:opacity-50">
                     {loading ? "Proszę czekać..." : "Zapłać i Złóż zamówienie"}
                   </Button>
                   <Button type="button" variant="outline" asChild>
                     <Link href="/cart">Wróć do koszyka</Link>
                   </Button>
+                </div>
+                
+                {/* reCAPTCHA Notice */}
+                <div className="text-xs text-gray-500 text-center mt-3">
+                  Ta strona jest chroniona przez reCAPTCHA Google. Obowiązują{" "}
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">
+                    Polityka prywatności
+                  </a>{" "}
+                  i{" "}
+                  <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline">
+                    Warunki korzystania z usługi
+                  </a>.
                 </div>
                 <p className="text-xs text-gray-600">Twoje dane są chronione. Certyfikat SSL, 3D Secure, PCI DSS.</p>
               </CardContent>
