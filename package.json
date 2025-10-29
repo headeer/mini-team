@@ -47,6 +47,7 @@
     "export:static": "next build && next export"
   },
   "dependencies": {
+    "@clerk/localizations": "^3.26.3",
     "@clerk/nextjs": "^6.29.0",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-checkbox": "^1.1.4",
