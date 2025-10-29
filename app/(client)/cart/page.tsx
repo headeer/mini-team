@@ -143,10 +143,11 @@ const CartPage = () => {
     setLoading(true);
     try {
       // Validate required parameters before continuing
-      for (const { product, configuration } of groupedItems) {
+      for (const { product, configuration, quantity } of groupedItems) {
         const hasMountSystems = Array.isArray((product as any)?.mountSystems) && (product as any).mountSystems.length > 0;
         if (hasMountSystems && !configuration?.mount) {
           toast.error(`Wybierz mocowanie dla produktu: ${product?.name || product?.title}`);
+          setLoading(false);
           return;
         }
         if (configuration?.mount === 'INNE') {
@@ -154,6 +155,51 @@ const CartPage = () => {
           const allDims = ['A','B','C','D'].every((k) => typeof dims[k] === 'number' && !Number.isNaN(dims[k] as number));
           if (!allDims) {
             toast.error(`Uzupełnij wymiary A/B/C/D dla opcji INNE: ${product?.name || product?.title}`);
+            setLoading(false);
+            return;
+          }
+        }
+        
+        // Check stock availability
+        const productStock = typeof (product as any)?.stock === 'number' ? (product as any).stock : null;
+        if (productStock !== null) {
+          if (productStock <= 0) {
+            const productName = product?.name || product?.title || 'Produkt';
+            const isGrabie = /grabie/i.test(productName);
+            
+            if (isGrabie && configuration?.mount) {
+              // For grabie with selected mount - show message about changing criteria
+              toast.error(
+                `${productName} - brak produktu na magazynie. Proszę zmienić kryteria (mocowanie, rodzaj lub wielkość) lub skontaktować się z nami.`,
+                { duration: 5000 }
+              );
+            } else {
+              toast.error(
+                `${productName} - brak produktu na magazynie. Proszę zmienić kryteria lub skontaktować się z nami.`,
+                { duration: 5000 }
+              );
+            }
+            setLoading(false);
+            return;
+          }
+          
+          // Check if requested quantity exceeds available stock
+          if (quantity > productStock) {
+            const productName = product?.name || product?.title || 'Produkt';
+            const isGrabie = /grabie/i.test(productName);
+            
+            if (isGrabie && configuration?.mount) {
+              toast.error(
+                `${productName} - dostępna ilość: ${productStock} szt. Proszę zmienić kryteria (mocowanie, rodzaj lub wielkość) lub zmniejszyć ilość.`,
+                { duration: 5000 }
+              );
+            } else {
+              toast.error(
+                `${productName} - dostępna ilość: ${productStock} szt. Proszę zmniejszyć ilość lub zmienić kryteria.`,
+                { duration: 5000 }
+              );
+            }
+            setLoading(false);
             return;
           }
         }
@@ -171,6 +217,7 @@ const CartPage = () => {
       }
     } catch (error) {
       console.error("Error creating checkout session:", error);
+      toast.error("Wystąpił błąd podczas przetwarzania zamówienia");
     } finally {
       setLoading(false);
     }
@@ -569,9 +616,52 @@ const CartPage = () => {
                               <input className="border rounded-md px-3 py-2" placeholder="Ulica i numer" value={newAddress.address || ""} onChange={(e)=>setNewAddress(v=>({...v,address:e.target.value}))} />
                               <div className="grid grid-cols-2 gap-2">
                                 <input className="border rounded-md px-3 py-2" placeholder="Miasto" value={newAddress.city || ""} onChange={(e)=>setNewAddress(v=>({...v,city:e.target.value}))} />
-                                <input className="border rounded-md px-3 py-2" placeholder="Województwo" value={newAddress.state || ""} onChange={(e)=>setNewAddress(v=>({...v,state:e.target.value}))} />
+                                <select 
+                                  className="border rounded-md px-3 py-2 bg-white" 
+                                  value={newAddress.state || ""} 
+                                  onChange={(e)=>setNewAddress(v=>({...v,state:e.target.value}))}
+                                  required
+                                >
+                                  <option value="">Województwo</option>
+                                  {[
+                                    "dolnośląskie",
+                                    "kujawsko-pomorskie",
+                                    "lubelskie",
+                                    "lubuskie",
+                                    "łódzkie",
+                                    "małopolskie",
+                                    "mazowieckie",
+                                    "opolskie",
+                                    "podkarpackie",
+                                    "podlaskie",
+                                    "pomorskie",
+                                    "śląskie",
+                                    "świętokrzyskie",
+                                    "warmińsko-mazurskie",
+                                    "wielkopolskie",
+                                    "zachodniopomorskie",
+                                  ].map((v) => (
+                                    <option key={v} value={v}>{v.charAt(0).toUpperCase() + v.slice(1)}</option>
+                                  ))}
+                                </select>
                               </div>
-                              <input className="border rounded-md px-3 py-2" placeholder="Kod pocztowy" value={newAddress.zip || ""} onChange={(e)=>setNewAddress(v=>({...v,zip:e.target.value}))} />
+                              <input 
+                                className="border rounded-md px-3 py-2" 
+                                placeholder="Kod pocztowy (np. 56-100)" 
+                                value={newAddress.zip || ""} 
+                                onChange={(e)=>{
+                                  const value = e.target.value;
+                                  // Auto-format Polish postal code: XX-XXX
+                                  const cleaned = value.replace(/[^\d]/g, '');
+                                  let formatted = cleaned;
+                                  if (cleaned.length > 2) {
+                                    formatted = cleaned.slice(0, 2) + '-' + cleaned.slice(2, 5);
+                                  }
+                                  setNewAddress(v=>({...v,zip:formatted}));
+                                }}
+                                maxLength={6}
+                                pattern="\d{2}-\d{3}"
+                              />
                               <Button onClick={handleCreateAddress} disabled={addingAddress} className="w-full mt-1">
                                 {addingAddress ? "Dodaję..." : "Dodaj nowy adres"}
                               </Button>

@@ -34,28 +34,48 @@ export const addressType = defineType({
     }),
     defineField({
       name: "state",
-      title: "State",
+      title: "Województwo",
       type: "string",
-      description: "Two letter state code (e.g. NY, CA)",
-      validation: (Rule) => Rule.required().length(2).uppercase(),
+      description: "Nazwa województwa (e.g. Dolnośląskie, Mazowieckie)",
+      options: {
+        list: [
+          { title: "Dolnośląskie", value: "dolnośląskie" },
+          { title: "Kujawsko-pomorskie", value: "kujawsko-pomorskie" },
+          { title: "Lubelskie", value: "lubelskie" },
+          { title: "Lubuskie", value: "lubuskie" },
+          { title: "Łódzkie", value: "łódzkie" },
+          { title: "Małopolskie", value: "małopolskie" },
+          { title: "Mazowieckie", value: "mazowieckie" },
+          { title: "Opolskie", value: "opolskie" },
+          { title: "Podkarpackie", value: "podkarpackie" },
+          { title: "Podlaskie", value: "podlaskie" },
+          { title: "Pomorskie", value: "pomorskie" },
+          { title: "Śląskie", value: "śląskie" },
+          { title: "Świętokrzyskie", value: "świętokrzyskie" },
+          { title: "Warmińsko-mazurskie", value: "warmińsko-mazurskie" },
+          { title: "Wielkopolskie", value: "wielkopolskie" },
+          { title: "Zachodniopomorskie", value: "zachodniopomorskie" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "zip",
-      title: "ZIP Code",
+      title: "Kod pocztowy",
       type: "string",
-      description: "Format: 12345 or 12345-6789",
+      description: "Format: 12-345 (np. 56-100)",
       validation: (Rule) =>
         Rule.required()
-          .regex(/^\d{5}(-\d{4})?$/, {
-            name: "zipCode",
+          .regex(/^\d{2}-\d{3}$/, {
+            name: "postalCode",
             invert: false,
           })
           .custom((zip: string | undefined) => {
             if (!zip) {
-              return "ZIP code is required";
+              return "Kod pocztowy jest wymagany";
             }
-            if (!zip.match(/^\d{5}(-\d{4})?$/)) {
-              return "Please enter a valid ZIP code (e.g. 12345 or 12345-6789)";
+            if (!zip.match(/^\d{2}-\d{3}$/)) {
+              return "Proszę wpisać poprawny kod pocztowy w formacie 12-345 (np. 56-100)";
             }
             return true;
           }),

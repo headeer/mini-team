@@ -184,7 +184,23 @@ export default function CheckoutPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Kod pocztowy*</label>
-                  <input required className="mt-1 w-full border rounded-md px-3 py-2 text-base" placeholder="00-000" />
+                  <input 
+                    required 
+                    className="mt-1 w-full border rounded-md px-3 py-2 text-base" 
+                    placeholder="56-100" 
+                    pattern="\d{2}-\d{3}"
+                    maxLength={6}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      // Auto-format Polish postal code: XX-XXX
+                      const cleaned = value.replace(/[^\d]/g, '');
+                      let formatted = cleaned;
+                      if (cleaned.length > 2) {
+                        formatted = cleaned.slice(0, 2) + '-' + cleaned.slice(2, 5);
+                      }
+                      e.target.value = formatted;
+                    }}
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Miasto*</label>
@@ -197,7 +213,7 @@ export default function CheckoutPage() {
                     {[
                       "dolnośląskie","kujawsko-pomorskie","lubelskie","lubuskie","łódzkie","małopolskie","mazowieckie","opolskie","podkarpackie","podlaskie","pomorskie","śląskie","świętokrzyskie","warmińsko-mazurskie","wielkopolskie","zachodniopomorskie",
                     ].map((v) => (
-                      <option key={v}>{v}</option>
+                      <option key={v} value={v}>{v.charAt(0).toUpperCase() + v.slice(1)}</option>
                     ))}
                   </select>
                 </div>

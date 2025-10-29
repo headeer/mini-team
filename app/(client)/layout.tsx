@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
+import { plPL } from "@clerk/localizations";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
 import MobileCartBar from "@/components/MobileCartBar";
@@ -67,6 +68,7 @@ export default function RootLayout({
   return (
     <ClerkProvider
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      localization={plPL}
       appearance={{
         elements: {
           formButtonPrimary: "bg-[var(--color-brand-orange)] hover:bg-[var(--color-brand-red)] text-white",
@@ -77,6 +79,8 @@ export default function RootLayout({
           formFieldInput: "border border-gray-300 focus:border-[var(--color-brand-orange)]",
         }
       }}
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
     >
       <RecaptchaProvider>
         <div className="flex flex-col min-h-screen">
