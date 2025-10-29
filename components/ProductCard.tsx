@@ -182,7 +182,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             {/* No details button; clicking card elements links to product page above */}
             
             {/* Action Button */}
-            <Link href={slugValue ? `/product/${slugValue}` : "#"} className="w-full text-center px-4 py-3 rounded-xl bg-gradient-to-r from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold">
+            <Link href={slugValue ? `/product/${slugValue}` : "#"} className="w-full text-center px-4 py-3 rounded-xl bg-gradient-to-r mt-2 from-[var(--color-brand-red)] to-[var(--color-brand-orange)] text-white font-semibold">
               Dodaj do koszyka
             </Link>
           </div>
