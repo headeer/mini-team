@@ -78,7 +78,7 @@ const Home = async () => {
     <div className="bg-white">
       {/* SEO via metadata API + JSON-LD */}
       {(() => {
-        const base = process.env.NEXT_PUBLIC_SITE_URL || "https://miniteamproject.pl";
+        const base = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_BASE_URL || "https://www.miniteamproject.pl";
         const org = {
           "@context": "https://schema.org",
           "@type": "Organization",

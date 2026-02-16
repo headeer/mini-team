@@ -11,8 +11,12 @@ import techMap from "@/public/images/techniczne/map.json";
 import { Analytics } from "@vercel/analytics/next";
 import { RecaptchaProvider } from "@/components/RecaptchaProvider";
 
+function getBaseUrl() {
+  return process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_BASE_URL || "https://www.miniteamproject.pl"
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://miniteamproject.pl"),
+  metadataBase: new URL(getBaseUrl()),
   title: {
     template: "%s – Mini Team Project",
     default: "Mini Team Project – Osprzęt do koparek, łyżki, zrywak",
@@ -92,7 +96,7 @@ export default function RootLayout({
         <MobileCartBar />
         {/* Global SEO JSON-LD */}
         {(() => {
-          const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://miniteamproject.pl'
+          const base = getBaseUrl()
           const org = {
             '@context': 'https://schema.org',
             '@type': 'Organization',
