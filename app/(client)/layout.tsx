@@ -6,9 +6,10 @@ import { plPL } from "@clerk/localizations";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import TopBenefitsBar from "@/components/TopBenefitsBar";
 import MobileCartBar from "@/components/MobileCartBar";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
+import ConsentAwareAnalytics from "@/components/ConsentAwareAnalytics";
 import Script from "next/script";
 import techMap from "@/public/images/techniczne/map.json";
-import { Analytics } from "@vercel/analytics/next";
 import { RecaptchaProvider } from "@/components/RecaptchaProvider";
 
 function getBaseUrl() {
@@ -68,7 +69,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID || 'G-X20Y10HXVL'
   return (
     <ClerkProvider
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
@@ -94,6 +94,8 @@ export default function RootLayout({
         <main id="content" className="flex-1">{children}</main>
         <Footer />
         <MobileCartBar />
+        <CookieConsentBanner />
+        <ConsentAwareAnalytics />
         {/* Global SEO JSON-LD */}
         {(() => {
           const base = getBaseUrl()
@@ -133,44 +135,11 @@ export default function RootLayout({
             </>
           )
         })()}
-        {/* Hotjar Tracking Code */}
-        <Script id="hotjar" strategy="beforeInteractive">
-          {`
-            (function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:6527223,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-          `}
-        </Script>
-        {/* Google Analytics */}
-        {gaId ? (
-          <>
-            <Script
-              id="ga-loader"
-              strategy="afterInteractive"
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            />
-            <Script id="ga-config" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);} 
-                gtag('js', new Date());
-                gtag('config', '${gaId}', {
-                  page_path: window.location.pathname,
-                });
-              `}
-            </Script>
-          </>
-        ) : null}
+        {/* GA, Hotjar, Vercel Analytics ładowane tylko po wyrażeniu zgody – ConsentAwareAnalytics */}
         {/* Technical drawing map (client) */}
         <Script id="tech-map" strategy="beforeInteractive">
           {`window.__TECH_MAP__ = ${JSON.stringify(techMap)};`}
         </Script>
-        <Analytics />
         </div>
       </RecaptchaProvider>
     </ClerkProvider>

@@ -2,7 +2,7 @@ import React from "react";
 import Container from "./Container";
 import FooterTop from "./FooterTop";
 import Logo from "./Logo";
-import { SubText, SubTitle } from "./ui/text";
+import CookieSettingsLink from "./CookieSettingsLink";
 import { categoriesData } from "@/constants/data";
 import Link from "next/link";
 //
@@ -28,6 +28,7 @@ const Footer = () => {
               <li><Link href="/kontakt" className="hover:text-shop_light_green hoverEffect">Kontakt</Link></li>
               <li><Link href="/regulamin" className="hover:text-shop_light_green hoverEffect">Regulamin</Link></li>
               <li><Link href="/polityka-prywatnosci" className="hover:text-shop_light_green hoverEffect">Polityka prywatności</Link></li>
+              <li><CookieSettingsLink /></li>
               <li><Link href="/faq" className="hover:text-shop_light_green hoverEffect">FAQ</Link></li>
               <li><Link href="/pomoc" className="hover:text-shop_light_green hoverEffect">Pomoc</Link></li>
             </ul>
